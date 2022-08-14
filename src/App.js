@@ -1,6 +1,8 @@
 // import MainPage from './containers/MainPage';
 import HomePage from './containers/HomePage';
 
+// import MainPage from './pages/MainPage';
+
 import logo from './logo.svg';
 import './App.css';
 

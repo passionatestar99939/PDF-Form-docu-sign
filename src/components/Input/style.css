@@ -1,0 +1,11 @@
+input.bottom-outline {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  /* background-color: #eee; */
+
+  background-color: rgb(98, 223, 245);
+  color: blue;
+}
