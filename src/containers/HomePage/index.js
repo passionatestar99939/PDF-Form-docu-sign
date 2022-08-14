@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from '../../components/Header';
+import Contract from '../../components/Contract';
 
 import styled from 'styled-components';
 import '../../styles/base.css';
@@ -13,6 +14,7 @@ const FirstPage = () => {
   return (
     <div className='page'>
       <Header />
+      <Contract />
     </div>
   );
 };
