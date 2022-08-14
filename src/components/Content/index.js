@@ -1,6 +1,6 @@
 import React from 'react';
 import Paragraph from '../Paragraph';
-import Bold from '../Bold';
+import b from '../b';
 
 import './style.css';
 
@@ -8,17 +8,17 @@ const Content = () => {
   return (
     <>
       <Paragraph>
-        <Bold>
+        <b>
           Congratulations on your decision to increase the comfort level, value
           and appearance of your home. To maximize your investment and enable
           the installation to take place as smoothly as possible, we have
           created this handout to acquaint you with what to expect when our
           installers arrive.
-        </Bold>
+        </b>
       </Paragraph>
 
       <Paragraph>
-        <Bold>1. Expected Delivery Time. </Bold>
+        <b>1. Expected Delivery Time. </b>
         Installation of windows is scheduled in the order of contract date
         unless otherwise specified. Window World will install all contracted
         work at the earliest possible date. Window World however, will not be
@@ -28,7 +28,7 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>2. Access to the Windows and Doors.</Bold>
+        <b>2. Access to the Windows and Doors.</b>
         We will need approximately 2 feet in front of each window, inside your
         home, so we can place our drop cloths and tools necessary to perform our
         work. When the old windows are removed, gusts of wind typically flow
@@ -37,53 +37,53 @@ const Content = () => {
         them. Computers and other electronic equipment should be covered or
         relocated temporarily. Please move aside any furnishings that are in the
         way of our work.
-        <Bold>
+        <b>
           If any furniture items are too heavy to move easily, we will gladly
           assist you.
-        </Bold>
+        </b>
       </Paragraph>
 
       <Paragraph>
-        <Bold>3. Window Coverings.</Bold>
+        <b>3. Window Coverings.</b>
         To gain access to the interior of the windows, we need all mini blinds,
         vertical blinds, roll-up shades, shutters, drapes and any other window
         covering removed prior to our installation.
-        <Bold>
+        <b>
           We are not responsible for removing or reinstallation of these items
           and are not responsible for damage resulting in the removal and
           reinstallation. We also are not responsible for any window covering
           alterations that may be required to reinstall them.
-        </Bold>
+        </b>
       </Paragraph>
 
       <Paragraph>
-        <Bold>4. Plants and Bushes.</Bold>
+        <b>4. Plants and Bushes.</b>
         Occasionally we need to work in planters and other landscaped areas of
         your home that are adjacent to the windows and doors. Please survey your
         yard prior to us arriving and look for potential problems. Some trees
         and vigorous bushes need to be pruned back to give us access to your
         windows.
-        <Bold>
+        <b>
           Delicate plants and shrubs in areas right below a window should be
           temporarily relocated if they cannot survive being stepped on and you
           want to preserve them.
-        </Bold>
+        </b>
         We strive to be careful when working around vegetation, but our
         priorities are to focus on our work, your windows and our safety while
         working on your property.
-        <Bold>
+        <b>
           We are not responsible for any damage to plants, shrubs or landscaped
           areas.
-        </Bold>
+        </b>
       </Paragraph>
 
       <Paragraph>
-        <Bold>5. Arrival and Departure Times.</Bold>
+        <b>5. Arrival and Departure Times.</b>
         We will advise you of the expected arrival time for our crew at the time
         we set up the installation date with you. We generally stay till the job
         is done, unless it will be a 2 or 3-day job, in which case we may work
         as long as there is daylight.
-        <Bold>
+        <b>
           It is our policy that our installers get a sign-off form and collect
           the outstanding balance at the completion of the job. We ask that you
           be available to approve the job and make final payment at the time of
@@ -93,11 +93,11 @@ const Content = () => {
           weather, traffic, etc. cause a delay or cancellation of an
           installation appointment. We typically do not schedule more than a day
           or two in advance to try to avoid such issues.
-        </Bold>
+        </b>
       </Paragraph>
 
       <Paragraph>
-        <Bold>6. Our Worksite.</Bold>
+        <b>6. Our Worksite.</b>
         We like to set up our worksite as close to your windows and doors as
         possible and generally your driveway is the best spot. If using the
         driveway will block a garaged car, please be ready to pull it out upon
@@ -105,14 +105,14 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>7. Alarm Systems.</Bold>
+        <b>7. Alarm Systems.</b>
         For those of you who have alarm systems, the alarm company should be
         notified and advised of our job. They will be responsible for the
         disconnection and reconnection of your alarm system.
       </Paragraph>
 
       <Paragraph>
-        <Bold>8. Where do we start?</Bold>
+        <b>8. Where do we start?</b>
         Upon arrival, the crew leader will survey the job and determine where to
         begin. If you have a preference, feel free to advise us and we will
         accommodate to the best of our ability. Because we work in stages (i.e.,
@@ -123,10 +123,10 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>
+        <b>
           9. If the job takes more than a day, will there be any openings in my
           house?
-        </Bold>
+        </b>
         Of course not. We only remove that which can be reinstalled in the same
         day. Although there may not be a complete window, it will be
         weather-tight and secure for overnight. (Please no critiquing at this
@@ -134,7 +134,7 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>10. Pets.</Bold>
+        <b>10. Pets.</b>
         We love furry, four-legged creatures; however, we need your help in
         supervising them. We are not always able to close a gate or door behind
         us when carrying a window, so please keep them in a safe place. Our job
@@ -145,10 +145,10 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>
+        <b>
           11. Expect some dust, noise and general disruption of your living
           space.
-        </Bold>
+        </b>
         Construction work can sometimes be messy depending upon the scope of
         your job. It’s an unfortunate reality of remodeling, but we do our best
         to keep things under control. We appreciate your patience and
@@ -158,19 +158,18 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>12. *Damage to walls and old trim stops.</Bold>
+        <b>12. *Damage to walls and old trim stops.</b>
         For those of you who have old aluminum and steel windows and are
         replacing them due to sweating and damaging of the walls be advised that
-        all water damage plaster <Bold>will</Bold> most likely fall out. In
-        addition, all the patch work you have done over the years will fall out
-        also. This is normal; however, we are not plaster experts, so the repair
-        to those walls would best be left to the experts. In some cases due to
-        out of square openings, new trim is required to make the window look
-        good.
-        <Bold>
+        all water damage plaster <b>will</b> most likely fall out. In addition,
+        all the patch work you have done over the years will fall out also. This
+        is normal; however, we are not plaster experts, so the repair to those
+        walls would best be left to the experts. In some cases due to out of
+        square openings, new trim is required to make the window look good.
+        <b>
           *Unless noted on the contract new trim will not be provided or
           installed by us.
-        </Bold>
+        </b>
         You can expect to do some touch up painting on the trim after the
         installation of your new windows. This is not always necessary and is
         usually minor if it occurs. If your trim stops around your sashes are
@@ -184,7 +183,7 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>13. Relax and enjoy the show.</Bold>
+        <b>13. Relax and enjoy the show.</b>
         After we’ve been introduced to your home, feel free to run errands, take
         a walk, or just relax. If a question should arise; by all means ask the
         crew leader for clarification. We enjoy people who are interested in
@@ -196,10 +195,10 @@ const Content = () => {
       </Paragraph>
 
       <Paragraph>
-        <Bold>
+        <b>
           14. Past Due Balances are subject to a service charge of 1.5% per
           month.{' '}
-        </Bold>
+        </b>
         In the event that this amount is placed in the hands of an attorney for
         collection, the purchaser agrees to pay all costs of collection,
         including a reasonable attorney fee. Return check fee is $50 (fifty

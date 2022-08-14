@@ -78,7 +78,11 @@ const Page2 = () => {
 };
 
 const Page3 = () => {
-  return <div className="page">Page 3</div>;
+  return (
+    <div>info</div>
+    <table>table</table>
+    <div>bottom</div>
+  )
 };
 
 const Page4 = () => {
