@@ -9,11 +9,13 @@ import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SalesPersonOwner from '../../components/SalesPersonOwner';
 import PaymentLink from '../../components/PaymentLink';
+import Table from '../../components/Table';
 
 import styled from 'styled-components';
 import '../../styles/base.css';
 import PageTitle from '../../components/PageTitle';
 import Paragraph from '../../components/Paragraph';
+import Information from '../../components/Information';
 
 const AppWrapper = styled.div`
   padding: 5px;
@@ -78,11 +80,26 @@ const Page2 = () => {
 };
 
 const Page3 = () => {
+  const colNames = [
+    'No.',
+    'Room',
+    'Style',
+    'Grids',
+    'LE',
+    'Size',
+    'Mull',
+    'Window Note',
+  ];
+  const row_count = 15;
   return (
-    <div>info</div>
-    <table>table</table>
-    <div>bottom</div>
-  )
+    <div className="page">
+      <Information></Information>
+      <Table colNames={colNames} rowCount={row_count}>
+        table
+      </Table>
+      <div>bottom</div>
+    </div>
+  );
 };
 
 const Page4 = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import Paragraph from '../Paragraph';
-import b from '../b';
 
 import './style.css';
 
