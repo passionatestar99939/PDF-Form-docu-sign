@@ -1,3 +1,4 @@
+// import React, { useState } from 'react';
 import React from 'react';
 import Input from '../Input';
 
@@ -11,7 +12,7 @@ const SalesPersonOwner = () => {
       <div class="salesperson">
         {/* <input value={info} onChange={callback} /> */}
         {/* <Input value={info} callback={(e) => setInfo(e.target.value)} /> */}
-        <Input value={'Nick Tisdale      (502) 310-9454'} />
+        <Input class="width-100" value={'Nick Tisdale      (502) 310-9454'} />
         <div>Salesperson</div>
       </div>
       <div>

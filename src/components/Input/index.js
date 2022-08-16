@@ -9,10 +9,17 @@ const Input = (props) => {
     <>
       {/* <div>Input</div> */}
       <input
-        class="bottom-outline"
+        class={`bottom-outline` + ` ${props.class}`}
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        type={props.type}
+        style={props.style}
       />
+      {/* <input
+        class="bottom-outline"
+        value={props.info}
+        onChange={props.callback}
+      /> */}
     </>
   );
 };

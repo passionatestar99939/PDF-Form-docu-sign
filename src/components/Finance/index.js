@@ -3,7 +3,7 @@ import React from 'react';
 const Finance = () => {
   return (
     <div>
-      <div className='financetable'>
+      <div className="financeWindowTable">
         <div>
           <div>Financing</div>
           <div>10% DOWN PAYMENT</div>

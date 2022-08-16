@@ -5,7 +5,7 @@ import './style.css';
 
 const Content = () => {
   return (
-    <>
+    <div class="Content">
       <Paragraph>
         <b>
           Congratulations on your decision to increase the comfort level, value
@@ -203,7 +203,7 @@ const Content = () => {
         including a reasonable attorney fee. Return check fee is $50 (fifty
         dollars).
       </Paragraph>
-    </>
+    </div>
   );
 };
 

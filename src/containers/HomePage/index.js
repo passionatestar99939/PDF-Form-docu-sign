@@ -9,13 +9,15 @@ import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SalesPersonOwner from '../../components/SalesPersonOwner';
 import PaymentLink from '../../components/PaymentLink';
-import Table from '../../components/Table';
+import WindowTable from '../../components/WindowTable';
 
 import styled from 'styled-components';
 import '../../styles/base.css';
 import PageTitle from '../../components/PageTitle';
 import Paragraph from '../../components/Paragraph';
 import Information from '../../components/Information';
+import BottomOfPage3 from '../../components/BottomOfPage3';
+import MiddleOfPage3 from '../../components/MiddleOfPage3';
 
 const AppWrapper = styled.div`
   padding: 5px;
@@ -90,20 +92,33 @@ const Page3 = () => {
     'Mull',
     'Window Note',
   ];
-  const row_count = 15;
   return (
     <div className="page">
       <Information></Information>
-      <Table colNames={colNames} rowCount={row_count}>
-        table
-      </Table>
-      <div>bottom</div>
+      <WindowTable colNames={colNames} rowCount={15} firstNoOfRow={1} />
+      <MiddleOfPage3 />
+      <BottomOfPage3 />
     </div>
   );
 };
 
 const Page4 = () => {
-  return <div className="page">Page 4</div>;
+  const colNames = [
+    'No.',
+    'Room',
+    'Style',
+    'Grids',
+    'LE',
+    'Size',
+    'Mull',
+    'Window Note',
+  ];
+  return (
+    <div className="page">
+      <Information></Information>
+      <WindowTable colNames={colNames} rowCount={30} firstNoOfRow={16} />
+    </div>
+  );
 };
 
 const Page5 = () => {
