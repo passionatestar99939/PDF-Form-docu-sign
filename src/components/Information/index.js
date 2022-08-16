@@ -4,10 +4,9 @@ import Input from '../Input';
 
 import './style.css';
 
-const Information = ({ children }) => {
+const Information = () => {
   return (
     <>
-      {children}
       <div>
         <Label>Job Name</Label>
         <Input />

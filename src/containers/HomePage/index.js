@@ -77,6 +77,7 @@ const Page2 = () => {
           whatsoever, now is the time to ask.
         </div>
       </Paragraph>
+      <Footer>Louisville Window 03-22 Valid-30 days</Footer>
     </div>
   );
 };

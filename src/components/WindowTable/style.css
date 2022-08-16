@@ -12,6 +12,11 @@
   text-align: center;
 }
 
+.WindowTable th {
+  font-size: 18px;
+  font-family: TimesNewRomanPS-BoldMT_4g;
+}
+
 .WindowTable th,
 .WindowTable td * {
   text-align: center;

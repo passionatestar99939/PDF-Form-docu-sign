@@ -13,14 +13,14 @@ const CheckBox = (props) => {
           className="ImageOfCheckBox Checked"
           onClick={() => setChecked(!checked)}
         >
-          <img src="images/checked.png" />
+          <img src="images/checked.gif" />
         </div>
       ) : (
         <div
           className="ImageOfCheckBox UnChecked"
           onClick={() => setChecked(!checked)}
         >
-          <img src="images/unchecked.png" />
+          {/* <img src="images/unchecked.png" /> */}
         </div>
       )}
     </div>
