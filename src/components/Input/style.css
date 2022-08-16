@@ -13,6 +13,10 @@ input.bottom-outline {
   width: 100%;
 }
 
-.RightDirection {
+.RightAlign {
   text-align: right;
+}
+
+.CenterAlign {
+  text-align: center;
 }

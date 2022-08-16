@@ -4,14 +4,27 @@
   font-size: 12px;
   border: 1px solid black;
   border-collapse: collapse;
+  padding: 0px;
 }
 
-.WindowTable th {
+.WindowTable th,
+.WindowTable td {
   text-align: center;
 }
-.WindowTable tr {
+
+.WindowTable th,
+.WindowTable td * {
+  text-align: center;
   height: 39px;
 }
+
+.WindowTable .CheckBoxCell {
+  width: 39px;
+}
+
+/* .WindowTable tr {
+  height: 39px;
+} */
 
 /* #form128_3 {
   z-index: 2;
@@ -34,8 +47,4 @@
 
 .width-20 {
   width: 20%;
-}
-
-.width-10 {
-  width: 10%;
 }

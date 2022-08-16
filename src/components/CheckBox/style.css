@@ -1,0 +1,13 @@
+.ImageOfCheckBox.Checked {
+  /* background-image: url('../../../public/images/checked.png');
+  background-repeat: no-repeat; */
+}
+
+.ImageOfCheckBox.UnChecked {
+  /* background-image: 'images/checked.png'; */
+}
+
+.ImageOfCheckBox {
+  /* background-color: blue; */
+  height: 100%;
+}

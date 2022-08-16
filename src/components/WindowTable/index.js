@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckBox from '../CheckBox';
 import Input from '../Input';
 
 import './style.css';
@@ -10,8 +11,6 @@ const WindowTable = (props) => {
   for (let i = 0; i < props.rowCount; i++) {
     rows.push({ [props.colNames[0]]: props.firstNoOfRow + i });
   }
-
-  console.log('???=>', options.rooms);
 
   return (
     <table class="WindowTable">
@@ -26,7 +25,8 @@ const WindowTable = (props) => {
       </tr>
       {rows.map((value) => (
         <tr>
-          <td>{value[`${props.colNames[0]}`]}</td>
+          {/* <td>{value[`${props.colNames[0]}`]}</td> */}
+          <td>{value[props.colNames[0]]}</td>
           <td>
             <select>
               <option value=" " selected="selected">
@@ -48,19 +48,20 @@ const WindowTable = (props) => {
             </select>
           </td>
           <td className="width-10">
-            <Input class="width-100" />
+            <Input class="width-100 CenterAlign" />
+          </td>
+          <td className="CheckBoxCell">
+            {/* <Input type="checkbox" /> */}
+            <CheckBox />
           </td>
           <td>
-            <Input type="checkbox" />
+            <Input class="CenterAlign" />
           </td>
           <td>
-            <Input />
+            <Input class="CenterAlign" />
           </td>
           <td>
-            <Input />
-          </td>
-          <td>
-            <Input />
+            <Input class="CenterAlign" />
           </td>
         </tr>
       ))}

@@ -9,19 +9,19 @@ const FloorLayer = (props, { children }) => {
       <div class="Floor">
         <div class="Rectangle"></div>
         <div class="InputOfFloor">
-          <Input class=" RightDirection" value={'Floor' + 1} />
+          <Input class=" RightAlign" value={'Floor' + 1} />
         </div>
       </div>
       <div class="Floor">
         <div class="Rectangle"></div>
         <div class="InputOfFloor">
-          <Input class=" RightDirection" value={'Floor' + 2} />
+          <Input class=" RightAlign" value={'Floor' + 2} />
         </div>
       </div>
       <div class="Floor">
         <div class="Rectangle"></div>
         <div class="InputOfFloor">
-          <Input class=" RightDirection" value={'Floor' + 3} />
+          <Input class=" RightAlign" value={'Floor' + 3} />
         </div>
       </div>
     </div>
