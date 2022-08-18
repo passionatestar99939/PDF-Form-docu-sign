@@ -1,5 +1,7 @@
 import React from 'react';
-import CheckBox from '../CheckBox';
+
+import CheckBox from '../Checkbox';
+import DropDown from '../DropDown';
 import Input from '../Input';
 
 import './style.css';
@@ -13,58 +15,63 @@ const WindowTable = (props) => {
   }
 
   return (
-    <table class="WindowTable">
+    <table className="WindowTable">
       {/* {for(let i=0; i<props.row_count; i++){
 
       }} */}
       {/* {while(i<15){}} */}
-      <tr>
-        {props.colNames.map((value) => (
-          <th>{value}</th>
-        ))}
-      </tr>
-      {rows.map((value) => (
+      <thead>
         <tr>
-          {/* <td>{value[`${props.colNames[0]}`]}</td> */}
-          <td>{value[props.colNames[0]]}</td>
-          <td>
-            <select>
-              <option value=" " selected="selected">
-                {' '}
-              </option>
-              {options.rooms.map((value) => (
-                <option value={value}>{value}</option>
-              ))}{' '}
-            </select>
-          </td>
-          <td>
-            <select>
-              <option value=" " selected="selected">
-                {' '}
-              </option>
-              {options.styles.map((value) => (
-                <option value={value}>{value}</option>
-              ))}{' '}
-            </select>
-          </td>
-          <td className="width-10">
-            <Input class="width-100 CenterAlign" />
-          </td>
-          <td className="CheckBoxCell">
-            {/* <Input type="checkbox" /> */}
-            <CheckBox />
-          </td>
-          <td>
-            <Input class="CenterAlign" />
-          </td>
-          <td>
-            <Input class="CenterAlign" />
-          </td>
-          <td>
-            <Input class="CenterAlign" />
-          </td>
+          {props.colNames.map((value, index) => (
+            <th key={index}>{value}</th>
+          ))}
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {rows.map((value, index) => (
+          <tr key={index}>
+            {/* <td>{value[`${props.colNames[0]}`]}</td> */}
+            <td>{value[props.colNames[0]]}</td>
+            <td>
+              <DropDown status={1}>
+                <select className="table-select">
+                  <option value=" "> </option>
+                  {options.rooms.map((value, index) => (
+                    <option value={value} key={index}>
+                      {value}
+                    </option>
+                  ))}{' '}
+                </select>
+              </DropDown>
+            </td>
+            <td>
+              <select className="table-select">
+                <option value=" "> </option>
+                {options.styles.map((value, index) => (
+                  <option value={value} key={index}>
+                    {value}
+                  </option>
+                ))}{' '}
+              </select>
+            </td>
+            <td className="width-10">
+              <input className="table-input" />
+            </td>
+            <td className="CheckBoxCell">
+              <CheckBox />
+            </td>
+            <td>
+              <input className="table-input" />
+            </td>
+            <td>
+              <input className="table-input" />
+            </td>
+            <td>
+              <input className="table-input" />
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };

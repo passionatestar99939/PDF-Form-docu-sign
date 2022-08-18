@@ -3,24 +3,23 @@ import React, { useState } from 'react';
 import './style.css';
 
 const Input = (props) => {
-  const [value, setValue] = useState(props.value);
+  const { value, addClass, type, style, updateValue } = props;
+  const [data, setData] = useState(value);
+
+  const handleChange = (e) => {
+    // console.log(e.target.value);
+    updateValue(e.target.value);
+  };
 
   return (
-    <>
-      {/* <div>Input</div> */}
-      <input
-        class={`bottom-outline` + ` ${props.class}`}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        type={props.type}
-        style={props.style}
-      />
-      {/* <input
-        class="bottom-outline"
-        value={props.info}
-        onChange={props.callback}
-      /> */}
-    </>
+    <input
+      value={data}
+      type={type}
+      style={style}
+      min={type === 'number' ? 0 : null}
+      className={`bottom-outline ${addClass}`}
+      onChange={(e) => handleChange(e)}
+    />
   );
 };
 

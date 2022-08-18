@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  /*background-color: black;*/
 }
 
 .App-logo {
@@ -40,9 +39,4 @@
 
 * {
   box-sizing: border-box;
-  text-align: left;
-}
-
-body {
-  font-size: 16px;
 }

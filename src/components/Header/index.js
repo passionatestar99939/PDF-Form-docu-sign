@@ -7,8 +7,8 @@ import './style.css';
 
 const Content = () => {
   return (
-    <div className='content'>
-      <p className='title'>WW of Louisville</p>
+    <div className="content">
+      <p className="title">WW of Louisville</p>
       <p>2200 Brennen Business Court • Louisville, KY 40299</p>
       <p>Phone: (502) 671-7777 • Fax: (502) 671-7766</p>
       <p>www.WindowWorldLouisville.com</p>
@@ -18,7 +18,7 @@ const Content = () => {
 
 const Header = () => {
   return (
-    <div className='header-wrapper'>
+    <div className="header-wrapper">
       <Logo />
       <Content />
       <Mark />

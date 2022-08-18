@@ -1,7 +1,21 @@
 .page {
   width: 935px;
-  height: 1530px;
+  /* height: 1530px; */
   background-color: white;
   margin: 0 auto 10px;
   padding: 20px 30px 2px 20px;
+}
+
+.page5 {
+  padding-top: 10%;
+  font-family: MinionPro-Bold_p;
+  font-weight: bold;
+  font-size: 17px;
+  letter-spacing: 0.13px;
+}
+
+.pdf-page {
+  width: 100%;
+  background-color: white;
+  margin: 0 auto 10px;
 }

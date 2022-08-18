@@ -10,8 +10,8 @@ const MiddleLeftOfPage3 = ({ children }) => {
     <div>
       <Table2OfPage3 />
       <Table3OfPage3 />
-      Qty: <Input class="width-10" /> Style:{' '}
-      <Input class="width-10" value="RWD" /> <input type="checkbox" />
+      Qty: <Input addClass="width-10" /> Style:{' '}
+      <Input addClass="width-10" value="RWD" /> <input type="checkbox" />
       Paint <input type="checkbox" />
       PVC
     </div>

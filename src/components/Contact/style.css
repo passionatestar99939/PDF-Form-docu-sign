@@ -1,4 +1,4 @@
-input.no-outline {
+.no-outline {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -7,18 +7,22 @@ input.no-outline {
   /* background-color: #eee; */
 }
 
-input.no-outline:focus {
+.no-outline:focus {
   outline: none;
 }
 
-.width-90 {
-  width: 90%;
+.wrapper-space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.width-80 {
-  width: 80%;
+.top-padding-4 {
+  padding-top: 1%;
 }
 
-.width-70 {
-  width: 70%;
+.s1 {
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #000;
 }

@@ -5,23 +5,23 @@ import './style.css';
 
 const FloorLayer = (props, { children }) => {
   return (
-    <div class="FloorLayer">
-      <div class="Floor">
-        <div class="Rectangle"></div>
-        <div class="InputOfFloor">
-          <Input class=" RightAlign" value={'Floor' + 1} />
+    <div className="FloorLayer">
+      <div className="Floor">
+        <div className="Rectangle"></div>
+        <div className="InputOfFloor">
+          <Input addClass=" RightDirection" value={'Floor' + 1} />
         </div>
       </div>
-      <div class="Floor">
-        <div class="Rectangle"></div>
-        <div class="InputOfFloor">
-          <Input class=" RightAlign" value={'Floor' + 2} />
+      <div className="Floor">
+        <div className="Rectangle"></div>
+        <div className="InputOfFloor">
+          <Input addClass=" RightDirection" value={'Floor' + 2} />
         </div>
       </div>
-      <div class="Floor">
-        <div class="Rectangle"></div>
-        <div class="InputOfFloor">
-          <Input class=" RightAlign" value={'Floor' + 3} />
+      <div className="Floor">
+        <div className="Rectangle"></div>
+        <div className="InputOfFloor">
+          <Input addClass=" RightDirection" value={'Floor' + 3} />
         </div>
       </div>
     </div>

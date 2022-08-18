@@ -5,7 +5,7 @@ import './style.css';
 
 const Content = () => {
   return (
-    <div class="Content">
+    <div className="Content">
       <Paragraph>
         <b>
           Congratulations on your decision to increase the comfort level, value

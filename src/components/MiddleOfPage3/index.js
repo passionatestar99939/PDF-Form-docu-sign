@@ -6,7 +6,7 @@ import './style.css';
 
 const MiddleOfPage3 = ({ children }) => {
   return (
-    <div class="MiddleOfPage3">
+    <div className="MiddleOfPage3">
       <MiddleLeftOfPage3 />
       <MiddleRightOfPage3 />
     </div>

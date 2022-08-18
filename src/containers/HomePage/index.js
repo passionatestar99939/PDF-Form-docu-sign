@@ -9,50 +9,32 @@ import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SalesPersonOwner from '../../components/SalesPersonOwner';
 import PaymentLink from '../../components/PaymentLink';
-import WindowTable from '../../components/WindowTable';
-
-import styled from 'styled-components';
-import '../../styles/base.css';
+import JobAddress from '../../components/JobAddress';
+import RoomTable from '../../components/RoomTable';
+import Note from '../../components/Note';
+import ExtraInfo from '../../components/ExtraInfo';
+import Operation from '../../components/Operation';
 import PageTitle from '../../components/PageTitle';
 import Paragraph from '../../components/Paragraph';
 import Information from '../../components/Information';
 import BottomOfPage3 from '../../components/BottomOfPage3';
 import MiddleOfPage3 from '../../components/MiddleOfPage3';
+import WindowTable from '../../components/WindowTable';
+
+import styled from 'styled-components';
+import '../../styles/base.css';
 
 const AppWrapper = styled.div`
   padding: 5px;
+  background-color: black;
 `;
 
 const Page1 = () => {
   return (
-    <div className="page">
+    <div className="page" id="page1">
       <Header />
       <Contact />
       <CalculateTable />
-      <Finance />
-      <div>
-        Notice to Owner: Do not sign this contract if blank. You are entitled to
-        a copy of the contract at the time you sign. Owner agrees that failure
-        to comply with the terms of this contract, including any addendums will
-        entitle Window World to recover all incidental collection costs owed
-        pursuant to this Contract including, but not limited to, reasonable
-        attorney’s fees and court cost. The parties acknowledge that the terms
-        and conditions set fourth in the Window installation Summary attached
-        hereto as Addendum A is hereby incorporated in this Contract in its
-        entirety. Warranty is not valid until Certificate of Completion is
-        signed and balance paid in full.
-      </div>
-      <div>
-        You the buyer may cancel this transaction at any time prior to midnight
-        of the third business day after the date of this transaction. Notice of
-        cancellation must be in writing postmarked no later than midnight of the
-        following third business day. THIS IS A CUSTOM ORDER NOT FOR RESALE!
-      </div>
-      *Home owner is responsible for getting/paying for all permits and historic
-      approval. If job is stopped due failure to obtain th Home owner is
-      responsible for getting/paying for all permits and historic approval. If
-      job is stopped due failure to obtain these, homeowner ese, homeowner is
-      still responsible for full balance. is still responsible for full balance.
       <SalesmanOwner />
       <Footer />
     </div>
@@ -61,9 +43,11 @@ const Page1 = () => {
 
 const Page2 = () => {
   return (
-    <div className="page">
+    <div className="page" id="page2">
       <PageTitle>
-        <div class="page_title">PREPARING FOR YOUR NEW WINDOWS AND DOORS</div>
+        <div className="page_title">
+          PREPARING FOR YOUR NEW WINDOWS AND DOORS
+        </div>
       </PageTitle>
       <Content />
       <SalesPersonOwner />
@@ -77,7 +61,6 @@ const Page2 = () => {
           whatsoever, now is the time to ask.
         </div>
       </Paragraph>
-      <Footer>Louisville Window 03-22 Valid-30 days</Footer>
     </div>
   );
 };
@@ -95,7 +78,7 @@ const Page3 = () => {
   ];
   return (
     <div className="page">
-      <Information></Information>
+      <Information />
       <WindowTable colNames={colNames} rowCount={15} firstNoOfRow={1} />
       <MiddleOfPage3 />
       <BottomOfPage3 />
@@ -124,7 +107,7 @@ const Page4 = () => {
 
 const Page5 = () => {
   return (
-    <div className="page">
+    <div className="page page5">
       <div>CREDIT CARD AUTHORIZATION FORM</div>
       <Contact />
       <PaymentLink />
@@ -140,6 +123,7 @@ const HomePage = () => {
       <Page3 />
       <Page4 />
       <Page5 />
+      <Operation />
     </AppWrapper>
   );
 };

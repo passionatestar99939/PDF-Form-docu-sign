@@ -1,0 +1,15 @@
+.table-bottom {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+.width-50px {
+  width: 50px;
+}
+
+.margin-2 {
+  margin: 0px 2px !important;
+}

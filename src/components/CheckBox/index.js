@@ -4,7 +4,6 @@ import './style.css';
 
 const CheckBox = (props) => {
   const [checked, setChecked] = useState(false);
-  console.log('???=>', checked);
   return (
     <div>
       {/* <div> */}
@@ -13,7 +12,7 @@ const CheckBox = (props) => {
           className="ImageOfCheckBox Checked"
           onClick={() => setChecked(!checked)}
         >
-          <img src="images/checked.gif" />
+          <img className="image" alt="checkbox" src="images/checked.gif" />
         </div>
       ) : (
         <div

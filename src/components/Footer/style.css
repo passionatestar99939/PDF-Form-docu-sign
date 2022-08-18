@@ -1,5 +1,13 @@
-.Footer {
-  font-size: 9px;
-  font-family: Swiss721BT-Roman_qa;
-  bottom: 0;
+.x-small {
+  font-size: x-small;
+}
+
+.xx-small {
+  font-size: xx-small;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

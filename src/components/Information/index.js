@@ -4,14 +4,17 @@ import Input from '../Input';
 
 import './style.css';
 
-const Information = () => {
+const Information = ({ children }) => {
   return (
     <>
-      <div>
-        <Label>Job Name</Label>
-        <Input />
-        <Label>Phone#</Label>
-        <Input />
+      {children}
+      <div className="information">
+        <div>
+          <Label>Job Name</Label>
+          <Input addClass="width-40" />
+          <Label>Phone#</Label>
+          <Input addClass="width-40" />
+        </div>
         <div>
           <Label>Address</Label>
           <Input />
