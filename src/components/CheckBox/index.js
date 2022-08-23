@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './style.css';
 
-const CheckBox = (props) => {
-  const [checked, setChecked] = useState(false);
+const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable }) => {
+  const [checked, setChecked] = useState(checkVal);
+
+  useEffect(() => {
+    setChecked(checkVal);
+  }, [checkVal]);
+
+  const handleClick = (val) => {
+    setChecked(!val);
+    updateCheck(!checked, { formId: checkId });
+  };
   return (
-    <div>
-      {/* <div> */}
+    <div
+      onClick={() => {
+        return isInputEnable ? handleClick(checked) : null;
+      }}
+    >
       {checked ? (
-        <div
-          className="ImageOfCheckBox Checked"
-          onClick={() => setChecked(!checked)}
-        >
-          <img className="image" alt="checkbox" src="images/checked.gif" />
+        <div className="ImageOfCheckBox Checked">
+          <img className="image" alt="checkbox" src="/images/checked.png" />
         </div>
       ) : (
-        <div
-          className="ImageOfCheckBox UnChecked"
-          onClick={() => setChecked(!checked)}
-        >
-          {/* <img src="images/unchecked.png" /> */}
-        </div>
+        <div className="ImageOfCheckBox UnChecked"></div>
       )}
     </div>
   );
 };
 
-export default CheckBox;
+export default React.memo(CheckBox);

@@ -1,8 +1,8 @@
 .notice-box {
   border: 2px solid black;
   text-align: justify;
-  padding: 8px 10px;
-  margin-top: 10px;
+  padding: 3px 3px;
+  margin-top: 1px;
 }
 
 .text-align-center {
@@ -39,4 +39,20 @@
 
 .middle-input {
   width: 60%;
+}
+
+.email-form {
+  width: 60%;
+}
+
+.bottom-box {
+  line-height: 14px;
+  letter-spacing: -1px;
+  font-family: sans-serif;
+}
+
+.notice-owner {
+  line-height: 14px;
+  letter-spacing: -0.5px;
+  font-family: sans-serif;
 }

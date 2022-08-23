@@ -17,3 +17,17 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.wrapper-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.div-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}

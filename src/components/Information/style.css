@@ -8,3 +8,8 @@
 .information {
   text-align: left;
 }
+
+.information-input {
+  height: 25px;
+  margin-bottom: 4px;
+}

@@ -13,3 +13,18 @@
 .margin-2 {
   margin: 0px 2px !important;
 }
+
+.small-letter {
+  font-size: 12px;
+}
+
+.small-input {
+  margin-bottom: 1px !important;
+  height: 15px;
+}
+
+.table-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}

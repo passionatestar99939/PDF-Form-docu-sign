@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateValue } from '../../store/slices/glassoptionSlice';
 
 const GlassOptionTable = (props) => {
-  const value = useSelector((state) => state.glassoption.data);
+  const storeData = useSelector((state) => state.glassoption.data);
+  const viewMode = useSelector((state) => state.option.data.viewMode);
   const dispatch = useDispatch();
 
   const handleChange = (e, { id, formId }) => {
@@ -25,7 +26,7 @@ const GlassOptionTable = (props) => {
 
   return (
     <div className="table-bottom">
-      <div>
+      <div className="table-title">
         <strong>GLASS OPTIONS</strong>
       </div>
       {props.data.map((item, index) => {
@@ -42,6 +43,8 @@ const GlassOptionTable = (props) => {
                     formId: `glassOptionInput${index + 1}`,
                   })
                 }
+                value={storeData[`glassOptionInput${index + 1}`]}
+                readOnly={viewMode !== 'homepage'}
               />
               <label>{item.label}</label>
             </div>
@@ -51,7 +54,8 @@ const GlassOptionTable = (props) => {
                 type="text"
                 className="bottom-outline width-50px"
                 value={
-                  Number(value[`glassOptionInput${index + 1}`]) * item.unitPrice
+                  Number(storeData[`glassOptionInput${index + 1}`]) *
+                  item.unitPrice
                 }
                 readOnly
               />

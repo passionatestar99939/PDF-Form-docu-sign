@@ -1,9 +1,10 @@
 .page {
-  width: 935px;
-  /* height: 1530px; */
+  /*min-width: 1035px;*/
+  width: 100%;
   background-color: white;
   margin: 0 auto 10px;
-  padding: 20px 30px 2px 20px;
+  padding: 18px 30px 2px 20px;
+  page-break-before: always;
 }
 
 .page5 {
@@ -12,6 +13,7 @@
   font-weight: bold;
   font-size: 17px;
   letter-spacing: 0.13px;
+  text-align: center;
 }
 
 .pdf-page {

@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateValue } from '../../store/slices/vinylslidingSlice';
 
 const VinylSlidingTable = (props) => {
-  const value = useSelector((state) => state.vinylsliding.data);
+  const storeData = useSelector((state) => state.vinylsliding.data);
+  const viewMode = useSelector((state) => state.option.data.viewMode);
   const dispatch = useDispatch();
 
   const handleChange = (e, { id, formId }) => {
@@ -28,8 +29,8 @@ const VinylSlidingTable = (props) => {
   };
 
   return (
-    <div className="table-bottom">
-      <div>
+    <div className="table-bottom small-letter">
+      <div className="table-title">
         <strong>Vinyl Sliding Patio Doors</strong>
       </div>
       <div>
@@ -40,7 +41,7 @@ const VinylSlidingTable = (props) => {
                 <div>
                   <input
                     id={`vinylSlidingInput${index + 1}`}
-                    className="bottom-outline width-50px"
+                    className="bottom-outline width-50px small-input"
                     type="number"
                     onChange={(e) =>
                       handleChange(e, {
@@ -48,16 +49,28 @@ const VinylSlidingTable = (props) => {
                         formId: `vinylSlidingInput${index + 1}`,
                       })
                     }
+                    value={storeData[`vinylSlidingInput${index + 1}`]}
+                    readOnly={viewMode !== 'homepage'}
                   />
                   <label>{item.label}</label>
+                  {index === 11 && (<input
+                              type="text"
+                              style={{ width: "350px" }}
+                              className="bottom-outline small-input"
+                              style={{width: "200px"}}
+                              id="vinylSlidingInput40"
+                              onChange={(e) => handleChange(e, { formId: 'vinylSlidingInput40' })}
+                              value={storeData['vinylSlidingInput40']}
+                              readOnly={viewMode !== 'homepage'}
+                            />)}
                 </div>
                 <div>
                   <label>{`$${item.unitPrice}`}</label>
                   <input
-                    className="bottom-outline width-50px"
+                    className="bottom-outline width-50px small-input"
                     type="text"
                     value={
-                      Number(value[`vinylSlidingInput${index + 1}`]) *
+                      Number(storeData[`vinylSlidingInput${index + 1}`]) *
                       item.unitPrice
                     }
                     readOnly
@@ -70,12 +83,14 @@ const VinylSlidingTable = (props) => {
               <div className="wrapper" key={index}>
                 <div>
                   <input
-                    className="bottom-outline width-50px"
+                    className="bottom-outline width-50px small-input"
                     type="number"
                     id="vinylSlidingInput16"
                     onChange={(e) =>
                       handleChange(e, { formId: 'vinylSlidingInput16' })
                     }
+                    value={storeData['vinylSlidingInput16']}
+                    readOnly={viewMode !== 'homepage'}
                   />
                   <label>{item.label}</label>
                 </div>
@@ -83,7 +98,7 @@ const VinylSlidingTable = (props) => {
                   <label>$</label>
                   <input
                     id="vinylSlidingInput15"
-                    className="bottom-outline width-50px"
+                    className="bottom-outline width-50px small-input"
                     type="number"
                     onChange={(e) =>
                       handleChange(e, {
@@ -91,6 +106,8 @@ const VinylSlidingTable = (props) => {
                         formId: 'vinylSlidingInput15',
                       })
                     }
+                    value={storeData['vinylSlidingInput15']}
+                    readOnly={viewMode !== 'homepage'}
                   />
                 </div>
               </div>
@@ -101,16 +118,20 @@ const VinylSlidingTable = (props) => {
           <label>Door Color</label>
           <input
             type="text"
-            className="bottom-outline width-38"
+            className="bottom-outline width-38 small-input"
             id="vinylSlidingInput17"
             onChange={(e) => handleChange(e, { formId: 'vinylSlidingInput17' })}
+            value={storeData['vinylSlidingInput17']}
+            readOnly={viewMode !== 'homepage'}
           />
           <label>/</label>
           <input
             type="text"
-            className="bottom-outline width-38"
+            className="bottom-outline width-38 small-input"
             id="vinylSlidingInput18"
             onChange={(e) => handleChange(e, { formId: 'vinylSlidingInput18' })}
+            value={storeData['vinylSlidingInput18']}
+            readOnly={viewMode !== 'homepage'}
           />
           <p style={{ fontStyle: 'italic', margin: 'auto' }}>
             All patio doors include SolarZone glass and standard foot lock

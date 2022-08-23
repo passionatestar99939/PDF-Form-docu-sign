@@ -1,92 +1,141 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import { useSelector, useDispatch } from 'react-redux';
-// import pdfMake from 'pdfmake';
-// import pdfFonts from 'pdfmake/build/vfs_fonts';
-// import htmlToPdfmake from 'html-to-pdfmake';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "react-modal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil, faEnvelope, faDownload, faVoicemail, faPrint } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// import html2canvas from 'html2canvas';
-// import jsPDF from 'jspdf';
+import { store } from "../../store/store";
+import {
+  postDataAsync,
+  postDataAsync1,
+  fetchDataAsync,
+  downloadAsync,
+} from "../../store/slices/operationSlice";
 
-import './style.css';
+import "./style.css";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
-const Operation = () => {
+const Operation = (props) => {
   const [openModal, setOpenModal] = useState(false);
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
+
+  const viewMode = useSelector((state) => state.option.data.viewMode);
+  const linkId = useSelector((state) => state.option.data.linkId);
+  const status = useSelector((state) => state.option.data.loading);
+  const dispatch = useDispatch();
 
   const handleFetch = () => {};
 
-  const handleClose = () => {
+  const handleClose = () => setOpenModal(false);
+
+  const handleSend = () => {
+    let data = store.getState();
+    dispatch(postDataAsync({ data: { email: {to: email, subject: subject, body: body}, contract_info: data }, url: "contract"}));
     setOpenModal(false);
   };
 
-  const handleSend = () => {
-    setOpenModal(false);
+  const handleSign = () => {
+    let data = store.getState();
+    dispatch(
+      postDataAsync1({ linkId: linkId, contractInfo: data }, "signature")
+    );
   };
 
   const handleDownload = () => {
-    // const input = document.getElementById('page1');
-    // html2canvas(input)
-    //   .then((canvas) => {
-    //     const imgData = canvas.toDataURL('image/png');
-    //     const pdf = new jsPDF({
-    //       orientation: 'p',
-    //       unit: 'pt', // points, pixels won't work properly
-    //       format: [canvas.width, canvas.height] // set needed dimensions for any element
-    //     });
-    //     pdf.html(input, {
-    //       x: 0,
-    //       y: 0,
-    //       autoPaging: 'text',
-    //       margin: [700, 0, 700, 0],
-    //       callback: (doc) => doc.save("download.pdf")});
-    //     // pdf.save("download.pdf");
-    //   });
-    // const doc = new jsPDF();
-    // //get table html
-    // const input = document.getElementById('page1');
-    // //html to pdf format
-    // var html = htmlToPdfmake(input.innerHTML);
-    // const documentDefinition = { content: html };
-    // pdfMake.vfs = pdfFonts.pdfMake.vfs;
-    // pdfMake.createPdf(documentDefinition).open();
+    dispatch(downloadAsync(linkId));
   };
+
   return (
-    <div className="operation-pad">
-      <button className="btn" onClick={() => setOpenModal(true)}>
-        Send
-      </button>
-      <button className="btn" onClick={handleFetch}>
-        Fetch
-      </button>
-      <button className="btn" onClick={handleDownload}>
-        Download
-      </button>
-      <Modal
-        isOpen={openModal}
-        style={customStyles}
-        className="mymodal"
-        overlayClassName="myoverlay"
-        closeTimeoutMS={200}
-      >
-        <input />
-        <button className="btn" onClick={handleSend}>
-          Send
-        </button>
-        <button className="btn" onClick={handleClose}>
-          Close
-        </button>
-      </Modal>
+    <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
+      {viewMode === "sign" ? (
+        <div className="operation-pad bottom">
+          <div>
+            <p className="p-h3">INSTALL & SIGN ALL APPLICABLE SECTIONS</p>
+            <p className="p-h2">THEN CLICK SIGN & SUBMIT</p>
+          </div>
+          <button className="btn icon-btn sign-btn" onClick={handleSign}>
+            <FontAwesomeIcon
+              icon={faPencil}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
+            />
+            <label style={{ color: "white" }}>Sign</label>
+          </button>
+        </div>
+      ) : viewMode === "homepage" ? (
+        <div className="operation-pad top">
+          <button className="btn icon-btn" onClick={() => setOpenModal(true)}>
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
+            />
+          </button>
+          <button className="btn icon-btn" onClick={handleFetch}>
+            <FontAwesomeIcon
+              icon={faPrint}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
+            />
+          </button>
+          <button className="btn icon-btn" onClick={handleDownload}>
+            <FontAwesomeIcon
+              icon={faDownload}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
+            />
+          </button>
+          <Modal
+            isOpen={openModal}
+            style={customStyles}
+            className="email-modal"
+            overlayClassName="myoverlay"
+            closeTimeoutMS={200}
+          >
+            <div>
+              <div>
+                <label for="customerEmail">CUSTOMER EMAIL</label>
+                <input type="text" id="customerEmail" onChange={(e) => setEmail(e.target.value)} />
+              </div>
+              <div>      
+                <label for="subject">SUBJECT</label>
+                <input type="text" id="subject" onChange={(e) => setSubject(e.target.value)} />
+              </div>
+              <div>
+                <label for="body">BODY</label>
+                <textarea id="body" onChange={(e) => setBody(e.target.value)} />
+              </div>  
+              <button className="btn sign-modal-btn" onClick={handleSend}>
+                Send
+              </button>
+              <button className="btn sign-modal-btn" onClick={handleClose}>
+                Close
+              </button>
+            </div>
+          </Modal>
+        </div>
+      ) : null}
     </div>
   );
 };

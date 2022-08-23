@@ -1,18 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { updateData } from '../../store/slices/optionSlice';
 
 import Header from '../../components/Header';
 import Contact from '../../components/Contact';
 import CalculateTable from '../../components/CalculateTable';
-import Finance from '../../components/Finance';
 import SalesmanOwner from '../../components/SalesmanOwner';
 import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SalesPersonOwner from '../../components/SalesPersonOwner';
 import PaymentLink from '../../components/PaymentLink';
-import JobAddress from '../../components/JobAddress';
-import RoomTable from '../../components/RoomTable';
-import Note from '../../components/Note';
-import ExtraInfo from '../../components/ExtraInfo';
 import Operation from '../../components/Operation';
 import PageTitle from '../../components/PageTitle';
 import Paragraph from '../../components/Paragraph';
@@ -23,9 +20,10 @@ import WindowTable from '../../components/WindowTable';
 
 import styled from 'styled-components';
 import '../../styles/base.css';
+import '../../App.css';
 
 const AppWrapper = styled.div`
-  padding: 5px;
+  padding: 100px 0 0 0;
   background-color: black;
 `;
 
@@ -34,7 +32,7 @@ const Page1 = () => {
     <div className="page" id="page1">
       <Header />
       <Contact />
-      <CalculateTable />
+      <CalculateTable isInputEnable={true} />
       <SalesmanOwner />
       <Footer />
     </div>
@@ -77,9 +75,14 @@ const Page3 = () => {
     'Window Note',
   ];
   return (
-    <div className="page">
+    <div className="page" id="page3">
       <Information />
-      <WindowTable colNames={colNames} rowCount={15} firstNoOfRow={1} />
+      <WindowTable
+        isInputEnable={true}
+        colNames={colNames}
+        rowCount={24}
+        firstNoOfRow={1}
+      />
       <MiddleOfPage3 />
       <BottomOfPage3 />
     </div>
@@ -98,33 +101,50 @@ const Page4 = () => {
     'Window Note',
   ];
   return (
-    <div className="page">
-      <Information></Information>
-      <WindowTable colNames={colNames} rowCount={30} firstNoOfRow={16} />
+    <div className="page" id="page4">
+      <Information />
+      <WindowTable
+        isInputEnable={true}
+        colNames={colNames}
+        rowCount={44}
+        firstNoOfRow={25}
+      />
     </div>
   );
 };
 
 const Page5 = () => {
   return (
-    <div className="page page5">
-      <div>CREDIT CARD AUTHORIZATION FORM</div>
-      <Contact />
+    <div className="page page5" id="page5">
+      <div style={{marginBottom: "10px"}}>CREDIT CARD AUTHORIZATION FORM</div>
+      <Contact addStyle={{marginBottom: "10px"}} />
       <PaymentLink />
     </div>
   );
 };
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  dispatch(updateData({ dataKey: 'viewMode', data: 'homepage' }));
+
   return (
-    <AppWrapper>
-      <Page1 />
-      <Page2 />
-      <Page3 />
-      <Page4 />
-      <Page5 />
+    <>
+      <div
+        className="App"
+        style={{ transform: `scale(${window.innerWidth / 1366})` }}
+      >
+        <AppWrapper id="appwrapper">
+          <div>
+            <Page1 />
+            <Page2 />
+            <Page3 />
+            <Page4 />
+            <Page5 />
+          </div>
+        </AppWrapper>
+      </div>
       <Operation />
-    </AppWrapper>
+    </>
   );
 };
 

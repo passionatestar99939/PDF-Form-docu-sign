@@ -15,8 +15,8 @@ const customStyles = {
   },
 };
 
-const Signature = ({ width, height }) => {
-  const [imageURL, setImageURL] = useState(null);
+const Signature = ({ setVal, signId, updateSign, width, height, viewMode }) => {
+  const [imageURL, setImageURL] = useState(setVal);
   const [openModal, setOpenModal] = useState(false);
 
   const sigCanvas = useRef({});
@@ -25,27 +25,40 @@ const Signature = ({ width, height }) => {
   const save = () => {
     setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
     setOpenModal(false);
+    updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+  };
+
+  const handleSignClick = () => {
+    setOpenModal(viewMode === 'sign' ? true : false);
   };
   return (
     <div className="signature">
-      <div
-        id="sign-button"
-        className="sign-button"
-        onClick={() => setOpenModal(true)}
-        style={{ width: width, height: height }}
-      >
-        {imageURL ? (
-          <img
-            src={imageURL}
-            alt="my signature"
-            className="sign-img"
-            style={{ width: width, height: height }}
-          />
-        ) : null}
-      </div>
+      {viewMode === 'convert-pdf' ? (
+        <img
+          src={setVal ? setVal : "/images/emtpy-sign.png"}
+          alt="my signature"
+          className="sign-img"
+          style={ setVal ? {height: height} : { width: width, height: height }}
+        />
+      ) : (
+        <div
+          id="sign-button"
+          className="sign-button"
+          onClick={() => handleSignClick()}
+          style={{ width: width, height: height }}
+        >
+          {imageURL ? (
+            <img
+              src={imageURL}
+              alt="my signature"
+              className="sign-img"
+              style={{ height: height }}
+            />
+          ) : null}
+        </div>
+      )}
       <Modal
         isOpen={openModal}
-        style={customStyles}
         className="mymodal"
         overlayClassName="myoverlay"
         closeTimeoutMS={200}
@@ -53,10 +66,20 @@ const Signature = ({ width, height }) => {
         <SignaturePad
           ref={sigCanvas}
           canvasProps={{ className: 'signatureCanvas' }}
+          dotSize={8}
+          maxWidth={8}
         />
-        <button onClick={save}>save</button>
-        <button onClick={clear}>clear</button>
-        <button onClick={() => setOpenModal(false)}>close</button>
+        <div style={{ textAlign: 'center' }}>
+          <button onClick={save} className="modal-btn">
+            Sign
+          </button>
+          <button onClick={clear} className="modal-btn">
+            Clear
+          </button>
+          <button onClick={() => setOpenModal(false)} className="modal-btn">
+            Close
+          </button>
+        </div>
       </Modal>
     </div>
   );

@@ -13,13 +13,16 @@ export const vinylslidingSlice = createSlice({
   initialState,
   reducers: {
     updateValue: (state, action) => {
-      console.log('state.data[action.payload.id]', action.payload);
       state.data[action.payload.id] = action.payload.count;
+    },
+    updateDataVinylsliding: (state, action) => {
+      state.data = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateValue } = vinylslidingSlice.actions;
+export const { updateValue, updateDataVinylsliding } =
+  vinylslidingSlice.actions;
 
 export default vinylslidingSlice.reducer;

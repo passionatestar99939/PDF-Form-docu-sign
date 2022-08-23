@@ -7,6 +7,10 @@
   padding: 0px;
 }
 
+.WindowTable {
+  width: 100%;
+}
+
 .WindowTable th,
 .WindowTable td {
   text-align: center;
@@ -20,12 +24,18 @@
 .WindowTable th,
 .WindowTable td * {
   text-align: center;
-  /*height: 39px;*/
+  height: 30px;
 }
 
-.WindowTable .CheckBoxCell {
-  width: 39px;
+.WindowTable td * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* .WindowTable .CheckBoxCell {
+  width: 39px;
+} */
 
 /* .WindowTable tr {
   height: 39px;
@@ -54,4 +64,20 @@
 
 .table-select {
   border-style: none;
+}
+
+.col-0 {
+  width: 30px;
+}
+
+.col-1 {
+  width: calc(100% / 24);
+}
+
+.col-3 {
+  width: calc(100% / 24 * 3);
+}
+
+.col-5 {
+  width: calc(100% / 24 * 5);
 }

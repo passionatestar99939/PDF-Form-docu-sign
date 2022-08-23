@@ -4,8 +4,9 @@ const Mark = () => {
   return (
     <div>
       <img
+        className="mark"
         alt="good housekeeping mark"
-        src="images/good-housekeeping-mark.png"
+        src="/images/good-housekeeping-mark.png"
       />
     </div>
   );

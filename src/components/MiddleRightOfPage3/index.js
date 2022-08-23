@@ -1,14 +1,12 @@
 import React from 'react';
-import Input from '../Input';
 import Table4OfPage3 from '../Table4OfPage3';
 
 import './style.css';
 
 const MiddleRightOfPage3 = ({ children }) => {
   return (
-    <div>
+    <div class="MiddleRightOfPage3">
       <Table4OfPage3 />
-      <Input addClass="width-100" value={'Nick Tisdale      (502) 310-9454'} />
     </div>
   );
 };

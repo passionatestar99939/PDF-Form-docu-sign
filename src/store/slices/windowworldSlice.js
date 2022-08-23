@@ -1,11 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: {},
+  data: {
+    windowTotal: 0,
+    amount: 0,
+    signature: '',
+  },
 };
 
 for (let i = 0; i < 33; i++) {
-  initialState.data[`windowWorldInput${i + 1}`] = '';
+  initialState.data[`windowWorldInput${i + 1}`] = 0;
 }
 
 export const windowworldSlice = createSlice({
@@ -13,13 +17,15 @@ export const windowworldSlice = createSlice({
   initialState,
   reducers: {
     updateValue: (state, action) => {
-      console.log('state.data[action.payload.id]', action.payload);
-      state.data[action.payload.id] = action.payload.count;
+      state.data[action.payload.id] = action.payload.value;
+    },
+    updateDataWindowworld: (state, action) => {
+      state.data = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateValue } = windowworldSlice.actions;
+export const { updateValue, updateDataWindowworld } = windowworldSlice.actions;
 
 export default windowworldSlice.reducer;

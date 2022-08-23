@@ -1,66 +1,79 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  customerAction,
-  installAddrAction,
-  phone1Action,
-  phone2Action,
-  billAddrAction,
-} from '../../store/slices/contactSlice';
-
 import Input from '../Input';
+import { updateValue } from '../../store/slices/contactSlice';
 
 import './style.css';
 
-const Contact = () => {
-  const customerValue = useSelector((state) => state.contact.installAddr);
+const Contact = ({ addStyle }) => {
+  const storeData = useSelector((state) => state.contact.data);
+  const viewMode = useSelector((state) => state.option.data.viewMode);
   const dispatch = useDispatch();
+
+  const handleChange = (value, { formId }) => {
+    dispatch(updateValue({ id: formId, value: value }));
+  };
 
   return (
     <div className="s1">
-      <div className="wrapper-space-between top-padding-4 ">
-        <div className="width-70">
+      <div className="wrapper-space-between" style={ addStyle }>
+        <div className="width-70 flex-input">
           <label>Customer: </label>
           <Input
+            addClass="contact-input"
             type={'text'}
-            addClass={'width-86'}
-            updateValue={(value) => dispatch(customerAction(value))}
+            inputId="customer"
+            updateData={handleChange}
+            inputVal={storeData['customer']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
-        <div className="width-30">
-          <label>Phone</label>
+        <div className="width-30 flex-input">
+          <label>Phone(m)</label>
           <Input
+            addClass="contact-input"
             type={'text'}
-            addClass={'width-80'}
-            updateValue={(value) => dispatch(phone1Action(value))}
+            inputId="phone1"
+            updateData={handleChange}
+            inputVal={storeData['phone1']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className="wrapper-space-between top-padding-4 ">
-        <div className="width-70">
+      <div className="wrapper-space-between" style={ addStyle }>
+        <div className="width-70 flex-input">
           <label>Install Address: </label>
           <Input
+            addClass="contact-input"
             type={'text'}
-            addClass={'width-80'}
-            updateValue={(value) => dispatch(installAddrAction(value))}
+            inputId="installAddr"
+            updateData={handleChange}
+            inputVal={storeData['installAddr']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
-        <div className="width-30">
-          <label>Phone</label>
+        <div className="width-30 flex-input">
+          <label>Phone(h)</label>
           <Input
+            addClass="contact-input"
             type={'text'}
-            addClass={'width-80'}
-            updateValue={(value) => dispatch(phone2Action(value))}
+            inputId="phone2"
+            updateData={handleChange}
+            inputVal={storeData['phone2']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className="wrapper-space-between top-padding-4 width-100">
+      <div className="wrapper-space-between width-100" style={ addStyle }>
         <label>Bill Address: </label>
         <Input
+          addClass="contact-input"
           type={'text'}
-          addClass={'width-89'}
-          updateValue={(value) => dispatch(billAddrAction(value))}
+          inputId="billAddr"
+          updateData={handleChange}
+          inputVal={storeData['billAddr']}
+          readOnlyMode={viewMode !== 'homepage'}
         />
       </div>
     </div>

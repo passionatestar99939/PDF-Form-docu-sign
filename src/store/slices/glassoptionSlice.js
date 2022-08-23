@@ -2,23 +2,25 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: {
-    glassOptionInput1: 0,
-    glassOptionInput2: 0,
+    glassOptionInput1: '',
+    glassOptionInput2: '',
   },
 };
 
 export const glassoptionSlice = createSlice({
-  name: 'glassOption',
+  name: 'glassoption',
   initialState,
   reducers: {
     updateValue: (state, action) => {
-      console.log('state.data[action.payload.id]', action.payload);
       state.data[action.payload.id] = action.payload.count;
+    },
+    updateDataGlassoption: (state, action) => {
+      state.data = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateValue } = glassoptionSlice.actions;
+export const { updateValue, updateDataGlassoption } = glassoptionSlice.actions;
 
 export default glassoptionSlice.reducer;
