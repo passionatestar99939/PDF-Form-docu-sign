@@ -71,23 +71,6 @@ export const operationSlice = createSlice({
   name: 'operation',
   initialState,
   reducers: {
-    requestData: (state, action) => {
-      state.loading = 'pending';
-    },
-    requestDataSuccess: (state, action) => {
-      state.loading = 'success';
-      state.data = action.payload;
-    },
-    postData: (state, action) => (dispatch) => {
-      try {
-        dispatch(requestData());
-        axios.post;
-        dispatch(requestDataSuccess());
-      } catch {
-        dispatch;
-      }
-      // state.data.push(action.payload);
-    },
     fetchData: (state, action) => {
       state.data = [action.payload];
     },
@@ -128,7 +111,7 @@ export const operationSlice = createSlice({
         toast.warn('Something went wrong!');
       })
       .addCase(requestDownloadAsync.pending, (state, action) => {
-        state.loading = pending;
+        state.loading = 'pending';
         state.error = null;
       })
       .addCase(requestDownloadAsync.fulfilled, (state, action) => {

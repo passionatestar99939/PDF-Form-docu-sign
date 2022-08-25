@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateData } from '../../store/slices/optionSlice';
 import { Watch } from 'react-loader-spinner';
@@ -125,7 +125,34 @@ const Page5 = () => {
   );
 };
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+}
+
+export function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
 const HomePage = () => {
+  // const { height, width } = useWindowDimensions();
+  useWindowDimensions();
   const loading = useSelector((state) => state.operation.loading);
   const dispatch = useDispatch();
   dispatch(updateData({ dataKey: 'viewMode', data: 'homepage' }));
