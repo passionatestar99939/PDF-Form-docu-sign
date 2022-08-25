@@ -1,6 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { updateData } from '../../store/slices/optionSlice';
+import { Watch } from 'react-loader-spinner';
+import Loader from 'react-loader-advanced';
 
 import Header from '../../components/Header';
 import Contact from '../../components/Contact';
@@ -116,16 +118,37 @@ const Page4 = () => {
 const Page5 = () => {
   return (
     <div className="page page5" id="page5">
-      <div style={{marginBottom: "10px"}}>CREDIT CARD AUTHORIZATION FORM</div>
-      <Contact addStyle={{marginBottom: "10px"}} />
+      <div style={{ marginBottom: '10px' }}>CREDIT CARD AUTHORIZATION FORM</div>
+      <Contact addStyle={{ marginBottom: '10px' }} />
       <PaymentLink />
     </div>
   );
 };
 
 const HomePage = () => {
+  const loading = useSelector((state) => state.operation.loading);
   const dispatch = useDispatch();
   dispatch(updateData({ dataKey: 'viewMode', data: 'homepage' }));
+
+  const style = {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  };
+
+  const spinner = (
+    <Watch
+      height="80"
+      width="80"
+      radius="48"
+      color="#4fa94d"
+      ariaLabel="watch-loading"
+      wrapperStyle={style}
+      wrapperClassName=""
+      visible={true}
+    />
+  );
 
   return (
     <>
@@ -134,13 +157,13 @@ const HomePage = () => {
         style={{ transform: `scale(${window.innerWidth / 1366})` }}
       >
         <AppWrapper id="appwrapper">
-          <div>
+          <Loader show={loading === 'pending' ? true : false} message={spinner}>
             <Page1 />
             <Page2 />
             <Page3 />
             <Page4 />
             <Page5 />
-          </div>
+          </Loader>
         </AppWrapper>
       </div>
       <Operation />

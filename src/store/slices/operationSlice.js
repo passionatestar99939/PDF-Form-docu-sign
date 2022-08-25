@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import FileDownload from 'js-file-download';
 import axios from 'axios';
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 import { API_URL } from '../../constants';
-
-
 
 export const postDataAsync1 = (data, url) => async (dispatch) => {
   try {
@@ -27,6 +25,25 @@ export const downloadAsync = (linkId) => async (dispatch) => {
     throw new Error(err);
   }
 };
+
+export const requestDownloadAsync = createAsyncThunk(
+  'operation/requestDownload',
+  async (linkId, thunkAPI) => {
+    const response = await axios({
+      url: `${API_URL}/download/${linkId}`,
+      method: 'GET',
+      responseType: 'blob',
+    });
+    FileDownload(response.data, 'contract.pdf');
+  }
+);
+
+export const requestSignAsync = createAsyncThunk(
+  'operation/requestSign',
+  async (data, thunkAPI) => {
+    const response = await axios.post();
+  }
+);
 
 export const fetchDataAsync = createAsyncThunk(
   'operation/fetchData',
@@ -54,8 +71,22 @@ export const operationSlice = createSlice({
   name: 'operation',
   initialState,
   reducers: {
-    postData: (state, action) => {
-      state.data.push(action.payload);
+    requestData: (state, action) => {
+      state.loading = 'pending';
+    },
+    requestDataSuccess: (state, action) => {
+      state.loading = 'success';
+      state.data = action.payload;
+    },
+    postData: (state, action) => (dispatch) => {
+      try {
+        dispatch(requestData());
+        axios.post;
+        dispatch(requestDataSuccess());
+      } catch {
+        dispatch;
+      }
+      // state.data.push(action.payload);
     },
     fetchData: (state, action) => {
       state.data = [action.payload];
@@ -68,6 +99,7 @@ export const operationSlice = createSlice({
     builder
       .addCase(fetchDataAsync.pending, (state, action) => {
         state.loading = 'pending';
+        state.error = null;
       })
       .addCase(fetchDataAsync.fulfilled, (state, action) => {
         state.loading = 'success';
@@ -84,16 +116,33 @@ export const operationSlice = createSlice({
       .addCase(postDataAsync.fulfilled, (state, action) => {
         state.loading = 'success';
         state.error = null;
-        toast.success("Email is sent successfully.");
+        toast.success('Success!');
       })
       .addCase(postDataAsync.rejected, (state, action) => {
         state.loading = 'error';
         if (action.payload) {
-          state.error = { message: action.payload.message }
+          state.error = { message: action.payload.message };
         } else {
-          state.error = action.error
+          state.error = action.error;
         }
-        toast.warn("Something went wrong!");
+        toast.warn('Something went wrong!');
+      })
+      .addCase(requestDownloadAsync.pending, (state, action) => {
+        state.loading = pending;
+        state.error = null;
+      })
+      .addCase(requestDownloadAsync.fulfilled, (state, action) => {
+        state.loading = 'success';
+        state.error = null;
+      })
+      .addCase(requestDownloadAsync.rejected, (state, action) => {
+        state.loading = 'error';
+        if (action.payload) {
+          state.error = { message: action.payload.message };
+        } else {
+          state.error = action.error;
+        }
+        toast.warn('Something went wrong!');
       });
   },
 });
