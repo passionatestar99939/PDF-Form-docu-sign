@@ -122,7 +122,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -132,7 +132,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -142,7 +142,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -153,7 +153,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -163,7 +163,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -173,7 +173,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -214,7 +214,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -224,7 +224,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -245,7 +245,7 @@ const PatioDoorOrder = () => {
                       checkId={checkIDs[indexOfCheckIDs]}
                       updateCheck={handleChange}
                       checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                      isInputEnable={viewMode === 'homepage'}
+                      isInputEnable={viewMode === 'homepage' && openTableModal}
                       type={typeOfCheckBox.PatioDoorOrder}
                     ></Checkbox>
                   </div>
@@ -255,7 +255,7 @@ const PatioDoorOrder = () => {
                       checkId={checkIDs[indexOfCheckIDs]}
                       updateCheck={handleChange}
                       checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                      isInputEnable={viewMode === 'homepage'}
+                      isInputEnable={viewMode === 'homepage' && openTableModal}
                       type={typeOfCheckBox.PatioDoorOrder}
                     ></Checkbox>
                   </div>
@@ -294,7 +294,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -304,7 +304,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -314,7 +314,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -324,7 +324,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -359,7 +359,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -369,7 +369,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -394,7 +394,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -404,7 +404,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -414,7 +414,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -424,7 +424,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -455,7 +455,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -465,7 +465,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -502,7 +502,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -512,7 +512,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -522,7 +522,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -533,7 +533,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -543,7 +543,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -553,7 +553,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -607,7 +607,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -617,7 +617,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -627,7 +627,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -637,7 +637,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -647,7 +647,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -657,7 +657,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -667,7 +667,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -677,7 +677,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -709,7 +709,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -741,7 +741,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -753,7 +753,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -765,7 +765,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -778,7 +778,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -790,7 +790,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -802,7 +802,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -814,7 +814,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -826,7 +826,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -838,7 +838,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -850,7 +850,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -862,7 +862,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -874,7 +874,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -886,7 +886,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -898,7 +898,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -939,7 +939,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -949,7 +949,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -959,7 +959,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -969,7 +969,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -990,7 +990,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1000,7 +1000,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1010,7 +1010,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1020,7 +1020,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1030,7 +1030,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1040,7 +1040,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1065,7 +1065,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1075,7 +1075,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1085,7 +1085,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1095,7 +1095,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1105,7 +1105,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1142,7 +1142,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1162,7 +1162,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -1172,7 +1172,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -1189,7 +1189,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -1199,7 +1199,7 @@ const PatioDoorOrder = () => {
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
                   checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                  isInputEnable={viewMode === 'homepage'}
+                  isInputEnable={viewMode === 'homepage' && openTableModal}
                   type={typeOfCheckBox.PatioDoorOrder}
                 ></Checkbox>
               </div>
@@ -1219,7 +1219,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1229,7 +1229,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1239,7 +1239,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1249,7 +1249,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1259,7 +1259,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1283,7 +1283,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1293,7 +1293,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1303,7 +1303,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1313,7 +1313,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1323,7 +1323,7 @@ const PatioDoorOrder = () => {
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
                 checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === 'homepage' && openTableModal}
                 type={typeOfCheckBox.PatioDoorOrder}
               ></Checkbox>
             </div>
@@ -1398,7 +1398,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -1408,7 +1408,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -1418,7 +1418,7 @@ const PatioDoorOrder = () => {
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
                     checkVal={storeData[checkIDs[indexOfCheckIDs++]]}
-                    isInputEnable={viewMode === 'homepage'}
+                    isInputEnable={viewMode === 'homepage' && openTableModal}
                     type={typeOfCheckBox.PatioDoorOrder}
                   ></Checkbox>
                 </div>
@@ -1473,7 +1473,7 @@ const PatioDoorOrder = () => {
     // setTag(Type.Comp1_1);
     // console.log("???=>Tag:", <Tag />);
     pos.current = { i, j };
-    alert(`${pos.current.i}, ${pos.current.j}`);
+    // alert(`${pos.current.i}, ${pos.current.j}`);
     // TagInsideModal = ComponentTag[`Component_${i}_${j}`];
     TagInsideModal = Component1;
     console.log('???=>modaltag:', <TagInsideModal />);
@@ -1582,7 +1582,7 @@ const PatioDoorOrder = () => {
       <Modal
         isOpen={openTableModal}
         style={customStyles.table}
-        className="email-modal"
+        className="patio-door-order__table-modal"
         overlayClassName="myoverlay"
         closeTimeoutMS={200}
       >

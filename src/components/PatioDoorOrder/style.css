@@ -158,3 +158,19 @@ div.Patio_Information {
 .flex__right-direction {
   flex-direction: row-reverse;
 }
+
+
+.patio-door-order__table-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 77vw;
+  height: calc(77vw * 0.6);
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}

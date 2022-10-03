@@ -27,7 +27,6 @@ const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable, type }) => {
   return (
     <div
       onClick={() => {
-        alert(checkId);
         return isInputEnable ? handleClick(checked) : null;
       }}
     >
