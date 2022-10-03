@@ -2,11 +2,14 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { updateValue } from '../../store/slices/prebuiltSlice';
+import { numberWithCommas } from '../../utils/globals';
+
 import Signature from '../Signature';
 
 const PreBuiltTable = (props) => {
   const storeData = useSelector((state) => state.prebuilt.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
+  const signStatus = useSelector((state) => state.option.data.signStatus);
   const dispatch = useDispatch();
 
   const handleChange = (e, { id, formId }) => {
@@ -30,9 +33,12 @@ const PreBuiltTable = (props) => {
   };
 
   return (
-    <div className="table-bottom">
-      <div className="table-title">
-        <strong>PRE 1978 BUILT HOMES (Federal Lead Containment Law)</strong>
+    <div className="table-bottom table-font table-padding">
+      <div className="table-title-big">
+        <strong>PRE 1978 BUILT HOMES</strong>
+        <span style={{ fontStyle: 'italic' }}>
+          (Federal Lead Containment Law)
+        </span>
       </div>
       <div>
         {props.data.map((item, index) => {
@@ -42,7 +48,7 @@ const PreBuiltTable = (props) => {
                 <input
                   id={`prebuiltInput${index + 1}`}
                   type="number"
-                  className="bottom-outline width-50px"
+                  className="bottom-outline width-80px medium-input"
                   onChange={(e) =>
                     handleChange(e, {
                       id: item.id,
@@ -58,22 +64,27 @@ const PreBuiltTable = (props) => {
                 <label>{`$${item.unitPrice}`}</label>
                 <input
                   type="text"
-                  className="bottom-outline width-50px"
-                  value={
-                    Number(storeData[`prebuiltInput${index + 1}`]) *
-                    item.unitPrice
+                  style={
+                    viewMode === 'convert-pdf'
+                      ? { width: '75px' }
+                      : { width: '90px' }
                   }
+                  className="bottom-outline width-80px medium-input"
+                  value={`$ ${numberWithCommas(
+                    Number(storeData[`prebuiltInput${index + 1}`]) *
+                      item.unitPrice
+                  )}`}
                   readOnly
                 />
               </div>
             </div>
           );
         })}
-        <div className="wrapper">
+        <div className="wrapper home-year">
           <div>
             <label>MY HOME WAS BUILT IN THE YEAR</label>
             <input
-              className="bottom-outline width-50px"
+              className="bottom-outline width-100px medium-input"
               id="prebuiltInput2"
               onChange={(e) => handleChange(e, { formId: 'prebuiltInput2' })}
               value={storeData['prebuiltInput2']}
@@ -88,6 +99,7 @@ const PreBuiltTable = (props) => {
               signId="signature"
               updateSign={handleSign}
               setVal={storeData['signature']}
+              signStatus={signStatus}
               viewMode={viewMode}
             />
           </div>

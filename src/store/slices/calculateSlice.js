@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: {
-    calculateInput1: 200,
+    calculateInput1: 0,
     calculateInput2: 75,
-    calculateInput3: 0,
+    calculateInput3: '',
     calculateInput4: 0,
     calculateInput5: 0,
     calculateInput6: 0,
@@ -22,6 +22,10 @@ const initialState = {
     handleBox3: '',
     handleBox4: '',
     handleBox5: '',
+    cash: false,
+    cc: false,
+    check: false,
+    financing: false,
   },
 };
 

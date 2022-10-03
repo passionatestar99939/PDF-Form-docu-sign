@@ -1,19 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   data: {
-    date1: '',
-    salesman: 'Nick Tisdale',
-    date2: '',
-    owner: '',
-    date3: '',
-    email: '',
-    signature: '',
+    date1: formatDate(new Date()),
+    salesman: "Nick Tisdale",
+    date2: formatDate(new Date()),
+    owner: "",
+    date3: formatDate(new Date()),
+    email: "",
+    signature: "",
   },
 };
 
+function padTo2Digits(num) {
+  return num.toString().padStart(2, "0");
+}
+
+function formatDate(date) {
+  return [
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+    date.getFullYear(),
+  ].join("/");
+}
+
 export const salesmanSlice = createSlice({
-  name: 'salesman',
+  name: "salesman",
   initialState,
   reducers: {
     updateValue: (state, action) => {

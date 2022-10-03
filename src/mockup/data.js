@@ -393,6 +393,20 @@ export const data = {
       unitPrice: 1,
       price: 0,
     },
+    {
+      id: 18,
+      count: 0,
+      label: '',
+      unitPrice: 1,
+      price: 0,
+    },
+    {
+      id: 19,
+      count: 0,
+      label: '',
+      unitPrice: 1,
+      price: 0,
+    },
   ],
 
   vinylslidingTableData: [

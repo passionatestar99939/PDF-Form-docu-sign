@@ -2,8 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 import './style.css';
 
-const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable }) => {
+import { typeOfCheckBox } from '../../constants/variables';
+
+const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable, type }) => {
   const [checked, setChecked] = useState(checkVal);
+
+  const src =
+    type === typeOfCheckBox.PatioDoorOrder
+      ? '/images/checked-2.png'
+      : '/images/checked.png';
+  const style =
+    type === typeOfCheckBox.PatioDoorOrder
+      ? { width: '10px', height: '10px' }
+      : { height: '24px' };
 
   useEffect(() => {
     setChecked(checkVal);
@@ -16,12 +27,13 @@ const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable }) => {
   return (
     <div
       onClick={() => {
+        alert(checkId);
         return isInputEnable ? handleClick(checked) : null;
       }}
     >
       {checked ? (
         <div className="ImageOfCheckBox Checked">
-          <img className="image" alt="checkbox" src="/images/checked.png" />
+          <img className="image" alt="checkbox" src={src} style={style} />
         </div>
       ) : (
         <div className="ImageOfCheckBox UnChecked"></div>

@@ -18,7 +18,7 @@ const initialState = {
     plaster: false,
     wood2: false,
     brickmold: false,
-    onnMulFour: false,
+    oneMulFour: false,
     oneMulSix: false,
     other: false,
   },

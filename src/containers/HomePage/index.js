@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateData } from '../../store/slices/optionSlice';
 import { Watch } from 'react-loader-spinner';
 import Loader from 'react-loader-advanced';
 
+import PageWrapper from '../../components/PageWrapper';
 import Header from '../../components/Header';
 import Contact from '../../components/Contact';
 import CalculateTable from '../../components/CalculateTable';
@@ -19,6 +20,10 @@ import Information from '../../components/Information';
 import BottomOfPage3 from '../../components/BottomOfPage3';
 import MiddleOfPage3 from '../../components/MiddleOfPage3';
 import WindowTable from '../../components/WindowTable';
+import MeasureSheet from '../../components/MeasureSheet';
+import WindowOrder from '../../components/WindowOrder';
+import SalesConsultant from '../../components/SalesConsultant';
+import PatioDoorOrder from '../../components/PatioDoorOrder';
 
 import styled from 'styled-components';
 import '../../styles/base.css';
@@ -60,6 +65,10 @@ const Page2 = () => {
           services on the contract will be done. If you have any questions
           whatsoever, now is the time to ask.
         </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <small>Louisville Window 03-22 Valid-30 days</small>
+        </div>
       </Paragraph>
     </div>
   );
@@ -80,9 +89,9 @@ const Page3 = () => {
     <div className="page" id="page3">
       <Information />
       <WindowTable
-        isInputEnable={true}
+        isInputEnable={false}
         colNames={colNames}
-        rowCount={24}
+        rowCount={29}
         firstNoOfRow={1}
       />
       <MiddleOfPage3 />
@@ -106,10 +115,10 @@ const Page4 = () => {
     <div className="page" id="page4">
       <Information />
       <WindowTable
-        isInputEnable={true}
+        isInputEnable={false}
         colNames={colNames}
-        rowCount={44}
-        firstNoOfRow={25}
+        rowCount={49}
+        firstNoOfRow={30}
       />
     </div>
   );
@@ -117,11 +126,43 @@ const Page4 = () => {
 
 const Page5 = () => {
   return (
-    <div className="page page5" id="page5">
-      <div style={{ marginBottom: '10px' }}>CREDIT CARD AUTHORIZATION FORM</div>
+    <PageWrapper>
+      <div style={{ marginBottom: '40px' }}>CREDIT CARD AUTHORIZATION FORM</div>
       <Contact addStyle={{ marginBottom: '10px' }} />
       <PaymentLink />
-    </div>
+    </PageWrapper>
+  );
+};
+
+const MeasureSheetPage = () => {
+  return (
+    <PageWrapper>
+      <MeasureSheet />
+    </PageWrapper>
+  );
+};
+
+const WindowOrderPage = () => {
+  return (
+    <PageWrapper>
+      <WindowOrder />
+    </PageWrapper>
+  );
+};
+
+const SalesConsultantPage = () => {
+  return (
+    <PageWrapper>
+      <SalesConsultant />
+    </PageWrapper>
+  );
+};
+
+const PatioDoorOrderPage = () => {
+  return (
+    <PageWrapper>
+      <PatioDoorOrder />
+    </PageWrapper>
   );
 };
 
@@ -133,7 +174,7 @@ function getWindowDimensions() {
   };
 }
 
-export function useWindowDimensions() {
+function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -146,12 +187,9 @@ export function useWindowDimensions() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  return windowDimensions;
 }
 
 const HomePage = () => {
-  // const { height, width } = useWindowDimensions();
   useWindowDimensions();
   const loading = useSelector((state) => state.operation.loading);
   const dispatch = useDispatch();
@@ -165,34 +203,44 @@ const HomePage = () => {
   };
 
   const spinner = (
-    <Watch
-      height="80"
-      width="80"
-      radius="48"
-      color="#4fa94d"
-      ariaLabel="watch-loading"
-      wrapperStyle={style}
-      wrapperClassName=""
-      visible={true}
-    />
+    <div style={style}>
+      <Watch
+        height="80"
+        width="80"
+        radius="48"
+        color="#4fa94d"
+        ariaLabel="watch-loading"
+        visible={true}
+      />
+    </div>
   );
 
   return (
     <>
-      <div
-        className="App"
-        style={{ transform: `scale(${window.innerWidth / 1366})` }}
+      <Loader
+        backgroundStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+        show={loading === 'pending' ? true : false}
+        message={spinner}
       >
-        <AppWrapper id="appwrapper">
-          <Loader show={loading === 'pending' ? true : false} message={spinner}>
-            <Page1 />
-            <Page2 />
-            <Page3 />
-            <Page4 />
-            <Page5 />
-          </Loader>
-        </AppWrapper>
-      </div>
+        <div
+          className="App"
+          style={{ transform: `scale(${window.innerWidth / 1366})` }}
+        >
+          <AppWrapper id="appwrapper">
+            <Loader show={loading === 'pending' ? true : false} message={<></>}>
+              <Page1 />
+              <Page2 />
+              <Page3 />
+              <Page4 />
+              <MeasureSheetPage />
+              <WindowOrderPage />
+              <SalesConsultantPage />
+              <PatioDoorOrderPage />
+              <Page5 />
+            </Loader>
+          </AppWrapper>
+        </div>
+      </Loader>
       <Operation />
     </>
   );

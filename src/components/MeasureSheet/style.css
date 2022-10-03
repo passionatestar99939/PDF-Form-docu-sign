@@ -1,0 +1,191 @@
+.d-flex {
+  display: flex;
+}
+
+.msh__header {
+  display: flex;
+}
+
+.msh__header__center {
+  text-align: center;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-5 {
+  margin: 5px;
+}
+
+.msh__header__left-table,
+.msh__header__right-table,
+.msh__body-table {
+  border-collapse: collapse;
+  border: 2px solid black;
+  color: black;
+  font-size: 12px;
+}
+
+.msh__header__left-table tr td {
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+.msh__header__right-table tr td {
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+/* .msh__hover-left-table {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 1s;
+}
+
+.msh__hover-left-table:hover {
+  cursor: pointer;
+  opacity: 0.5;
+} */
+
+.msh__hover-button {
+  opacity: 1;
+  transition: all 1s;
+}
+
+/* .msh__hover-left-table:hover .msh__hover-button {
+  opacity: 1;
+} */
+
+.msh__body-table {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.msh__body-table tr,
+.msh__body-table tr,
+.msh__header__right-table tr,
+.msh__header__left-table tr {
+  height: 6vh;
+}
+
+.msh__body-table thead tr th {
+  border: 2px solid black;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.msh__body-table thead tr th:nth-child(16) {
+  width: 250px;
+  text-align: left;
+}
+
+.msh__body-table thead tr th:nth-child(1),
+.msh__body-table thead tr th:nth-child(2) {
+  text-align: left;
+}
+
+.msh__body-table tbody tr td {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.msh__body-table tbody tr:hover {
+  background-color: rgb(211, 218, 250);
+}
+
+.msh__body-table:hover,
+.msh__header__left-table:hover,
+.msh__header__right-table:hover {
+  cursor: pointer;
+}
+
+.msh-text {
+  font-size: 12px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.flex-col-10 {
+  flex: 10%;
+}
+.flex-col-20 {
+  flex: 20%;
+}
+.flex-col-30 {
+  flex: 30%;
+}
+.flex-col-40 {
+  flex: 40%;
+}
+.flex-col-50 {
+  flex: 50%;
+}
+.flex-col-60 {
+  flex: 60%;
+}
+.flex-col-70 {
+  flex: 70%;
+}
+.flex-col-80 {
+  flex: 80%;
+}
+.flex-col-90 {
+  flex: 90%;
+}
+.flex-col-100 {
+  flex: 100%;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.borderd {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.top-borderd {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: black;
+}
+
+.bottom-borderd {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
+}
+
+.right-borderd {
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: black;
+}
+
+.msh-width-100px {
+  width: 250px;
+}
+
+.display-inline-block {
+  display: inline-block;
+}

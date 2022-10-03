@@ -8,6 +8,8 @@ for (let i = 0; i < 20; i++) {
   initialState.data[`windowOptionInput${i + 1}`] = '';
 }
 
+initialState.data['windowOptionInput14'] = 'NO GRIDS';
+
 export const windowoptionSlice = createSlice({
   name: 'windowoption',
   initialState,

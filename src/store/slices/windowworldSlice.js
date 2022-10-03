@@ -9,8 +9,16 @@ const initialState = {
 };
 
 for (let i = 0; i < 33; i++) {
-  initialState.data[`windowWorldInput${i + 1}`] = 0;
+  initialState.data[`windowWorldInput${i + 1}`] = '';
 }
+
+initialState.data['windowWorldInput17'] = 0;
+initialState.data['windowWorldInput18'] = 0;
+initialState.data['windowWorldInput19'] = 0;
+initialState.data['windowWorldInput20'] = 0;
+initialState.data['windowWorldInput21'] = 0;
+initialState.data['windowWorldInput31'] = 'WHITE';
+initialState.data['windowWorldInput32'] = 'WHITE';
 
 export const windowworldSlice = createSlice({
   name: 'windowworld',

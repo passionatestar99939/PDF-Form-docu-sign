@@ -11,7 +11,7 @@ const initialState = {
     interiorN: '',
     style: '',
     qty: '',
-    paing: false,
+    paint: false,
     pvc2: false,
   },
 };

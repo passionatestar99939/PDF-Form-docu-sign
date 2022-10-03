@@ -28,10 +28,11 @@ export const downloadAsync = (linkId) => async (dispatch) => {
 
 export const requestDownloadAsync = createAsyncThunk(
   'operation/requestDownload',
-  async (linkId, thunkAPI) => {
+  async (data, thunkAPI) => {
     const response = await axios({
-      url: `${API_URL}/download/${linkId}`,
-      method: 'GET',
+      url: `${API_URL}/download`,
+      method: 'POST',
+      data: data,
       responseType: 'blob',
     });
     FileDownload(response.data, 'contract.pdf');
@@ -71,6 +72,9 @@ export const operationSlice = createSlice({
   name: 'operation',
   initialState,
   reducers: {
+    postData: (state, action) => (dispatch) => {
+      state.data.push(action.payload);
+    },
     fetchData: (state, action) => {
       state.data = [action.payload];
     },

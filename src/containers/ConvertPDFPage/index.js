@@ -5,20 +5,20 @@ import axios from 'axios';
 
 import { store } from '../../store/store';
 
-import Header from '../../components/Header';
-import Contact from '../../components/Contact';
-import CalculateTable from '../../components/CalculateTable';
-import SalesmanOwner from '../../components/SalesmanOwner';
-import Footer from '../../components/Footer';
-import Content from '../../components/Content';
-import SalesPersonOwner from '../../components/SalesPersonOwner';
-import PaymentLink from '../../components/PaymentLink';
-import PageTitle from '../../components/PageTitle';
-import Paragraph from '../../components/Paragraph';
-import Information from '../../components/Information';
-import BottomOfPage3 from '../../components/BottomOfPage3';
-import MiddleOfPage3 from '../../components/MiddleOfPage3';
-import WindowTable from '../../components/WindowTable';
+import Header from '../../converts/Header';
+import Contact from '../../converts/Contact';
+import CalculateTable from '../../converts/CalculateTable';
+import SalesmanOwner from '../../converts/SalesmanOwner';
+import Footer from '../../converts/Footer';
+import Content from '../../converts/Content';
+import SalesPersonOwner from '../../converts/SalesPersonOwner';
+import PaymentLink from '../../converts/PaymentLink';
+import PageTitle from '../../converts/PageTitle';
+import Paragraph from '../../converts/Paragraph';
+import Information from '../../converts/Information';
+import BottomOfPage3 from '../../converts/BottomOfPage3';
+import MiddleOfPage3 from '../../converts/MiddleOfPage3';
+import WindowTable from '../../converts/WindowTable';
 
 import { updateData } from '../../store/slices/optionSlice';
 import { updateDataContact } from '../../store/slices/contactSlice';
@@ -52,7 +52,7 @@ const AppWrapper = styled.div`
 
 const Page1 = () => {
   return (
-    <div className="page" id="page1">
+    <div className="pdf-page" id="page1">
       <Header />
       <Contact />
       <CalculateTable isInputEnable={false} />
@@ -64,9 +64,9 @@ const Page1 = () => {
 
 const Page2 = () => {
   return (
-    <div className="page" id="page2">
+    <div className="pdf-page" id="page2">
       <PageTitle>
-        <div className="page_title">
+        <div className="page_title" style={{ margin: '50px 0px' }}>
           PREPARING FOR YOUR NEW WINDOWS AND DOORS
         </div>
       </PageTitle>
@@ -80,6 +80,9 @@ const Page2 = () => {
           be sure of your order options and work to be done. Only the items and
           services on the contract will be done. If you have any questions
           whatsoever, now is the time to ask.
+        </div>
+        <div style={{ marginTop: '50px' }}>
+          <small>Louisville Window 03-22 Valid-30 days</small>
         </div>
       </Paragraph>
     </div>
@@ -98,12 +101,12 @@ const Page3 = () => {
     'Window Note',
   ];
   return (
-    <div className="page" id="page3">
+    <div className="pdf-page" id="page3">
       <Information />
       <WindowTable
         isInputEnable={false}
         colNames={colNames}
-        rowCount={24}
+        rowCount={29}
         firstNoOfRow={1}
       />
       <MiddleOfPage3 />
@@ -124,13 +127,13 @@ const Page4 = () => {
     'Window Note',
   ];
   return (
-    <div className="page" id="page4">
+    <div className="pdf-page" id="page4">
       <Information />
       <WindowTable
         isInputEnable={false}
         colNames={colNames}
-        rowCount={44}
-        firstNoOfRow={25}
+        rowCount={49}
+        firstNoOfRow={30}
       />
     </div>
   );
@@ -138,9 +141,11 @@ const Page4 = () => {
 
 const Page5 = () => {
   return (
-    <div className="page page5" id="page5">
-      <div style={{marginBottom: "10px"}}>CREDIT CARD AUTHORIZATION FORM</div>
-      <Contact addStyle={{marginBottom: "10px"}} />
+    <div className="pdf-page page5" id="page5">
+      <div style={{ marginTop: '90px', marginBottom: '40px' }}>
+        CREDIT CARD AUTHORIZATION FORM
+      </div>
+      <Contact addStyle={{ marginBottom: '10px' }} />
       <PaymentLink />
     </div>
   );
@@ -179,6 +184,7 @@ const ConvertPDFPage = () => {
     async function getData() {
       const response = await axios.get(`${API_URL}/contract/${id}`);
       let data = JSON.parse(response.data.contract_info);
+      console.log({ data });
       updateStore(data);
     }
 

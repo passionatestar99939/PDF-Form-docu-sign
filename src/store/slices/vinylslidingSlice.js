@@ -8,6 +8,8 @@ for (let i = 0; i < 40; i++) {
   initialState.data[`vinylSlidingInput${i + 1}`] = '';
 }
 
+initialState.data['vinylSlidingInput15'] = 0;
+
 export const vinylslidingSlice = createSlice({
   name: 'vinylsliding',
   initialState,

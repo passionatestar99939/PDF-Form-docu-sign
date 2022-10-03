@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import HomePage from "../containers/HomePage";
-import SignPage from "../containers/SignPage";
-import ConvertPDFPage from "../containers/ConvertPDFPage";
+import HomePage from '../containers/HomePage';
+import SignPage from '../containers/SignPage';
+import ConvertPDFPage from '../containers/ConvertPDFPage';
 
 const Router = () => {
   return (
@@ -12,7 +12,7 @@ const Router = () => {
         <Route element={<HomePage />} path="/" />
         <Route element={<SignPage />} path="/contract/:id" />
         <Route element={<ConvertPDFPage />} path="/convert-pdf/:id" />
-        <Route path="*" element={ <Navigate to="/" replace /> }/>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

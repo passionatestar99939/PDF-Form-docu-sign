@@ -1,15 +1,6 @@
-.page {
-  /*min-width: 1035px;*/
-  width: 100%;
-  background-color: white;
-  margin: 0 auto 10px;
-  padding: 18px 30px 2px 20px;
-  page-break-before: always;
-}
-
 .page5 {
   padding-top: 10%;
-  font-family: MinionPro-Bold_p;
+  font-family: MinionPro-bold_p;
   font-weight: bold;
   font-size: 17px;
   letter-spacing: 0.13px;
@@ -17,7 +8,9 @@
 }
 
 .pdf-page {
-  width: 100%;
+  width: 1035px;
   background-color: white;
   margin: 0 auto 10px;
+  padding: 18px 30px 2px 20px;
+  page-break-before: always;
 }

@@ -1,7 +1,10 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { updateValue } from '../../store/slices/windowoptionSlice';
+import { updateValue } from "../../store/slices/windowoptionSlice";
+import { numberWithCommas } from "../../utils/globals";
+
+import "./style.css";
 
 const WindowOptionTable = (props) => {
   const storeData = useSelector((state) => state.windowoption.data);
@@ -29,68 +32,93 @@ const WindowOptionTable = (props) => {
   };
 
   return (
-    <div className="table-bottom">
-      <div className="table-title">
+    <div className='table-bottom table-font table-padding'>
+      <div className='table-title-big'>
         <strong>WINDOW OPTIONS</strong>
       </div>
       <div>
         {props.data.map((item, index) => {
           return (
-            <div className="wrapper" key={index}>
-              <div className="flex-input">
-                <input
-                  id={`windowOptionInput${index + 1}`}
-                  type="number"
-                  className="bottom-outline width-50px input-box"
-                  onChange={(e) =>
-                    handleChange(e, {
-                      id: item.id,
-                      formId: `windowOptionInput${index + 1}`,
-                    })
+            <div key={index}>
+              <div className='wrapper'>
+                <div
+                  className='flex-input'
+                  style={
+                    index === 6
+                      ? { width: "75%" }
+                      : index === 1
+                      ? { width: "70%" }
+                      : {}
                   }
-                  value={storeData[`windowOptionInput${index + 1}`]}
-                />
-                <label>{item.label}</label>
-                {index === 1 ? (
+                >
                   <input
-                    type="text"
-                    className="bottom-outline input-box"
-                    style={{ width: '450px' }}
-                    id="windowOptionInput14"
+                    id={`windowOptionInput${index + 1}`}
+                    type='number'
+                    className='bottom-outline width-80px input-box medium-input'
                     onChange={(e) =>
-                      handleChange(e, { formId: 'windowOptionInput14' })
+                      handleChange(e, {
+                        id: item.id,
+                        formId: `windowOptionInput${index + 1}`,
+                      })
                     }
-                    value={storeData['windowOptionInput14']}
-                    readOnly={viewMode !== 'homepage'}
+                    value={storeData[`windowOptionInput${index + 1}`]}
                   />
-                ) : index === 6 ? (
-                  <>
+                  <label>{item.label}</label>
+                  {index === 1 && (
                     <input
-                      type="text"
-                      className="bottom-outline input-box"
-                      style={{ width: '388px' }}
-                      id="windowOptionInput12"
+                      type='text'
+                      className='bottom-outline input-box'
+                      style={{ width: "82%" }}
+                      id='windowOptionInput14'
                       onChange={(e) =>
-                        handleChange(e, { formId: 'windowOptionInput12' })
+                        handleChange(e, { formId: "windowOptionInput14" })
                       }
-                      value={storeData['windowOptionInput12']}
-                      readOnly={viewMode !== 'homepage'}
+                      value={storeData["windowOptionInput14"]}
+                      readOnly={viewMode !== "homepage"}
                     />
-                  </>
-                ) : null}
+                  )}{" "}
+                  {index === 6 && (
+                    <>
+                      <input
+                        type='text'
+                        className='bottom-outline input-box'
+                        style={
+                          viewMode === "convert-pdf"
+                            ? { width: "18%" }
+                            : { width: "25%" }
+                        }
+                        id='windowOptionInput12'
+                        onChange={(e) =>
+                          handleChange(e, { formId: "windowOptionInput12" })
+                        }
+                        value={storeData["windowOptionInput12"]}
+                        readOnly={viewMode !== "homepage"}
+                      />
+                      <label for='windowOptionInput12'>Inc. Flexscreen</label>
+                    </>
+                  )}
+                </div>
+                <div>
+                  <label>{`$${item.unitPrice}`}</label>
+                  <input
+                    type='text'
+                    style={
+                      viewMode === "convert-pdf"
+                        ? { width: "75px" }
+                        : { width: "90px" }
+                    }
+                    className='bottom-outline width-80px medium-input'
+                    value={`$ ${numberWithCommas(
+                      Number(storeData[`windowOptionInput${index + 1}`]) *
+                        item.unitPrice
+                    )}`}
+                    readOnly
+                  />
+                </div>
               </div>
-              <div>
-                <label>{`$${item.unitPrice}`}</label>
-                <input
-                  type="text"
-                  className="bottom-outline width-50px"
-                  value={
-                    Number(storeData[`windowOptionInput${index + 1}`]) *
-                    item.unitPrice
-                  }
-                  readOnly
-                />
-              </div>
+              {index === 1 && (
+                <p style={{ textAlign: "center" }}>(List Pattern)</p>
+              )}
             </div>
           );
         })}

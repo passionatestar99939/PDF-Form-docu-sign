@@ -14,6 +14,7 @@ const options = require('../../constants/options.json');
 const WindowTable = (props) => {
   const storeData = useSelector((state) => state.windowtable.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
+  // alert('viewMode', viewMode);
   const dispatch = useDispatch();
 
   let rows = [];

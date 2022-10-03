@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { updateValue } from '../../store/slices/glassoptionSlice';
+import { numberWithCommas } from '../../utils/globals';
 
 const GlassOptionTable = (props) => {
   const storeData = useSelector((state) => state.glassoption.data);
@@ -25,18 +26,18 @@ const GlassOptionTable = (props) => {
   };
 
   return (
-    <div className="table-bottom">
-      <div className="table-title">
+    <div className="table-bottom table-font table-padding">
+      <div className="table-title-big">
         <strong>GLASS OPTIONS</strong>
       </div>
       {props.data.map((item, index) => {
         return (
-          <div className="wrapper font-14" key={index}>
+          <div className="wrapper" key={index}>
             <div>
               <input
                 id={`glassOptionInput${index + 1}`}
                 type="number"
-                className="bottom-outline width-50px"
+                className="bottom-outline width-80px medium-input"
                 onChange={(e) =>
                   handleChange(e, {
                     id: item.id,
@@ -52,11 +53,16 @@ const GlassOptionTable = (props) => {
               <label>{`$${item.unitPrice}`}</label>
               <input
                 type="text"
-                className="bottom-outline width-50px"
-                value={
-                  Number(storeData[`glassOptionInput${index + 1}`]) *
-                  item.unitPrice
+                style={
+                  viewMode === 'convert-pdf'
+                    ? { width: '75px' }
+                    : { width: '90px' }
                 }
+                className="bottom-outline width-80px medium-input"
+                value={`$ ${numberWithCommas(
+                  Number(storeData[`glassOptionInput${index + 1}`]) *
+                    item.unitPrice
+                )}`}
                 readOnly
               />
             </div>

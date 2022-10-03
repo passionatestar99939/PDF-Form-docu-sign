@@ -8,6 +8,11 @@ for (let i = 0; i < 40; i++) {
   initialState.data[`miscellenousInput${i + 1}`] = '';
 }
 
+initialState.data['miscellenousInput16'] = 0;
+initialState.data['miscellenousInput17'] = 0;
+initialState.data['miscellenousInput18'] = 0;
+initialState.data['miscellenousInput19'] = 0;
+
 export const miscellenousSlice = createSlice({
   name: 'miscellenous',
   initialState,

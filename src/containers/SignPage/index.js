@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Watch } from 'react-loader-spinner';
 import Loader from 'react-loader-advanced';
-import axios from 'axios';
 import { store } from '../../store/store';
 
 import Header from '../../components/Header';
@@ -42,8 +41,8 @@ import { updateDataVinylsliding } from '../../store/slices/vinylslidingSlice';
 import { updateDataWindowoption } from '../../store/slices/windowoptionSlice';
 import { updateDataWindowtable } from '../../store/slices/windowtableSlice';
 import { updateDataWindowworld } from '../../store/slices/windowworldSlice';
+import { updateSignStatus } from '../../store/slices/optionSlice';
 
-import { API_URL } from '../../constants';
 import styled from 'styled-components';
 
 import '../../styles/base.css';
@@ -84,6 +83,10 @@ const Page2 = () => {
           services on the contract will be done. If you have any questions
           whatsoever, now is the time to ask.
         </div>
+
+        <div style={{ marginTop: '40px' }}>
+          <small>Louisville Window 03-22 Valid-30 days</small>
+        </div>
       </Paragraph>
     </div>
   );
@@ -106,7 +109,7 @@ const Page3 = () => {
       <WindowTable
         isInputEnable={false}
         colNames={colNames}
-        rowCount={24}
+        rowCount={29}
         firstNoOfRow={1}
       />
       <MiddleOfPage3 />
@@ -132,8 +135,8 @@ const Page4 = () => {
       <WindowTable
         isInputEnable={false}
         colNames={colNames}
-        rowCount={44}
-        firstNoOfRow={25}
+        rowCount={49}
+        firstNoOfRow={30}
       />
     </div>
   );
@@ -142,7 +145,7 @@ const Page4 = () => {
 const Page5 = () => {
   return (
     <div className="page page5" id="page5">
-      <div style={{ marginBottom: '10px' }}>CREDIT CARD AUTHORIZATION FORM</div>
+      <div style={{ marginBottom: '40px' }}>CREDIT CARD AUTHORIZATION FORM</div>
       <Contact addStyle={{ marginBottom: '10px' }} />
       <PaymentLink />
     </div>
@@ -169,16 +172,39 @@ const updateStore = (data) => {
   store.dispatch(updateDataWindowtable(data.windowtable.data));
   store.dispatch(updateDataWindowworld(data.windowworld.data));
 };
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+}
 
 const SignPage = () => {
+  useWindowDimensions();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.operation.loading);
-  const storeData = useSelector((state) => state.operation.data);
   const params = useParams();
   const { id } = params;
 
   dispatch(updateData({ dataKey: 'linkId', data: id }));
   dispatch(updateData({ dataKey: 'viewMode', data: 'sign' }));
+  dispatch(updateSignStatus(true));
 
   useEffect(() => {
     async function getData() {
@@ -210,21 +236,27 @@ const SignPage = () => {
   );
 
   return (
-    <>      
-      <div
-        className="App"
-        style={{ transform: `scale(${window.innerWidth / 1366})` }}
+    <>
+      <Loader
+        backgroundStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+        show={loading === 'pending' ? true : false}
+        message={spinner}
       >
-        <AppWrapper>  
-          <Loader show={loading === 'pending' ? true : false} message={spinner}>
-            <Page1 />
-            <Page2 />
-            <Page3 />
-            <Page4 />
-            <Page5 />
-          </Loader>
-        </AppWrapper>
-      </div>
+        <div
+          className="App"
+          style={{ transform: `scale(${window.innerWidth / 1366})` }}
+        >
+          <AppWrapper id="appwrapper">
+            <Loader show={loading === 'pending' ? true : false} message={<></>}>
+              <Page1 />
+              <Page2 />
+              <Page3 />
+              <Page4 />
+              <Page5 />
+            </Loader>
+          </AppWrapper>
+        </div>
+      </Loader>
       <Operation />
     </>
   );
