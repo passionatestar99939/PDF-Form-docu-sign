@@ -1,4 +1,5 @@
-.patio__form {
+.patio-door-order,
+.patio-door-order__table-modal {
   font-size: 13px;
   font-family: Arial;
   text-align: left;
@@ -8,17 +9,17 @@
   box-sizing: border-box;
 }
 
-.patio__form * {
+.patio-door-order * {
   overflow: hidden;
 }
 
-.patio__form__CheckBox > * {
+.patio-door-order__CheckBox > * {
   height: 100%;
   text-align: center;
 }
-.patio__form table,
-.patio__form table th,
-.patio__form table td {
+.patio-door-order table,
+.patio-door-order table th,
+.patio-door-order table td {
   border: 1px solid black;
   border-collapse: collapse;
   vertical-align: top;
@@ -35,20 +36,25 @@ div.Patio_Information {
   height: 1em;
 }
 
-.patio__form__CheckBox {
+.patio-door-order ul > *,
+.patio-door-order__table-modal ul > * {
+  margin-top: 9px;
+}
+
+.patio-door-order__CheckBox {
   height: calc(1em + 2px);
   border-bottom: 1px solid black;
 }
 
-.patio__form__CheckBox-Width1 {
+.patio-door-order__CheckBox-Width1 {
   width: 30px;
 }
 
-.patio__form__CheckBox-Width2 {
+.patio-door-order__CheckBox-Width2 {
   width: 60px;
 }
 
-.patio__form__CheckBox-Width3 {
+.patio-door-order__CheckBox-Width3 {
   width: 90px;
 }
 
@@ -68,7 +74,8 @@ div.Patio_Information {
   text-decoration: underline;
 }
 
-.patio__form ul {
+.patio-door-order ul,
+.patio-door-order__table-modal ul {
   margin: 0px;
   padding: 0px;
   list-style-type: none;
@@ -82,7 +89,9 @@ div.Patio_Information {
   padding-right: 10px;
 }
 
-.border-left {
+.border-left,
+.border:last-child:not(.border:first-child),
+.flex__right-direction.connected-border .border:first-child {
   border-left: 1px solid black;
 }
 
@@ -90,12 +99,16 @@ div.Patio_Information {
   border-bottom: 1px solid black;
 }
 
-.border {
+.border,
+.border:not(.border:last-child) {
   border: 1px solid black;
 }
 
+.flex .col {
+  height: 100%;
+}
 .col.border:first-child {
-  border-left: 0px;
+  border-left: none;
   border-right: 1px solid black;
 }
 .col.border:last-child {
@@ -108,10 +121,21 @@ div.Patio_Information {
   border-bottom: 1px solid black;
 }
 
+.connected-border .border,
+.connected-border .border:last-child {
+  border: none;
+}
+
+.patio-door-order__table-modal .border,
+.patio-door-order__table-modal .col.border:first-child {
+  border: 1px solid black;
+}
+
 .connected-border:last-child,
 .border:last-child {
   border-right: 1px solid black;
 }
+
 .big-font {
   font-size: 21px;
 }
@@ -159,7 +183,6 @@ div.Patio_Information {
   flex-direction: row-reverse;
 }
 
-
 .patio-door-order__table-modal {
   position: fixed;
   top: 50%;
@@ -173,4 +196,14 @@ div.Patio_Information {
   border-radius: 4px;
   outline: none;
   padding: 20px;
+}
+
+.bottom-0 {
+  position: absolute;
+  bottom: 0px;
+}
+
+.patio-door-order__table-modal .bottom-0 {
+  position: relative;
+  margin-top: 30px;
 }

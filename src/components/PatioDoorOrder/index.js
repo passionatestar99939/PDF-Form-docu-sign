@@ -57,28 +57,28 @@ const PatioDoorOrder = () => {
   const checkIDs = [];
 
   for (let m = 0; m < 10; m++) {
-    checkIDs.push(`patio__form__CheckBox-1-1-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-1-1-${m + 1}`);
   }
   for (let m = 0; m < 12; m++) {
-    checkIDs.push(`patio__form__CheckBox-1-2-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-1-2-${m + 1}`);
   }
   for (let m = 0; m < 6; m++) {
-    checkIDs.push(`patio__form__CheckBox-1-3-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-1-3-${m + 1}`);
   }
   for (let m = 0; m < 9; m++) {
-    checkIDs.push(`patio__form__CheckBox-2-1-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-2-1-${m + 1}`);
   }
   for (let m = 0; m < 14; m++) {
-    checkIDs.push(`patio__form__CheckBox-2-2-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-2-2-${m + 1}`);
   }
   for (let m = 0; m < 15; m++) {
-    checkIDs.push(`patio__form__CheckBox-2-3-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-2-3-${m + 1}`);
   }
   for (let m = 0; m < 15; m++) {
-    checkIDs.push(`patio__form__CheckBox-2-4-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-2-4-${m + 1}`);
   }
   for (let m = 0; m < 3; m++) {
-    checkIDs.push(`patio__form__CheckBox-3-2-${m + 1}`);
+    checkIDs.push(`patio-door-order__CheckBox-3-2-${m + 1}`);
   }
 
   let indexOfCheckIDs = 0;
@@ -106,10 +106,7 @@ const PatioDoorOrder = () => {
   const Component_1_1 = () => {
     indexOfCheckIDs = 0;
     return (
-      <div
-        onClick={() => handleClick(1, 1)}
-        className="width-35 connected-border"
-      >
+      <div onClick={() => handleClick(1, 1)} className="col border">
         <div className="text-center underline bold">
           2 PANEL SIZES (XO,OX) - KD or SET-UP
         </div>
@@ -117,7 +114,7 @@ const PatioDoorOrder = () => {
           <div className="col flex">
             <ul>
               <div className="text-center underline bold">QTY</div>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -127,7 +124,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -137,7 +134,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -148,7 +145,7 @@ const PatioDoorOrder = () => {
               </div>
 
               <div className="space"></div>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -158,7 +155,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -168,7 +165,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -209,7 +206,7 @@ const PatioDoorOrder = () => {
             <div className="flex">
               <ul>
                 <div className="space"></div>
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -219,7 +216,7 @@ const PatioDoorOrder = () => {
                   ></Checkbox>
                 </div>
 
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -240,7 +237,7 @@ const PatioDoorOrder = () => {
               <div className="text-center underline bold">Must Select</div>
               <div className="flex">
                 <ul>
-                  <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                  <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                     <Checkbox
                       checkId={checkIDs[indexOfCheckIDs]}
                       updateCheck={handleChange}
@@ -250,7 +247,7 @@ const PatioDoorOrder = () => {
                     ></Checkbox>
                   </div>
 
-                  <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                  <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                     <Checkbox
                       checkId={checkIDs[indexOfCheckIDs]}
                       updateCheck={handleChange}
@@ -278,10 +275,7 @@ const PatioDoorOrder = () => {
     indexOfCheckIDs = 10;
 
     return (
-      <div
-        onClick={() => handleClick(1, 2)}
-        className="width-35 connected-border"
-      >
+      <div onClick={() => handleClick(1, 2)} className="col border">
         <div className="text-center underline bold">
           3 PANEL SIZES (OXO) - KD ONLY
         </div>
@@ -289,7 +283,7 @@ const PatioDoorOrder = () => {
           <div className="col flex">
             <ul>
               <div className="text-center underline bold">QTY</div>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -299,7 +293,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -309,7 +303,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -319,7 +313,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -354,7 +348,7 @@ const PatioDoorOrder = () => {
             <div className="flex">
               <ul>
                 <div className="space"></div>
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -364,7 +358,7 @@ const PatioDoorOrder = () => {
                   ></Checkbox>
                 </div>
 
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -389,7 +383,7 @@ const PatioDoorOrder = () => {
         <div className="flex">
           <div className="col flex">
             <ul>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -399,7 +393,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -409,7 +403,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -419,7 +413,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -450,7 +444,7 @@ const PatioDoorOrder = () => {
             <div className="flex">
               <ul>
                 <div className="space"></div>
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -460,7 +454,7 @@ const PatioDoorOrder = () => {
                   ></Checkbox>
                 </div>
 
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width1">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width1">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -486,10 +480,7 @@ const PatioDoorOrder = () => {
   const Component_1_3 = () => {
     indexOfCheckIDs = 22;
     return (
-      <div
-        onClick={() => handleClick(1, 3)}
-        className="width-30 connected-border"
-      >
+      <div onClick={() => handleClick(1, 3)} className="col border">
         <div className="text-center underline bold">
           2 PANEL SIZES (XO,OX) - KD or SET-UP
         </div>
@@ -497,7 +488,7 @@ const PatioDoorOrder = () => {
           <div className="col flex">
             <ul>
               <div className="text-center underline bold">QTY</div>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -507,7 +498,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -517,7 +508,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -528,7 +519,7 @@ const PatioDoorOrder = () => {
               </div>
 
               <div className="space"></div>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -538,7 +529,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -548,7 +539,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -602,7 +593,7 @@ const PatioDoorOrder = () => {
           <div className="text-center underline bold">INTERIOR COLOR KEYS</div>
           <div className="flex">
             <ul>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -612,7 +603,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -622,7 +613,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -632,7 +623,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -642,7 +633,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -652,7 +643,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -662,7 +653,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -672,7 +663,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -700,11 +691,11 @@ const PatioDoorOrder = () => {
             </ul>
           </div>
         </div>
-        <div style={{ position: 'absolute', bottom: '0px' }}>
+        <div className="bottom-0">
           <div className="text-center underline bold">BLINDS BETWEEN GLASS</div>
           <div className="flex">
             <ul>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -729,13 +720,13 @@ const PatioDoorOrder = () => {
     indexOfCheckIDs = 37;
 
     return (
-      <div className="col border">
+      <div onClick={() => handleClick(2, 2)} className="col border">
         <div className="text-center underline bold">EXTERIOR COLOR KEYS</div>
         <div className="flex">
           <ul>
             <div
-              checkId="patio__form__CheckBox-2-2-1"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-1"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -746,8 +737,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-2"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-2"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -758,8 +749,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-3"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-3"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -771,8 +762,8 @@ const PatioDoorOrder = () => {
             </div>
             <div className="space"></div>
             <div
-              checkId="patio__form__CheckBox-2-2-4"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-4"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -783,8 +774,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-5"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-5"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -795,8 +786,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-6"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-6"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -807,8 +798,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-7"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-7"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -819,8 +810,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-8"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-8"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -831,8 +822,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-9"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-9"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -843,8 +834,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-10"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-10"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -855,8 +846,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-11"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-11"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -867,8 +858,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-12"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-12"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -879,8 +870,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-13"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-13"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -891,8 +882,8 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio__form__CheckBox-2-2-14"
-              className="patio__form__CheckBox patio__form__CheckBox-Width2"
+              checkId="patio-door-order__CheckBox-2-2-14"
+              className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
@@ -934,7 +925,7 @@ const PatioDoorOrder = () => {
         <div className="text-center underline bold">HARDWARE</div>
         <div className="flex">
           <ul>
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -944,7 +935,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -954,7 +945,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -964,7 +955,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -985,7 +976,7 @@ const PatioDoorOrder = () => {
         <div className="text-center underline bold">HARDWARE COLORS</div>
         <div className="flex">
           <ul>
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -995,7 +986,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1005,7 +996,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1015,7 +1006,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1025,7 +1016,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1035,7 +1026,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1060,7 +1051,7 @@ const PatioDoorOrder = () => {
         <div className="text-center underline bold">INSULATED GLASS UNITS</div>
         <div className="flex">
           <ul>
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1070,7 +1061,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1080,7 +1071,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1090,7 +1081,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1100,7 +1091,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1137,7 +1128,7 @@ const PatioDoorOrder = () => {
         <div className="text-center bold underline">SCREEN</div>
         <div className="flex">
           <ul>
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1157,7 +1148,7 @@ const PatioDoorOrder = () => {
         <div className="flex">
           <div className="flex">
             <ul>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -1167,7 +1158,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -1184,7 +1175,7 @@ const PatioDoorOrder = () => {
           </div>
           <div className="flex">
             <ul>
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -1194,7 +1185,7 @@ const PatioDoorOrder = () => {
                 ></Checkbox>
               </div>
 
-              <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+              <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                 <Checkbox
                   checkId={checkIDs[indexOfCheckIDs]}
                   updateCheck={handleChange}
@@ -1214,7 +1205,7 @@ const PatioDoorOrder = () => {
         <div className="text-center bold underline">GRID PATTERN</div>
         <div className="flex">
           <ul>
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1224,7 +1215,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1234,7 +1225,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1244,7 +1235,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1254,7 +1245,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1278,7 +1269,7 @@ const PatioDoorOrder = () => {
         </div>
         <div className="flex">
           <ul>
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1288,7 +1279,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1298,7 +1289,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1308,7 +1299,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1318,7 +1309,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
 
-            <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+            <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
               <Checkbox
                 checkId={checkIDs[indexOfCheckIDs]}
                 updateCheck={handleChange}
@@ -1393,7 +1384,7 @@ const PatioDoorOrder = () => {
             <div className="text-center bold underline">COASTAL UPGRADES</div>
             <div className="flex">
               <ul>
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -1403,7 +1394,7 @@ const PatioDoorOrder = () => {
                   ></Checkbox>
                 </div>
 
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -1413,7 +1404,7 @@ const PatioDoorOrder = () => {
                   ></Checkbox>
                 </div>
 
-                <div className="patio__form__CheckBox patio__form__CheckBox-Width2">
+                <div className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2">
                   <Checkbox
                     checkId={checkIDs[indexOfCheckIDs]}
                     updateCheck={handleChange}
@@ -1484,7 +1475,7 @@ const PatioDoorOrder = () => {
   // const TemperTag = ComponentTag[`Component${1}${1}`];
 
   return (
-    <div>
+    <div class="patio-door-order">
       {/* <ComponentTag.Component11 /> */}
       {/* <Type.Comp1_1 /> */}
       {/* <TemperTag />
@@ -1539,14 +1530,20 @@ const PatioDoorOrder = () => {
           </tr>
         </table>
       </div>
-      <div className="width-90 patio__form">
+      <div className="width-90">
         <div className="BlackBar text-center white-color">
-          1615/1617 Series patio__form Door
+          1615/1617 Series patio-door-order Door
         </div>
         <div className="flex">
-          <Component_1_1 />
-          <Component_1_2 />
-          <Component_1_3 />
+          <div className="width-35 connected-border">
+            <Component_1_1 />
+          </div>
+          <div className="width-35 connected-border">
+            <Component_1_2 />
+          </div>
+          <div className="width-30 connected-border">
+            <Component_1_3 />
+          </div>
         </div>
         <div className="flex">
           <div className="width-35 connected-border">
