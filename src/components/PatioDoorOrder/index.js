@@ -25,7 +25,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: '80%',
+    width: '80vw',
   },
 };
 
@@ -1578,20 +1578,26 @@ const PatioDoorOrder = () => {
       </div>
       <Modal
         isOpen={openTableModal}
-        style={customStyles.table}
+        style={{
+          ...customStyles.table,
+        }}
         className="patio-door-order__table-modal"
         overlayClassName="myoverlay"
         closeTimeoutMS={200}
       >
-        {
-          (TagInsideModal =
-            ComponentTag[`Component_${pos.current.i}_${pos.current.j}`])
-        }
+        <div style={{}}>
+          <div style={{}}>
+            {
+              (TagInsideModal =
+                ComponentTag[`Component_${pos.current.i}_${pos.current.j}`])
+            }
 
-        <TagInsideModal />
-        {/* <Tag /> */}
-        {console.log('???=>End rendering')}
-        <button onClick={() => setOpenTableModal(false)}>Close</button>
+            <TagInsideModal />
+            {/* <Tag /> */}
+            {console.log('???=>End rendering')}
+            <button onClick={() => setOpenTableModal(false)}>Close</button>
+          </div>
+        </div>
       </Modal>
     </div>
   );
