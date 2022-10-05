@@ -20,6 +20,7 @@
 .patio-door-order__CheckBox > * {
   height: 100%;
   text-align: center;
+  cursor: pointer;
 }
 .patio-door-order table td,
 .patio-door-order table td * {
@@ -220,4 +221,18 @@ div.Patio_Information {
 .patio-door-order__table-modal .width-35,
 .patio-door-order__table-modal .width-70 {
   width: 100%;
+}
+
+/* .patio-door-order .image {
+  width: 20px;
+  height: 20px;
+  margin-top: -3px;
+} */
+
+.component-i-j:not(.patio-door-order__table-modal .component-i-j) {
+  cursor: pointer;
+}
+
+.component-i-j:hover:not(.patio-door-order__table-modal .component-i-j) {
+  background-color: rgb(229, 229, 252);
 }

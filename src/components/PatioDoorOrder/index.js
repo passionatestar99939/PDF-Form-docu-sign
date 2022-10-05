@@ -37,23 +37,6 @@ const PatioDoorOrder = () => {
   const dispatch = useDispatch();
 
   // console.log("???=>data:", storeData);
-  const Component1 = () => {
-    return (
-      <div
-        onClick={() => {
-          alert('Click');
-          console.log('???=>', this);
-        }}
-      >
-        Component1asdfasdf
-      </div>
-    );
-  };
-
-  const Type = {
-    Comp1_1: Component1,
-  };
-
   const checkIDs = [];
 
   for (let m = 0; m < 10; m++) {
@@ -89,24 +72,14 @@ const PatioDoorOrder = () => {
     i: -1,
     j: -1,
   });
-  ComponentTagArray.push(Component1);
-  const TempTag = ComponentTagArray[0];
-
-  const Componenet__ = () => {
-    return (
-      <div
-        onClick={() => handleClick(1, 1)}
-        className="width-35 connected-border"
-      >
-        =====
-      </div>
-    );
-  };
 
   const Component_1_1 = () => {
     indexOfCheckIDs = 0;
     return (
-      <div onClick={() => handleClick(1, 1)} className="col border">
+      <div
+        onClick={() => handleClick(1, 1)}
+        className="col border component-i-j"
+      >
         <div className="text-center underline bold">
           2 PANEL SIZES (XO,OX) - KD or SET-UP
         </div>
@@ -275,7 +248,10 @@ const PatioDoorOrder = () => {
     indexOfCheckIDs = 10;
 
     return (
-      <div onClick={() => handleClick(1, 2)} className="col border">
+      <div
+        onClick={() => handleClick(1, 2)}
+        className="col border component-i-j"
+      >
         <div className="text-center underline bold">
           3 PANEL SIZES (OXO) - KD ONLY
         </div>
@@ -586,7 +562,7 @@ const PatioDoorOrder = () => {
     return (
       <div
         onClick={() => handleClick(2, 1)}
-        className="col border"
+        className="col border component-i-j"
         style={{ position: 'relative' }}
       >
         <div>
@@ -720,7 +696,10 @@ const PatioDoorOrder = () => {
     indexOfCheckIDs = 37;
 
     return (
-      <div onClick={() => handleClick(2, 2)} className="col border">
+      <div
+        onClick={() => handleClick(2, 2)}
+        className="col border component-i-j"
+      >
         <div className="text-center underline bold">EXTERIOR COLOR KEYS</div>
         <div className="flex">
           <ul>
@@ -921,7 +900,10 @@ const PatioDoorOrder = () => {
     indexOfCheckIDs = 51;
 
     return (
-      <div onClick={() => handleClick(2, 3)} className="col border">
+      <div
+        onClick={() => handleClick(2, 3)}
+        className="col border component-i-j"
+      >
         <div className="text-center underline bold">HARDWARE</div>
         <div className="flex">
           <ul>
@@ -1124,7 +1106,10 @@ const PatioDoorOrder = () => {
     indexOfCheckIDs = 66;
 
     return (
-      <div onClick={() => handleClick(2, 4)} className="col border">
+      <div
+        onClick={() => handleClick(2, 4)}
+        className="col border component-i-j"
+      >
         <div className="text-center bold underline">SCREEN</div>
         <div className="flex">
           <ul>
@@ -1340,7 +1325,7 @@ const PatioDoorOrder = () => {
   const Component_3_1 = () => {
     return (
       <div
-        onClick={() => handleClick(3, 1)}
+        // onClick={() => handleClick(3, 1)}
         className="width-70 connected-border"
       >
         <div className="underline bold">
@@ -1377,7 +1362,7 @@ const PatioDoorOrder = () => {
     return (
       <div
         onClick={() => handleClick(3, 2)}
-        className="width-30 connected-border"
+        className="width-30 connected-border component-i-j"
       >
         <div className="flex">
           <div>
@@ -1460,15 +1445,7 @@ const PatioDoorOrder = () => {
   // const [Tag, setTag] = useState();
 
   const handleClick = (i, j) => {
-    console.log('???=>Type.Comp:', <Type.Comp1_1 />);
-    // setTag(Type.Comp1_1);
-    // console.log("???=>Tag:", <Tag />);
     pos.current = { i, j };
-    // alert(`${pos.current.i}, ${pos.current.j}`);
-    // TagInsideModal = ComponentTag[`Component_${i}_${j}`];
-    TagInsideModal = Component1;
-    console.log('???=>modaltag:', <TagInsideModal />);
-
     setOpenTableModal(true);
   };
 
@@ -1476,10 +1453,6 @@ const PatioDoorOrder = () => {
 
   return (
     <div class="patio-door-order">
-      {/* <ComponentTag.Component11 /> */}
-      {/* <Type.Comp1_1 /> */}
-      {/* <TemperTag />
-<TempTag /> */}
       <div className="Patio_Information">
         <table>
           <tr>

@@ -13,7 +13,7 @@ const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable, type }) => {
       : '/images/checked.png';
   const style =
     type === typeOfCheckBox.PatioDoorOrder
-      ? { width: '10px', height: '10px' }
+      ? { width: '20px', height: '20px', marginTop: '-3px' }
       : { height: '24px' };
 
   useEffect(() => {
