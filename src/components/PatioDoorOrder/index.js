@@ -1530,7 +1530,7 @@ const PatioDoorOrder = () => {
           </tr>
         </table>
       </div>
-      <div className="width-90">
+      <div className="width-90 main-table">
         <div className="BlackBar text-center white-color">
           1615/1617 Series patio-door-order Door
         </div>

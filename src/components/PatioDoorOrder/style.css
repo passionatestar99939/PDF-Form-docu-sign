@@ -5,6 +5,10 @@
   text-align: left;
 }
 
+.patio-door-order .main-table {
+  margin: auto;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -17,13 +21,9 @@
   height: 100%;
   text-align: center;
 }
-.patio-door-order table,
-.patio-door-order table th,
-.patio-door-order table td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  vertical-align: top;
-  padding: 0px;
+.patio-door-order table td,
+.patio-door-order table td * {
+  height: 30px;
 }
 
 div.Patio_Information {
