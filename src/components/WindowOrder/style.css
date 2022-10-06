@@ -39,9 +39,11 @@
 .wof__body-table th {
   border: 1px solid black;
   font-size: 10px;
+  vertical-align: top;
 }
 
-.wof__body-table > tbody > tr > td {
+.wof__body-table > tbody > tr > td,
+.wof__body-table > tfoot > tr > td {
   border: 1px solid black;
   font-size: 10px;
   color: blue;
@@ -90,15 +92,6 @@
   padding-left: 10px;
 }
 
-.wof__footer {
-  display: flex;
-}
-
-.wof__footer__col {
-  flex: 30%;
-  flex-grow: 1;
-}
-
 .flex-col-10 {
   flex: 10%;
 }
@@ -136,11 +129,6 @@
 
 .flex-grow-1 {
   flex-grow: 1;
-}
-
-.wof__footer-text {
-  font-size: 10px;
-  margin: 1px;
 }
 
 .wof-text {
@@ -208,4 +196,62 @@ table.wof__body-table td {
   border-radius: 4px;
   outline: none;
   padding: 20px;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.window-order__draw-box {
+  height: 300px;
+  border: 3px solid black;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.border-bottom {
+  border-bottom: 3px solid black;
+}
+
+.width-20 {
+  width: 20%;
+}
+.width-40 {
+  width: 40%;
+}
+.width-50 {
+  width: 50%;
+}
+.margin-top-30px {
+  margin-top: 30px;
+}
+
+.blue-font {
+  color: blue;
+}
+
+.msh__header__left {
+  display: flex;
+  align-items: end;
+}
+.msh__header__right {
+  margin-bottom: 30px;
+}
+
+.right-direction {
+  float: right;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.window-order__draw-box {
+  text-align: left;
+}
+
+.black-font {
+  color: black;
 }

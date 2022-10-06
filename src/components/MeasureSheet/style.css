@@ -27,6 +27,11 @@
   font-size: 12px;
 }
 
+.msh__body-table th,
+.msh__body-table td:first-child {
+  background-color: grey;
+}
+
 .msh__header__left-table tr td {
   border: 2px solid black;
   font-weight: bold;
@@ -188,4 +193,37 @@
 
 .display-inline-block {
   display: inline-block;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.border-bottom {
+  border-bottom: 3px solid black;
+}
+
+.width-20 {
+  width: 20%;
+}
+.width-40 {
+  width: 40%;
+}
+.width-50 {
+  width: 50%;
+}
+.margin-top-30px {
+  margin-top: 30px;
+}
+
+.blue-font {
+  color: blue;
+}
+
+.msh__header__left {
+  display: flex;
+  align-items: end;
+}
+.msh__header__right {
+  margin-bottom: 30px;
 }

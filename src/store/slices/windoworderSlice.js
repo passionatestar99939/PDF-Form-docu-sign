@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initDataOfWindowOrder } from "../../constants/variables";
+import { createSlice } from '@reduxjs/toolkit';
+import { initDataOfWindowOrder } from '../../constants/variables';
 
 const initialState = {
   data: {
@@ -9,11 +9,11 @@ const initialState = {
 };
 
 for (let i = 0; i < 16; i++) {
-  initialState.data.mainTable[i] = { ...initDataOfWindowOrder, no: i + 1 };
+  initialState.data.mainTable[i] = { ...initDataOfWindowOrder };
 }
 
 export const windoworderSlice = createSlice({
-  name: "windoworder",
+  name: 'windoworder',
   initialState,
   reducers: {
     updateMainTable: (state, action) => {

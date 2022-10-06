@@ -3,6 +3,7 @@
   font-size: 13px;
   font-family: Arial;
   text-align: left;
+  white-space: nowrap;
 }
 
 .patio-door-order .main-table {
@@ -235,4 +236,8 @@ div.Patio_Information {
 
 .component-i-j:hover:not(.patio-door-order__table-modal .component-i-j) {
   background-color: rgb(229, 229, 252);
+}
+
+.ReactModal__Overlay {
+  /* width: 1366px; */
 }
