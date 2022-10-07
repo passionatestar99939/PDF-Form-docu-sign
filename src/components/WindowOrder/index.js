@@ -9,6 +9,8 @@ import {
 } from '../../store/slices/windoworderSlice';
 
 import './style.css';
+import Signature from '../Signature';
+import { updateValue } from '../../store/slices/salesmanSlice';
 
 const TableHeader = () => {
   return (
@@ -79,11 +81,19 @@ const WindowOrder = () => {
   const [openTableModal, setOpenTableModal] = useState(false);
   const [tempObj, setTempObj] = useState({});
 
+  const storeData = useSelector((state) => state.salesman.data);
+  const viewMode = useSelector((state) => state.option.data.viewMode);
+  const signStatus = useSelector((state) => state.option.data.signStatus);
+
   const dispatch = useDispatch();
 
   const selectedRowRef = useRef(0);
 
   const selectedRow = selectedRowRef.current;
+
+  const handleSign = (value) => {
+    dispatch(updateValue({ id: 'signature', value: value }));
+  };
 
   const handleChangeInput = (e) => {
     setTempObj({ ...tempObj, [e.target.id]: e.target.value });
@@ -134,6 +144,15 @@ const WindowOrder = () => {
             </div>
             <div className="window-order__draw-box black-font">
               Click to Draw
+              <Signature
+                width={333}
+                height={50}
+                signId="signature"
+                updateSign={handleSign}
+                setVal={storeData['signature']}
+                signStatus={signStatus}
+                viewMode={viewMode}
+              />
             </div>
           </td>
         </tr>
