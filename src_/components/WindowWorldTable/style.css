@@ -1,0 +1,77 @@
+.table-bottom {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+.width-80px {
+  width: 80px;
+}
+
+.margin-2 {
+  margin: 0px 2px !important;
+}
+
+.small-letter {
+  font-size: 12px;
+}
+
+.small-input {
+  margin-bottom: 1px !important;
+  height: 15px;
+}
+
+.table-title-big {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.inside {
+  text-align: right !important;
+  width: 25%;
+}
+
+.outside {
+  text-align: left !important;
+  width: 25%;
+}
+
+.iacLblPos {
+  margin: 12px auto 2px auto;
+  padding: 0.7em;
+
+  width: 270px !important;
+  max-width: 270px !important;
+}
+
+.input_label_compo {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30%;
+  text-align: center;
+}
+
+.pos_bottom > label {
+  display: block;
+}
+
+.lbl {
+  color: black;
+  vertical-align: middle;
+} /* style all labels */
+
+.medium-input {
+  height: 30px;
+  font-size: 22px;
+}
+
+.table-font {
+  font-size: 20px;
+}
+
+.table-padding {
+  padding: 17px 0 10px 0 !important;
+}

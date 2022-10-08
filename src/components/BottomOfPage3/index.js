@@ -39,7 +39,7 @@ const BottomOfPage3 = ({ children }) => {
           <div className="Rectangle"></div>
           <div className="InputOfFloor">
             <Input
-              addClass="right-direction "
+              addClass="RightDirection "
               type={'text'}
               inputId="floor1"
               updateData={handleChange}
@@ -52,7 +52,7 @@ const BottomOfPage3 = ({ children }) => {
           <div className="Rectangle"></div>
           <div className="InputOfFloor">
             <Input
-              addClass="right-direction"
+              addClass="RightDirection"
               type={'text'}
               inputId="floor2"
               updateData={handleChange}
@@ -65,7 +65,7 @@ const BottomOfPage3 = ({ children }) => {
           <div className="Rectangle"></div>
           <div className="InputOfFloor">
             <Input
-              addClass="right-direction"
+              addClass="RightDirection"
               type={'text'}
               inputId="floor3"
               updateData={handleChange}

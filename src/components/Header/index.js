@@ -7,7 +7,7 @@ import './style.css';
 
 const Content = () => {
   return (
-    <div className="content">
+    <div className="header-content">
       <p className="title">WW of Louisville</p>
       <p>2200 Brennen Business Court • Louisville, KY 40299</p>
       <p>Phone: (502) 671-7777 • Fax: (502) 671-7766</p>

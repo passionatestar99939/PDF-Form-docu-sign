@@ -5,6 +5,7 @@ import { Watch } from 'react-loader-spinner';
 import Loader from 'react-loader-advanced';
 import { store } from '../../store/store';
 
+import PageWrapper from '../../components/PageWrapper';
 import Header from '../../components/Header';
 import Contact from '../../components/Contact';
 import CalculateTable from '../../components/CalculateTable';
@@ -20,6 +21,11 @@ import BottomOfPage3 from '../../components/BottomOfPage3';
 import MiddleOfPage3 from '../../components/MiddleOfPage3';
 import WindowTable from '../../components/WindowTable';
 import Operation from '../../components/Operation';
+import MeasureSheet from '../../components/MeasureSheet';
+import WindowOrder from '../../components/WindowOrder';
+import SalesConsultant from '../../components/SalesConsultant';
+import PatioDoorOrder from '../../components/PatioDoorOrder';
+import CreditCardForm from '../../components/CreditCardForm';
 
 import { fetchDataAsync } from '../../store/slices/operationSlice';
 import { updateData } from '../../store/slices/optionSlice';
@@ -42,6 +48,10 @@ import { updateDataWindowoption } from '../../store/slices/windowoptionSlice';
 import { updateDataWindowtable } from '../../store/slices/windowtableSlice';
 import { updateDataWindowworld } from '../../store/slices/windowworldSlice';
 import { updateSignStatus } from '../../store/slices/optionSlice';
+import { updateDataMeasureSheet } from '../../store/slices/measuresheetSlice';
+import { updateDataPatioDoor } from '../../store/slices/patioDoorOrderSlice';
+import { updateDataWindowOrder } from '../../store/slices/windoworderSlice';
+import { updateDataSalesInfo } from '../../store/slices/salesInfoSlice';
 
 import styled from 'styled-components';
 
@@ -152,6 +162,46 @@ const Page5 = () => {
   );
 };
 
+const MeasureSheetPage = () => {
+  return (
+    <PageWrapper>
+      <MeasureSheet />
+    </PageWrapper>
+  );
+};
+
+const WindowOrderPage = () => {
+  return (
+    <PageWrapper>
+      <WindowOrder />
+    </PageWrapper>
+  );
+};
+
+const SalesConsultantPage = () => {
+  return (
+    <PageWrapper>
+      <SalesConsultant />
+    </PageWrapper>
+  );
+};
+
+const PatioDoorOrderPage = () => {
+  return (
+    <PageWrapper>
+      <PatioDoorOrder />
+    </PageWrapper>
+  );
+};
+
+const CreditCardPage = () => {
+  return (
+    <PageWrapper>
+      <CreditCardForm />
+    </PageWrapper>
+  );
+};
+
 const updateStore = (data) => {
   store.dispatch(updateDataContact(data.contact.data));
   store.dispatch(updateDataBottompage(data.bottompage3.data));
@@ -171,6 +221,10 @@ const updateStore = (data) => {
   store.dispatch(updateDataWindowoption(data.windowoption.data));
   store.dispatch(updateDataWindowtable(data.windowtable.data));
   store.dispatch(updateDataWindowworld(data.windowworld.data));
+  store.dispatch(updateDataMeasureSheet(data.measuresheet.data));
+  store.dispatch(updateDataPatioDoor(data.patiodoororder.data));
+  store.dispatch(updateDataWindowOrder(data.windoworder.data));
+  store.dispatch(updateDataSalesInfo(data.salesInfo.data));
 };
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -252,7 +306,11 @@ const SignPage = () => {
               <Page2 />
               <Page3 />
               <Page4 />
-              <Page5 />
+              <MeasureSheetPage />
+              <WindowOrderPage />
+              <SalesConsultantPage />
+              <PatioDoorOrderPage />
+              <CreditCardPage />
             </Loader>
           </AppWrapper>
         </div>

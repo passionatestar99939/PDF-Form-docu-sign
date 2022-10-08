@@ -24,6 +24,7 @@ import MeasureSheet from '../../components/MeasureSheet';
 import WindowOrder from '../../components/WindowOrder';
 import SalesConsultant from '../../components/SalesConsultant';
 import PatioDoorOrder from '../../components/PatioDoorOrder';
+import CreditCardForm from '../../components/CreditCardForm';
 
 import styled from 'styled-components';
 import '../../styles/base.css';
@@ -166,6 +167,14 @@ const PatioDoorOrderPage = () => {
   );
 };
 
+const CreditCardPage = () => {
+  return (
+    <PageWrapper>
+      <CreditCardForm />
+    </PageWrapper>
+  );
+};
+
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -236,7 +245,7 @@ const HomePage = () => {
               <WindowOrderPage />
               <SalesConsultantPage />
               <PatioDoorOrderPage />
-              <Page5 />
+              <CreditCardPage />
             </Loader>
           </AppWrapper>
         </div>

@@ -39,11 +39,9 @@
 .wof__body-table th {
   border: 1px solid black;
   font-size: 10px;
-  vertical-align: top;
 }
 
-.wof__body-table > tbody > tr > td,
-.wof__body-table > tfoot > tr > td {
+.wof__body-table > tbody > tr > td {
   border: 1px solid black;
   font-size: 10px;
   color: blue;
@@ -92,6 +90,38 @@
   padding-left: 10px;
 }
 
+.wof__footer {
+  display: flex;
+}
+
+.wof__footer__col {
+  flex: 30%;
+  flex-grow: 1;
+}
+
+.wof__table_modal {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: calc(90vh * 0.9);
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .p-line {
+    flex: 100%;
+  }
+}
+
 .flex-col-10 {
   flex: 10%;
 }
@@ -129,6 +159,11 @@
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.wof__footer-text {
+  font-size: 10px;
+  margin: 1px;
 }
 
 .wof-text {

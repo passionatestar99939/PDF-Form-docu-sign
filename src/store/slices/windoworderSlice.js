@@ -17,15 +17,16 @@ export const windoworderSlice = createSlice({
   initialState,
   reducers: {
     updateMainTable: (state, action) => {
-      state.data.mainTable = action.payload;
+      state.data.mainTable = { ...action.payload };
     },
-    updateDrawingData: (state, action) => {
-      state.data.drawingData = action.payload;
+    updateDataWindowOrder: (state, action) => {
+      state.data.drawingData = { ...action.payload };
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateMainTable, updateDrawingData } = windoworderSlice.actions;
+export const { updateMainTable, updateDataWindowOrder } =
+  windoworderSlice.actions;
 
 export default windoworderSlice.reducer;

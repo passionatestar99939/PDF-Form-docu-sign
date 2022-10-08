@@ -1,36 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initDataOfMeasureSheet } from "../../constants/variables";
+import { createSlice } from '@reduxjs/toolkit';
+import { initDataOfMeasureSheet } from '../../constants/variables';
 
 const initialState = {
   data: {
-    windowTable: {},
-    typeTable: {},
+    windowTable: {
+      tearouts: 'WOOD',
+      pockets: 'WOOD',
+      cutbacks: '(-3/8") x (-1/2")',
+    },
+    typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
     mainTable: {},
   },
 };
 
 for (let i = 0; i < 20; i++) {
-  initialState.data.mainTable[i] = { ...initDataOfMeasureSheet, no: i + 1 };
+  initialState.data.mainTable[i] = { ...initDataOfMeasureSheet };
 }
 
 export const measuresheetSlice = createSlice({
-  name: "measuresheet",
+  name: 'measuresheet',
   initialState,
   reducers: {
     updateWindowTable: (state, action) => {
-      state.data.windowTable = action.payload;
+      state.data.windowTable = { ...action.payload };
     },
     updateTypeTable: (state, action) => {
-      state.data.typeTable = action.payload;
+      state.data.typeTable = { ...action.payload };
     },
     updateMainTable: (state, action) => {
-      state.data.mainTable = action.payload;
+      state.data.mainTable = { ...action.payload };
+    },
+    updateDataMeasureSheet: (state, action) => {
+      state.data = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateWindowTable, updateTypeTable, updateMainTable } =
-  measuresheetSlice.actions;
+export const {
+  updateWindowTable,
+  updateTypeTable,
+  updateMainTable,
+  updateDataMeasureSheet,
+} = measuresheetSlice.actions;
 
 export default measuresheetSlice.reducer;

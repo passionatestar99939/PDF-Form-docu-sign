@@ -13,7 +13,7 @@ const FloorLayer = (props, { children }) => {
         <div className="Rectangle"></div>
         <div className="InputOfFloor">
           <Input
-            addClass=" right-direction"
+            addClass=" RightDirection"
             inputVal={'Floor' + 1}
             readOnlyMode={viewMode !== 'homepage'}
           />
@@ -23,7 +23,7 @@ const FloorLayer = (props, { children }) => {
         <div className="Rectangle"></div>
         <div className="InputOfFloor">
           <Input
-            addClass=" right-direction"
+            addClass=" RightDirection"
             inputVal={'Floor' + 2}
             readOnlyMode={viewMode !== 'homepage'}
           />
@@ -33,7 +33,7 @@ const FloorLayer = (props, { children }) => {
         <div className="Rectangle"></div>
         <div className="InputOfFloor">
           <Input
-            addClass=" right-direction"
+            addClass=" RightDirection"
             inputVal={'Floor' + 3}
             readOnlyMode={viewMode !== 'homepage'}
           />

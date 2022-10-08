@@ -9,9 +9,9 @@ export const initDataOfMeasureSheet = {
   grids: '',
   intColor: '',
   extColor: '',
-  foam: '',
-  temp: '',
-  obsc: '',
+  foam: true,
+  temp: true,
+  obsc: true,
   energy: '',
   mullCuts: '',
   notes: '',
@@ -59,3 +59,40 @@ export const typeOfCheckBox = {
   WindowTable: 'WindowTable',
   PatioDoorOrder: 'PatioDoorOrder',
 };
+
+export const interiorColor = [
+  'White - Extruded',
+  'Almond - Extruded',
+  'Clay - Extruded',
+  'Hillside Oak - Laminated',
+  'Natural Oak - Laminated',
+  'Colonial Cherry - Laminated',
+  'Black Interior - Painted',
+];
+
+export const exteriorColor = [
+  'White - Extruded',
+  'Almond - Extruded',
+  'Clay - Extruded',
+  'Almond - Painted',
+  'Clay - Painted',
+  'Cocoa - Painted',
+  'Black - Painted',
+  'Cream - Painted',
+  'Silver - Painted',
+  'Green - Painted',
+  'Bronze - Painted',
+];
+
+export const roomItems = [
+  'BEDROOM',
+  'LIVING ROOM',
+  'GARAGE',
+  'KITCHEN',
+  'DINING',
+  'BATH',
+];
+
+export const roomStyle = ['DH', '3LS', 'SPD'];
+
+export const energy = ['SZ'];

@@ -2,19 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: {
-    deposit: 0,
-    balance: 0,
-    cardholderName: '',
-    visa: false,
-    mc: false,
-    amex: false,
-    disc: false,
-    cardNumber: '',
+    cc_name: '',
+    cc_deposit: 0,
+    cc_address: '',
+    cc_zip: '',
+    cc_balance: 0,
+    cc_phone: '',
+    cc_cardholder_name: '',
+    cc_visa: '',
+    cc_mc: '',
+    cc_amex: '',
+    cc_dicover: '',
+    cc_card_number: '',
     expDate: '',
     expMonth: '',
-    cvvMode: '',
-    signDate: formatDate(new Date()),
+    cc_cvv_code: '',
     signature: '',
+    signDate: formatDate(new Date()),
   },
 };
 
@@ -29,7 +33,6 @@ function formatDate(date) {
     date.getFullYear(),
   ].join('/');
 }
-
 
 export const creditSlice = createSlice({
   name: 'credit',

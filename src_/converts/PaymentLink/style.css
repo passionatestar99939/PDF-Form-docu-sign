@@ -1,0 +1,42 @@
+.justify-content {
+  text-align: justify;
+}
+
+.payment-box {
+  width: 85%;
+  text-align: left;
+  margin: 7% auto;
+}
+
+.payment-box .margin-top-4 {
+  margin-top: 4%;
+}
+
+.wrapper-space-around {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.wrapper-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.div-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.date-select {
+  width: 80%;
+  background-color: aliceblue;
+  border-style: none;
+  border-bottom: 1px solid grey;
+  margin-left: 10px;
+  font-size: 18px;
+}

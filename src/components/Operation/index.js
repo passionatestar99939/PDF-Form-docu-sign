@@ -1,69 +1,69 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { DefaultEditor } from 'react-simple-wysiwyg';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "react-modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DefaultEditor } from "react-simple-wysiwyg";
 import {
   faPencil,
   faEnvelope,
   faDownload,
   faVoicemail,
   faPrint,
-} from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+} from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import { store } from '../../store/store';
+import { store } from "../../store/store";
 import {
   postDataAsync,
   requestDownloadAsync,
-} from '../../store/slices/operationSlice';
-import { updateSignStatus } from '../../store/slices/optionSlice';
-import { BASE_URL } from '../../constants';
+} from "../../store/slices/operationSlice";
+import { updateSignStatus } from "../../store/slices/optionSlice";
+import { BASE_URL } from "../../constants";
 
-import './style.css';
+import "./style.css";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "80%",
   },
 };
 
 const pdf_paths = {
   pdf1: {
-    path: BASE_URL + '/pdfs/WW-4000-Double-Hung-Windows.pdf',
-    title: 'WW - 4000 Series Double Hung Windows (PDF)',
+    path: BASE_URL + "/pdfs/WW-4000-Double-Hung-Windows.pdf",
+    title: "WW - 4000 Series Double Hung Windows (PDF)",
     send: false,
   },
   pdf2: {
-    path: BASE_URL + '/pdfs/Patio Door Order Form.pdf',
-    title: 'WW - 4000 Series Patior Doors (PDF)',
+    path: BASE_URL + "/pdfs/Patio Door Order Form.pdf",
+    title: "WW - 4000 Series Patior Doors (PDF)",
     send: false,
   },
   pdf3: {
-    path: BASE_URL + '/pdfs/WW-Casements-and-Awnings.pdf',
-    title: 'WW - 4000 Series Casement/Awning Windows (PDF)',
+    path: BASE_URL + "/pdfs/WW-Casements-and-Awnings.pdf",
+    title: "WW - 4000 Series Casement/Awning Windows (PDF)",
     send: false,
   },
   pdf4: {
-    path: BASE_URL + '/pdfs/WW-Basement-Hopper.pdf',
-    title: 'WW - 4000 Series Blinds-Between-The-Glass (PDF)',
+    path: BASE_URL + "/pdfs/WW-Basement-Hopper.pdf",
+    title: "WW - 4000 Series Blinds-Between-The-Glass (PDF)",
     send: false,
   },
   pdf5: {
-    path: BASE_URL + '/pdf/WW-BAY-AND-BOW.pdf',
-    title: 'WW - Peace and Quiet Glass STC 33 (PDF)',
+    path: BASE_URL + "/pdf/WW-BAY-AND-BOW.pdf",
+    title: "WW - Peace and Quiet Glass STC 33 (PDF)",
     send: false,
   },
   pdf6: {
-    path: BASE_URL + '/pdfs/WW-Repair-Labor-Guarantee.pdf',
-    title: 'WW - Repair Labor Guarentee',
+    path: BASE_URL + "/pdfs/WW-Repair-Labor-Guarantee.pdf",
+    title: "WW - Repair Labor Guarentee",
     send: false,
   },
 };
@@ -71,10 +71,10 @@ const pdf_paths = {
 const Operation = (props) => {
   const [pdfSend, setPdfSend] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const [subject, setSubject] = useState('');
-  const [body, setBody] = useState('');
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
   const [signature, setSignature] = useState(
-    '<b>Nick Tisdale<br />Window World</b><br />ww@nicktisdale.com<br />(502) 310-9454'
+    "<b>Nick Tisdale<br />Window World</b><br />ww@nicktisdale.com<br />(502) 310-9454"
   );
 
   const email = useSelector((state) => state.salesman.data.email);
@@ -89,15 +89,15 @@ const Operation = (props) => {
   const dispatch = useDispatch();
 
   const handleSignEnable = (e) => {
-    if (email === '') {
-      toast.error('Enter the customer email.');
+    if (email === "") {
+      toast.error("Enter the customer email.");
       return;
     }
     let data = store.getState();
     dispatch(
       postDataAsync({
         data: { customerEmail: email, contractInfo: data },
-        url: 'signature',
+        url: "signature",
       })
     );
   };
@@ -107,10 +107,10 @@ const Operation = (props) => {
   const handleSend = () => {
     let data = store.getState();
     let pdf_body =
-      '<div>Here is some more information about the products we talked about: </div>';
+      "<div>Here is some more information about the products we talked about: </div>";
     Object.keys(pdf_paths).forEach((value) => {
-      let attach_path = BASE_URL + '/images/attach.png';
-      let pdf_image_path = BASE_URL + '/images/pdf-attach.png';
+      let attach_path = BASE_URL + "/images/attach.png";
+      let pdf_image_path = BASE_URL + "/images/pdf-attach.png";
       if (pdf_paths[value].send) {
         pdf_body +=
           '<div><img alt="attach" src="' +
@@ -143,7 +143,7 @@ const Operation = (props) => {
           },
           contract_info: data,
         },
-        url: 'contract',
+        url: "contract",
       })
     );
     setOpenModal(false);
@@ -154,7 +154,7 @@ const Operation = (props) => {
     dispatch(
       postDataAsync({
         data: { linkId: linkId, contractInfo: data },
-        url: 'signature',
+        url: "signature",
       })
     );
   };
@@ -171,14 +171,14 @@ const Operation = (props) => {
   };
 
   const handlePdfSend = (e) => {
-    pdf_paths[e.target.id]['send'] = e.target.checked;
+    pdf_paths[e.target.id]["send"] = e.target.checked;
     console.log(pdf_paths);
   };
 
   return (
     <div>
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={5000}
         hideProgressBar={true}
         newestOnTop
@@ -188,30 +188,30 @@ const Operation = (props) => {
         draggable
         pauseOnHover
       />
-      {viewMode === 'sign' ? (
-        <div className="operation-pad bottom">
+      {viewMode === "sign" ? (
+        <div className='operation-pad bottom'>
           <div>
-            <p className="p-h3">INSTALL & SIGN ALL APPLICABLE SECTIONS</p>
-            <p className="p-h2">THEN CLICK SIGN & SUBMIT</p>
+            <p className='p-h3'>INSTALL & SIGN ALL APPLICABLE SECTIONS</p>
+            <p className='p-h2'>THEN CLICK SIGN & SUBMIT</p>
           </div>
-          <button className="btn icon-btn sign-btn" onClick={handleSign}>
+          <button className='btn icon-btn sign-btn' onClick={handleSign}>
             <FontAwesomeIcon
               icon={faPencil}
-              style={{ fontSize: 20, color: 'white', marginRight: 20 }}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
             />
-            <label className="sign-label">Sign</label>
+            <label className='sign-label'>Sign</label>
           </button>
         </div>
-      ) : viewMode === 'homepage' ? (
-        <div className="operation-pad top">
-          <button className="btn icon-btn" onClick={() => setOpenModal(true)}>
+      ) : viewMode === "homepage" ? (
+        <div className='operation-pad top'>
+          <button className='btn icon-btn' onClick={() => setOpenModal(true)}>
             <FontAwesomeIcon
               icon={faEnvelope}
-              style={{ fontSize: 20, color: 'white', marginRight: 20 }}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
             />
           </button>
           <button
-            className="btn icon-btn"
+            className='btn icon-btn'
             onClick={(e) => handleSignEnable(e)}
             disabled={!signStatus}
           >
@@ -219,62 +219,62 @@ const Operation = (props) => {
               icon={faPencil}
               style={{
                 fontSize: 20,
-                color: signStatus === true ? 'white' : 'grey',
+                color: signStatus === true ? "white" : "grey",
                 marginRight: 20,
               }}
             />
           </button>
-          <button className="btn icon-btn" onClick={handleDownload}>
+          <button className='btn icon-btn' onClick={handleDownload}>
             <FontAwesomeIcon
               icon={faDownload}
-              style={{ fontSize: 20, color: 'white', marginRight: 20 }}
+              style={{ fontSize: 20, color: "white", marginRight: 20 }}
             />
           </button>
-          <div className="flex-right">
+          <div className='flex-right'>
             <input
-              id="enableToggle"
-              type="checkbox"
+              id='enableToggle'
+              type='checkbox'
               onChange={(e) => handleToggle(e)}
             />
-            <label htmlFor="enableToggle">Direct Sign</label>
+            <label htmlFor='enableToggle'>Direct Sign</label>
           </div>
           <Modal
             isOpen={openModal}
             style={customStyles}
-            className="email-modal"
-            overlayClassName="myoverlay"
+            className='email-modal'
+            overlayClassName='myoverlay'
             closeTimeoutMS={200}
           >
             <div>
-              <div className="email-box">
-                <label for="customerEmail">CUSTOMER EMAIL</label>
+              <div className='email-box'>
+                <label for='customerEmail'>CUSTOMER EMAIL</label>
                 <input
-                  className="bottom-outline width-100"
-                  style={{ textAlign: 'left' }}
-                  type="text"
-                  id="customerEmail"
+                  className='bottom-outline width-100'
+                  style={{ textAlign: "left" }}
+                  type='text'
+                  id='customerEmail'
                   value={email}
                   readOnly
                   // onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="email-box">
-                <label for="subject">SUBJECT</label>
+              <div className='email-box'>
+                <label for='subject'>SUBJECT</label>
                 <input
-                  className="bottom-outline width-100"
+                  className='bottom-outline width-100'
                   style={{
-                    textAlign: 'left',
-                    fontSize: '16px',
-                    fontFamily: 'sans-serif',
+                    textAlign: "left",
+                    fontSize: "16px",
+                    fontFamily: "sans-serif",
                   }}
-                  type="text"
-                  id="subject"
+                  type='text'
+                  id='subject'
                   onChange={(e) => setSubject(e.target.value)}
                 />
               </div>
               <div>
                 <p>
-                  <label for="body" style={{ margin: '4px' }}>
+                  <label for='body' style={{ margin: "4px" }}>
                     BODY
                   </label>
                 </p>
@@ -289,92 +289,92 @@ const Operation = (props) => {
                   Here is some more information about the products we talked
                   about:
                 </p>
-                <div className="wrapper">
-                  <div className="width-50 vertical-center">
+                <div className='wrapper'>
+                  <div className='width-50 vertical-center'>
                     <input
-                      type="checkbox"
-                      id="pdf1"
+                      type='checkbox'
+                      id='pdf1'
                       onClick={(e) => handlePdfSend(e)}
                     />
-                    <label for="pdf1">
+                    <label for='pdf1'>
                       WW - 4000 Series Double Hung Windows (PDF)
                     </label>
                     &nbsp;&nbsp;&nbsp;
-                    <img alt="pdf" src="/images/pdf-attach.png" width={30} />
+                    <img alt='pdf' src='/images/pdf-attach.png' width={30} />
                   </div>
-                  <div className="width-50 vertical-center">
+                  <div className='width-50 vertical-center'>
                     <input
-                      type="checkbox"
-                      id="pdf2"
+                      type='checkbox'
+                      id='pdf2'
                       onClick={(e) => handlePdfSend(e)}
                     />
-                    <label for="pdf2">
+                    <label for='pdf2'>
                       WW - 4000 Series Patior Doors (PDF)
                     </label>
                     &nbsp;&nbsp;&nbsp;
-                    <img alt="pdf" src="/images/pdf-attach.png" width={30} />
+                    <img alt='pdf' src='/images/pdf-attach.png' width={30} />
                   </div>
                 </div>
-                <div className="wrapper">
-                  <div className="width-50 vertical-center">
+                <div className='wrapper'>
+                  <div className='width-50 vertical-center'>
                     <input
-                      type="checkbox"
-                      id="pdf3"
+                      type='checkbox'
+                      id='pdf3'
                       onClick={(e) => handlePdfSend(e)}
                     />
-                    <label for="pdf3">
+                    <label for='pdf3'>
                       WW - 4000 Series Casement/Awning Windows (PDF)
                     </label>
                     &nbsp;&nbsp;&nbsp;
-                    <img alt="pdf" src="/images/pdf-attach.png" width={30} />
+                    <img alt='pdf' src='/images/pdf-attach.png' width={30} />
                   </div>
-                  <div className="width-50 vertical-center">
+                  <div className='width-50 vertical-center'>
                     <input
-                      type="checkbox"
-                      id="pdf4"
+                      type='checkbox'
+                      id='pdf4'
                       onClick={(e) => handlePdfSend(e)}
                     />
-                    <label for="pdf4">
+                    <label for='pdf4'>
                       WW - 4000 Series Blinds-Between-The-Glass (PDF)
                     </label>
                     &nbsp;&nbsp;&nbsp;
-                    <img alt="pdf" src="/images/pdf-attach.png" width={30} />
+                    <img alt='pdf' src='/images/pdf-attach.png' width={30} />
                   </div>
                 </div>
-                <div className="wrapper">
-                  <div className="width-50 vertical-center">
+                <div className='wrapper'>
+                  <div className='width-50 vertical-center'>
                     <input
-                      type="checkbox"
-                      id="pdf5"
+                      type='checkbox'
+                      id='pdf5'
                       onClick={(e) => handlePdfSend(e)}
                     />
-                    <label for="pdf5">
+                    <label for='pdf5'>
                       WW - Peace and Quiet Glass STC 33 (PDF)
                     </label>
                     &nbsp;&nbsp;&nbsp;
-                    <img alt="pdf" src="/images/pdf-attach.png" width={30} />
+                    <img alt='pdf' src='/images/pdf-attach.png' width={30} />
                   </div>
-                  <div className="width-50 vertical-center">
+                  <div className='width-50 vertical-center'>
                     <input
-                      type="checkbox"
-                      id="pdf6"
+                      type='checkbox'
+                      id='pdf6'
                       onClick={(e) => handlePdfSend(e)}
                     />
-                    <label for="pdf6">WW - Repair Labor Guarentee</label>
+                    <label for='pdf6'>WW - Repair Labor Guarentee</label>
                     &nbsp;&nbsp;&nbsp;
-                    <img alt="pdf" src="/images/pdf-attach.png" width={30} />
+                    <img alt='pdf' src='/images/pdf-attach.png' width={30} />
                   </div>
                 </div>
               </div>
               <br />
               <p>
-                Click here to electronically sign:{' '}
-                <span className="link-content">Window World Contract</span>
+                Click here to electronically sign:{" "}
+                <span className='link-content'>Window World Contract</span>
               </p>
               <br />
               <div>
                 <p>
-                  <label for="signature" style={{ margin: '4px' }}>
+                  <label for='signature' style={{ margin: "4px" }}>
                     SIGNATURE
                   </label>
                 </p>
@@ -385,11 +385,11 @@ const Operation = (props) => {
                 />
               </div>
               <br />
-              <div className="wrapper-center">
-                <button className="btn sign-modal-btn" onClick={handleSend}>
+              <div className='wrapper-center'>
+                <button className='btn sign-modal-btn' onClick={handleSend}>
                   Send
                 </button>
-                <button className="btn sign-modal-btn" onClick={handleClose}>
+                <button className='btn sign-modal-btn' onClick={handleClose}>
                   Close
                 </button>
               </div>

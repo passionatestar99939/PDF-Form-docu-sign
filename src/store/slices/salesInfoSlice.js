@@ -11,6 +11,8 @@ const initialState = {
     po: 0,
     account: "Kentukiana #348",
     repNumber: "005",
+    comm: 8,
+    wwOrder: "#348",
   },
 };
 
@@ -21,10 +23,13 @@ export const salesInfoSlice = createSlice({
     updateSalesInfo: (state, action) => {
       state.data[action.payload.id] = action.payload.value;
     },
+    updateDataSalesInfo: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateSalesInfo } = salesInfoSlice.actions;
+export const { updateSalesInfo, updateDataSalesInfo } = salesInfoSlice.actions;
 
 export default salesInfoSlice.reducer;

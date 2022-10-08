@@ -4,18 +4,6 @@ const initialState = {
   data: {},
 };
 
-// for (let i = 0; i < 60; i++) {
-//   initialState.data[`le${i + 1}`] = false;
-// }
-
-// for (let i = 0; i < 3; i++) {
-//   for(let j=0; j<4; j++){
-//     for(let k=0; k<15; k++){
-
-//     }
-//   }
-// }
-
 export const patioDoorOrder = createSlice({
   name: 'patioDoorOrder',
   initialState,
@@ -23,10 +11,13 @@ export const patioDoorOrder = createSlice({
     updateValue: (state, action) => {
       state.data[action.payload.id] = action.payload.value;
     },
+    updateDataPatioDoor: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateValue, updateDataWindowtable } = patioDoorOrder.actions;
+export const { updateValue, updateDataPatioDoor } = patioDoorOrder.actions;
 
 export default patioDoorOrder.reducer;
