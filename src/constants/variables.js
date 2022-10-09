@@ -18,14 +18,14 @@ export const initDataOfMeasureSheet = {
 };
 
 export const initDataOfWindowOrder = {
-  qty: 0,
+  qty: '',
   type: '',
   series: '',
   foam: '',
   nailfin: '',
   szWidth: '',
-  szX: '',
-  szHeigh: '',
+  szX: 'X',
+  szHeight: '',
   split: '',
   intColor: '',
   extColor: '',

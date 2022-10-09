@@ -100,13 +100,10 @@
 }
 
 .wof__table_modal {
-  display: flex;
-  flex-wrap: wrap;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90vw;
   height: calc(90vh * 0.9);
   border: 1px solid #ccc;
   background: #fff;
@@ -289,4 +286,26 @@ table.wof__body-table td {
 
 .black-font {
   color: black;
+}
+
+.wof__table_modal .p-line {
+  display: flex;
+  width: 300px;
+  padding: 10px 0px;
+}
+
+.wof__table_modal .p-line label {
+  width: 40%;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.wof__table_modal .p-line > :last-child:not(.window-order__check-box) {
+  width: 60%;
+}
+
+.window-order__check-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
 }

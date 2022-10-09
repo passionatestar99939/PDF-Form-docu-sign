@@ -144,7 +144,7 @@ const MeasureSheet = () => {
     );
   };
 
-  let selected;
+  let selected = '';
 
   return (
     <div className="msh__container">
@@ -420,29 +420,27 @@ const MeasureSheet = () => {
           <div className="p-line">
             <label htmlFor="room">Room</label>
             <select id="room" onChange={(e) => handleChangeInput(e)}>
-              {roomItems.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.room ? 'selected' : ''}
-                >
-                  {value}
-                </option>
-              ))}
+              {roomItems.map((value, index) => {
+                selected = value === tempObj.room ? ' selected' : ' ';
+                return (
+                  <option key={index} value={value} selected={selected}>
+                    {value}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="p-line">
             <label htmlFor="style">Style</label>
             <select id="style" onChange={(e) => handleChangeInput(e)}>
-              {roomStyle.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.style ? 'selected' : ''}
-                >
-                  {value}
-                </option>
-              ))}
+              {roomStyle.map((value, index) => {
+                selected = value === tempObj.style ? ' selected' : ' ';
+                return (
+                  <option key={index} value={value} selected={selected}>
+                    {value}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="p-line">
@@ -488,29 +486,27 @@ const MeasureSheet = () => {
           <div className="p-line">
             <label htmlFor="intColor">Int Color</label>
             <select id="intColor" onChange={(e) => handleChangeInput(e)}>
-              {interiorColor.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.intColor ? 'selected' : ''}
-                >
-                  {value}
-                </option>
-              ))}
+              {interiorColor.map((value, index) => {
+                selected = value === tempObj.intColor ? ' selected' : ' ';
+                return (
+                  <option key={index} value={value} selected={selected}>
+                    {value}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="p-line">
             <label htmlFor="extColor">Ext Color</label>
             <select id="extColor" onChange={(e) => handleChangeInput(e)}>
-              {exteriorColor.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.extColor ? 'selected' : ''}
-                >
-                  {value}
-                </option>
-              ))}
+              {exteriorColor.map((value, index) => {
+                selected = value === tempObj.extColor ? ' selected' : ' ';
+                return (
+                  <option key={index} value={value} selected={selected}>
+                    {value}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="p-line">
@@ -552,15 +548,14 @@ const MeasureSheet = () => {
           <div className="p-line">
             <label htmlFor="energy">Energy</label>
             <select id="energy" onChange={(e) => handleChangeInput(e)}>
-              {energy.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.energy ? 'selected' : ''}
-                >
-                  {value}
-                </option>
-              ))}
+              {energy.map((value, index) => {
+                selected = value === tempObj.energy ? ' selected' : ' ';
+                return (
+                  <option key={index} value={value} selected={selected}>
+                    {value}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="p-line">
