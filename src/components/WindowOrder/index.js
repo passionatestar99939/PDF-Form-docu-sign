@@ -15,6 +15,10 @@ import {
 
 import './style.css';
 import Checkbox from '../Checkbox';
+import Signature from '../Signature';
+import { updateValue } from '../../store/slices/salesmanSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const data = {
   mainTable: {},
@@ -43,6 +47,7 @@ const customStyles = {
 };
 
 const WindowOrder = () => {
+  const signStatus = useSelector((state) => state.option.data.signStatus);
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const windowOrderData = useSelector((state) => state.windoworder.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
@@ -62,6 +67,10 @@ const WindowOrder = () => {
 
   const handleChangeCheckbox = (value, { formId }) => {
     setTempObj({ ...tempObj, [formId]: value });
+  };
+
+  const handleSign = (value) => {
+    dispatch(updateValue({ id: 'signature', value: value }));
   };
 
   const handleClickTr = useCallback((row_id) => {
@@ -164,16 +173,23 @@ const WindowOrder = () => {
               Draw Grid Pattern Layout
             </div>
             <div className="window-order__draw-box black-font">
-              Click to Draw
-              {/* <Signature
-                width={333}
-                height={50}
-                signId="signature"
+              <div>
+                Click to Draw
+                <FontAwesomeIcon
+                  icon={faPencil}
+                  style={{ fontSize: 40, color: 'black', margin: '0px 20px' }}
+                />
+              </div>
+              <Signature
+                width={'100%'}
+                height={'100%'}
+                signId="drawingData"
                 updateSign={handleSign}
-                setVal={storeData['signature']}
-                signStatus={signStatus}
+                setVal={windowOrderData['drawingData']}
+                signStatus={true}
                 viewMode={viewMode}
-              /> */}
+                isSignMode={false}
+              />
             </div>
           </td>
         </tr>

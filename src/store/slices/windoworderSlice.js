@@ -4,7 +4,7 @@ import { initDataOfWindowOrder } from '../../constants/variables';
 const initialState = {
   data: {
     mainTable: {},
-    drawingData: {},
+    drawingData: '',
   },
 };
 

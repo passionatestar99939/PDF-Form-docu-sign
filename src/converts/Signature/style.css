@@ -51,9 +51,12 @@
 }
 
 .sign-button {
-  background-color: yellow;
   border: none;
-  background-image: url("../../../public/images/emtpy-sign.png");
+}
+
+.yellow-background {
+  background-color: yellow;
+  background-image: url('../../../public/images/emtpy-sign.png');
 }
 
 .white {
