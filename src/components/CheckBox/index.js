@@ -26,6 +26,8 @@ const CheckBox = ({ checkVal, checkId, updateCheck, isInputEnable, type }) => {
   };
   return (
     <div
+      className="check-box"
+      style={{ height: style.height }}
       onClick={() => {
         return isInputEnable ? handleClick(checked) : null;
       }}

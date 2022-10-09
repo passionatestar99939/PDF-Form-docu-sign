@@ -14,7 +14,7 @@ const initialState = {
 };
 
 for (let i = 0; i < 20; i++) {
-  initialState.data.mainTable[i] = { ...initDataOfMeasureSheet };
+  initialState.data.mainTable[i] = { ...initDataOfMeasureSheet, no: i + 1 };
 }
 
 export const measuresheetSlice = createSlice({

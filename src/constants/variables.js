@@ -9,9 +9,9 @@ export const initDataOfMeasureSheet = {
   grids: '',
   intColor: '',
   extColor: '',
-  foam: true,
-  temp: true,
-  obsc: true,
+  foam: false,
+  temp: false,
+  obsc: false,
   energy: '',
   mullCuts: '',
   notes: '',
@@ -61,6 +61,7 @@ export const typeOfCheckBox = {
 };
 
 export const interiorColor = [
+  '',
   'White - Extruded',
   'Almond - Extruded',
   'Clay - Extruded',
@@ -71,6 +72,7 @@ export const interiorColor = [
 ];
 
 export const exteriorColor = [
+  '',
   'White - Extruded',
   'Almond - Extruded',
   'Clay - Extruded',
@@ -85,6 +87,7 @@ export const exteriorColor = [
 ];
 
 export const roomItems = [
+  '',
   'BEDROOM',
   'LIVING ROOM',
   'GARAGE',
@@ -93,6 +96,6 @@ export const roomItems = [
   'BATH',
 ];
 
-export const roomStyle = ['DH', '3LS', 'SPD'];
+export const roomStyle = ['', 'DH', '3LS', 'SPD'];
 
-export const energy = ['SZ'];
+export const energy = ['', 'SZ'];

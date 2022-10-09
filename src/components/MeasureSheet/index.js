@@ -55,10 +55,6 @@ let data = {
   writable: true,
 };
 
-for (let i = 0; i < 20; i++) {
-  data.mainTable[i] = { ...initDataOfMeasureSheet, no: i + 1 };
-}
-
 const MeasureSheet = () => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const measuresheetData = useSelector((state) => state.measuresheet.data);
@@ -93,8 +89,8 @@ const MeasureSheet = () => {
 
   const handleSave = () => {
     console.log(tempObj);
-    console.log(data.mainTable[selectedRow]);
     data.mainTable[selectedRow] = { ...tempObj };
+    console.log('???=>', selectedRow, data.mainTable[selectedRow]);
     dispatch(updateMainTable(data.mainTable));
     setOpenTableModal(false);
   };
@@ -104,7 +100,7 @@ const MeasureSheet = () => {
   };
 
   const handleChangeCheckbox = (value, { formId }) => {
-    setTempObj({ ...tempObj, formId: value });
+    setTempObj({ ...tempObj, [formId]: value });
   };
 
   const TableHeader = () => {
@@ -119,14 +115,29 @@ const MeasureSheet = () => {
   };
 
   const TableBody = () => {
+    const checkBoxArray = ['foam', 'temp', 'obsc'];
+    // setTempObj({ ...measuresheetData.mainTable });
+    data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>
         {data.mainTable &&
           Object.values(measuresheetData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
-              {Object.values(ele).map((value, index) => (
-                <td key={index}>{value}</td>
-              ))}
+              {Object.keys(ele).map((key, index) =>
+                checkBoxArray.find((val) => val === key) ? (
+                  <td key={index}>
+                    <Checkbox
+                      checkVal={ele[key]}
+                      checkId={key}
+                      updateCheck={handleChangeCheckbox}
+                      isInputEnable={viewMode === 'homepage'}
+                      type={typeOfCheckBox.PatioDoorOrder}
+                    />
+                  </td>
+                ) : (
+                  <td key={index}>{ele[key]}</td>
+                )
+              )}
             </tr>
           ))}
       </tbody>
@@ -136,7 +147,7 @@ const MeasureSheet = () => {
   return (
     <div className="msh__container">
       <div className="msh__header">
-        <div className="msh__header__left flex-col-30">
+        <div className="msh__header__left width-40">
           <div className="display-inline-block">
             <p className="msh-text text-center m-5">EXISTING WINDOWS</p>
             <div className="msh__hover-left-table">
@@ -265,17 +276,38 @@ const MeasureSheet = () => {
             </div>
           </div>
         </div>
-        <div className="msh__header__center flex-col-40 d-flex flex-direction-column justify-content-end">
+        <div className="msh__header__center  width-20 d-flex flex-direction-column justify-content-end">
           <p className="m-0">MEASURE SHEET (ORDER FORM)</p>
         </div>
-        <div className="msh__header__right flex-col-30">
-          <div className="msh__header_contact d-flex flex-direction-column">
-            <div className="flex-col-100 bottom-borderd">
-              Customer: {salesInfo.customer} Sales Rep:{' '}
-              {salesInfo.salesConsultant}
+        <div className="msh__header__right width-40">
+          <div className="flex">
+            <div className="width-50">
+              <div className="flex margin-top-30px">
+                <div className="right-align width-30">Customer:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.customer}
+                </div>
+              </div>
+              <div className="flex margin-top-30px">
+                <div className="right-align width-30">PO #:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.po}
+                </div>
+              </div>
             </div>
-            <div className="flex-col-100 bottom-borderd">
-              PO #: {salesInfo.po} Date: {salesInfo.date}
+            <div className="width-50">
+              <div className="flex margin-top-30px">
+                <div className="right-align width-30">Sales Rep:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.salesConsultant}
+                </div>
+              </div>
+              <div className="flex margin-top-30px">
+                <div className="right-align width-30">Date:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.date}
+                </div>
+              </div>
             </div>
           </div>
           <div className="d-flex justify-content-end">
@@ -481,34 +513,39 @@ const MeasureSheet = () => {
           </div>
           <div className="p-line">
             <label htmlFor="foam">FOAM</label>
-            <Checkbox
-              checkVal={tempObj.foam}
-              checkId="foam"
-              updateCheck={handleChangeCheckbox}
-              isInputEnable={viewMode === 'homepage'}
-              type={typeOfCheckBox.PatioDoorOrder}
-            />
+            <div className="measure-sheet__check-box">
+              <Checkbox
+                checkVal={tempObj.foam}
+                checkId="foam"
+                updateCheck={handleChangeCheckbox}
+                isInputEnable={viewMode === 'homepage'}
+                type={typeOfCheckBox.PatioDoorOrder}
+              />
+            </div>
           </div>
           <div className="p-line">
             <label htmlFor="temp">Temp</label>
-            <div></div>
-            <Checkbox
-              checkVal={tempObj.temp}
-              checkId="temp"
-              updateCheck={handleChangeCheckbox}
-              isInputEnable={viewMode === 'homepage'}
-              type={typeOfCheckBox.PatioDoorOrder}
-            />
+            <div className="measure-sheet__check-box">
+              <Checkbox
+                checkVal={tempObj.temp}
+                checkId="temp"
+                updateCheck={handleChangeCheckbox}
+                isInputEnable={viewMode === 'homepage'}
+                type={typeOfCheckBox.PatioDoorOrder}
+              />
+            </div>
           </div>
           <div className="p-line">
             <label htmlFor="obsc">OBSC</label>
-            <Checkbox
-              checkVal={tempObj.obsc}
-              checkId="obsc"
-              updateCheck={handleChangeCheckbox}
-              isInputEnable={viewMode === 'homepage'}
-              type={typeOfCheckBox.PatioDoorOrder}
-            />
+            <div className="measure-sheet__check-box">
+              <Checkbox
+                checkVal={tempObj.obsc}
+                checkId="obsc"
+                updateCheck={handleChangeCheckbox}
+                isInputEnable={viewMode === 'homepage'}
+                type={typeOfCheckBox.PatioDoorOrder}
+              />
+            </div>
           </div>
           <div className="p-line">
             <label htmlFor="energy">Energy</label>

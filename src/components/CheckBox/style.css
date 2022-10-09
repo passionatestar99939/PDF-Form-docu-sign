@@ -7,6 +7,10 @@
   /* background-image: 'images/checked.png'; */
 }
 
+.check-box {
+  height: 100%;
+}
+
 .ImageOfCheckBox {
   /* background-color: blue; */
   border-style: none;
