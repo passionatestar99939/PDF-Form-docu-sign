@@ -18,6 +18,7 @@ const customStyles = {
 const Signature = ({
   setVal,
   signId,
+  addClass,
   updateSign,
   width,
   height,
@@ -50,7 +51,10 @@ const Signature = ({
   console.log('???=>sign:', signButtonClass, isSignMode);
 
   return (
-    <div className="signature" style={{ width: width, height: height }}>
+    <div
+      className={`signature ${addClass}`}
+      style={{ width: width, height: height }}
+    >
       {viewMode === 'convert-pdf' ? (
         <div
           id="sign-button"

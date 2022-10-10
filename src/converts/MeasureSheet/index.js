@@ -2,12 +2,24 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 
-import { initDataOfMeasureSheet } from '../../constants/variables';
+import DropDownWrapper from '../DropDownWrapper';
+import Checkbox from '../Checkbox';
+
 import {
   updateWindowTable,
   updateTypeTable,
   updateMainTable,
 } from '../../store/slices/measuresheetSlice';
+
+import {
+  initDataOfMeasureSheet,
+  typeOfCheckBox,
+  interiorColor,
+  exteriorColor,
+  roomItems,
+  roomStyle,
+  energy,
+} from '../../constants/variables';
 
 import './style.css';
 
@@ -51,28 +63,12 @@ const MeasureSheet = () => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const measuresheetData = useSelector((state) => state.measuresheet.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
-  
-  const [openRightModal, setOpenRightModal] = useState(false);
-  const [openLeftModal, setOpenLeftModal] = useState(false);
+
   const [openTableModal, setOpenTableModal] = useState(false);
   const [tempObj, setTempObj] = useState({});
   const [selectedRow, setSelectedRow] = useState(0);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(updateWindowTable({ ...data.leftTable }));
-    dispatch(updateTypeTable({ ...data.rightTable }));
-    // dispatch(updateMainTable({ ...data.mainTable }));
-  }, []);
-
-  const handleLeftModalOpen = () => {
-    setOpenLeftModal(viewMode === "homepage");
-  };
-
-  const handleRightModalOpen = () => {
-    setOpenRightModal(viewMode === "homepage");
-  };
 
   const handleChangeWindowOption = (e) => {
     data.leftTable[e.target.id] = e.target.value;
@@ -88,22 +84,27 @@ const MeasureSheet = () => {
     setTempObj({ ...tempObj, [e.target.id]: e.target.value });
   };
 
-  const handleClickTr = useCallback((row_id) => {
+  const handleClickTr = (row_id) => {
     setSelectedRow(row_id);
-    setTempObj({ ...data.mainTable[row_id] });
-    setOpenTableModal(viewMode === "homepage");
-  }, []);
+    setTempObj({ ...measuresheetData.mainTable[row_id] });
+    console.log(measuresheetData.mainTable);
+    setOpenTableModal(viewMode === 'homepage');
+  };
 
   const handleSave = () => {
     console.log(tempObj);
-    console.log(data.mainTable[selectedRow]);
     data.mainTable[selectedRow] = { ...tempObj };
+    console.log('???=>', selectedRow, data.mainTable[selectedRow]);
     dispatch(updateMainTable(data.mainTable));
     setOpenTableModal(false);
   };
 
   const handleClear = () => {
     setTempObj({ ...initDataOfMeasureSheet, no: selectedRow + 1 });
+  };
+
+  const handleChangeCheckbox = (value, { formId }) => {
+    setTempObj({ ...tempObj, formId: value });
   };
 
   const TableHeader = () => {
@@ -133,284 +134,452 @@ const MeasureSheet = () => {
   };
 
   return (
-    <div className="msh__container">
+    <div className="msh_container_convert">
       <div className="msh__header">
-        <div className="msh__header__left flex-col-30">
+        <div className="msh__header__left width-40">
           <div className="display-inline-block">
             <p className="msh-text text-center m-5">EXISTING WINDOWS</p>
-            <div
-              className="msh__hover-left-table"
-              onClick={handleLeftModalOpen}
-            >
-              <table className="msh__header__left-table">
+            <div className="msh__hover-left-table">
+              <table className="msh__header__left-table_convert">
                 <tr>
                   <td className="text-right">TYPE OF WINDOW TEAROUTS</td>
-                  <td>{measuresheetData.windowTable.tearouts}</td>
+                  <td>
+                    {viewMode !== 'homepage' ? (
+                      measuresheetData.windowTable.tearouts
+                    ) : (
+                      <select
+                        className="ms_select"
+                        id="tearouts"
+                        onChange={(e) => handleChangeWindowOption(e)}
+                      >
+                        <option
+                          value="WOOD"
+                          selected={
+                            'WOOD' === measuresheetData.windowTable.tearouts
+                          }
+                        >
+                          WOOD
+                        </option>
+                        <option
+                          value="ALUM"
+                          selected={
+                            'ALUM' === measuresheetData.windowTable.tearouts
+                          }
+                        >
+                          ALUM
+                        </option>
+                        <option
+                          value="VINYL"
+                          selected={
+                            'VINYL' === measuresheetData.windowTable.tearouts
+                          }
+                        >
+                          VINYL
+                        </option>
+                        <option
+                          value="STEEL"
+                          selected={
+                            'STEEL' === measuresheetData.windowTable.tearouts
+                          }
+                        >
+                          STEEL
+                        </option>
+                      </select>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td className="text-right">TYPE OF WINDOW POCKET</td>
-                  <td>{measuresheetData.windowTable.pockets}</td>
+                  <td>
+                    {viewMode !== 'homepage' ? (
+                      measuresheetData.windowTable.pockets
+                    ) : (
+                      <select
+                        className="ms_select"
+                        id="pockets"
+                        onChange={(e) => handleChangeWindowOption(e)}
+                      >
+                        <option
+                          value="WOOD"
+                          selected={
+                            'WOOD' === measuresheetData.windowTable.pockets
+                          }
+                        >
+                          WOOD
+                        </option>
+                        <option
+                          value="PLASTER"
+                          se
+                          lected={
+                            'PLASTER' === measuresheetData.windowTable.pockets
+                          }
+                        >
+                          PLASTER
+                        </option>
+                        <option
+                          value="DRYWALL"
+                          selected={
+                            'DRYWALL' === measuresheetData.windowTable.pockets
+                          }
+                        >
+                          DRYWALL
+                        </option>
+                      </select>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td className="text-right">WINDOW CUTBACKS</td>
-                  <td>{measuresheetData.windowTable.cutbacks}</td>
+                  <td>
+                    {viewMode !== 'homepage' ? (
+                      measuresheetData.windowTable.cutbacks
+                    ) : (
+                      <select
+                        className="ms_select"
+                        id="cutbacks"
+                        onChange={(e) => handleChangeWindowOption(e)}
+                      >
+                        <option
+                          value="(-3/8” W)"
+                          selected={
+                            '(-3/8” W)' ===
+                            measuresheetData.windowTable.cutbacks
+                          }
+                        >
+                          (-3/8” W)
+                        </option>
+                        <option
+                          value="(-1/2” W) x (-1/2 H)"
+                          selected={
+                            '(-1/2” W) x (-1/2 H)' ===
+                            measuresheetData.windowTable.cutbacks
+                          }
+                        >
+                          (-1/2” W) x (-1/2 H)
+                        </option>
+                      </select>
+                    )}
+                  </td>
                 </tr>
               </table>
             </div>
           </div>
         </div>
-        <Modal
-          isOpen={openLeftModal}
-          className="msh__header_left-table-modal"
-          overlayClassName="myoverlay"
-          closeTimeoutMS={200}
-        >
-          <div className="p-line">
-            <label htmlFor="tearouts">TYPE OF WINDOW TEAROUTS</label>
-            <select id="tearouts" onChange={(e) => handleChangeWindowOption(e)}>
-              <option
-                value="WOOD"
-                selected={'WOOD' === data.leftTable.tearouts}
-              >
-                WOOD
-              </option>
-              <option
-                value="ALUM"
-                selected={'ALUM' === data.leftTable.tearouts}
-              >
-                ALUM
-              </option>
-              <option
-                value="VINYL"
-                selected={'VINYL' === data.leftTable.tearouts}
-              >
-                VINYL
-              </option>
-              <option
-                value="STEEL"
-                selected={'STEEL' === data.leftTable.tearouts}
-              >
-                STEEL
-              </option>
-            </select>
-          </div>
-          <div className="p-line">
-            <label htmlFor="pockets">TYPE OF WINDOW POCKET</label>
-            <select id="pockets" onChange={(e) => handleChangeWindowOption(e)}>
-              <option>WOOD</option>
-              <option>PLASTER</option>
-              <option>DRYWALL</option>
-            </select>
-          </div>
-          <div className="p-line">
-            <label htmlFor="cutbacks">WINDOW CUTBACKS</label>
-            <select id="cutbacks" onChange={(e) => handleChangeWindowOption(e)}>
-              <option>(-3/8” W)</option>
-              <option>(-1/2” W) x (-1/2 H)</option>
-            </select>
-          </div>
-          <div className="modal_footer">
-            <button onClick={() => setOpenLeftModal(false)}>close</button>
-          </div>
-        </Modal>
-        <div className="msh__header__center flex-col-40 d-flex flex-direction-column justify-content-end">
+        <div className="msh__header__center  width-20 d-flex flex-direction-column justify-content-end">
           <p className="m-0">MEASURE SHEET (ORDER FORM)</p>
         </div>
-        <div className="msh__header__right flex-col-30">
-          <div className="msh__header_contact d-flex flex-direction-column">
-            <div className="flex-col-100 bottom-borderd">
-              Customer: {salesInfo.customer} Sales Rep:{' '}
-              {salesInfo.salesConsultant}
+        <div className="msh__header__right width-40">
+          <div className="flex">
+            <div className="width-50">
+              <div className="flex ms_sales">
+                <div className="right-align width-30">Customer:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.customer}
+                </div>
+              </div>
+              <div className="flex ms_sales">
+                <div className="right-align width-30">PO #:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.po}
+                </div>
+              </div>
             </div>
-            <div className="flex-col-100 bottom-borderd">
-              PO #: {salesInfo.po} Date: {salesInfo.date}
+            <div className="width-50">
+              <div className="flex ms_sales">
+                <div className="right-align width-30">Sales Rep:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.salesConsultant}
+                </div>
+              </div>
+              <div className="flex ms_sales">
+                <div className="right-align width-30">Date:</div>
+                <div className="border-bottom width-70 blue-font">
+                  {salesInfo.date}
+                </div>
+              </div>
             </div>
           </div>
           <div className="d-flex justify-content-end">
-            <table
-              className="msh__header__right-table"
-              onClick={handleRightModalOpen}
-            >
+            <table className="msh__header__right-table_convert">
               <tr>
                 <td className="text-right">GRID STYLE</td>
                 <td className="text-center">
-                  {measuresheetData.typeTable.grid}
+                  {viewMode !== 'homepage' ? (
+                    measuresheetData.typeTable.grid
+                  ) : (
+                    <select
+                      className="ms_select"
+                      id="grid"
+                      onChange={(e) => handleChangeTypeTable(e)}
+                    >
+                      <option
+                        value="NO GRIDS"
+                        selected={
+                          'NO GRIDS' === measuresheetData.typeTable.grid
+                        }
+                      >
+                        NO GRIDS
+                      </option>
+                      <option
+                        value="Flat"
+                        selected={'Flat' === measuresheetData.typeTable.grid}
+                      >
+                        Flat
+                      </option>
+                      <option
+                        value="Sculptured"
+                        selected={
+                          'Sculptured' === measuresheetData.typeTable.grid
+                        }
+                      >
+                        Sculptured
+                      </option>
+                      <option
+                        value="SDL"
+                        selected={'SDL' === measuresheetData.typeTable.grid}
+                      >
+                        SDL
+                      </option>
+                    </select>
+                  )}
                 </td>
               </tr>
               <tr>
                 <td className="text-right">CAPPING STYLE</td>
                 <td className="text-center">
-                  {measuresheetData.typeTable.capping}
+                  {viewMode !== 'homepage' ? (
+                    measuresheetData.typeTable.capping
+                  ) : (
+                    <select
+                      className="ms_select"
+                      id="capping"
+                      onChange={(e) => handleChangeTypeTable(e)}
+                    >
+                      <option
+                        value="BRICKMOLD"
+                        selected={
+                          'BRICKMOLD' === measuresheetData.typeTable.capping
+                        }
+                      >
+                        BRICKMOLD
+                      </option>
+                      <option
+                        value="1x4"
+                        selected={'1x4' === measuresheetData.typeTable.capping}
+                      >
+                        1x4
+                      </option>
+                      <option
+                        value="1x6"
+                        selected={'1x6' === measuresheetData.typeTable.capping}
+                      >
+                        1x6
+                      </option>
+                      <option
+                        value="OTHER"
+                        selected={
+                          'OTHER' === measuresheetData.typeTable.capping
+                        }
+                      >
+                        OTHER
+                      </option>
+                    </select>
+                  )}
                 </td>
               </tr>
             </table>
           </div>
         </div>
-        <Modal
-          isOpen={openRightModal}
-          className="msh__header_left-table-modal"
-          overlayClassName="myoverlay"
-          closeTimeoutMS={200}
-        >
-          <div className="p-line">
-            <label htmlFor="grid">GRID STYLE</label>
-            <select id="grid" onChange={(e) => handleChangeTypeTable(e)}>
-              <option value="NO GRIDS">NO GRIDS</option>
-              <option value="Flat">Flat</option>
-              <option value="Sculptured">Sculptured</option>
-              <option value="SDL">SDL</option>
-            </select>
-          </div>
-          <div className="p-line">
-            <label htmlFor="capping">CAPPING STYLE</label>
-            <select id="capping" onChange={(e) => handleChangeTypeTable(e)}>
-              <option value="BRICKMOLD">BRICKMOLD</option>
-              <option value="1x4">1x4</option>
-              <option value="1x6">1x6</option>
-              <option value="OTHER">OTHER</option>
-            </select>
-          </div>
-          <div className="modal_footer">
-            <button onClick={() => setOpenRightModal(false)}>close</button>
-          </div>
-        </Modal>
       </div>
       <div className="msh__body">
-        <table className="msh__body-table">
+        <table className="msh__body-table_convert">
           <TableHeader />
           <TableBody />
         </table>
       </div>
       <Modal
         isOpen={openTableModal}
-        className="msh__header_left-table-modal"
+        className="msh__header_main-table-modal"
         overlayClassName="myoverlay"
         closeTimeoutMS={200}
       >
-        <div className="p-line">
-          <label htmlFor="room">Room</label>
-          <input
-            id="room"
-            value={tempObj['room']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="style">Style</label>
-          <input
-            id="style"
-            value={tempObj['style']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="roWidth">R.O.Width</label>
-          <input
-            id="roWidth"
-            value={tempObj['roWidth']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="roHeight">R.O.Height</label>
-          <input
-            id="roHeight"
-            value={tempObj['roHeight']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="orderWidth">Order Width</label>
-          <input
-            id="orderWidth"
-            value={tempObj['orderWidth']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="orderHeight">Order Height</label>
-          <input
-            id="orderHeight"
-            value={tempObj['orderHeight']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="grids">Grids/Blinds</label>
-          <input
-            id="grids"
-            value={tempObj['grids']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="intColor">Int Color</label>
-          <input
-            id="intColor"
-            value={tempObj['intColor']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="extColor">Ext Color</label>
-          <input
-            id="extColor"
-            value={tempObj['extColor']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="foam">FOAM</label>
-          <input
-            id="foam"
-            value={tempObj['foam']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="temp">Temp</label>
-          <input
-            id="temp"
-            value={tempObj['temp']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="obsc">OBSC</label>
-          <input
-            id="obsc"
-            value={tempObj['obsc']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="energy">Energy</label>
-          <input
-            id="energy"
-            value={tempObj['energy']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="mullCuts">Mull Cuts</label>
-          <input
-            id="mullCuts"
-            value={tempObj['mullCuts']}
-            onChange={(e) => handleChangeInput(e)}
-          />
-        </div>
-        <div className="p-line">
-          <label htmlFor="notes">Notes</label>
-          <input
-            id="notes"
-            value={tempObj['notes']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+        <div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="room">Room</label>
+            <select id="room" onChange={(e) => handleChangeInput(e)}>
+              {roomItems.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.room}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="style">Style</label>
+            <select id="style" onChange={(e) => handleChangeInput(e)}>
+              {roomStyle.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.room}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="roWidth">R.O.Width</label>
+            <input
+              id="roWidth"
+              value={tempObj['roWidth']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="roHeight">R.O.Height</label>
+            <input
+              id="roHeight"
+              value={tempObj['roHeight']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="orderWidth">Order Width</label>
+            <input
+              id="orderWidth"
+              value={tempObj['orderWidth']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="orderHeight">Order Height</label>
+            <input
+              id="orderHeight"
+              value={tempObj['orderHeight']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="grids">Grids/Blinds</label>
+            <input
+              id="grids"
+              value={tempObj['grids']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="intColor">Int Color</label>
+            <select id="intColor" onChange={(e) => handleChangeInput(e)}>
+              {interiorColor.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.room}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="extColor">Ext Color</label>
+            <select id="extColor" onChange={(e) => handleChangeInput(e)}>
+              {exteriorColor.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.room}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="foam">FOAM</label>
+            <div className="measure-sheet__check-box">
+              <Checkbox
+                checkVal={tempObj.foam}
+                checkId="foam"
+                updateCheck={handleChangeCheckbox}
+                isInputEnable={viewMode === 'homepage'}
+                type={typeOfCheckBox.PatioDoorOrder}
+              />
+            </div>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="temp">Temp</label>
+            <div className="measure-sheet__check-box">
+              <Checkbox
+                checkVal={tempObj.temp}
+                checkId="temp"
+                updateCheck={handleChangeCheckbox}
+                isInputEnable={viewMode === 'homepage'}
+                type={typeOfCheckBox.PatioDoorOrder}
+              />
+            </div>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="obsc">OBSC</label>
+            <div className="measure-sheet__check-box">
+              <Checkbox
+                checkVal={tempObj.obsc}
+                checkId="obsc"
+                updateCheck={handleChangeCheckbox}
+                isInputEnable={viewMode === 'homepage'}
+                type={typeOfCheckBox.PatioDoorOrder}
+              />
+            </div>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="energy">Energy</label>
+            <select id="energy" onChange={(e) => handleChangeInput(e)}>
+              {energy.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.room}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="mullCuts">Mull Cuts</label>
+            <input
+              id="mullCuts"
+              value={tempObj['mullCuts']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
+          <div className="ms_p-line_convert">
+            <label htmlFor="notes">Notes</label>
+            <input
+              id="notes"
+              value={tempObj['notes']}
+              onChange={(e) => handleChangeInput(e)}
+            />
+          </div>
         </div>
         <div className="modal_footer">
-          <button onClick={handleSave}>Save</button>
-          <button onClick={handleClear}>Clear</button>
-          <button onClick={() => setOpenTableModal(false)}>Close</button>
+          <button className="btn sign-modal-btn" onClick={handleSave}>
+            Save
+          </button>
+          <button className="btn sign-modal-btn" onClick={handleClear}>
+            Clear
+          </button>
+          <button
+            className="btn sign-modal-btn"
+            onClick={() => setOpenTableModal(false)}
+          >
+            Close
+          </button>
         </div>
       </Modal>
     </div>

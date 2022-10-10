@@ -1,11 +1,11 @@
-.patio-door-order,
-.patio-door-order__table-modal {
-  font-size: 13px;
+.patio-door-order_convert,
+.patio-door-order_convert__table-modal {
+  font-size: 9.5px;
   font-family: Arial;
   text-align: left;
 }
 
-.patio-door-order .main-table {
+.patio-door-order_convert .main-table {
   margin: auto;
 }
 
@@ -13,18 +13,18 @@
   box-sizing: border-box;
 }
 
-.patio-door-order * {
+.patio-door-order_convert * {
   overflow: hidden;
 }
 
-.patio-door-order__CheckBox > * {
+.patio-door-order_convert__CheckBox > * {
   height: 100%;
   text-align: center;
   cursor: pointer;
 }
-.patio-door-order table td,
-.patio-door-order table td * {
-  height: 30px;
+.patio-door-order_convert table td,
+.patio-door-order_convert table td * {
+  height: 20px;
 }
 
 div.Patio_Information {
@@ -37,25 +37,25 @@ div.Patio_Information {
   height: 1em;
 }
 
-.patio-door-order ul > *,
-.patio-door-order__table-modal ul > * {
-  margin-top: 9px;
+.patio-door-order_convert ul > *,
+.patio-door-order_convert__table-modal ul > * {
+  /* margin-top: 9px; */
 }
 
-.patio-door-order__CheckBox {
+.patio-door-order_convert__CheckBox {
   height: calc(1em + 2px);
   border-bottom: 1px solid black;
 }
 
-.patio-door-order__CheckBox-Width1 {
+.patio-door-order_convert__CheckBox-Width1 {
   width: 30px;
 }
 
-.patio-door-order__CheckBox-Width2 {
+.patio-door-order_convert__CheckBox-Width2 {
   width: 60px;
 }
 
-.patio-door-order__CheckBox-Width3 {
+.patio-door-order_convert__CheckBox-Width3 {
   width: 90px;
 }
 
@@ -75,8 +75,8 @@ div.Patio_Information {
   text-decoration: underline;
 }
 
-.patio-door-order ul,
-.patio-door-order__table-modal ul {
+.patio-door-order_convert ul,
+.patio-door-order_convert__table-modal ul {
   margin: 0px;
   padding: 0px;
   list-style-type: none;
@@ -96,7 +96,7 @@ div.Patio_Information {
   border-left: 1px solid black;
 }
 
-.patio-door-order__table-modal .connected-border {
+.patio-door-order_convert__table-modal .connected-border {
   border: 1px solid black;
 }
 .border-bottom {
@@ -130,8 +130,8 @@ div.Patio_Information {
   border: none;
 }
 
-.patio-door-order__table-modal .border,
-.patio-door-order__table-modal .col.border:first-child {
+.patio-door-order_convert__table-modal .border,
+.patio-door-order_convert__table-modal .col.border:first-child {
   border: 1px solid black;
 }
 
@@ -140,8 +140,8 @@ div.Patio_Information {
   border-right: 1px solid black;
 }
 
-.big-font {
-  font-size: 21px;
+.big-font_convert {
+  font-size: 16px;
 }
 
 .blue-font {
@@ -192,12 +192,12 @@ div.Patio_Information {
   bottom: 0px;
 }
 
-.patio-door-order__table-modal .bottom-0 {
+.patio-door-order_convert__table-modal .bottom-0 {
   position: relative;
   margin-top: 30px;
 }
 
-.patio-door-order__table-modal {
+.patio-door-order_convert__table-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -210,29 +210,30 @@ div.Patio_Information {
   outline: none;
   padding: 20px;
 }
-.patio-door-order__table-modal > div {
+.patio-door-order_convert__table-modal > div {
   /* top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 40vw; */
 }
 
-.patio-door-order__table-modal .width-30,
-.patio-door-order__table-modal .width-35,
-.patio-door-order__table-modal .width-70 {
+.patio-door-order_convert__table-modal .width-30,
+.patio-door-order_convert__table-modal .width-35,
+.patio-door-order_convert__table-modal .width-70 {
   width: 100%;
 }
 
-/* .patio-door-order .image {
+/* .patio-door-order_convert .image {
   width: 20px;
   height: 20px;
   margin-top: -3px;
 } */
 
-.component-i-j:not(.patio-door-order__table-modal .component-i-j) {
+.component-i-j:not(.patio-door-order_convert__table-modal .component-i-j) {
   cursor: pointer;
 }
 
-.component-i-j:hover:not(.patio-door-order__table-modal .component-i-j) {
+.component-i-j:hover:not(.patio-door-order_convert__table-modal
+    .component-i-j) {
   background-color: rgb(229, 229, 252);
 }

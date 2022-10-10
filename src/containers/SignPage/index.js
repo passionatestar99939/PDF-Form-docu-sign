@@ -267,7 +267,7 @@ const SignPage = () => {
     }
 
     getData();
-  }, []);
+  }, [id]);
 
   const style = {
     position: 'fixed',
@@ -304,8 +304,6 @@ const SignPage = () => {
             <Loader show={loading === 'pending' ? true : false} message={<></>}>
               <Page1 />
               <Page2 />
-              <Page3 />
-              <Page4 />
               <MeasureSheetPage />
               <WindowOrderPage />
               <SalesConsultantPage />

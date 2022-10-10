@@ -5,24 +5,8 @@ import axios from 'axios';
 
 import { store } from '../../store/store';
 
-import Header from '../../converts/Header';
-import Contact from '../../converts/Contact';
-import CalculateTable from '../../converts/CalculateTable';
-import SalesmanOwner from '../../converts/SalesmanOwner';
-import Footer from '../../converts/Footer';
-import Content from '../../converts/Content';
-import SalesPersonOwner from '../../converts/SalesPersonOwner';
-import PaymentLink from '../../converts/PaymentLink';
-import PageTitle from '../../converts/PageTitle';
-import Paragraph from '../../converts/Paragraph';
-import Information from '../../converts/Information';
-import BottomOfPage3 from '../../converts/BottomOfPage3';
-import MiddleOfPage3 from '../../converts/MiddleOfPage3';
-import WindowTable from '../../converts/WindowTable';
+import PageWrapper from '../../converts/PageWrapper';
 import SalesConsultant from '../../converts/SalesConsultant';
-import MeasureSheet from '../../components/MeasureSheet';
-import WindowOrder from '../../components/WindowOrder';
-import PatioDoorOrder from '../../components/PatioDoorOrder';
 
 import { updateData } from '../../store/slices/optionSlice';
 import { updateDataContact } from '../../store/slices/contactSlice';
@@ -58,104 +42,13 @@ const AppWrapper = styled.div`
   background-color: black;
 `;
 
-const Page1 = () => {
+const SalesConsultantPage = () => {
   return (
-    <div className="pdf-page" id="page1">
-      <Header />
-      <Contact />
-      <CalculateTable isInputEnable={false} />
-      <SalesmanOwner />
-      <Footer />
-    </div>
-  );
-};
-
-const Page2 = () => {
-  return (
-    <div className="pdf-page" id="page2">
-      <PageTitle>
-        <div className="page_title" style={{ margin: '50px 0px' }}>
-          PREPARING FOR YOUR NEW WINDOWS AND DOORS
-        </div>
-      </PageTitle>
-      <Content />
-      <SalesPersonOwner />
-      <Paragraph>
-        <div
-          style={{ fontStyle: 'italic', fontWeight: 'bold', fontSize: '1.2em' }}
-        >
-          P.S. Now would be a good time to review contract with the salesman to
-          be sure of your order options and work to be done. Only the items and
-          services on the contract will be done. If you have any questions
-          whatsoever, now is the time to ask.
-        </div>
-        <div style={{ marginTop: '50px' }}>
-          <small>Louisville Window 03-22 Valid-30 days</small>
-        </div>
-      </Paragraph>
-    </div>
-  );
-};
-
-const Page3 = () => {
-  const colNames = [
-    'No.',
-    'Room',
-    'Style',
-    'Grids',
-    'LE',
-    'Size',
-    'Mull',
-    'Window Note',
-  ];
-  return (
-    <div className="pdf-page" id="page3">
-      <Information />
-      <WindowTable
-        isInputEnable={false}
-        colNames={colNames}
-        rowCount={29}
-        firstNoOfRow={1}
-      />
-      <MiddleOfPage3 />
-      <BottomOfPage3 />
-    </div>
-  );
-};
-
-const Page4 = () => {
-  const colNames = [
-    'No.',
-    'Room',
-    'Style',
-    'Grids',
-    'LE',
-    'Size',
-    'Mull',
-    'Window Note',
-  ];
-  return (
-    <div className="pdf-page" id="page4">
-      <Information />
-      <WindowTable
-        isInputEnable={false}
-        colNames={colNames}
-        rowCount={49}
-        firstNoOfRow={30}
-      />
-    </div>
-  );
-};
-
-const Page5 = () => {
-  return (
-    <div className="pdf-page page5" id="page5">
-      <div style={{ marginTop: '90px', marginBottom: '40px' }}>
-        CREDIT CARD AUTHORIZATION FORM
-      </div>
-      <Contact addStyle={{ marginBottom: '10px' }} />
-      <PaymentLink />
-    </div>
+    <PageWrapper addClass="pdf-page">
+      <SalesConsultant />
+      <div className="hr-line">COPY</div>
+      <SalesConsultant />
+    </PageWrapper>
   );
 };
 
@@ -184,13 +77,13 @@ const updateStore = (data) => {
   store.dispatch(updateDataSalesInfo(data.salesInfo.data));
 };
 
-const ConvertLandscapDownPage = () => {
+const ConvertCommissionPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
 
   dispatch(updateData({ dataKey: 'linkId', data: id }));
-  dispatch(updateData({ dataKey: 'viewMode', data: 'convert-landscape-down' }));
+  dispatch(updateData({ dataKey: 'viewMode', data: 'convert-commission' }));
 
   useEffect(() => {
     async function getData() {
@@ -201,17 +94,13 @@ const ConvertLandscapDownPage = () => {
     }
 
     getData();
-  }, []);
+  }, [id]);
 
   return (
     <AppWrapper>
-      <Page1 />
-      <Page2 />
-      <Page3 />
-      <Page4 />
-      <Page5 />
+      <SalesConsultantPage />
     </AppWrapper>
   );
 };
 
-export default ConvertLandscapDownPage;
+export default ConvertCommissionPage;

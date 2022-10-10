@@ -13,7 +13,7 @@ const initialState = {
   },
 };
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 17; i++) {
   initialState.data.mainTable[i] = { ...initDataOfMeasureSheet, no: i + 1 };
 }
 

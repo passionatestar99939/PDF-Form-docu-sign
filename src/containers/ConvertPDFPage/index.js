@@ -12,7 +12,7 @@ import SalesmanOwner from '../../converts/SalesmanOwner';
 import Footer from '../../converts/Footer';
 import Content from '../../converts/Content';
 import SalesPersonOwner from '../../converts/SalesPersonOwner';
-import PaymentLink from '../../converts/PaymentLink';
+import CreditCardForm from '../../converts/CreditCardForm';
 import PageTitle from '../../converts/PageTitle';
 import Paragraph from '../../converts/Paragraph';
 import Information from '../../converts/Information';
@@ -39,6 +39,10 @@ import { updateDataVinylsliding } from '../../store/slices/vinylslidingSlice';
 import { updateDataWindowoption } from '../../store/slices/windowoptionSlice';
 import { updateDataWindowtable } from '../../store/slices/windowtableSlice';
 import { updateDataWindowworld } from '../../store/slices/windowworldSlice';
+import { updateDataMeasureSheet } from '../../store/slices/measuresheetSlice';
+import { updateDataPatioDoor } from '../../store/slices/patioDoorOrderSlice';
+import { updateDataWindowOrder } from '../../store/slices/windoworderSlice';
+import { updateDataSalesInfo } from '../../store/slices/salesInfoSlice';
 
 import { API_URL } from '../../constants';
 import styled from 'styled-components';
@@ -146,7 +150,7 @@ const Page5 = () => {
         CREDIT CARD AUTHORIZATION FORM
       </div>
       <Contact addStyle={{ marginBottom: '10px' }} />
-      <PaymentLink />
+      <CreditCardForm />
     </div>
   );
 };
@@ -170,6 +174,10 @@ const updateStore = (data) => {
   store.dispatch(updateDataWindowoption(data.windowoption.data));
   store.dispatch(updateDataWindowtable(data.windowtable.data));
   store.dispatch(updateDataWindowworld(data.windowworld.data));
+  store.dispatch(updateDataMeasureSheet(data.measuresheet.data));
+  store.dispatch(updateDataPatioDoor(data.patiodoororder.data));
+  store.dispatch(updateDataWindowOrder(data.windoworder.data));
+  store.dispatch(updateDataSalesInfo(data.salesInfo.data));
 };
 
 const ConvertPDFPage = () => {
@@ -189,14 +197,14 @@ const ConvertPDFPage = () => {
     }
 
     getData();
-  }, []);
+  }, [id]);
 
   return (
     <AppWrapper>
       <Page1 />
       <Page2 />
-      <Page3 />
-      <Page4 />
+      {/* <Page3 />
+      <Page4 /> */}
       <Page5 />
     </AppWrapper>
   );

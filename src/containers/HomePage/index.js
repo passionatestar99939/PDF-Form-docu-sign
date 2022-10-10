@@ -12,7 +12,6 @@ import SalesmanOwner from '../../components/SalesmanOwner';
 import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SalesPersonOwner from '../../components/SalesPersonOwner';
-import PaymentLink from '../../components/PaymentLink';
 import Operation from '../../components/Operation';
 import PageTitle from '../../components/PageTitle';
 import Paragraph from '../../components/Paragraph';
@@ -125,19 +124,9 @@ const Page4 = () => {
   );
 };
 
-const Page5 = () => {
-  return (
-    <PageWrapper>
-      <div style={{ marginBottom: '40px' }}>CREDIT CARD AUTHORIZATION FORM</div>
-      <Contact addStyle={{ marginBottom: '10px' }} />
-      <PaymentLink />
-    </PageWrapper>
-  );
-};
-
 const MeasureSheetPage = () => {
   return (
-    <PageWrapper>
+    <PageWrapper addClass="page">
       <MeasureSheet />
     </PageWrapper>
   );
@@ -145,7 +134,7 @@ const MeasureSheetPage = () => {
 
 const WindowOrderPage = () => {
   return (
-    <PageWrapper>
+    <PageWrapper addClass="page">
       <WindowOrder />
     </PageWrapper>
   );
@@ -153,7 +142,7 @@ const WindowOrderPage = () => {
 
 const SalesConsultantPage = () => {
   return (
-    <PageWrapper>
+    <PageWrapper addClass="page">
       <SalesConsultant />
     </PageWrapper>
   );
@@ -161,7 +150,7 @@ const SalesConsultantPage = () => {
 
 const PatioDoorOrderPage = () => {
   return (
-    <PageWrapper>
+    <PageWrapper addClass="page">
       <PatioDoorOrder />
     </PageWrapper>
   );
@@ -169,7 +158,7 @@ const PatioDoorOrderPage = () => {
 
 const CreditCardPage = () => {
   return (
-    <PageWrapper>
+    <PageWrapper addClass="page">
       <CreditCardForm />
     </PageWrapper>
   );
@@ -239,8 +228,6 @@ const HomePage = () => {
             <Loader show={loading === 'pending' ? true : false} message={<></>}>
               <Page1 />
               <Page2 />
-              <Page3 />
-              <Page4 />
               <MeasureSheetPage />
               <WindowOrderPage />
               <SalesConsultantPage />

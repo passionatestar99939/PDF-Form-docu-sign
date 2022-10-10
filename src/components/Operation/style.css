@@ -59,7 +59,7 @@
 .icon {
   font-size: 100;
   color: white;
-  marginright: 30;
+  margin-right: 30;
 }
 
 .btn:hover {
@@ -71,8 +71,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 41vw;
-  /*height: calc(15vw * 0.6);*/
+  width: 75vw;
+  height: calc(75vw * 0.7);
   border: 1px solid #ccc;
   background: #fff;
   overflow: auto;

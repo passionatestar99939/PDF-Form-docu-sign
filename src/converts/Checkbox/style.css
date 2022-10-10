@@ -7,6 +7,14 @@
   /* background-image: 'images/checked.png'; */
 }
 
+.check-box {
+  height: 100%;
+}
+
+.check-box:hover {
+  cursor: pointer;
+}
+
 .ImageOfCheckBox {
   /* background-color: blue; */
   border-style: none;

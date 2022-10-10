@@ -15,7 +15,16 @@ const customStyles = {
   },
 };
 
-const Signature = ({ setVal, signId, updateSign, width, height, signStatus, viewMode }) => {
+const Signature = ({
+  setVal,
+  signId,
+  updateSign,
+  width,
+  height,
+  signStatus,
+  viewMode,
+  isSignMode = true,
+}) => {
   const [imageURL, setImageURL] = useState(setVal);
   const [openModal, setOpenModal] = useState(false);
 
@@ -31,8 +40,17 @@ const Signature = ({ setVal, signId, updateSign, width, height, signStatus, view
   const handleSignClick = () => {
     setOpenModal(signStatus);
   };
+
+  // const signButtonClass = 'sign-button '.isSignMode
+  //   ? 'yellow-background'
+  //   : '';
+  const signButtonClass = `sign-button ${
+    isSignMode ? 'yellow-background' : ''
+  }`;
+  console.log('???=>sign:', signButtonClass, isSignMode);
+
   return (
-    <div className="signature">
+    <div className="signature" style={{ width: width, height: height }}>
       {viewMode === 'convert-pdf' ? (
         <div
           id="sign-button"
@@ -54,7 +72,7 @@ const Signature = ({ setVal, signId, updateSign, width, height, signStatus, view
       ) : (
         <div
           id="sign-button"
-          className="sign-button"
+          className={signButtonClass}
           onClick={() => handleSignClick()}
           style={{ width: width, height: height }}
         >
@@ -82,7 +100,7 @@ const Signature = ({ setVal, signId, updateSign, width, height, signStatus, view
         />
         <div style={{ textAlign: 'center' }}>
           <button onClick={save} className="modal-btn">
-            Sign
+            {isSignMode ? 'Sign' : 'Draw'}
           </button>
           <button onClick={clear} className="modal-btn">
             Clear

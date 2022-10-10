@@ -137,14 +137,19 @@ const WindowOrder = () => {
       'casementsPW',
     ];
 
+    const classNameForX = '';
+
     return (
       <tbody>
         {data.mainTable &&
           Object.values(windowOrderData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
-              {Object.keys(ele).map((key, index) =>
-                checkBoxArray.find((val) => val === key) ? (
-                  <td key={index}>
+              {Object.keys(ele).map((key, index) => (
+                <td
+                  key={index}
+                  className={ele[key] == 'X' ? 'window-order__X-td' : ''}
+                >
+                  {checkBoxArray.find((val) => val === key) ? (
                     <Checkbox
                       checkVal={ele[key]}
                       checkId={key}
@@ -152,11 +157,11 @@ const WindowOrder = () => {
                       isInputEnable={viewMode === 'homepage'}
                       type={typeOfCheckBox.PatioDoorOrder}
                     />
-                  </td>
-                ) : (
-                  <td key={index}>{ele[key]}</td>
-                )
-              )}
+                  ) : (
+                    ele[key]
+                  )}
+                </td>
+              ))}
             </tr>
           ))}
       </tbody>

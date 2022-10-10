@@ -313,3 +313,7 @@ table.wof__body-table td {
 .wof__body-table th {
   background-color: grey;
 }
+
+td.window-order__X-td {
+  width: 3%;
+}

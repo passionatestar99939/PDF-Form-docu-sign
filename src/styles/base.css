@@ -14,3 +14,19 @@
   padding: 18px 30px 2px 20px;
   page-break-before: always;
 }
+
+.pdf-page-portrait {
+  width: 1175px !important;
+  height: 685px;
+  background-color: white !important;
+  margin: 0 auto 10px !important;
+  padding: 18px 30px 2px 20px !important;
+  page-break-before: always !important;
+  font-size: 14px;
+}
+
+.hr-line {
+  margin: 70px 0px;
+  border-top: 3px dashed black;
+  text-align: center;
+}
