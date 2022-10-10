@@ -240,6 +240,11 @@ table.wof__body-table td {
   border: 3px solid black;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.mySign {
+  position: absolute;
 }
 
 .right-align {

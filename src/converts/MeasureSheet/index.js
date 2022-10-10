@@ -55,10 +55,6 @@ let data = {
   writable: true,
 };
 
-for (let i = 0; i < 20; i++) {
-  data.mainTable[i] = { ...initDataOfMeasureSheet, no: i + 1 };
-}
-
 const MeasureSheet = () => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const measuresheetData = useSelector((state) => state.measuresheet.data);
@@ -104,7 +100,7 @@ const MeasureSheet = () => {
   };
 
   const handleChangeCheckbox = (value, { formId }) => {
-    setTempObj({ ...tempObj, formId: value });
+    setTempObj({ ...tempObj, [formId]: value });
   };
 
   const TableHeader = () => {
@@ -119,28 +115,45 @@ const MeasureSheet = () => {
   };
 
   const TableBody = () => {
+    const checkBoxArray = ['foam', 'temp', 'obsc'];
+    // setTempObj({ ...measuresheetData.mainTable });
+    data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>
         {data.mainTable &&
           Object.values(measuresheetData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
-              {Object.values(ele).map((value, index) => (
-                <td key={index}>{value}</td>
-              ))}
+              {Object.keys(ele).map((key, index) =>
+                checkBoxArray.find((val) => val === key) ? (
+                  <td key={index}>
+                    <Checkbox
+                      checkVal={ele[key]}
+                      checkId={key}
+                      updateCheck={handleChangeCheckbox}
+                      isInputEnable={viewMode === 'homepage'}
+                      type={typeOfCheckBox.PatioDoorOrder}
+                    />
+                  </td>
+                ) : (
+                  <td key={index}>{ele[key]}</td>
+                )
+              )}
             </tr>
           ))}
       </tbody>
     );
   };
 
+  let selected;
+
   return (
-    <div className="msh_container_convert">
+    <div className="msh__container">
       <div className="msh__header">
         <div className="msh__header__left width-40">
           <div className="display-inline-block">
             <p className="msh-text text-center m-5">EXISTING WINDOWS</p>
             <div className="msh__hover-left-table">
-              <table className="msh__header__left-table_convert">
+              <table className="msh__header__left-table">
                 <tr>
                   <td className="text-right">TYPE OF WINDOW TEAROUTS</td>
                   <td>
@@ -271,13 +284,13 @@ const MeasureSheet = () => {
         <div className="msh__header__right width-40">
           <div className="flex">
             <div className="width-50">
-              <div className="flex ms_sales">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">Customer:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.customer}
                 </div>
               </div>
-              <div className="flex ms_sales">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">PO #:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.po}
@@ -285,13 +298,13 @@ const MeasureSheet = () => {
               </div>
             </div>
             <div className="width-50">
-              <div className="flex ms_sales">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">Sales Rep:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.salesConsultant}
                 </div>
               </div>
-              <div className="flex ms_sales">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">Date:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.date}
@@ -300,7 +313,7 @@ const MeasureSheet = () => {
             </div>
           </div>
           <div className="d-flex justify-content-end">
-            <table className="msh__header__right-table_convert">
+            <table className="msh__header__right-table">
               <tr>
                 <td className="text-right">GRID STYLE</td>
                 <td className="text-center">
@@ -392,196 +405,11 @@ const MeasureSheet = () => {
         </div>
       </div>
       <div className="msh__body">
-        <table className="msh__body-table_convert">
+        <table className="msh__body-table">
           <TableHeader />
           <TableBody />
         </table>
       </div>
-      <Modal
-        isOpen={openTableModal}
-        className="msh__header_main-table-modal"
-        overlayClassName="myoverlay"
-        closeTimeoutMS={200}
-      >
-        <div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="room">Room</label>
-            <select id="room" onChange={(e) => handleChangeInput(e)}>
-              {roomItems.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.room}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="style">Style</label>
-            <select id="style" onChange={(e) => handleChangeInput(e)}>
-              {roomStyle.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.room}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="roWidth">R.O.Width</label>
-            <input
-              id="roWidth"
-              value={tempObj['roWidth']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="roHeight">R.O.Height</label>
-            <input
-              id="roHeight"
-              value={tempObj['roHeight']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="orderWidth">Order Width</label>
-            <input
-              id="orderWidth"
-              value={tempObj['orderWidth']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="orderHeight">Order Height</label>
-            <input
-              id="orderHeight"
-              value={tempObj['orderHeight']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="grids">Grids/Blinds</label>
-            <input
-              id="grids"
-              value={tempObj['grids']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="intColor">Int Color</label>
-            <select id="intColor" onChange={(e) => handleChangeInput(e)}>
-              {interiorColor.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.room}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="extColor">Ext Color</label>
-            <select id="extColor" onChange={(e) => handleChangeInput(e)}>
-              {exteriorColor.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.room}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="foam">FOAM</label>
-            <div className="measure-sheet__check-box">
-              <Checkbox
-                checkVal={tempObj.foam}
-                checkId="foam"
-                updateCheck={handleChangeCheckbox}
-                isInputEnable={viewMode === 'homepage'}
-                type={typeOfCheckBox.PatioDoorOrder}
-              />
-            </div>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="temp">Temp</label>
-            <div className="measure-sheet__check-box">
-              <Checkbox
-                checkVal={tempObj.temp}
-                checkId="temp"
-                updateCheck={handleChangeCheckbox}
-                isInputEnable={viewMode === 'homepage'}
-                type={typeOfCheckBox.PatioDoorOrder}
-              />
-            </div>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="obsc">OBSC</label>
-            <div className="measure-sheet__check-box">
-              <Checkbox
-                checkVal={tempObj.obsc}
-                checkId="obsc"
-                updateCheck={handleChangeCheckbox}
-                isInputEnable={viewMode === 'homepage'}
-                type={typeOfCheckBox.PatioDoorOrder}
-              />
-            </div>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="energy">Energy</label>
-            <select id="energy" onChange={(e) => handleChangeInput(e)}>
-              {energy.map((value, index) => (
-                <option
-                  key={index}
-                  value={value}
-                  selected={value === tempObj.room}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="mullCuts">Mull Cuts</label>
-            <input
-              id="mullCuts"
-              value={tempObj['mullCuts']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-          <div className="ms_p-line_convert">
-            <label htmlFor="notes">Notes</label>
-            <input
-              id="notes"
-              value={tempObj['notes']}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </div>
-        </div>
-        <div className="modal_footer">
-          <button className="btn sign-modal-btn" onClick={handleSave}>
-            Save
-          </button>
-          <button className="btn sign-modal-btn" onClick={handleClear}>
-            Clear
-          </button>
-          <button
-            className="btn sign-modal-btn"
-            onClick={() => setOpenTableModal(false)}
-          >
-            Close
-          </button>
-        </div>
-      </Modal>
     </div>
   );
 };

@@ -189,6 +189,7 @@ const WindowOrder = () => {
                 width={'100%'}
                 height={'100%'}
                 signId="drawingData"
+                addClass="mySign"
                 updateSign={handleSign}
                 setVal={windowOrderData['drawingData']}
                 signStatus={true}
@@ -254,6 +255,8 @@ const WindowOrder = () => {
           <label htmlFor="qty">QTY</label>
           <input
             id="qty"
+            type="number"
+            min="0"
             value={tempObj['qty']}
             onChange={(e) => handleChangeInput(e)}
           />
