@@ -1,47 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { updateSalesInfo } from '../../store/slices/salesInfoSlice';
 import { dollarNumberWithCommas } from '../../utils/globals';
 
 import './style.css';
 
 const SalesConsultant = () => {
   const salesData = useSelector((state) => state.salesInfo.data);
-  const viewMode = useSelector((state) => state.option.data.viewMode);
-  const [contractTotal, setContractTotal] = useState(salesData.contractTotal);
+  const contractSubTotal = useSelector(
+    (state) => state.calculate.data.contractsubtotal
+  );
   const [price, setPrice] = useState(0);
   const [bonus, setBonus] = useState(0);
-  const dispatch = useDispatch();
-
-  console.log(viewMode);
-
-  const handleContractTotal = (e) => {
-    let price = dollarNumberWithCommas(salesData.contractTotal);
-    setContractTotal(price);
-    dispatch(updateSalesInfo({ id: 'contractTotal', value: e.target.value }));
-  };
-
-  const handleContractTotalFocus = (e) => {
-    if (viewMode !== 'homepage') return;
-    e.target.type = 'number';
-    e.target.value = salesData.contractTotal;
-  };
-
-  const handleContractTotalBlur = (e) => {
-    e.target.type = 'text';
-    let price = dollarNumberWithCommas(salesData.contractTotal);
-    e.target.value = price;
-    setContractTotal(price);
-  };
 
   useEffect(() => {
-    let contractPrice = dollarNumberWithCommas(salesData.contractTotal * 0.08);
-    let bonus = dollarNumberWithCommas(salesData.contractTotal * 0.08 + 25);
+    let contractPrice = dollarNumberWithCommas(
+      (contractSubTotal * 0.08).toFixed(3)
+    );
+    let bonus = dollarNumberWithCommas(
+      (contractSubTotal * 0.08 + 25).toFixed(3)
+    );
 
     setPrice(contractPrice);
     setBonus(bonus);
-  }, [contractTotal, salesData.contractTotal]);
+  }, [contractSubTotal]);
 
   return (
     <div className="cf_container">
@@ -54,7 +36,7 @@ const SalesConsultant = () => {
                   src="/images/gray1.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                 />
                 <p style={{ marginTop: '-40px' }}>
                   Window World - Sales Commission Sheet
@@ -69,7 +51,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">1099 Sales Rep:</p>
@@ -80,7 +62,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Total Commission</p>
@@ -93,7 +75,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Customer Name:</p>
@@ -104,7 +86,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Deductions:</p>
@@ -117,7 +99,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Contract Date:</p>
@@ -128,7 +110,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">10% Deduction:</p>
@@ -141,7 +123,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Customer PO:</p>
@@ -152,7 +134,7 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Check Total:</p>
@@ -165,18 +147,18 @@ const SalesConsultant = () => {
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Contract Total:</p>
               </td>
-              <td>{dollarNumberWithCommas(salesData.contractTotal)}</td>
+              <td>{dollarNumberWithCommas(contractSubTotal)}</td>
               <td className="gray_title">
                 <img
                   src="/images/gray2.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="47px"
                   className="gray_background"
                 />
                 <p className="gray_content">Account Balance:</p>
@@ -189,7 +171,7 @@ const SalesConsultant = () => {
             </tr>
             <tr className="contract_price">
               <td>CONTRACT PRICE</td>
-              <td>{dollarNumberWithCommas(salesData.contractTotal)} x 0.08</td>
+              <td>{dollarNumberWithCommas(contractSubTotal)} x 0.08</td>
               <td colSpan={2}>= {price}</td>
             </tr>
             <tr className="manufacture_bonus">
@@ -205,7 +187,7 @@ const SalesConsultant = () => {
                   src="/images/gray3.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="48px"
                   className="commission-total-img"
                 />
                 <p className="commission-total">Commission Total</p>
@@ -221,7 +203,7 @@ const SalesConsultant = () => {
                   src="/images/gray4.png"
                   alt="gray"
                   width="100%"
-                  height="49px"
+                  height="48px"
                   className="commission-total-img"
                 />
                 <p className="bonus-total">Commission Total for 8 %</p>

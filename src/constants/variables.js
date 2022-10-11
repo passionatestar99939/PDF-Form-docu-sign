@@ -98,4 +98,36 @@ export const roomItems = [
 
 export const roomStyle = ['', 'DH', '3LS', 'SPD'];
 
-export const energy = ['', 'SZ'];
+export const energy = [
+  '',
+  'LOE SZONE',
+  'HP-LOE SZONE Elite',
+  'LOE 340 SZONE SUNSHILD',
+  'TG2 Argon',
+  'P&Q STC',
+  'IMPACT 366',
+];
+
+export const obscured = [
+  '',
+  'TSO (Top Sash Only)',
+  'BSO (Bottom Sash Only)',
+  'Both',
+];
+
+export const rain = ['', 'Yes'];
+
+export const tempered = [
+  '',
+  'TSO (Top Sash Only)',
+  'BSO (Bottom Sash Only)',
+  'Both',
+];
+
+export const sashSplit = ['', 'OR (Oriel)', 'COT (Cottage)'];
+
+export const cutbacks = {
+  WOOD: '(-3/8" W)',
+  DRYWALL: '(-1/2" W) x (-1/2" H)',
+  PLASTER: '(-1/2" W) x (-1/2" H)',
+};

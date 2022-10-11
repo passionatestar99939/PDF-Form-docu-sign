@@ -10,7 +10,7 @@
 }
 
 .cf_table_convert td {
-  border: 1px solid black;
+  border: 2px solid black;
   border-collapse: collapse;
 }
 
@@ -18,7 +18,7 @@
   font-size: 28px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0 0 2px 0;
-  border: 1px solid gray;
+  border: 2px solid gray;
 }
 
 .cf_table_convert .gray_title {

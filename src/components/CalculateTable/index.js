@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { data } from '../../mockup/data';
 import { updateValue } from '../../store/slices/calculateSlice';
+import { updateValue as updateCreditValue } from '../../store/slices/creditSlice';
 import { numberWithCommas, dollarNumberWithCommas } from '../../utils/globals';
 
 import Input from '../Input';
@@ -80,12 +81,8 @@ const CalculateTable = (props) => {
         storeData['calculateInput2']
       );
       // input2.current.value = dollarNumberWithCommas(storeData['calculateInput3']);
-      input3.current.value = dollarNumberWithCommas(
-        storeData['calculateInput4']
-      );
-      input4.current.value = dollarNumberWithCommas(
-        storeData['calculateInput5']
-      );
+      input3.current.value = dollarNumberWithCommas(storeData['cc_deposit']);
+      input4.current.value = dollarNumberWithCommas(storeData['cc_balance']);
       input5.current.value = dollarNumberWithCommas(
         storeData['calculateInput6']
       );
@@ -318,6 +315,9 @@ const CalculateTable = (props) => {
     if (viewMode !== 'homepage') return;
     if (id === 'calculateInput1') setDisposalFee(value);
     if (id === 'calculateInput2') setMeasureFee(value);
+    if (id === 'cc_deposit' || id === 'cc_balance') {
+      dispatch(updateCreditValue({ id: id, value: Number(value) }));
+    }
     if (id === 'calculateInput3')
       dispatch(updateValue({ id: id, count: value }));
     else dispatch(updateValue({ id: id, count: Number(value) }));
@@ -722,16 +722,14 @@ const CalculateTable = (props) => {
             <div>
               <label>Custom Order Deposit 50% $</label>
               <input
-                id="calculateInput4"
+                id="cc_deposit"
                 className="bottom-outline width-100px medium-input"
                 type="text"
                 style={{ textAlign: 'right' }}
-                onChange={(e) =>
-                  handleChange(e.target.value, 'calculateInput4')
-                }
-                onFocus={(e) => handleFocus(e, 'calculateInput4')}
-                onBlur={(e) => handleBlur(e, 'calculateInput4')}
-                // value={numberWithCommas(Number(storeData['calculateInput4']))}
+                onChange={(e) => handleChange(e.target.value, 'cc_deposit')}
+                onFocus={(e) => handleFocus(e, 'cc_deposit')}
+                onBlur={(e) => handleBlur(e, 'cc_deposit')}
+                // value={numberWithCommas(Number(storeData['cc_deposit']))}
                 ref={input3}
                 readOnly={viewMode !== 'homepage'}
               />
@@ -740,14 +738,14 @@ const CalculateTable = (props) => {
           <div>
             <label>Balance to be Paid to Installer $</label>
             <input
-              id="calculateInput5"
+              id="cc_balance"
               className="bottom-outline width-100px medium-input"
               type="text"
               style={{ textAlign: 'right' }}
-              onChange={(e) => handleChange(e.target.value, 'calculateInput5')}
-              onFocus={(e) => handleFocus(e, 'calculateInput5')}
-              onBlur={(e) => handleBlur(e, 'calculateInput5')}
-              // value={numberWithCommas(Number(storeData['calculateInput5']))}
+              onChange={(e) => handleChange(e.target.value, 'cc_balance')}
+              onFocus={(e) => handleFocus(e, 'cc_balance')}
+              onBlur={(e) => handleBlur(e, 'cc_balance')}
+              // value={numberWithCommas(Number(storeData['cc_balance']))}
               ref={input4}
               readOnly={viewMode !== 'homepage'}
             />

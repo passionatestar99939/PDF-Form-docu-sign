@@ -20,7 +20,7 @@ export const windoworderSlice = createSlice({
       state.data.mainTable = { ...action.payload };
     },
     updateDataWindowOrder: (state, action) => {
-      state.data.drawingData = { ...action.payload };
+      state.data = { ...action.payload };
     },
     updateDrawingDataFunc: (state, action) => {
       state.data.drawingData = action.payload;

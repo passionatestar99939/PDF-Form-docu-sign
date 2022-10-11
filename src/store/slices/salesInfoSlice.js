@@ -5,10 +5,10 @@ import { formatDate } from '../../utils/globals';
 const initialState = {
   data: {
     salesConsultant: 'Nick Tisdale',
-    customer: 'Smith, Jerry',
+    customer: '',
     date: formatDate(new Date()),
     salesRepNumber: 0,
-    po: 0,
+    po: '',
     account: 'Kentukiana #348',
     repNumber: '005',
     comm: 8,

@@ -19,6 +19,9 @@ import {
   roomItems,
   roomStyle,
   energy,
+  obscured,
+  tempered,
+  cutbacks,
 } from '../../constants/variables';
 
 import './style.css';
@@ -68,6 +71,7 @@ const MeasureSheet = () => {
 
   const handleChangeWindowOption = (e) => {
     data.leftTable[e.target.id] = e.target.value;
+    data.leftTable.cutbacks = cutbacks[data.leftTable.pockets];
     dispatch(updateWindowTable({ ...data.leftTable }));
   };
 
@@ -88,9 +92,7 @@ const MeasureSheet = () => {
   };
 
   const handleSave = () => {
-    console.log(tempObj);
     data.mainTable[selectedRow] = { ...tempObj };
-    console.log('???=>', selectedRow, data.mainTable[selectedRow]);
     dispatch(updateMainTable(data.mainTable));
     setOpenTableModal(false);
   };
@@ -115,7 +117,7 @@ const MeasureSheet = () => {
   };
 
   const TableBody = () => {
-    const checkBoxArray = ['foam', 'temp', 'obsc'];
+    const checkBoxArray = ['foam'];
     // setTempObj({ ...measuresheetData.mainTable });
     data.mainTable = { ...measuresheetData.mainTable };
     return (
@@ -143,8 +145,6 @@ const MeasureSheet = () => {
       </tbody>
     );
   };
-
-  let selected;
 
   return (
     <div className="msh__container">
@@ -243,36 +243,7 @@ const MeasureSheet = () => {
                 </tr>
                 <tr>
                   <td className="text-right">WINDOW CUTBACKS</td>
-                  <td>
-                    {viewMode !== 'homepage' ? (
-                      measuresheetData.windowTable.cutbacks
-                    ) : (
-                      <select
-                        className="ms_select"
-                        id="cutbacks"
-                        onChange={(e) => handleChangeWindowOption(e)}
-                      >
-                        <option
-                          value="(-3/8” W)"
-                          selected={
-                            '(-3/8” W)' ===
-                            measuresheetData.windowTable.cutbacks
-                          }
-                        >
-                          (-3/8” W)
-                        </option>
-                        <option
-                          value="(-1/2” W) x (-1/2 H)"
-                          selected={
-                            '(-1/2” W) x (-1/2 H)' ===
-                            measuresheetData.windowTable.cutbacks
-                          }
-                        >
-                          (-1/2” W) x (-1/2 H)
-                        </option>
-                      </select>
-                    )}
-                  </td>
+                  <td>{measuresheetData.windowTable.cutbacks}</td>
                 </tr>
               </table>
             </div>
@@ -527,27 +498,31 @@ const MeasureSheet = () => {
           </div>
           <div className="p-line">
             <label htmlFor="temp">Temp</label>
-            <div className="measure-sheet__check-box">
-              <Checkbox
-                checkVal={tempObj.temp}
-                checkId="temp"
-                updateCheck={handleChangeCheckbox}
-                isInputEnable={viewMode === 'homepage'}
-                type={typeOfCheckBox.PatioDoorOrder}
-              />
-            </div>
+            <select id="temp" onChange={(e) => handleChangeInput(e)}>
+              {tempered.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.temp ? 'selected' : ''}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="p-line">
             <label htmlFor="obsc">OBSC</label>
-            <div className="measure-sheet__check-box">
-              <Checkbox
-                checkVal={tempObj.obsc}
-                checkId="obsc"
-                updateCheck={handleChangeCheckbox}
-                isInputEnable={viewMode === 'homepage'}
-                type={typeOfCheckBox.PatioDoorOrder}
-              />
-            </div>
+            <select id="obsc" onChange={(e) => handleChangeInput(e)}>
+              {obscured.map((value, index) => (
+                <option
+                  key={index}
+                  value={value}
+                  selected={value === tempObj.obsc ? 'selected' : ''}
+                >
+                  {value}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="p-line">
             <label htmlFor="energy">Energy</label>

@@ -1,94 +1,31 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Modal from 'react-modal';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import Checkbox from '../Checkbox';
+import Signature from '../Signature';
 
 import {
   initDataOfWindowOrder,
-  interiorColor,
-  exteriorColor,
   typeOfCheckBox,
 } from '../../constants/variables';
-import {
-  updateMainTable,
-  updateDrawingData,
-} from '../../store/slices/windoworderSlice';
 
 import './style.css';
-import Checkbox from '../Checkbox';
-import Signature from '../Signature';
-import { updateValue } from '../../store/slices/salesmanSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const data = {
   mainTable: {},
   drawingData: {},
 };
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-  },
-  table: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-  },
-};
+for (let i = 0; i < 16; i++) {
+  data.mainTable[i] = { ...initDataOfWindowOrder, no: i + 1 };
+}
 
 const WindowOrder = () => {
-  const signStatus = useSelector((state) => state.option.data.signStatus);
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const windowOrderData = useSelector((state) => state.windoworder.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
-  const [openTableModal, setOpenTableModal] = useState(false);
-  const [tempObj, setTempObj] = useState({});
 
-  data.mainTable = { ...windowOrderData.mainTable };
-  const dispatch = useDispatch();
-
-  const selectedRowRef = useRef(0);
-
-  const selectedRow = selectedRowRef.current;
-
-  const handleChangeInput = (e) => {
-    setTempObj({ ...tempObj, [e.target.id]: e.target.value });
-  };
-
-  const handleChangeCheckbox = (value, { formId }) => {
-    setTempObj({ ...tempObj, [formId]: value });
-  };
-
-  const handleSign = (value) => {
-    dispatch(updateValue({ id: 'signature', value: value }));
-  };
-
-  const handleClickTr = useCallback((row_id) => {
-    selectedRowRef.current = row_id;
-    setTempObj({ ...data.mainTable[row_id] });
-    setOpenTableModal(viewMode === 'homepage');
-  }, []);
-
-  const handleSave = () => {
-    data.mainTable[selectedRow] = { ...tempObj };
-    dispatch(updateMainTable(data.mainTable));
-    setOpenTableModal(false);
-  };
-
-  const handleClear = () => {
-    const selectedRow = selectedRowRef.current;
-    setTempObj({ ...initDataOfWindowOrder, no: selectedRow + 1 });
-  };
+  const handleSign = () => {};
 
   const TableHeader = () => {
     return (
@@ -137,23 +74,20 @@ const WindowOrder = () => {
       'casementsPW',
     ];
 
-    const classNameForX = '';
-
     return (
       <tbody>
         {data.mainTable &&
           Object.values(windowOrderData.mainTable).map((ele, row_id) => (
-            <tr key={row_id} onClick={() => handleClickTr(row_id)}>
+            <tr key={row_id}>
               {Object.keys(ele).map((key, index) => (
                 <td
                   key={index}
-                  className={ele[key] == 'X' ? 'window-order__X-td' : ''}
+                  className={ele[key] === 'X' ? 'window-order__X-td' : ''}
                 >
                   {checkBoxArray.find((val) => val === key) ? (
                     <Checkbox
                       checkVal={ele[key]}
                       checkId={key}
-                      updateCheck={handleChangeCheckbox}
                       isInputEnable={viewMode === 'homepage'}
                       type={typeOfCheckBox.PatioDoorOrder}
                     />
@@ -177,22 +111,16 @@ const WindowOrder = () => {
             <div className="underline left-align black-font">
               Draw Grid Pattern Layout
             </div>
-            <div className="window-order__draw-box black-font">
-              <div>
-                Click to Draw
-                <FontAwesomeIcon
-                  icon={faPencil}
-                  style={{ fontSize: 40, color: 'black', margin: '0px 20px' }}
-                />
-              </div>
+            <div className="window-order__draw-box_convert black-font">
+              Click to Draw
               <Signature
                 width={'100%'}
                 height={'100%'}
                 signId="drawingData"
-                addClass="mySign"
+                addClass="mySign_convert"
                 updateSign={handleSign}
                 setVal={windowOrderData['drawingData']}
-                signStatus={true}
+                signStatus={false}
                 viewMode={viewMode}
                 isSignMode={false}
               />
@@ -209,13 +137,13 @@ const WindowOrder = () => {
         <div className="flex justify-end">
           <div className="flex width-40">
             <div className="width-50">
-              <div className="flex margin-top-30px">
+              <div className="flex wo_sales">
                 <div className="right-align width-30">Customer:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.customer}
                 </div>
               </div>
-              <div className="flex margin-top-30px">
+              <div className="flex wo_sales">
                 <div className="right-align width-30">PO #:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.po}
@@ -223,13 +151,13 @@ const WindowOrder = () => {
               </div>
             </div>
             <div className="width-50">
-              <div className="flex margin-top-30px">
+              <div className="flex wo_sales">
                 <div className="right-align width-30">Sales Rep:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.salesConsultant}
                 </div>
               </div>
-              <div className="flex margin-top-30px">
+              <div className="flex wo_sales">
                 <div className="right-align width-30">Date:</div>
                 <div className="border-bottom width-70 blue-font">
                   {salesInfo.date}
@@ -239,7 +167,7 @@ const WindowOrder = () => {
           </div>
         </div>
 
-        <table className="wof__body-table">
+        <table className="wof__body-table_convert">
           <TableHeader />
           <TableBody />
           <TableFooter />

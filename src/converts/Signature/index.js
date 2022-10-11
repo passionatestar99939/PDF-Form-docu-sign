@@ -4,20 +4,10 @@ import Modal from 'react-modal';
 
 import './style.css';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
 const Signature = ({
   setVal,
   signId,
+  addClass,
   updateSign,
   width,
   height,
@@ -50,7 +40,10 @@ const Signature = ({
   console.log('???=>sign:', signButtonClass, isSignMode);
 
   return (
-    <div className="signature" style={{ width: width, height: height }}>
+    <div
+      className={`signature ${addClass}`}
+      style={{ width: width, height: height }}
+    >
       {viewMode === 'convert-pdf' ? (
         <div
           id="sign-button"

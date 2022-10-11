@@ -1,3 +1,8 @@
+.msh_container_convert {
+  /* min-width: ; */
+  /* height: 680px; */
+}
+
 .d-flex {
   display: flex;
 }
@@ -18,21 +23,21 @@
   margin: 5px;
 }
 
-.msh__header__left-table,
-.msh__header__right-table,
-.msh__body-table {
+.msh__header__left-table_convert,
+.msh__header__right-table_convert,
+.msh__body-table_convert {
   border-collapse: collapse;
   border: 2px solid black;
   color: black;
   font-size: 12px;
 }
 
-.msh__header__left-table tr td {
+.msh__header__left-table_convert tr td {
   border: 2px solid black;
   font-weight: bold;
 }
 
-.msh__header__right-table tr td {
+.msh__header__right-table_convert tr td {
   border: 2px solid black;
   font-weight: bold;
 }
@@ -59,47 +64,47 @@
   opacity: 1;
 } */
 
-.msh__body-table {
+.msh__body-table_convert {
   margin-top: 10px;
   width: 100%;
   font-size: 12px;
 }
 
-.msh__body-table tr,
-.msh__body-table tr,
-.msh__header__right-table tr,
-.msh__header__left-table tr {
-  height: 6vh;
+.msh__body-table_convert tr,
+.msh__body-table_convert tr,
+.msh__header__right-table_convert tr,
+.msh__header__left-table_convert tr {
+  height: 4vh;
 }
 
-.msh__body-table thead tr th {
+.msh__body-table_convert thead tr th {
   border: 2px solid black;
   padding: 5px;
   font-size: 12px;
 }
 
-.msh__body-table thead tr th:nth-child(16) {
+.msh__body-table_convert thead tr th:nth-child(16) {
   width: 250px;
   text-align: left;
 }
 
-.msh__body-table thead tr th:nth-child(1),
-.msh__body-table thead tr th:nth-child(2) {
+.msh__body-table_convert thead tr th:nth-child(1),
+.msh__body-table_convert thead tr th:nth-child(2) {
   text-align: left;
 }
 
-.msh__body-table tbody tr td {
+.msh__body-table_convert tbody tr td {
   text-align: center;
   border: 1px solid black;
 }
 
-.msh__body-table tbody tr:hover {
+.msh__body-table_convert tbody tr:hover {
   background-color: rgb(211, 218, 250);
 }
 
-.msh__body-table:hover,
-.msh__header__left-table:hover,
-.msh__header__right-table:hover {
+.msh__body-table_convert:hover,
+.msh__header__left-table_convert:hover,
+.msh__header__right-table_convert:hover {
   cursor: pointer;
 }
 
@@ -135,21 +140,19 @@
   padding: 20px;
 }
 
-.msh__header_main-table-modal .p-line {
+.ms_p-line_convert {
   display: flex;
   width: 300px;
   padding: 10px 0px;
 }
 
-.msh__header_main-table-modal .p-line label {
+.ms_p-line_convert label {
   width: 40%;
   text-align: right;
   padding-right: 10px;
 }
 
-.msh__header_main-table-modal
-  .p-line
-  > :last-child:not(.measure-sheet__check-box) {
+.ms_p-line_convert > :last-child:not(.measure-sheet__check-box) {
   width: 60%;
 }
 
@@ -258,6 +261,10 @@
   width: 20px;
   height: 20px;
   border: 1px solid black;
+}
+
+.ms_sales {
+  margin-top: 5px;
 }
 
 .msh__body-table td:first-child,

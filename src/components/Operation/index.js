@@ -377,6 +377,8 @@ const Operation = (props) => {
                 </div>
               </div>
               <br />
+              <div></div>
+              <br />
               <p>
                 Click here to electronically sign:{' '}
                 <span className="link-content">Window World Contract</span>

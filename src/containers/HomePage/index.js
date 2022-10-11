@@ -144,6 +144,8 @@ const SalesConsultantPage = () => {
   return (
     <PageWrapper addClass="page">
       <SalesConsultant />
+      <div className="hr-line">COPY</div>
+      <SalesConsultant />
     </PageWrapper>
   );
 };

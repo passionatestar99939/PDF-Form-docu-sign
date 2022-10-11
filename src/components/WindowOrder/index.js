@@ -16,34 +16,13 @@ import {
 import './style.css';
 import Checkbox from '../Checkbox';
 import Signature from '../Signature';
-import { updateValue } from '../../store/slices/salesmanSlice';
+import { updateDrawingDataFunc } from '../../store/slices/windoworderSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const data = {
   mainTable: {},
   drawingData: {},
-};
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-  },
-  table: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80%',
-  },
 };
 
 const WindowOrder = () => {
@@ -70,7 +49,7 @@ const WindowOrder = () => {
   };
 
   const handleSign = (value) => {
-    dispatch(updateValue({ id: 'signature', value: value }));
+    dispatch(updateDrawingDataFunc(value));
   };
 
   const handleClickTr = useCallback((row_id) => {
@@ -301,6 +280,8 @@ const WindowOrder = () => {
           <label htmlFor="szWidth">Exact Size Width</label>
           <input
             id="szWidth"
+            type="number"
+            min="0"
             value={tempObj['szWidth']}
             onChange={(e) => handleChangeInput(e)}
           />
@@ -309,6 +290,8 @@ const WindowOrder = () => {
           <label htmlFor="szHeight">Exact Size Height</label>
           <input
             id="szHeight"
+            type="number"
+            min="0"
             value={tempObj['szHeight']}
             onChange={(e) => handleChangeInput(e)}
           />

@@ -1,50 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { updateSalesInfo } from '../../store/slices/salesInfoSlice';
 import { dollarNumberWithCommas } from '../../utils/globals';
 
 import './style.css';
 
 const SalesConsultant = () => {
   const salesData = useSelector((state) => state.salesInfo.data);
-  const viewMode = useSelector((state) => state.option.data.viewMode);
-  const [contractTotal, setContractTotal] = useState(salesData.contractTotal);
+  const contractSubTotal = useSelector(
+    (state) => state.calculate.data.contractsubtotal
+  );
   const [price, setPrice] = useState(0);
   const [bonus, setBonus] = useState(0);
-  const dispatch = useDispatch();
-
-  const handleContractTotal = (e) => {
-    let price = dollarNumberWithCommas(salesData.contractTotal);
-    setContractTotal(price);
-    dispatch(updateSalesInfo({ id: 'contractTotal', value: e.target.value }));
-  };
-
-  const handleContractTotalFocus = (e) => {
-    e.target.type = 'number';
-    e.target.value = salesData.contractTotal;
-  };
-
-  const handleContractTotalBlur = (e) => {
-    e.target.type = 'text';
-    let price = dollarNumberWithCommas(salesData.contractTotal);
-    e.target.value = price;
-    setContractTotal(price);
-    dispatch(
-      updateSalesInfo({
-        id: 'contractTotal',
-        value: Number(salesData.contractTotal),
-      })
-    );
-  };
 
   useEffect(() => {
-    let contractPrice = dollarNumberWithCommas(salesData.contractTotal * 0.08);
-    let bonus = dollarNumberWithCommas(salesData.contractTotal * 0.08 + 25);
+    let contractPrice = dollarNumberWithCommas(
+      (contractSubTotal * 0.08).toFixed(3)
+    );
+    let bonus = dollarNumberWithCommas(
+      (contractSubTotal * 0.08 + 25).toFixed(3)
+    );
 
     setPrice(contractPrice);
     setBonus(bonus);
-  }, [contractTotal, salesData.contractTotal]);
+  }, [contractSubTotal]);
 
   return (
     <div>
@@ -82,17 +61,7 @@ const SalesConsultant = () => {
             </tr>
             <tr>
               <td className="gray_title">Contract Total:</td>
-              <td>
-                <input
-                  className="contract_total"
-                  type="text"
-                  defaultValue={dollarNumberWithCommas(salesData.contractTotal)}
-                  onChange={(e) => handleContractTotal(e)}
-                  onFocus={(e) => handleContractTotalFocus(e)}
-                  onBlur={(e) => handleContractTotalBlur(e)}
-                  readOnly={viewMode !== 'homepage'}
-                />
-              </td>
+              <td>{dollarNumberWithCommas(contractSubTotal)}</td>
               <td className="gray_title">Account Balance:</td>
               <td className="td_content">$ </td>
             </tr>
@@ -102,7 +71,7 @@ const SalesConsultant = () => {
             </tr>
             <tr className="contract_price">
               <td>CONTRACT PRICE</td>
-              <td>{dollarNumberWithCommas(salesData.contractTotal)} x 0.08</td>
+              <td>{dollarNumberWithCommas(contractSubTotal)} x 0.08</td>
               <td colSpan={2}>= {price}</td>
             </tr>
             <tr className="manufacture_bonus">
