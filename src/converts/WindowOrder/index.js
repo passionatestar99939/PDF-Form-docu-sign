@@ -82,7 +82,9 @@ const WindowOrder = () => {
               {Object.keys(ele).map((key, index) => (
                 <td
                   key={index}
-                  className={ele[key] === 'X' ? 'window-order__X-td' : ''}
+                  className={
+                    ele[key] === 'X' ? 'window-order__X-td_convert' : ''
+                  }
                 >
                   {checkBoxArray.find((val) => val === key) ? (
                     <Checkbox

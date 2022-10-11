@@ -301,3 +301,7 @@ table.wof__body-table_convert td {
   top: 0;
   left: 0;
 }
+
+td.window-order__X-td_convert {
+  width: 3%;
+}
