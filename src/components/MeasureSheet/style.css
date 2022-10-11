@@ -259,3 +259,7 @@
   height: 20px;
   border: 1px solid black;
 }
+
+.measure-sheet__big-font {
+  font-size: 1.2em;
+}
