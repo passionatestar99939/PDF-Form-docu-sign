@@ -36,6 +36,7 @@ const gcd = (a, b) => {
 };
 
 export const fractionCalculator = (first, sign, second) => {
+  const result = {};
   try {
     if (!first) first = '';
     if (!second) second = '';
@@ -155,12 +156,21 @@ export const fractionCalculator = (first, sign, second) => {
       default:
         break;
     }
-    if (top % bottom) {
-      return `${Math.floor((resultSign * top) / bottom)} ${
-        top % bottom
-      }/${bottom}`;
+    result.q = Math.floor((resultSign * top) / bottom);
+    result.r = top % bottom;
+    result.m = bottom;
+    if (result.q) {
+      if (result.r) {
+        return `${result.q} ${result.r}/${result.m}`;
+      } else {
+        return `${result.q}`;
+      }
     } else {
-      return `${Math.floor((resultSign * top) / bottom)}`;
+      if (result.r) {
+        return `${result.r}/${result.m}`;
+      } else {
+        return `0`;
+      }
     }
   } catch (error) {
     // alert(error);
