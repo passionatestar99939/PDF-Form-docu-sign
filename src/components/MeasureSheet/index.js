@@ -251,7 +251,15 @@ const MeasureSheet = () => {
                 </tr>
                 <tr>
                   <td className="text-right">WINDOW CUTBACKS</td>
-                  <td>{measuresheetData.windowTable.cutbacks}</td>
+                  <td>
+                    ({measuresheetData.windowTable.cutbacks.w}")
+                    {measuresheetData.windowTable.cutbacks.H
+                      ? ' X ' +
+                        '(' +
+                        measuresheetData.windowTable.cutbacks.H +
+                        '")'
+                      : ''}
+                  </td>
                 </tr>
               </table>
             </div>
