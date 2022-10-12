@@ -24,6 +24,7 @@ import {
   cutbacks,
 } from '../../constants/variables';
 
+import { fractionCalculator } from '../../utils/globals';
 import './style.css';
 
 const tableHeaderLine = [
@@ -81,7 +82,37 @@ const MeasureSheet = () => {
   };
 
   const handleChangeInput = (e) => {
-    setTempObj({ ...tempObj, [e.target.id]: e.target.value });
+    switch (e.target.id) {
+      case 'roWidth':
+        setTempObj({
+          ...tempObj,
+          [e.target.id]: e.target.value,
+          orderWidth: fractionCalculator(
+            e.target.value,
+            '+',
+            measuresheetData.windowTable.cutbacks.w
+          ),
+        });
+        break;
+      case 'roHeight':
+        setTempObj({
+          ...tempObj,
+          [e.target.id]: e.target.value,
+          orderHeight: fractionCalculator(
+            e.target.value,
+            '+',
+            measuresheetData.windowTable.cutbacks.H
+          ),
+        });
+        break;
+      default:
+        setTempObj({
+          ...tempObj,
+          [e.target.id]: e.target.value,
+        });
+        break;
+    }
+    // measuresheetData.windowTable.cutbacks.H
   };
 
   const handleClickTr = (row_id) => {

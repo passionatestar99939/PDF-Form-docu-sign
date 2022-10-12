@@ -6,7 +6,7 @@ const initialState = {
     windowTable: {
       tearouts: 'WOOD',
       pockets: 'WOOD',
-      cutbacks: '(-3/8") x (-1/2")',
+      cutbacks: { w: '-3/8' },
     },
     typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
     mainTable: {},

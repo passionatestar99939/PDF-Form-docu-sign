@@ -37,6 +37,8 @@ const gcd = (a, b) => {
 
 export const fractionCalculator = (first, sign, second) => {
   try {
+    if (!first) first = '';
+    if (!second) second = '';
     const fraction1 = {},
       fraction2 = {};
     const array1 = first.split(' ');
