@@ -76,7 +76,7 @@ export const fractionCalculator = (first, sign, second) => {
     });
     fraction1.sign = fraction1.q < 0 ? -1 : 1;
     fraction1.q *= fraction1.q < 0 ? -1 : 1;
-    console.log('first:', fraction1);
+    // console.log('first:', fraction1);
 
     const array2 = second.split(' ');
     let array2_2;
@@ -116,7 +116,7 @@ export const fractionCalculator = (first, sign, second) => {
     fraction2.sign = fraction2.q < 0 ? -1 : 1;
     fraction2.q *= fraction2.q < 0 ? -1 : 1;
 
-    console.log('second:', fraction2);
+    // console.log('second:', fraction2);
     let divisor;
     let top, bottom, resultSign;
     switch (sign) {
@@ -164,7 +164,7 @@ export const fractionCalculator = (first, sign, second) => {
     }
   } catch (error) {
     // alert(error);
-    console.log('???=>error:', error);
+    // console.log('???=>error:', error);
   }
 };
 

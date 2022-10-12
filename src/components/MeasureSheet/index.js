@@ -64,16 +64,49 @@ const MeasureSheet = () => {
   const measuresheetData = useSelector((state) => state.measuresheet.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
 
+  const [renderFlag, setRenderFlag] = useState(false);
   const [openTableModal, setOpenTableModal] = useState(false);
   const [tempObj, setTempObj] = useState({});
   const [selectedRow, setSelectedRow] = useState(0);
 
   const dispatch = useDispatch();
 
-  const handleChangeWindowOption = (e) => {
+  const handleChangeWindowOption = async (e) => {
+    // setRenderFlag(true);
     data.leftTable[e.target.id] = e.target.value;
     data.leftTable.cutbacks = cutbacks[data.leftTable.pockets];
-    dispatch(updateWindowTable({ ...data.leftTable }));
+    // dispatch(updateWindowTable({ ...data.leftTable }));
+    await dispatch(updateWindowTable(data.leftTable));
+
+    Object.values(data.mainTable).forEach((ele, index) => {
+      data.mainTable[index] = {
+        ...ele,
+        orderWidth: ele.roWidth
+          ? fractionCalculator(
+              ele.roWidth,
+              '+',
+              data.leftTable.cutbacks.H
+              //2022.10.12  13:39  dispatch(updateWindowTable(data.leftTable)): setState, async function ---> prevState is used at this moment
+            )
+          : '',
+        orderHeight: ele.roHeight
+          ? fractionCalculator(
+              ele.roHeight,
+              '+',
+              data.leftTable.cutbacks.H
+              //2022.10.12  13:39  dispatch(updateWindowTable(data.leftTable)): setState, async function ---> prevState is used at this moment
+            )
+          : '',
+      };
+
+      // data.mainTable[index].orderHeight = fractionCalculator(
+      //   ele.roHeight,
+      //   '+',
+      //   measuresheetData.windowTable.cutbacks.H
+      // );
+    });
+
+    dispatch(updateMainTable(data.mainTable));
   };
 
   const handleChangeTypeTable = (e) => {
@@ -87,22 +120,26 @@ const MeasureSheet = () => {
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
-          orderWidth: fractionCalculator(
-            e.target.value,
-            '+',
-            measuresheetData.windowTable.cutbacks.w
-          ),
+          orderWidth: e.target.value
+            ? fractionCalculator(
+                e.target.value,
+                '+',
+                measuresheetData.windowTable.cutbacks.w
+              )
+            : '',
         });
         break;
       case 'roHeight':
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
-          orderHeight: fractionCalculator(
-            e.target.value,
-            '+',
-            measuresheetData.windowTable.cutbacks.H
-          ),
+          orderHeight: e.target.value
+            ? fractionCalculator(
+                e.target.value,
+                '+',
+                measuresheetData.windowTable.cutbacks.H
+              )
+            : '',
         });
         break;
       default:
