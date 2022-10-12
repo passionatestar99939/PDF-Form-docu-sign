@@ -115,58 +115,62 @@ const MeasureSheet = () => {
   const handleChangeInput = (e) => {
     switch (e.target.id) {
       case 'style':
-        if (e.target.value === 'SPD') {
-          setTempObj({
-            ...tempObj,
-            [e.target.id]: e.target.value,
-            orderWidth: tempObj.roWidth,
-            orderHeight: tempObj.roHeight,
-          });
-        } else {
-          setTempObj({
-            ...tempObj,
-            [e.target.id]: e.target.value,
-            orderWidth: tempObj.roWidth
+        setTempObj({
+          ...tempObj,
+          [e.target.id]: e.target.value,
+          orderWidth:
+            e.target.value === 'SPD'
+              ? tempObj.roWidth
+              : tempObj.roWidth
               ? fractionCalculator(
                   tempObj.roWidth,
                   '+',
                   measuresheetData.windowTable.cutbacks.w
                 )
               : '',
-            orderHeight: tempObj.roHeight
+          orderHeight:
+            e.target.value === 'SPD'
+              ? tempObj.roHeight
+              : tempObj.roHeight
               ? fractionCalculator(
                   tempObj.roHeight,
                   '+',
                   measuresheetData.windowTable.cutbacks.h
                 )
               : '',
-          });
-        }
+        });
+
         break;
       case 'roWidth':
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
-          orderWidth: e.target.value
-            ? fractionCalculator(
-                e.target.value,
-                '+',
-                measuresheetData.windowTable.cutbacks.w
-              )
-            : '',
+          orderWidth:
+            tempObj.style == 'SPD'
+              ? e.target.value
+              : e.target.value
+              ? fractionCalculator(
+                  e.target.value,
+                  '+',
+                  measuresheetData.windowTable.cutbacks.w
+                )
+              : '',
         });
         break;
       case 'roHeight':
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
-          orderHeight: e.target.value
-            ? fractionCalculator(
-                e.target.value,
-                '+',
-                measuresheetData.windowTable.cutbacks.h
-              )
-            : '',
+          orderHeight:
+            tempObj.style == 'SPD'
+              ? e.target.value
+              : e.target.value
+              ? fractionCalculator(
+                  e.target.value,
+                  '+',
+                  measuresheetData.windowTable.cutbacks.h
+                )
+              : '',
         });
         break;
       default:
