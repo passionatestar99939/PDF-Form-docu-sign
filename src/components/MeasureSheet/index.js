@@ -46,23 +46,21 @@ const tableHeaderLine = [
   'NOTES',
 ];
 let data = {
-  leftTable: {
+  windowTable: {
     tearouts: 'WOOD',
     pockets: 'WOOD',
-    cutbacks: '(-3/8") x (-1/2")',
+    cutbacks: { w: '-3/8' },
   },
-  rightTable: {
-    grid: 'NO GRIDS',
-    capping: 'BRICKMOLD',
-  },
+  typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
   mainTable: {},
-  writable: true,
 };
 
 const MeasureSheet = () => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const measuresheetData = useSelector((state) => state.measuresheet.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
+
+  console.log('???=>data:', data);
 
   // const [renderFlag, setRenderFlag] = useState(false);
   const [openTableModal, setOpenTableModal] = useState(false);
@@ -73,10 +71,10 @@ const MeasureSheet = () => {
 
   const handleChangeWindowOption = (e) => {
     // setRenderFlag(true);
-    data.leftTable[e.target.id] = e.target.value;
-    data.leftTable.cutbacks = cutbacks[data.leftTable.pockets];
-    // dispatch(updateWindowTable({ ...data.leftTable }));
-    dispatch(updateWindowTable(data.leftTable));
+    data.windowTable[e.target.id] = e.target.value;
+    data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
+    // dispatch(updateWindowTable({ ...data.windowTable }));
+    dispatch(updateWindowTable(data.windowTable));
 
     Object.values(data.mainTable).forEach((ele, index) => {
       data.mainTable[index] = {
@@ -85,16 +83,16 @@ const MeasureSheet = () => {
           ? fractionCalculator(
               ele.roWidth,
               '+',
-              data.leftTable.cutbacks.H
-              //2022.10.12  13:39  dispatch(updateWindowTable(data.leftTable)): setState, async function ---> prevState is used at this moment
+              data.windowTable.cutbacks.w
+              //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
             )
           : '',
         orderHeight: ele.roHeight
           ? fractionCalculator(
               ele.roHeight,
               '+',
-              data.leftTable.cutbacks.H
-              //2022.10.12  13:39  dispatch(updateWindowTable(data.leftTable)): setState, async function ---> prevState is used at this moment
+              data.windowTable.cutbacks.h
+              //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
             )
           : '',
       };
@@ -102,7 +100,7 @@ const MeasureSheet = () => {
       // data.mainTable[index].orderHeight = fractionCalculator(
       //   ele.roHeight,
       //   '+',
-      //   measuresheetData.windowTable.cutbacks.H
+      //   measuresheetData.windowTable.cutbacks.h
       // );
     });
 
@@ -110,8 +108,8 @@ const MeasureSheet = () => {
   };
 
   const handleChangeTypeTable = (e) => {
-    data.rightTable[e.target.id] = e.target.value;
-    dispatch(updateTypeTable({ ...data.rightTable }));
+    data.typeTable[e.target.id] = e.target.value;
+    dispatch(updateTypeTable({ ...data.typeTable }));
   };
 
   const handleChangeInput = (e) => {
@@ -139,7 +137,7 @@ const MeasureSheet = () => {
               ? fractionCalculator(
                   tempObj.roHeight,
                   '+',
-                  measuresheetData.windowTable.cutbacks.H
+                  measuresheetData.windowTable.cutbacks.h
                 )
               : '',
           });
@@ -166,7 +164,7 @@ const MeasureSheet = () => {
             ? fractionCalculator(
                 e.target.value,
                 '+',
-                measuresheetData.windowTable.cutbacks.H
+                measuresheetData.windowTable.cutbacks.h
               )
             : '',
         });
@@ -178,7 +176,7 @@ const MeasureSheet = () => {
         });
         break;
     }
-    // measuresheetData.windowTable.cutbacks.H
+    // measuresheetData.windowTable.cutbacks.h
   };
 
   const handleClickTr = (row_id) => {
@@ -350,10 +348,10 @@ const MeasureSheet = () => {
                   <td className="text-right">WINDOW CUTBACKS</td>
                   <td>
                     ({measuresheetData.windowTable.cutbacks.w}")
-                    {measuresheetData.windowTable.cutbacks.H
+                    {measuresheetData.windowTable.cutbacks.h
                       ? ' X ' +
                         '(' +
-                        measuresheetData.windowTable.cutbacks.H +
+                        measuresheetData.windowTable.cutbacks.h +
                         '")'
                       : ''}
                   </td>

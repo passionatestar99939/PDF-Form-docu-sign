@@ -134,6 +134,6 @@ export const sashSplit = ['', 'OR (Oriel)', 'COT (Cottage)'];
 
 export const cutbacks = {
   WOOD: { w: '-3/8' },
-  DRYWALL: { w: '-1/2', H: '-1/2' },
-  PLASTER: { w: '-1/2', H: '-1/2' },
+  DRYWALL: { w: '-1/2', h: '-1/2' },
+  PLASTER: { w: '-1/2', h: '-1/2' },
 };
