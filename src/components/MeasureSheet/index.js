@@ -64,19 +64,19 @@ const MeasureSheet = () => {
   const measuresheetData = useSelector((state) => state.measuresheet.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
 
-  const [renderFlag, setRenderFlag] = useState(false);
+  // const [renderFlag, setRenderFlag] = useState(false);
   const [openTableModal, setOpenTableModal] = useState(false);
   const [tempObj, setTempObj] = useState({});
   const [selectedRow, setSelectedRow] = useState(0);
 
   const dispatch = useDispatch();
 
-  const handleChangeWindowOption = async (e) => {
+  const handleChangeWindowOption = (e) => {
     // setRenderFlag(true);
     data.leftTable[e.target.id] = e.target.value;
     data.leftTable.cutbacks = cutbacks[data.leftTable.pockets];
     // dispatch(updateWindowTable({ ...data.leftTable }));
-    await dispatch(updateWindowTable(data.leftTable));
+    dispatch(updateWindowTable(data.leftTable));
 
     Object.values(data.mainTable).forEach((ele, index) => {
       data.mainTable[index] = {
@@ -116,6 +116,35 @@ const MeasureSheet = () => {
 
   const handleChangeInput = (e) => {
     switch (e.target.id) {
+      case 'style':
+        if (e.target.value === 'SPD') {
+          setTempObj({
+            ...tempObj,
+            [e.target.id]: e.target.value,
+            orderWidth: tempObj.roWidth,
+            orderHeight: tempObj.roHeight,
+          });
+        } else {
+          setTempObj({
+            ...tempObj,
+            [e.target.id]: e.target.value,
+            orderWidth: tempObj.roWidth
+              ? fractionCalculator(
+                  tempObj.roWidth,
+                  '+',
+                  measuresheetData.windowTable.cutbacks.w
+                )
+              : '',
+            orderHeight: tempObj.roHeight
+              ? fractionCalculator(
+                  tempObj.roHeight,
+                  '+',
+                  measuresheetData.windowTable.cutbacks.H
+                )
+              : '',
+          });
+        }
+        break;
       case 'roWidth':
         setTempObj({
           ...tempObj,
@@ -522,6 +551,7 @@ const MeasureSheet = () => {
               id="orderWidth"
               value={tempObj['orderWidth']}
               onChange={(e) => handleChangeInput(e)}
+              disabled={tempObj.style == 'SPD' ? true : false}
             />
           </div>
           <div className="p-line">
@@ -530,6 +560,7 @@ const MeasureSheet = () => {
               id="orderHeight"
               value={tempObj['orderHeight']}
               onChange={(e) => handleChangeInput(e)}
+              disabled={tempObj.style == 'SPD' ? true : false}
             />
           </div>
           <div className="p-line">
