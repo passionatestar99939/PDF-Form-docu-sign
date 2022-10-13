@@ -15,6 +15,7 @@ export const initDataOfMeasureSheet = {
   energy: '',
   mullCuts: '',
   notes: '',
+  categoryNum: -1,
 };
 
 export const initDataOfWindowOrder = {
@@ -40,6 +41,7 @@ export const initDataOfWindowOrder = {
   casementsPW: false,
   mulls: '',
   comment: '',
+  categoryNum: -1,
 };
 
 export const initDataOfCommisionForm = {

@@ -120,6 +120,7 @@ const WindowOrder = () => {
       'casementsR',
       'casementsPW',
     ];
+    const hiddenElementArray = ['categoryNum'];
 
     const classNameForX = '';
 
@@ -128,24 +129,28 @@ const WindowOrder = () => {
         {data.mainTable &&
           Object.values(windowOrderData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
-              {Object.keys(ele).map((key, index) => (
-                <td
-                  key={index}
-                  className={ele[key] == 'X' ? 'window-order__X-td' : ''}
-                >
-                  {checkBoxArray.find((val) => val === key) ? (
-                    <Checkbox
-                      checkVal={ele[key]}
-                      checkId={key}
-                      updateCheck={handleChangeCheckbox}
-                      isInputEnable={viewMode === 'homepage'}
-                      type={typeOfCheckBox.PatioDoorOrder}
-                    />
-                  ) : (
-                    ele[key]
-                  )}
-                </td>
-              ))}
+              {Object.keys(ele).map((key, index) =>
+                hiddenElementArray.find((val) => val == key) ? (
+                  ''
+                ) : (
+                  <td
+                    key={index}
+                    className={ele[key] == 'X' ? 'window-order__X-td' : ''}
+                  >
+                    {checkBoxArray.find((val) => val === key) ? (
+                      <Checkbox
+                        checkVal={ele[key]}
+                        checkId={key}
+                        updateCheck={handleChangeCheckbox}
+                        isInputEnable={viewMode === 'homepage'}
+                        type={typeOfCheckBox.PatioDoorOrder}
+                      />
+                    ) : (
+                      ele[key]
+                    )}
+                  </td>
+                )
+              )}
             </tr>
           ))}
       </tbody>

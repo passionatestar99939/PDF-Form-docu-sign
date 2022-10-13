@@ -79,15 +79,7 @@ const MeasureSheet = () => {
 
   const dispatch = useDispatch();
 
-  const handleChangeWindowOption = (e) => {
-    // data.windowTable = {};
-    // console.log('???=>empty main table:', data.windowTable);
-    // setRenderFlag(true);
-    data.windowTable[e.target.id] = e.target.value;
-    data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
-    // dispatch(updateWindowTable({ ...data.windowTable }));
-    dispatch(updateWindowTable(data.windowTable));
-
+  const calculateOrderWidthHeight = () => {
     Object.values(data.mainTable).forEach((ele, index) => {
       data.mainTable[index] = {
         ...ele,
@@ -121,6 +113,17 @@ const MeasureSheet = () => {
       //   measuresheetData.windowTable.cutbacks.h
       // );
     });
+  };
+  const handleChangeWindowOption = (e) => {
+    // data.windowTable = {};
+    // console.log('???=>empty main table:', data.windowTable);
+    // setRenderFlag(true);
+    data.windowTable[e.target.id] = e.target.value;
+    data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
+    // dispatch(updateWindowTable({ ...data.windowTable }));
+    dispatch(updateWindowTable(data.windowTable));
+
+    calculateOrderWidthHeight();
 
     dispatch(updateMainTable(data.mainTable));
   };
@@ -219,8 +222,244 @@ const MeasureSheet = () => {
     setOpenTableModal(viewMode === 'homepage');
   };
 
+  const isFirstCatogory = (index) => {
+    const nonComparisonElementArray = ['no', 'categoryNum'];
+
+    for (let i = 0; i < index; i++) {
+      if (
+        Object.keys(data.mainTable[index]).every((key) => {
+          if (nonComparisonElementArray.find((val) => val === key)) {
+            return true;
+          } else {
+            return data.mainTable[i][key] == data.mainTable[index][key];
+          }
+        })
+      )
+        return false;
+    }
+    return true;
+  };
+
+  const findLastCategoryNumKindBeforeIndex = (index) => {
+    let result = -1;
+    for (let i = 0; i < index; i++) {
+      console.log('???=>i-categoryNum:', data.mainTable[i].categoryNum);
+      if (data.mainTable[i].categoryNum > result) {
+        result = data.mainTable[i].categoryNum;
+      }
+    }
+
+    console.log('???=>last category num:', result);
+    return result;
+  };
+
+  const isOnlyOneCategory = (index) => {
+    // return Object.values(data.mainTable).find(
+    //   (ele) => ele.categoryNum == data.mainTable[index].categoryNum
+    // )
+    //   ? false
+    //   : true;
+
+    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const length = Object.keys(data.mainTable).length;
+    for (let i = 0; i < length; i++) {
+      if (i == index) continue;
+      else {
+        if (
+          Object.keys(data.mainTable[index]).every((key) => {
+            if (nonComparisonElementArray.find((val) => val === key)) {
+              return true;
+            } else {
+              return data.mainTable[i][key] == data.mainTable[index][key];
+            }
+          })
+        )
+          return false;
+      }
+    }
+    return true;
+  };
+
+  const isOnlyOneCategoryInPreState = (index) => {
+    // return Object.values(data.mainTable).find(
+    //   (ele) => ele.categoryNum == data.mainTable[index].categoryNum
+    // )
+    //   ? false
+    //   : true;
+
+    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const length = Object.keys(data.mainTable).length;
+    for (let i = 0; i < length; i++) {
+      if (i == index) continue;
+      else {
+        if (
+          Object.keys(measuresheetData.mainTable[index]).every((key) => {
+            if (nonComparisonElementArray.find((val) => val === key)) {
+              return true;
+            } else {
+              return (
+                measuresheetData.mainTable[i][key] ==
+                measuresheetData.mainTable[index][key]
+              );
+            }
+          })
+        )
+          return false;
+      }
+    }
+    return true;
+  };
+
+  const findFirstIdenticalIndex = (index) => {
+    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const length = Object.keys(data.mainTable).length;
+    for (let i = 0; i < length; i++) {
+      if (i == index) continue;
+      else if (
+        Object.keys(data.mainTable[index]).every((key) => {
+          if (nonComparisonElementArray.find((val) => val === key)) {
+            return true;
+          } else {
+            return data.mainTable[i][key] === data.mainTable[index][key];
+          }
+        })
+      ) {
+        console.log('???=>identical category index:', i);
+        return i;
+      }
+    }
+    return -1;
+  };
+
+  const findIdenticalCategoryNum = (index) => {
+    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const length = Object.keys(data.mainTable).length;
+    for (let i = 0; i < length; i++) {
+      if (i == index) continue;
+      else if (
+        Object.keys(data.mainTable[index]).every((key) => {
+          if (nonComparisonElementArray.find((val) => val === key)) {
+            return true;
+          } else {
+            return data.mainTable[i][key] === data.mainTable[index][key];
+          }
+        })
+      ) {
+        console.log(
+          '???=>identical category num:',
+          data.mainTable[i].categoryNum
+        );
+        return data.mainTable[i].categoryNum;
+      }
+    }
+    return -1;
+  };
+
+  // estimating categoryNum of index-row in main table
+  const estimateCategoryNum = (index) => {
+    if (data.mainTable[index].categoryNum == -1)
+      data.mainTable[index].categoryNum = 0;
+
+    let lastCategoryNum = findLastCategoryNumKindBeforeIndex(index);
+
+    console.log('???=>isOnly', isOnlyOneCategory(index));
+
+    if (isOnlyOneCategoryInPreState(index)) {
+      if (isOnlyOneCategory(index)) {
+      } else {
+        const firstIdenticalIndex = findFirstIdenticalIndex(index);
+        console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
+        data.mainTable[index] = {
+          ...data.mainTable[index],
+          categoryNum: data.mainTable[firstIdenticalIndex].categoryNum,
+        };
+        let standardIndex;
+        if (firstIdenticalIndex < index) {
+          standardIndex = index;
+          const length = Object.keys(data.mainTable).length;
+          for (let i = 0; i < length; i++) {
+            if (
+              data.mainTable[i].categoryNum >
+              measuresheetData.mainTable[standardIndex].categoryNum
+            ) {
+              // data.mainTable[i].categoryNum = 1;
+              data.mainTable[i] = {
+                ...data.mainTable[i],
+                categoryNum: data.mainTable[i].categoryNum - 1,
+              };
+            }
+          }
+        } else {
+          const nonComparisonElementArray = ['no', 'categoryNum'];
+          const length = Object.keys(data.mainTable).length;
+          for (let i = 0; i < length; i++) {
+            if (i == index) continue;
+            else if (
+              Object.keys(data.mainTable[index]).every((key) => {
+                if (nonComparisonElementArray.find((val) => val === key)) {
+                  return true;
+                } else {
+                  return data.mainTable[i][key] === data.mainTable[index][key];
+                }
+              })
+            ) {
+              data.mainTable[i] = {
+                ...data.mainTable[i],
+                categoryNum: data.mainTable[index].categoryNum,
+              };
+            }
+          }
+
+          standardIndex = firstIdenticalIndex;
+          for (let i = 0; i < length; i++) {
+            if (
+              data.mainTable[i].categoryNum >
+              data.mainTable[standardIndex].categoryNum
+            ) {
+              // data.mainTable[i].categoryNum = 1;
+              data.mainTable[i] = {
+                ...data.mainTable[i],
+                categoryNum: data.mainTable[i].categoryNum - 1,
+              };
+            }
+          }
+        }
+      }
+    } else {
+      if (isOnlyOneCategory(index)) {
+      } else {
+      }
+    }
+
+    // if (isOnlyOneCategory(index)) {
+    //   if (data.mainTable[index].categoryNum === lastCategoryNum) {
+    //     data.mainTable[index] = {
+    //       ...data.mainTable[index],
+    //       categoryNum: lastCategoryNum + 1,
+    //     };
+    //   }
+    //   console.log('???=>data[index]', data.mainTable[index]);
+    //   const length = Object.keys(data.mainTable).length;
+    //   for (let i = index + 1; i < length; i++) {
+    //     if (data.mainTable[i].categoryNum >= lastCategoryNum) {
+    //       // data.mainTable[i].categoryNum = 1;
+    //       data.mainTable[i] = {
+    //         ...data.mainTable[i],
+    //         categoryNum: data.mainTable[i].categoryNum + 1,
+    //       };
+    //     }
+    //   }
+    // } else {
+    //   // if pre state is only one
+    // }
+  };
+
   const handleSave = () => {
-    data.mainTable[selectedRow] = { ...tempObj };
+    data.mainTable[selectedRow] = {
+      ...tempObj,
+      // categoryNum: estimateCategoryNum(selectedRow),
+    };
+    estimateCategoryNum(selectedRow);
     dispatch(updateMainTable(data.mainTable));
     setOpenTableModal(false);
   };
@@ -245,8 +484,10 @@ const MeasureSheet = () => {
   };
 
   const TableBody = () => {
-    const boldArray = ['orderWidth', 'orderHeight'];
+    const boldElementArray = ['orderWidth', 'orderHeight'];
     const checkBoxArray = ['foam'];
+    const hiddenElementArray = ['categoryNum'];
+    // const hiddenElementArray = [];
     // setTempObj({ ...measuresheetData.mainTable });
     data.mainTable = { ...measuresheetData.mainTable };
     return (
@@ -254,28 +495,33 @@ const MeasureSheet = () => {
         {data.mainTable &&
           Object.values(measuresheetData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
-              {Object.keys(ele).map((key, index) => (
-                <td
-                  key={index}
-                  className={
-                    boldArray.find((val) => val == key)
-                      ? 'bold measure-sheet__big-font'
-                      : ''
-                  }
-                >
-                  {checkBoxArray.find((val) => val === key) ? (
-                    <Checkbox
-                      checkVal={ele[key]}
-                      checkId={key}
-                      updateCheck={handleChangeCheckbox}
-                      isInputEnable={viewMode === 'homepage'}
-                      type={typeOfCheckBox.PatioDoorOrder}
-                    />
-                  ) : (
-                    ele[key]
-                  )}
-                </td>
-              ))}
+              {Object.keys(ele).map((key, index) =>
+                hiddenElementArray.find((val) => val == key) ? (
+                  // ''
+                  <td className="bold measure-sheet__big-font">{ele[key]}</td>
+                ) : (
+                  <td
+                    key={index}
+                    className={
+                      boldElementArray.find((val) => val == key)
+                        ? 'bold measure-sheet__big-font'
+                        : ''
+                    }
+                  >
+                    {checkBoxArray.find((val) => val === key) ? (
+                      <Checkbox
+                        checkVal={ele[key]}
+                        checkId={key}
+                        updateCheck={handleChangeCheckbox}
+                        isInputEnable={viewMode === 'homepage'}
+                        type={typeOfCheckBox.PatioDoorOrder}
+                      />
+                    ) : (
+                      ele[key]
+                    )}
+                  </td>
+                )
+              )}
             </tr>
           ))}
       </tbody>
