@@ -127,6 +127,7 @@ const MeasureSheet = () => {
     calculateOrderWidthHeight();
 
     dispatch(updateMainTable(data.mainTable));
+    processWindowOrderData();
   };
 
   const handleChangeTypeTable = (e) => {
