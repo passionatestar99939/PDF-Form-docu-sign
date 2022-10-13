@@ -426,6 +426,20 @@ const MeasureSheet = () => {
       }
     } else {
       if (isOnlyOneCategory(index)) {
+        data.mainTable[index] = {
+          ...data.mainTable[index],
+          categoryNum: lastCategoryNum + 1,
+        };
+        const length = Object.keys(data.mainTable).length;
+        for (let i = 0; i < length; i++) {
+          console.log('???=>i - category num:', data.mainTable[i].categoryNum);
+          if (measuresheetData.mainTable[i].categoryNum > lastCategoryNum) {
+            data.mainTable[i] = {
+              ...data.mainTable[i],
+              categoryNum: data.mainTable[i].categoryNum + 1,
+            };
+          }
+        }
       } else {
         const firstIdenticalIndex = findFirstIdenticalIndex(index);
         console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
