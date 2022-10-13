@@ -22,22 +22,22 @@ export const initDataOfWindowOrder = {
   type: '',
   series: '',
   foam: '',
-  nailfin: '',
+  nailfin: false,
   szWidth: '',
   szX: 'X',
   szHeight: '',
-  split: '',
+  sashSplit: '',
   intColor: '',
   extColor: '',
-  grid: '',
+  grids: false,
   pattern: '',
-  blinds: '',
+  blinds: false,
   energy: '',
   obsc: '',
   temp: '',
-  casementsL: '',
-  casementsR: '',
-  casementsPW: '',
+  casementsL: false,
+  casementsR: false,
+  casementsPW: false,
   mulls: '',
   comment: '',
 };
@@ -108,7 +108,7 @@ export const energy = [
   'IMPACT 366',
 ];
 
-export const obscured = [
+export const obsc = [
   '',
   'TSO (Top Sash Only)',
   'BSO (Bottom Sash Only)',
@@ -117,7 +117,7 @@ export const obscured = [
 
 export const rain = ['', 'Yes'];
 
-export const tempered = [
+export const temp = [
   '',
   'TSO (Top Sash Only)',
   'BSO (Bottom Sash Only)',

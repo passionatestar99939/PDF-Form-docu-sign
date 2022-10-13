@@ -6,7 +6,11 @@ import {
   initDataOfWindowOrder,
   interiorColor,
   exteriorColor,
+  sashSplit,
   typeOfCheckBox,
+  energy,
+  temp,
+  obsc,
 } from '../../constants/variables';
 import {
   updateMainTable,
@@ -109,8 +113,9 @@ const WindowOrder = () => {
   const TableBody = () => {
     const checkBoxArray = [
       'foam',
-      'obsc',
-      'temp',
+      'nailfin',
+      'grids',
+      'blinds',
       'casementsL',
       'casementsR',
       'casementsPW',
@@ -270,11 +275,15 @@ const WindowOrder = () => {
         </div>
         <div className="p-line">
           <label htmlFor="nailfin">NAILFIN</label>
-          <input
-            id="nailfin"
-            value={tempObj['nailfin']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          <div className="window-order__check-box">
+            <Checkbox
+              checkVal={tempObj['nailfin']}
+              checkId={'nailfin'}
+              updateCheck={handleChangeCheckbox}
+              isInputEnable={viewMode === 'homepage'}
+              type={typeOfCheckBox.PatioDoorOrder}
+            />
+          </div>
         </div>
         <div className="p-line">
           <label htmlFor="szWidth">Exact Size Width</label>
@@ -297,12 +306,18 @@ const WindowOrder = () => {
           />
         </div>
         <div className="p-line">
-          <label htmlFor="split">SASH SPLIT</label>
-          <input
-            id="split"
-            value={tempObj['split']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          <label htmlFor="sashSplit">SASH SPLIT</label>
+          <select id="sashSplit" onChange={(e) => handleChangeInput(e)}>
+            {sashSplit.map((value, index) => (
+              <option
+                key={index}
+                value={value}
+                selected={value === tempObj.sashSplit ? 'selected' : ''}
+              >
+                {value}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="p-line">
           <label htmlFor="intColor">INTERIOR COLOR</label>
@@ -333,12 +348,16 @@ const WindowOrder = () => {
           </select>
         </div>
         <div className="p-line">
-          <label htmlFor="grid">GRID</label>
-          <input
-            id="grid"
-            value={tempObj['grid']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          <label htmlFor="grids">GRIDS</label>
+          <div className="window-order__check-box">
+            <Checkbox
+              checkVal={tempObj.grids}
+              checkId={'grids'}
+              updateCheck={handleChangeCheckbox}
+              isInputEnable={viewMode === 'homepage'}
+              type={typeOfCheckBox.PatioDoorOrder}
+            />
+          </div>
         </div>
         <div className="p-line">
           <label htmlFor="pattern">Pattern</label>
@@ -350,43 +369,57 @@ const WindowOrder = () => {
         </div>
         <div className="p-line">
           <label htmlFor="blinds">Blinds</label>
-          <input
-            id="blinds"
-            value={tempObj['blinds']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          <div className="window-order__check-box">
+            <Checkbox
+              checkVal={tempObj.blinds}
+              checkId={'blinds'}
+              updateCheck={handleChangeCheckbox}
+              isInputEnable={viewMode === 'homepage'}
+              type={typeOfCheckBox.PatioDoorOrder}
+            />
+          </div>
         </div>
         <div className="p-line">
           <label htmlFor="energy">ENERGY</label>
-          <input
-            id="energy"
-            value={tempObj['energy']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          <select id="energy" onChange={(e) => handleChangeInput(e)}>
+            {energy.map((value, index) => (
+              <option
+                key={index}
+                value={value}
+                selected={value === tempObj['energy'] ? 'selected' : ''}
+              >
+                {value}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="p-line">
           <label htmlFor="obsc">Obsc</label>
-          <div className="window-order__check-box">
-            <Checkbox
-              checkVal={tempObj['obsc']}
-              checkId={'obsc'}
-              updateCheck={handleChangeCheckbox}
-              isInputEnable={viewMode === 'homepage'}
-              type={typeOfCheckBox.PatioDoorOrder}
-            />
-          </div>
+          <select id="obsc" onChange={(e) => handleChangeInput(e)}>
+            {obsc.map((value, index) => (
+              <option
+                key={index}
+                value={value}
+                selected={value === tempObj['obsc'] ? 'selected' : ''}
+              >
+                {value}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="p-line">
           <label htmlFor="temp">Temp</label>
-          <div className="window-order__check-box">
-            <Checkbox
-              checkVal={tempObj['temp']}
-              checkId={'temp'}
-              updateCheck={handleChangeCheckbox}
-              isInputEnable={viewMode === 'homepage'}
-              type={typeOfCheckBox.PatioDoorOrder}
-            />
-          </div>
+          <select id="temp" onChange={(e) => handleChangeInput(e)}>
+            {temp.map((value, index) => (
+              <option
+                key={index}
+                value={value}
+                selected={value === tempObj['temp'] ? 'selected' : ''}
+              >
+                {value}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="p-line">
           <label htmlFor="casementsL">Casement L</label>

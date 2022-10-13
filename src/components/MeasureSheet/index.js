@@ -10,6 +10,7 @@ import {
   updateTypeTable,
   updateMainTable,
 } from '../../store/slices/measuresheetSlice';
+import { updateMainTable as updateMainTableForWindowOrder } from '../../store/slices/windoworderSlice';
 
 import {
   initDataOfMeasureSheet,
@@ -19,8 +20,8 @@ import {
   roomItems,
   roomStyle,
   energy,
-  obscured,
-  tempered,
+  obsc,
+  temp,
   cutbacks,
 } from '../../constants/variables';
 
@@ -55,12 +56,21 @@ let data = {
   mainTable: {},
 };
 
+const dataForWindowOrder = {
+  mainTable: {},
+};
+
 const MeasureSheet = () => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const measuresheetData = useSelector((state) => state.measuresheet.data);
+  const windowOrderData = useSelector((state) => state.windoworder.data);
+
   const viewMode = useSelector((state) => state.option.data.viewMode);
 
-  console.log('???=>data:', data);
+  // data = { ...measuresheetData };
+  // console.log('???=>data:', data);
+
+  dataForWindowOrder.mainTable = { ...windowOrderData.mainTable };
 
   // const [renderFlag, setRenderFlag] = useState(false);
   const [openTableModal, setOpenTableModal] = useState(false);
@@ -70,6 +80,8 @@ const MeasureSheet = () => {
   const dispatch = useDispatch();
 
   const handleChangeWindowOption = (e) => {
+    // data.windowTable = {};
+    // console.log('???=>empty main table:', data.windowTable);
     // setRenderFlag(true);
     data.windowTable[e.target.id] = e.target.value;
     data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
@@ -79,22 +91,28 @@ const MeasureSheet = () => {
     Object.values(data.mainTable).forEach((ele, index) => {
       data.mainTable[index] = {
         ...ele,
-        orderWidth: ele.roWidth
-          ? fractionCalculator(
-              ele.roWidth,
-              '+',
-              data.windowTable.cutbacks.w
-              //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
-            )
-          : '',
-        orderHeight: ele.roHeight
-          ? fractionCalculator(
-              ele.roHeight,
-              '+',
-              data.windowTable.cutbacks.h
-              //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
-            )
-          : '',
+        orderWidth:
+          ele.style == 'SPD'
+            ? ele.roWidth
+            : ele.roWidth
+            ? fractionCalculator(
+                ele.roWidth,
+                '+',
+                data.windowTable.cutbacks.w
+                //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
+              )
+            : '',
+        orderHeight:
+          ele.style == 'SPD'
+            ? ele.roHeight
+            : ele.roHeight
+            ? fractionCalculator(
+                ele.roHeight,
+                '+',
+                data.windowTable.cutbacks.h
+                //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
+              )
+            : '',
       };
 
       // data.mainTable[index].orderHeight = fractionCalculator(
@@ -140,6 +158,16 @@ const MeasureSheet = () => {
               : '',
         });
 
+        dataForWindowOrder.mainTable[0] = {
+          ...dataForWindowOrder.mainTable[0],
+          szWidth: tempObj.orderWidth,
+        };
+        dispatch(
+          updateMainTableForWindowOrder({
+            ...dataForWindowOrder.mainTable,
+            0: { ...dataForWindowOrder.mainTable[0] },
+          })
+        );
         break;
       case 'roWidth':
         setTempObj({
@@ -156,6 +184,7 @@ const MeasureSheet = () => {
                 )
               : '',
         });
+
         break;
       case 'roHeight':
         setTempObj({
@@ -553,7 +582,8 @@ const MeasureSheet = () => {
               id="orderWidth"
               value={tempObj['orderWidth']}
               onChange={(e) => handleChangeInput(e)}
-              disabled={tempObj.style == 'SPD' ? true : false}
+              // disabled={tempObj.style == 'SPD' ? true : false}
+              disabled={true}
             />
           </div>
           <div className="p-line">
@@ -562,7 +592,8 @@ const MeasureSheet = () => {
               id="orderHeight"
               value={tempObj['orderHeight']}
               onChange={(e) => handleChangeInput(e)}
-              disabled={tempObj.style == 'SPD' ? true : false}
+              // disabled={tempObj.style == 'SPD' ? true : false}
+              disabled={true}
             />
           </div>
           <div className="p-line">
@@ -616,7 +647,7 @@ const MeasureSheet = () => {
           <div className="p-line">
             <label htmlFor="temp">Temp</label>
             <select id="temp" onChange={(e) => handleChangeInput(e)}>
-              {tempered.map((value, index) => (
+              {temp.map((value, index) => (
                 <option
                   key={index}
                   value={value}
@@ -630,7 +661,7 @@ const MeasureSheet = () => {
           <div className="p-line">
             <label htmlFor="obsc">OBSC</label>
             <select id="obsc" onChange={(e) => handleChangeInput(e)}>
-              {obscured.map((value, index) => (
+              {obsc.map((value, index) => (
                 <option
                   key={index}
                   value={value}
