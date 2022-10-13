@@ -23,6 +23,7 @@ import {
   obsc,
   temp,
   cutbacks,
+  initDataOfWindowOrder,
 } from '../../constants/variables';
 
 import { fractionCalculator } from '../../utils/globals';
@@ -431,12 +432,44 @@ const MeasureSheet = () => {
     // }
   };
 
+  const processWindowOrderData = () => {
+    // initialize
+
+    Object.keys(dataForWindowOrder.mainTable).forEach((key) => {
+      dataForWindowOrder.mainTable[key] = { ...initDataOfWindowOrder };
+    });
+
+    Object.values(data.mainTable).forEach((ele) => {
+      if (ele.categoryNum >= 0) {
+        console.log('???=>ele.categoryNum:', ele.categoryNum);
+        dataForWindowOrder.mainTable[ele.categoryNum] = {
+          ...dataForWindowOrder.mainTable[ele.categoryNum],
+          qty: parseInt(dataForWindowOrder.mainTable[ele.categoryNum].qty + 1),
+          intColor: ele.intColor,
+          extColor: ele.extColor,
+          type: ele.type,
+          szWidth: ele.orderWidth,
+          szHeight: ele.orderHeight,
+          energy: ele.energy,
+          obsc: ele.obsc,
+          temp: ele.temp,
+        };
+      }
+    });
+
+    // console.log('???=> data for window order:', dataForWindowOrder);
+
+    dispatch(updateMainTableForWindowOrder(dataForWindowOrder.mainTable));
+  };
+
   const handleSave = () => {
     data.mainTable[selectedRow] = {
       ...tempObj,
     };
     estimateCategoryNum(selectedRow);
     dispatch(updateMainTable(data.mainTable));
+
+    processWindowOrderData();
     setOpenTableModal(false);
   };
 
