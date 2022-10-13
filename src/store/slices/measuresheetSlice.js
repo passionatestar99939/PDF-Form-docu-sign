@@ -17,8 +17,8 @@ for (let i = 0; i < 17; i++) {
   initialState.data.mainTable[i] = {
     ...initDataOfMeasureSheet,
     no: i + 1,
-    roWidth: i,
-    categoryNum: i,
+    // roWidth: i,
+    // categoryNum: i,
   };
 }
 

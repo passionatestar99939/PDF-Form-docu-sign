@@ -222,24 +222,6 @@ const MeasureSheet = () => {
     setOpenTableModal(viewMode === 'homepage');
   };
 
-  const isFirstCatogory = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum'];
-
-    for (let i = 0; i < index; i++) {
-      if (
-        Object.keys(data.mainTable[index]).every((key) => {
-          if (nonComparisonElementArray.find((val) => val === key)) {
-            return true;
-          } else {
-            return data.mainTable[i][key] == data.mainTable[index][key];
-          }
-        })
-      )
-        return false;
-    }
-    return true;
-  };
-
   const findLastCategoryNumKindBeforeIndex = (index) => {
     let result = -1;
     for (let i = 0; i < index; i++) {
@@ -326,30 +308,6 @@ const MeasureSheet = () => {
       ) {
         console.log('???=>identical category index:', i);
         return i;
-      }
-    }
-    return -1;
-  };
-
-  const findIdenticalCategoryNum = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum'];
-    const length = Object.keys(data.mainTable).length;
-    for (let i = 0; i < length; i++) {
-      if (i == index) continue;
-      else if (
-        Object.keys(data.mainTable[index]).every((key) => {
-          if (nonComparisonElementArray.find((val) => val === key)) {
-            return true;
-          } else {
-            return data.mainTable[i][key] === data.mainTable[index][key];
-          }
-        })
-      ) {
-        console.log(
-          '???=>identical category num:',
-          data.mainTable[i].categoryNum
-        );
-        return data.mainTable[i].categoryNum;
       }
     }
     return -1;
@@ -476,7 +434,6 @@ const MeasureSheet = () => {
   const handleSave = () => {
     data.mainTable[selectedRow] = {
       ...tempObj,
-      // categoryNum: estimateCategoryNum(selectedRow),
     };
     estimateCategoryNum(selectedRow);
     dispatch(updateMainTable(data.mainTable));
