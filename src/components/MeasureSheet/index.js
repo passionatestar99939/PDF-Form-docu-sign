@@ -427,6 +427,12 @@ const MeasureSheet = () => {
     } else {
       if (isOnlyOneCategory(index)) {
       } else {
+        const firstIdenticalIndex = findFirstIdenticalIndex(index);
+        console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
+        data.mainTable[index] = {
+          ...data.mainTable[index],
+          categoryNum: data.mainTable[firstIdenticalIndex].categoryNum,
+        };
       }
     }
 
