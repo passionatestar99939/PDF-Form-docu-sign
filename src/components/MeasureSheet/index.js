@@ -393,8 +393,7 @@ const MeasureSheet = () => {
           const nonComparisonElementArray = ['no', 'categoryNum'];
           const length = Object.keys(data.mainTable).length;
           for (let i = 0; i < length; i++) {
-            if (i == index) continue;
-            else if (
+            if (
               Object.keys(data.mainTable[index]).every((key) => {
                 if (nonComparisonElementArray.find((val) => val === key)) {
                   return true;
@@ -405,7 +404,7 @@ const MeasureSheet = () => {
             ) {
               data.mainTable[i] = {
                 ...data.mainTable[i],
-                categoryNum: data.mainTable[index].categoryNum,
+                categoryNum: measuresheetData.mainTable[index].categoryNum,
               };
             }
           }
@@ -414,7 +413,7 @@ const MeasureSheet = () => {
           for (let i = 0; i < length; i++) {
             if (
               data.mainTable[i].categoryNum >
-              data.mainTable[standardIndex].categoryNum
+              measuresheetData.mainTable[standardIndex].categoryNum
             ) {
               // data.mainTable[i].categoryNum = 1;
               data.mainTable[i] = {
