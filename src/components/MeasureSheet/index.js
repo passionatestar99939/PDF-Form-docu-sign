@@ -86,7 +86,7 @@ const MeasureSheet = () => {
         ...ele,
         orderWidth:
           ele.style == 'SPD'
-            ? ele.roWidth
+            ? ele.orderWidth
             : ele.roWidth
             ? fractionCalculator(
                 ele.roWidth,
@@ -97,7 +97,7 @@ const MeasureSheet = () => {
             : '',
         orderHeight:
           ele.style == 'SPD'
-            ? ele.roHeight
+            ? ele.orderHeight
             : ele.roHeight
             ? fractionCalculator(
                 ele.roHeight,
@@ -180,7 +180,7 @@ const MeasureSheet = () => {
           [e.target.id]: e.target.value,
           orderWidth:
             tempObj.style == 'SPD'
-              ? e.target.value
+              ? tempObj.orderWidth
               : e.target.value
               ? fractionCalculator(
                   e.target.value,
@@ -197,7 +197,7 @@ const MeasureSheet = () => {
           [e.target.id]: e.target.value,
           orderHeight:
             tempObj.style == 'SPD'
-              ? e.target.value
+              ? tempObj.orderHeight
               : e.target.value
               ? fractionCalculator(
                   e.target.value,
@@ -507,9 +507,9 @@ const MeasureSheet = () => {
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
               {Object.keys(ele).map((key, index) =>
                 hiddenElementArray.find((val) => val == key) ? (
-                  // ''
-                  <td className="bold measure-sheet__big-font">{ele[key]}</td>
+                  ''
                 ) : (
+                  // <td className="bold measure-sheet__big-font">{ele[key]}</td>
                   <td
                     key={index}
                     className={
@@ -838,8 +838,7 @@ const MeasureSheet = () => {
               id="orderWidth"
               value={tempObj['orderWidth']}
               onChange={(e) => handleChangeInput(e)}
-              // disabled={tempObj.style == 'SPD' ? true : false}
-              disabled={true}
+              disabled={tempObj.style == 'SPD' ? false : true}
             />
           </div>
           <div className="p-line">
@@ -848,8 +847,7 @@ const MeasureSheet = () => {
               id="orderHeight"
               value={tempObj['orderHeight']}
               onChange={(e) => handleChangeInput(e)}
-              // disabled={tempObj.style == 'SPD' ? true : false}
-              disabled={true}
+              disabled={tempObj.style == 'SPD' ? false : true}
             />
           </div>
           <div className="p-line">

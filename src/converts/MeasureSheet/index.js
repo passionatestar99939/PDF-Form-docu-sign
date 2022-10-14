@@ -118,8 +118,41 @@ const MeasureSheet = () => {
     );
   };
 
+  // const TableBody = () => {
+  //   const checkBoxArray = ['foam', 'temp', 'obsc'];
+  //   // setTempObj({ ...measuresheetData.mainTable });
+  //   data.mainTable = { ...measuresheetData.mainTable };
+  //   return (
+  //     <tbody>
+  //       {data.mainTable &&
+  //         Object.values(measuresheetData.mainTable).map((ele, row_id) => (
+  //           <tr key={row_id} onClick={() => handleClickTr(row_id)}>
+  //             {Object.keys(ele).map((key, index) =>
+  //               checkBoxArray.find((val) => val === key) ? (
+  //                 <td key={index}>
+  //                   <Checkbox
+  //                     checkVal={ele[key]}
+  //                     checkId={key}
+  //                     updateCheck={handleChangeCheckbox}
+  //                     isInputEnable={viewMode === 'homepage'}
+  //                     type={typeOfCheckBox.PatioDoorOrder}
+  //                   />
+  //                 </td>
+  //               ) : (
+  //                 <td key={index}>{ele[key]}</td>
+  //               )
+  //             )}
+  //           </tr>
+  //         ))}
+  //     </tbody>
+  //   );
+  // };
+
   const TableBody = () => {
-    const checkBoxArray = ['foam', 'temp', 'obsc'];
+    const boldElementArray = ['orderWidth', 'orderHeight'];
+    const checkBoxArray = ['foam'];
+    const hiddenElementArray = ['categoryNum'];
+    // const hiddenElementArray = [];
     // setTempObj({ ...measuresheetData.mainTable });
     data.mainTable = { ...measuresheetData.mainTable };
     return (
@@ -128,18 +161,30 @@ const MeasureSheet = () => {
           Object.values(measuresheetData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
               {Object.keys(ele).map((key, index) =>
-                checkBoxArray.find((val) => val === key) ? (
-                  <td key={index}>
-                    <Checkbox
-                      checkVal={ele[key]}
-                      checkId={key}
-                      updateCheck={handleChangeCheckbox}
-                      isInputEnable={viewMode === 'homepage'}
-                      type={typeOfCheckBox.PatioDoorOrder}
-                    />
-                  </td>
+                hiddenElementArray.find((val) => val == key) ? (
+                  ''
                 ) : (
-                  <td key={index}>{ele[key]}</td>
+                  // <td className="bold measure-sheet__big-font">{ele[key]}</td>
+                  <td
+                    key={index}
+                    className={
+                      boldElementArray.find((val) => val == key)
+                        ? 'bold measure-sheet__big-font'
+                        : ''
+                    }
+                  >
+                    {checkBoxArray.find((val) => val === key) ? (
+                      <Checkbox
+                        checkVal={ele[key]}
+                        checkId={key}
+                        updateCheck={handleChangeCheckbox}
+                        isInputEnable={viewMode === 'homepage'}
+                        type={typeOfCheckBox.PatioDoorOrder}
+                      />
+                    ) : (
+                      ele[key]
+                    )}
+                  </td>
                 )
               )}
             </tr>
