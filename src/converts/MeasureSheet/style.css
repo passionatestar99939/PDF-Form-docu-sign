@@ -29,7 +29,7 @@
   border-collapse: collapse;
   border: 2px solid black;
   color: black;
-  font-size: 12px;
+  font-size: 9px;
 }
 
 .msh__header__left-table_convert tr td {
@@ -67,7 +67,7 @@
 .msh__body-table_convert {
   margin-top: 10px;
   width: 100%;
-  font-size: 12px;
+  font-size: 9px;
 }
 
 .msh__body-table_convert tr,
@@ -80,7 +80,7 @@
 .msh__body-table_convert thead tr th {
   border: 2px solid black;
   padding: 5px;
-  font-size: 12px;
+  font-size: 9px;
 }
 
 .msh__body-table_convert thead tr th:nth-child(16) {

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 
 import {
+  roomStyle,
   initDataOfWindowOrder,
   interiorColor,
   exteriorColor,
@@ -252,11 +253,15 @@ const WindowOrder = () => {
         </div>
         <div className="p-line">
           <label htmlFor="type">TYPE</label>
-          <input
-            id="type"
-            value={tempObj['type']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          {roomStyle.map((value, index) => (
+            <option
+              key={index}
+              value={value}
+              selected={value === tempObj.type ? 'selected' : ''}
+            >
+              {value}
+            </option>
+          ))}
         </div>
         <div className="p-line">
           <label htmlFor="series">SERIES</label>

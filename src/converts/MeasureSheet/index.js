@@ -112,48 +112,26 @@ const MeasureSheet = () => {
       <thead>
         <tr>
           {tableHeaderLine &&
-            tableHeaderLine.map((value, index) => <th key={index}>{value}</th>)}
+            tableHeaderLine.map((value, index) => (
+              <th key={index}>
+                {value === 'GRIDS/BLINDS' ? (
+                  <div>
+                    GRIDS/ <br /> BLINDS
+                  </div>
+                ) : (
+                  value
+                )}
+              </th>
+            ))}
         </tr>
       </thead>
     );
   };
 
-  // const TableBody = () => {
-  //   const checkBoxArray = ['foam', 'temp', 'obsc'];
-  //   // setTempObj({ ...measuresheetData.mainTable });
-  //   data.mainTable = { ...measuresheetData.mainTable };
-  //   return (
-  //     <tbody>
-  //       {data.mainTable &&
-  //         Object.values(measuresheetData.mainTable).map((ele, row_id) => (
-  //           <tr key={row_id} onClick={() => handleClickTr(row_id)}>
-  //             {Object.keys(ele).map((key, index) =>
-  //               checkBoxArray.find((val) => val === key) ? (
-  //                 <td key={index}>
-  //                   <Checkbox
-  //                     checkVal={ele[key]}
-  //                     checkId={key}
-  //                     updateCheck={handleChangeCheckbox}
-  //                     isInputEnable={viewMode === 'homepage'}
-  //                     type={typeOfCheckBox.PatioDoorOrder}
-  //                   />
-  //                 </td>
-  //               ) : (
-  //                 <td key={index}>{ele[key]}</td>
-  //               )
-  //             )}
-  //           </tr>
-  //         ))}
-  //     </tbody>
-  //   );
-  // };
-
   const TableBody = () => {
     const boldElementArray = ['orderWidth', 'orderHeight'];
     const checkBoxArray = ['foam'];
     const hiddenElementArray = ['categoryNum'];
-    // const hiddenElementArray = [];
-    // setTempObj({ ...measuresheetData.mainTable });
     data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>
@@ -161,14 +139,13 @@ const MeasureSheet = () => {
           Object.values(measuresheetData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
               {Object.keys(ele).map((key, index) =>
-                hiddenElementArray.find((val) => val == key) ? (
+                hiddenElementArray.find((val) => val === key) ? (
                   ''
                 ) : (
-                  // <td className="bold measure-sheet__big-font">{ele[key]}</td>
                   <td
                     key={index}
                     className={
-                      boldElementArray.find((val) => val == key)
+                      boldElementArray.find((val) => val === key)
                         ? 'bold measure-sheet__big-font'
                         : ''
                     }
@@ -291,34 +268,13 @@ const MeasureSheet = () => {
                 <tr>
                   <td className="text-right">WINDOW CUTBACKS</td>
                   <td>
-                    {viewMode !== 'homepage' ? (
-                      measuresheetData.windowTable.cutbacks
-                    ) : (
-                      <select
-                        className="ms_select"
-                        id="cutbacks"
-                        onChange={(e) => handleChangeWindowOption(e)}
-                      >
-                        <option
-                          value="(-3/8” W)"
-                          selected={
-                            '(-3/8” W)' ===
-                            measuresheetData.windowTable.cutbacks
-                          }
-                        >
-                          (-3/8” W)
-                        </option>
-                        <option
-                          value="(-1/2” W) x (-1/2 H)"
-                          selected={
-                            '(-1/2” W) x (-1/2 H)' ===
-                            measuresheetData.windowTable.cutbacks
-                          }
-                        >
-                          (-1/2” W) x (-1/2 H)
-                        </option>
-                      </select>
-                    )}
+                    ({measuresheetData.windowTable.cutbacks.w}")
+                    {measuresheetData.windowTable.cutbacks.h
+                      ? ' X ' +
+                        '(' +
+                        measuresheetData.windowTable.cutbacks.h +
+                        '")'
+                      : ''}
                   </td>
                 </tr>
               </table>

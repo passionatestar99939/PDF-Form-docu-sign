@@ -90,15 +90,58 @@ export const exteriorColor = [
 
 export const roomItems = [
   '',
-  'BEDROOM',
-  'LIVING ROOM',
-  'GARAGE',
-  'KITCHEN',
-  'DINING',
   'BATH',
+  'DINING',
+  'LIVING',
+  'GARAGE',
+  'DEN',
+  'STUDY',
+  'FAMILY',
+  'KITCHEN',
+  'MBR',
+  'BR1',
+  'BR2',
+  'BR3',
+  'BR4',
+  'OFFICE',
+  'STARIS',
+  'LOFT',
+  'ATTIC',
+  'BASEMENT',
+  'SITTING',
+  'PLAYROOM',
+  'LAUNDRY',
+  'UTILITY',
+  'CLOSET',
+  'HALLWAY',
+  'SUNROOM',
+  'PATIO',
+  'MUD ROOM',
+  'SHED',
+  'BARN',
+  'PORCH'
 ];
 
-export const roomStyle = ['', 'DH', '3LS', 'SPD'];
+export const roomStyle = [
+  '',
+  'DH',
+  'DH2',
+  'DH3',
+  'PW',
+  'PW(CAS)',
+  'CAS',
+  'CAS2',
+  'CAS3',
+  'AWN',
+  'SLD',
+  '2LS',
+  '3LS',
+  'TRN',
+  'HOP',
+  'SP',
+  'HR',
+  'SPD'  
+];
 
 export const energy = [
   '',
@@ -110,21 +153,11 @@ export const energy = [
   'IMPACT 366',
 ];
 
-export const obsc = [
-  '',
-  'TSO (Top Sash Only)',
-  'BSO (Bottom Sash Only)',
-  'Both',
-];
+export const obsc = ['', 'TSO', 'BSO', 'Both'];
 
 export const rain = ['', 'Yes'];
 
-export const temp = [
-  '',
-  'TSO (Top Sash Only)',
-  'BSO (Bottom Sash Only)',
-  'Both',
-];
+export const temp = ['', 'TSO', 'BSO', 'Both'];
 
 export const sashSplit = ['', 'OR (Oriel)', 'COT (Cottage)'];
 

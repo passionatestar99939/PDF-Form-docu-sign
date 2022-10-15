@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 
-import DropDownWrapper from '../DropDownWrapper';
 import Checkbox from '../Checkbox';
 
 import {
@@ -68,12 +67,8 @@ const MeasureSheet = () => {
 
   const viewMode = useSelector((state) => state.option.data.viewMode);
 
-  // data = { ...measuresheetData };
-  // console.log('???=>data:', data);
-
   dataForWindowOrder.mainTable = { ...windowOrderData.mainTable };
 
-  // const [renderFlag, setRenderFlag] = useState(false);
   const [openTableModal, setOpenTableModal] = useState(false);
   const [tempObj, setTempObj] = useState({});
   const [selectedRow, setSelectedRow] = useState(0);
@@ -85,43 +80,23 @@ const MeasureSheet = () => {
       data.mainTable[index] = {
         ...ele,
         orderWidth:
-          ele.style == 'SPD'
+          ele.style === 'SPD'
             ? ele.orderWidth
             : ele.roWidth
-            ? fractionCalculator(
-                ele.roWidth,
-                '+',
-                data.windowTable.cutbacks.w
-                //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
-              )
+            ? fractionCalculator(ele.roWidth, '+', data.windowTable.cutbacks.w)
             : '',
         orderHeight:
-          ele.style == 'SPD'
+          ele.style === 'SPD'
             ? ele.orderHeight
             : ele.roHeight
-            ? fractionCalculator(
-                ele.roHeight,
-                '+',
-                data.windowTable.cutbacks.h
-                //2022.10.12  13:39  dispatch(updateWindowTable(data.windowTable)): setState, async function ---> prevState is used at this moment
-              )
+            ? fractionCalculator(ele.roHeight, '+', data.windowTable.cutbacks.h)
             : '',
       };
-
-      // data.mainTable[index].orderHeight = fractionCalculator(
-      //   ele.roHeight,
-      //   '+',
-      //   measuresheetData.windowTable.cutbacks.h
-      // );
     });
   };
   const handleChangeWindowOption = (e) => {
-    // data.windowTable = {};
-    // console.log('???=>empty main table:', data.windowTable);
-    // setRenderFlag(true);
     data.windowTable[e.target.id] = e.target.value;
     data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
-    // dispatch(updateWindowTable({ ...data.windowTable }));
     dispatch(updateWindowTable(data.windowTable));
 
     calculateOrderWidthHeight();
@@ -179,7 +154,7 @@ const MeasureSheet = () => {
           ...tempObj,
           [e.target.id]: e.target.value,
           orderWidth:
-            tempObj.style == 'SPD'
+            tempObj.style === 'SPD'
               ? tempObj.orderWidth
               : e.target.value
               ? fractionCalculator(
@@ -196,7 +171,7 @@ const MeasureSheet = () => {
           ...tempObj,
           [e.target.id]: e.target.value,
           orderHeight:
-            tempObj.style == 'SPD'
+            tempObj.style === 'SPD'
               ? tempObj.orderHeight
               : e.target.value
               ? fractionCalculator(
@@ -214,7 +189,6 @@ const MeasureSheet = () => {
         });
         break;
     }
-    // measuresheetData.windowTable.cutbacks.h
   };
 
   const handleClickTr = (row_id) => {
@@ -238,23 +212,17 @@ const MeasureSheet = () => {
   };
 
   const isOnlyOneCategory = (index) => {
-    // return Object.values(data.mainTable).find(
-    //   (ele) => ele.categoryNum == data.mainTable[index].categoryNum
-    // )
-    //   ? false
-    //   : true;
-
     const nonComparisonElementArray = ['no', 'categoryNum'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
-      if (i == index) continue;
+      if (i === index) continue;
       else {
         if (
           Object.keys(data.mainTable[index]).every((key) => {
             if (nonComparisonElementArray.find((val) => val === key)) {
               return true;
             } else {
-              return data.mainTable[i][key] == data.mainTable[index][key];
+              return data.mainTable[i][key] === data.mainTable[index][key];
             }
           })
         )
@@ -265,16 +233,10 @@ const MeasureSheet = () => {
   };
 
   const isOnlyOneCategoryInPreState = (index) => {
-    // return Object.values(data.mainTable).find(
-    //   (ele) => ele.categoryNum == data.mainTable[index].categoryNum
-    // )
-    //   ? false
-    //   : true;
-
     const nonComparisonElementArray = ['no', 'categoryNum'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
-      if (i == index) continue;
+      if (i === index) continue;
       else {
         if (
           Object.keys(measuresheetData.mainTable[index]).every((key) => {
@@ -282,7 +244,7 @@ const MeasureSheet = () => {
               return true;
             } else {
               return (
-                measuresheetData.mainTable[i][key] ==
+                measuresheetData.mainTable[i][key] ===
                 measuresheetData.mainTable[index][key]
               );
             }
@@ -298,7 +260,7 @@ const MeasureSheet = () => {
     const nonComparisonElementArray = ['no', 'categoryNum'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
-      if (i == index) continue;
+      if (i === index) continue;
       else if (
         Object.keys(data.mainTable[index]).every((key) => {
           if (nonComparisonElementArray.find((val) => val === key)) {
@@ -315,9 +277,8 @@ const MeasureSheet = () => {
     return -1;
   };
 
-  // estimating categoryNum of index-row in main table
   const estimateCategoryNum = (index) => {
-    if (data.mainTable[index].categoryNum == -1)
+    if (data.mainTable[index].categoryNum === -1)
       data.mainTable[index].categoryNum = 0;
 
     let lastCategoryNum = findLastCategoryNumKindBeforeIndex(index);
@@ -342,7 +303,6 @@ const MeasureSheet = () => {
               data.mainTable[i].categoryNum >
               measuresheetData.mainTable[standardIndex].categoryNum
             ) {
-              // data.mainTable[i].categoryNum = 1;
               data.mainTable[i] = {
                 ...data.mainTable[i],
                 categoryNum: data.mainTable[i].categoryNum - 1,
@@ -375,7 +335,6 @@ const MeasureSheet = () => {
               data.mainTable[i].categoryNum >
               measuresheetData.mainTable[standardIndex].categoryNum
             ) {
-              // data.mainTable[i].categoryNum = 1;
               data.mainTable[i] = {
                 ...data.mainTable[i],
                 categoryNum: data.mainTable[i].categoryNum - 1,
@@ -409,33 +368,9 @@ const MeasureSheet = () => {
         };
       }
     }
-
-    // if (isOnlyOneCategory(index)) {
-    //   if (data.mainTable[index].categoryNum === lastCategoryNum) {
-    //     data.mainTable[index] = {
-    //       ...data.mainTable[index],
-    //       categoryNum: lastCategoryNum + 1,
-    //     };
-    //   }
-    //   console.log('???=>data[index]', data.mainTable[index]);
-    //   const length = Object.keys(data.mainTable).length;
-    //   for (let i = index + 1; i < length; i++) {
-    //     if (data.mainTable[i].categoryNum >= lastCategoryNum) {
-    //       // data.mainTable[i].categoryNum = 1;
-    //       data.mainTable[i] = {
-    //         ...data.mainTable[i],
-    //         categoryNum: data.mainTable[i].categoryNum + 1,
-    //       };
-    //     }
-    //   }
-    // } else {
-    //   // if pre state is only one
-    // }
   };
 
   const processWindowOrderData = () => {
-    // initialize
-
     Object.keys(dataForWindowOrder.mainTable).forEach((key) => {
       dataForWindowOrder.mainTable[key] = { ...initDataOfWindowOrder };
     });
@@ -448,17 +383,16 @@ const MeasureSheet = () => {
           qty: parseInt(dataForWindowOrder.mainTable[ele.categoryNum].qty + 1),
           intColor: ele.intColor,
           extColor: ele.extColor,
-          type: ele.type,
+          type: ele.style,
           szWidth: ele.orderWidth,
           szHeight: ele.orderHeight,
           energy: ele.energy,
           obsc: ele.obsc,
           temp: ele.temp,
+          pattern: ele.grids,
         };
       }
     });
-
-    // console.log('???=> data for window order:', dataForWindowOrder);
 
     dispatch(updateMainTableForWindowOrder(dataForWindowOrder.mainTable));
   };
@@ -497,8 +431,6 @@ const MeasureSheet = () => {
     const boldElementArray = ['orderWidth', 'orderHeight'];
     const checkBoxArray = ['foam'];
     const hiddenElementArray = ['categoryNum'];
-    // const hiddenElementArray = [];
-    // setTempObj({ ...measuresheetData.mainTable });
     data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>
@@ -506,14 +438,13 @@ const MeasureSheet = () => {
           Object.values(measuresheetData.mainTable).map((ele, row_id) => (
             <tr key={row_id} onClick={() => handleClickTr(row_id)}>
               {Object.keys(ele).map((key, index) =>
-                hiddenElementArray.find((val) => val == key) ? (
+                hiddenElementArray.find((val) => val === key) ? (
                   ''
                 ) : (
-                  // <td className="bold measure-sheet__big-font">{ele[key]}</td>
                   <td
                     key={index}
                     className={
-                      boldElementArray.find((val) => val == key)
+                      boldElementArray.find((val) => val === key)
                         ? 'bold measure-sheet__big-font'
                         : ''
                     }
@@ -838,7 +769,7 @@ const MeasureSheet = () => {
               id="orderWidth"
               value={tempObj['orderWidth']}
               onChange={(e) => handleChangeInput(e)}
-              disabled={tempObj.style == 'SPD' ? false : true}
+              disabled={tempObj.style === 'SPD' ? false : true}
             />
           </div>
           <div className="p-line">
@@ -847,7 +778,7 @@ const MeasureSheet = () => {
               id="orderHeight"
               value={tempObj['orderHeight']}
               onChange={(e) => handleChangeInput(e)}
-              disabled={tempObj.style == 'SPD' ? false : true}
+              disabled={tempObj.style === 'SPD' ? false : true}
             />
           </div>
           <div className="p-line">

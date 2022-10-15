@@ -1456,7 +1456,7 @@ const PatioDoorOrder = () => {
   // const TemperTag = ComponentTag[`Component${1}${1}`];
 
   return (
-    <div className="patio-door-order">
+    <div class="patio-door-order">
       <div className="Patio_Information">
         <table>
           <tr>

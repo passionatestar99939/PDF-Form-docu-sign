@@ -17,6 +17,11 @@ for (let i = 0; i < 17; i++) {
   initialState.data.mainTable[i] = {
     ...initDataOfMeasureSheet,
     no: i + 1,
+    // room: 'LIVING ROOM',
+    // intColor: 'Colonial Cherry - Laminated',
+    // extColor: 'Almond - Extruded',
+    // energy: 'LOE 340 SZONE SUNSHILD',
+    // grids: '6/6',
     // roWidth: i,
     // categoryNum: i,
   };

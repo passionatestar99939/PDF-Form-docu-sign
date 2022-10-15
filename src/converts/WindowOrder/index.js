@@ -25,7 +25,6 @@ const WindowOrder = () => {
   const windowOrderData = useSelector((state) => state.windoworder.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
 
-  const handleSign = () => {};
 
   const TableHeader = () => {
     return (
@@ -67,37 +66,43 @@ const WindowOrder = () => {
   const TableBody = () => {
     const checkBoxArray = [
       'foam',
-      'obsc',
-      'temp',
+      'nailfin',
+      'grids',
+      'blinds',
       'casementsL',
       'casementsR',
       'casementsPW',
     ];
+    const hiddenElementArray = ['categoryNum'];
+
+    const classNameForX = '';
 
     return (
       <tbody>
         {data.mainTable &&
           Object.values(windowOrderData.mainTable).map((ele, row_id) => (
             <tr key={row_id}>
-              {Object.keys(ele).map((key, index) => (
-                <td
-                  key={index}
-                  className={
-                    ele[key] === 'X' ? 'window-order__X-td_convert' : ''
-                  }
-                >
-                  {checkBoxArray.find((val) => val === key) ? (
-                    <Checkbox
-                      checkVal={ele[key]}
-                      checkId={key}
-                      isInputEnable={viewMode === 'homepage'}
-                      type={typeOfCheckBox.PatioDoorOrder}
-                    />
-                  ) : (
-                    ele[key]
-                  )}
-                </td>
-              ))}
+              {Object.keys(ele).map((key, index) =>
+                hiddenElementArray.find((val) => val == key) ? (
+                  ''
+                ) : (
+                  <td
+                    key={index}
+                    className={ele[key] == 'X' ? 'window-order__X-td' : ''}
+                  >
+                    {checkBoxArray.find((val) => val === key) ? (
+                      <Checkbox
+                        checkVal={ele[key]}
+                        checkId={key}
+                        isInputEnable={viewMode === 'homepage'}
+                        type={typeOfCheckBox.PatioDoorOrder}
+                      />
+                    ) : (
+                      ele[key]
+                    )}
+                  </td>
+                )
+              )}
             </tr>
           ))}
       </tbody>
@@ -120,7 +125,6 @@ const WindowOrder = () => {
                 height={'100%'}
                 signId="drawingData"
                 addClass="mySign_convert"
-                updateSign={handleSign}
                 setVal={windowOrderData['drawingData']}
                 signStatus={false}
                 viewMode={viewMode}

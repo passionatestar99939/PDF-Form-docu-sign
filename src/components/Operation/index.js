@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,8 +7,6 @@ import {
   faPencil,
   faEnvelope,
   faDownload,
-  faVoicemail,
-  faPrint,
 } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -76,6 +74,7 @@ const Operation = (props) => {
   const [signature, setSignature] = useState(
     '<b>Nick Tisdale<br />Window World</b><br />ww@nicktisdale.com<br />(502) 310-9454'
   );
+  const [pdfPath, setPdfPath] = useState({ ...pdf_paths });
 
   const email = useSelector((state) => state.salesman.data.email);
   const viewMode = useSelector((state) => state.option.data.viewMode);
@@ -85,8 +84,40 @@ const Operation = (props) => {
   const customerName = useSelector((state) => state.contact.data.customer);
   const address = useSelector((state) => state.contact.data.installAddr);
   const phoneNumber = useSelector((state) => state.contact.data.phone1);
-
+  const windowWorldData = useSelector((state) => state.windowworld.data);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (Number(windowWorldData.windowWorldInput1) > 0)
+      pdf_paths.pdf1.send = true;
+    else pdf_paths.pdf1.send = false;
+    if (Number(windowWorldData.windowWorldInput1) > 0)
+      pdf_paths.pdf2.send = true;
+    else pdf_paths.pdf2.send = false;
+    if (
+      Number(windowWorldData.windowWorldInput12) > 0 ||
+      Number(windowWorldData.windowWorldInput13) > 0 ||
+      Number(windowWorldData.windowWorldInput14) > 0 ||
+      Number(windowWorldData.windowWorldInput15) > 0
+    )
+      pdf_paths.pdf3.send = true;
+    else pdf_paths.pdf3.send = false;
+    if (Number(windowWorldData.windowWorldInput1) > 0)
+      pdf_paths.pdf4.send = true;
+    else pdf_paths.pdf4.send = false;
+    if (Number(windowWorldData.windowWorldInput1) > 0)
+      pdf_paths.pdf5.send = true;
+    else pdf_paths.pdf5.send = false;
+    if (Number(windowWorldData.windowWorldInput1) > 0)
+      pdf_paths.pdf6.send = true;
+    else pdf_paths.pdf6.send = false;
+  }, [
+    windowWorldData.windowWorldInput1,
+    windowWorldData.windowWorldInput12,
+    windowWorldData.windowWorldInput13,
+    windowWorldData.windowWorldInput14,
+    windowWorldData.windowWorldInput15,
+  ]);
 
   const handleSignEnable = (e) => {
     if (email === '') {
@@ -182,9 +213,11 @@ const Operation = (props) => {
 
   const handlePdfSend = (e) => {
     pdf_paths[e.target.id]['send'] = e.target.checked;
+    // setPdfPath({ ...pdfPath[e.target.id], send: e.target.checked });
     console.log(pdf_paths);
   };
 
+  console.log('send', pdfPath.pdf1.send);
   return (
     <div>
       <ToastContainer
@@ -305,6 +338,7 @@ const Operation = (props) => {
                       type="checkbox"
                       id="pdf1"
                       onClick={(e) => handlePdfSend(e)}
+                      defaultChecked={pdf_paths.pdf1.send}
                     />
                     <label for="pdf1">
                       WW - 4000 Series Double Hung Windows (PDF)
@@ -317,6 +351,7 @@ const Operation = (props) => {
                       type="checkbox"
                       id="pdf2"
                       onClick={(e) => handlePdfSend(e)}
+                      defaultChecked={pdf_paths.pdf2.send}
                     />
                     <label for="pdf2">
                       WW - 4000 Series Patior Doors (PDF)
@@ -331,6 +366,7 @@ const Operation = (props) => {
                       type="checkbox"
                       id="pdf3"
                       onClick={(e) => handlePdfSend(e)}
+                      defaultChecked={pdf_paths.pdf3.send}
                     />
                     <label for="pdf3">
                       WW - 4000 Series Casement/Awning Windows (PDF)
@@ -343,6 +379,7 @@ const Operation = (props) => {
                       type="checkbox"
                       id="pdf4"
                       onClick={(e) => handlePdfSend(e)}
+                      defaultChecked={pdf_paths.pdf4.send}
                     />
                     <label for="pdf4">
                       WW - 4000 Series Blinds-Between-The-Glass (PDF)
@@ -357,6 +394,7 @@ const Operation = (props) => {
                       type="checkbox"
                       id="pdf5"
                       onClick={(e) => handlePdfSend(e)}
+                      defaultChecked={pdf_paths.pdf5.send}
                     />
                     <label for="pdf5">
                       WW - Peace and Quiet Glass STC 33 (PDF)
@@ -369,6 +407,7 @@ const Operation = (props) => {
                       type="checkbox"
                       id="pdf6"
                       onClick={(e) => handlePdfSend(e)}
+                      defaultChecked={pdf_paths.pdf6.send}
                     />
                     <label for="pdf6">WW - Repair Labor Guarentee</label>
                     &nbsp;&nbsp;&nbsp;

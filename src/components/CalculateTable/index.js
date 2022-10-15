@@ -316,7 +316,7 @@ const CalculateTable = (props) => {
     if (id === 'calculateInput1') setDisposalFee(value);
     if (id === 'calculateInput2') setMeasureFee(value);
     if (id === 'cc_deposit' || id === 'cc_balance') {
-      dispatch(updateCreditValue({ id: id, value: Number(value) }));
+      dispatch(updateCreditValue({ id: id, value: Number(value).toFixed(2) }));
     }
     if (id === 'calculateInput3')
       dispatch(updateValue({ id: id, count: value }));
@@ -367,7 +367,7 @@ const CalculateTable = (props) => {
 
   const handleBlur = (e, id) => {
     e.target.type = 'text';
-    e.target.value = '$ ' + numberWithCommas(Number(storeData[id]));
+    e.target.value = '$ ' + numberWithCommas(Number(storeData[id]).toFixed(2));
     flag.current = false;
   };
 
