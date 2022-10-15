@@ -253,15 +253,17 @@ const WindowOrder = () => {
         </div>
         <div className="p-line">
           <label htmlFor="type">TYPE</label>
-          {roomStyle.map((value, index) => (
-            <option
-              key={index}
-              value={value}
-              selected={value === tempObj.type ? 'selected' : ''}
-            >
-              {value}
-            </option>
-          ))}
+          <select id="type" onChange={(e) => handleChangeInput(e)}>
+            {roomStyle.map((value, index) => (
+              <option
+                key={index}
+                value={value}
+                selected={value === tempObj.type ? 'selected' : ''}
+              >
+                {value}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="p-line">
           <label htmlFor="series">SERIES</label>
