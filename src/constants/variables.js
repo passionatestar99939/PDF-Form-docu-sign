@@ -104,7 +104,7 @@ export const roomItems = [
   'BR3',
   'BR4',
   'OFFICE',
-  'STARIS',
+  'STAIRS',
   'LOFT',
   'ATTIC',
   'BASEMENT',
@@ -119,7 +119,7 @@ export const roomItems = [
   'MUD ROOM',
   'SHED',
   'BARN',
-  'PORCH'
+  'PORCH',
 ];
 
 export const roomStyle = [
@@ -140,7 +140,7 @@ export const roomStyle = [
   'HOP',
   'SP',
   'HR',
-  'SPD'  
+  'SPD',
 ];
 
 export const energy = [
