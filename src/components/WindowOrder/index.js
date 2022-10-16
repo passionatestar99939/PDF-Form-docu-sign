@@ -1,6 +1,8 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 import {
   roomStyle,
@@ -22,8 +24,6 @@ import './style.css';
 import Checkbox from '../Checkbox';
 import Signature from '../Signature';
 import { updateDrawingDataFunc } from '../../store/slices/windoworderSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const data = {
   mainTable: {},

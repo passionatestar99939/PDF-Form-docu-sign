@@ -281,7 +281,7 @@ const MeasureSheet = () => {
             </div>
           </div>
         </div>
-        <div className="msh__header__center  width-20 d-flex flex-direction-column justify-content-end">
+        <div className="msh__header__center  width-20 d-flex flex-direction-column justify-content__end">
           <p className="m-0">MEASURE SHEET (ORDER FORM)</p>
         </div>
         <div className="msh__header__right width-40">
@@ -315,7 +315,7 @@ const MeasureSheet = () => {
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content__end">
             <table className="msh__header__right-table_convert">
               <tr>
                 <td className="text-right">GRID STYLE</td>

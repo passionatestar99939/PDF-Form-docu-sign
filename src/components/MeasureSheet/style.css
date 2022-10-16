@@ -211,8 +211,20 @@
   flex-direction: column;
 }
 
-.justify-content-end {
+.align-items__end {
+  align-items: end;
+}
+
+.justify-content__end {
   justify-content: flex-end;
+}
+
+.justify-content__space-between {
+  justify-content: space-between;
+}
+
+.justify-content__space-around {
+  justify-content: space-around;
 }
 
 .borderd {
@@ -262,4 +274,13 @@
 
 .measure-sheet__big-font {
   font-size: 1.2em;
+}
+
+.measure-sheet__draw-box {
+  text-align: left;
+  height: 100%;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }

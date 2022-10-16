@@ -10,6 +10,7 @@ const initialState = {
     },
     typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
     mainTable: {},
+    drawingData: ['', '', ''],
   },
 };
 
@@ -43,6 +44,9 @@ export const measuresheetSlice = createSlice({
     updateDataMeasureSheet: (state, action) => {
       state.data = action.payload;
     },
+    updateDrawingDataFunc: (state, action) => {
+      state.data.drawingData[action.payload.index] = action.payload.value;
+    },
   },
 });
 
@@ -52,6 +56,7 @@ export const {
   updateTypeTable,
   updateMainTable,
   updateDataMeasureSheet,
+  updateDrawingDataFunc,
 } = measuresheetSlice.actions;
 
 export default measuresheetSlice.reducer;

@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
+
+import DrawBox from '../DrawBox';
+import { updateDrawingDataFunc } from '../../store/slices/measuresheetSlice';
 
 import Checkbox from '../Checkbox';
 
@@ -94,6 +99,11 @@ const MeasureSheet = () => {
       };
     });
   };
+
+  const handleSign = (value) => {
+    dispatch(updateDrawingDataFunc(value));
+  };
+
   const handleChangeWindowOption = (e) => {
     data.windowTable[e.target.id] = e.target.value;
     data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
@@ -471,120 +481,15 @@ const MeasureSheet = () => {
 
   return (
     <div className="msh__container">
-      <div className="msh__header">
-        <div className="msh__header__left width-40">
-          <div className="display-inline-block">
-            <p className="msh-text text-center m-5">EXISTING WINDOWS</p>
-            <div className="msh__hover-left-table">
-              <table className="msh__header__left-table">
-                <tr>
-                  <td className="text-right">TYPE OF WINDOW TEAROUTS</td>
-                  <td>
-                    {viewMode !== 'homepage' ? (
-                      measuresheetData.windowTable.tearouts
-                    ) : (
-                      <select
-                        className="ms_select"
-                        id="tearouts"
-                        onChange={(e) => handleChangeWindowOption(e)}
-                      >
-                        <option
-                          value="WOOD"
-                          selected={
-                            'WOOD' === measuresheetData.windowTable.tearouts
-                          }
-                        >
-                          WOOD
-                        </option>
-                        <option
-                          value="ALUM"
-                          selected={
-                            'ALUM' === measuresheetData.windowTable.tearouts
-                          }
-                        >
-                          ALUM
-                        </option>
-                        <option
-                          value="VINYL"
-                          selected={
-                            'VINYL' === measuresheetData.windowTable.tearouts
-                          }
-                        >
-                          VINYL
-                        </option>
-                        <option
-                          value="STEEL"
-                          selected={
-                            'STEEL' === measuresheetData.windowTable.tearouts
-                          }
-                        >
-                          STEEL
-                        </option>
-                      </select>
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="text-right">TYPE OF WINDOW POCKET</td>
-                  <td>
-                    {viewMode !== 'homepage' ? (
-                      measuresheetData.windowTable.pockets
-                    ) : (
-                      <select
-                        className="ms_select"
-                        id="pockets"
-                        onChange={(e) => handleChangeWindowOption(e)}
-                      >
-                        <option
-                          value="WOOD"
-                          selected={
-                            'WOOD' === measuresheetData.windowTable.pockets
-                          }
-                        >
-                          WOOD
-                        </option>
-                        <option
-                          value="PLASTER"
-                          se
-                          lected={
-                            'PLASTER' === measuresheetData.windowTable.pockets
-                          }
-                        >
-                          PLASTER
-                        </option>
-                        <option
-                          value="DRYWALL"
-                          selected={
-                            'DRYWALL' === measuresheetData.windowTable.pockets
-                          }
-                        >
-                          DRYWALL
-                        </option>
-                      </select>
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <td className="text-right">WINDOW CUTBACKS</td>
-                  <td>
-                    ({measuresheetData.windowTable.cutbacks.w}")
-                    {measuresheetData.windowTable.cutbacks.h
-                      ? ' X ' +
-                        '(' +
-                        measuresheetData.windowTable.cutbacks.h +
-                        '")'
-                      : ''}
-                  </td>
-                </tr>
-              </table>
-            </div>
+      <div>
+        <div className="flex justify-content__space-between width-100">
+          <div
+            className="flex align-items__end bold"
+            style={{ fontSize: '30px' }}
+          >
+            MEASURE SHEET <div></div>
           </div>
-        </div>
-        <div className="msh__header__center  width-20 d-flex flex-direction-column justify-content-end">
-          <p className="m-0">MEASURE SHEET (ORDER FORM)</p>
-        </div>
-        <div className="msh__header__right width-40">
-          <div className="flex">
+          <div className="flex width-40">
             <div className="width-50">
               <div className="flex margin-top-30px">
                 <div className="right-align width-30">Customer:</div>
@@ -614,7 +519,191 @@ const MeasureSheet = () => {
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-end">
+        </div>
+        <div className="flex justify-content__space-between width-100">
+          <div className="msh__hover-left-table">
+            <table className="msh__header__left-table">
+              <tr>
+                <td className="text-right">TYPE OF WINDOW TEAROUTS</td>
+                <td>
+                  {viewMode !== 'homepage' ? (
+                    measuresheetData.windowTable.tearouts
+                  ) : (
+                    <select
+                      className="ms_select"
+                      id="tearouts"
+                      onChange={(e) => handleChangeWindowOption(e)}
+                    >
+                      <option
+                        value="WOOD"
+                        selected={
+                          'WOOD' === measuresheetData.windowTable.tearouts
+                        }
+                      >
+                        WOOD
+                      </option>
+                      <option
+                        value="ALUM"
+                        selected={
+                          'ALUM' === measuresheetData.windowTable.tearouts
+                        }
+                      >
+                        ALUM
+                      </option>
+                      <option
+                        value="VINYL"
+                        selected={
+                          'VINYL' === measuresheetData.windowTable.tearouts
+                        }
+                      >
+                        VINYL
+                      </option>
+                      <option
+                        value="STEEL"
+                        selected={
+                          'STEEL' === measuresheetData.windowTable.tearouts
+                        }
+                      >
+                        STEEL
+                      </option>
+                    </select>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td className="text-right">TYPE OF WINDOW POCKET</td>
+                <td>
+                  {viewMode !== 'homepage' ? (
+                    measuresheetData.windowTable.pockets
+                  ) : (
+                    <select
+                      className="ms_select"
+                      id="pockets"
+                      onChange={(e) => handleChangeWindowOption(e)}
+                    >
+                      <option
+                        value="WOOD"
+                        selected={
+                          'WOOD' === measuresheetData.windowTable.pockets
+                        }
+                      >
+                        WOOD
+                      </option>
+                      <option
+                        value="PLASTER"
+                        se
+                        lected={
+                          'PLASTER' === measuresheetData.windowTable.pockets
+                        }
+                      >
+                        PLASTER
+                      </option>
+                      <option
+                        value="DRYWALL"
+                        selected={
+                          'DRYWALL' === measuresheetData.windowTable.pockets
+                        }
+                      >
+                        DRYWALL
+                      </option>
+                    </select>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td className="text-right">WINDOW CUTBACKS</td>
+                <td>
+                  ({measuresheetData.windowTable.cutbacks.w}")
+                  {measuresheetData.windowTable.cutbacks.h
+                    ? ' X ' +
+                      '(' +
+                      measuresheetData.windowTable.cutbacks.h +
+                      '")'
+                    : ''}
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div className="flex width-100 justify-content__space-around">
+            <div className="measure-sheet__draw-box black-font width-30">
+              {measuresheetData.drawingData[0] ? (
+                ''
+              ) : (
+                <div>
+                  Click to Draw
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    style={{ fontSize: 40, color: 'black', margin: '0px 20px' }}
+                  />
+                </div>
+              )}
+
+              <DrawBox
+                width={'100%'}
+                height={'100%'}
+                signId="drawingData"
+                addClass="mySign"
+                updateSign={handleSign}
+                setVal={measuresheetData.drawingData[0]}
+                signStatus={true}
+                viewMode={viewMode}
+                index={0}
+                isSignMode={false}
+              />
+            </div>
+            <div className="measure-sheet__draw-box black-font width-30">
+              {measuresheetData.drawingData[1] ? (
+                ''
+              ) : (
+                <div>
+                  Click to Draw
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    style={{ fontSize: 40, color: 'black', margin: '0px 20px' }}
+                  />
+                </div>
+              )}
+              <DrawBox
+                width={'100%'}
+                height={'100%'}
+                signId="drawingData"
+                addClass="mySign"
+                updateSign={handleSign}
+                setVal={measuresheetData['drawingData2']}
+                signStatus={true}
+                viewMode={viewMode}
+                index={1}
+                isSignMode={false}
+              />
+            </div>
+            <div className="measure-sheet__draw-box black-font width-30">
+              {measuresheetData.drawingData[2] ? (
+                ''
+              ) : (
+                <div>
+                  Click to Draw
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    style={{ fontSize: 40, color: 'black', margin: '0px 20px' }}
+                  />
+                </div>
+              )}
+              <DrawBox
+                width={'100%'}
+                height={'100%'}
+                signId="drawingData"
+                addClass="mySign"
+                updateSign={handleSign}
+                setVal={measuresheetData['drawingData3']}
+                signStatus={true}
+                viewMode={viewMode}
+                index={2}
+                isSignMode={false}
+              />
+            </div>
+          </div>
+          <div>
             <table className="msh__header__right-table">
               <tr>
                 <td className="text-right">GRID STYLE</td>
@@ -706,6 +795,7 @@ const MeasureSheet = () => {
           </div>
         </div>
       </div>
+
       <div className="msh__body">
         <table className="msh__body-table">
           <TableHeader />
