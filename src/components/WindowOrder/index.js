@@ -199,13 +199,13 @@ const WindowOrder = () => {
         <div className="flex justify-end">
           <div className="flex width-40">
             <div className="width-50">
-              <div className="flex margin-top-30px">
+              <div className="flex margin-top-15px">
                 <div className="right-align width-30">Customer:</div>
                 <div className="border-bottom width-70 blue-font text-center">
                   {salesInfo.customer}
                 </div>
               </div>
-              <div className="flex margin-top-30px">
+              <div className="flex margin-top-15px">
                 <div className="right-align width-30">PO #:</div>
                 <div className="border-bottom width-70 blue-font text-center">
                   {salesInfo.po}
@@ -213,13 +213,13 @@ const WindowOrder = () => {
               </div>
             </div>
             <div className="width-50">
-              <div className="flex margin-top-30px">
+              <div className="flex margin-top-15px">
                 <div className="right-align width-30">Sales Rep:</div>
                 <div className="border-bottom width-70 blue-font text-center">
                   {salesInfo.salesConsultant}
                 </div>
               </div>
-              <div className="flex margin-top-30px">
+              <div className="flex margin-top-15px">
                 <div className="right-align width-30">Date:</div>
                 <div className="border-bottom width-70 blue-font text-center">
                   {salesInfo.date}

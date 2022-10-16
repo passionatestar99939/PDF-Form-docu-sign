@@ -50,6 +50,10 @@
   opacity: 0.5;
 } */
 
+/* .msh__hover-left-table {
+  white-space: nowrap;
+} */
+
 .msh__hover-button {
   opacity: 1;
   transition: all 1s;
@@ -69,7 +73,7 @@
 .msh__body-table tr,
 .msh__header__right-table tr,
 .msh__header__left-table tr {
-  height: 6vh;
+  height: 4vh;
 }
 
 .msh__body-table thead tr th {

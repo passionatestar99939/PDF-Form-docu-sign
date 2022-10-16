@@ -14,7 +14,7 @@ const initialState = {
   },
 };
 
-for (let i = 0; i < 17; i++) {
+for (let i = 0; i < 40; i++) {
   initialState.data.mainTable[i] = {
     ...initDataOfMeasureSheet,
     no: i + 1,
