@@ -35,9 +35,7 @@ const DrawBox = ({
   let imgOriginalSize = {};
   let imgTargetSize = {};
 
-  const qHeight = useRef();
-  const qWidth = useRef();
-  let sizeStyle = {};
+  const sizeStyle = useRef({});
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
@@ -64,13 +62,13 @@ const DrawBox = ({
       imgTargetRef.current.offsetHeight
     );
 
-    qHeight.current =
+    let qHeight, qWidth;
+    qHeight =
       (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
-    qWidth.current =
-      (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
+    qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
+    sizeStyle.current =
+      qHeight < qWidth ? { height: '100%' } : { width: '100%' };
   };
-  sizeStyle =
-    qHeight.current < qWidth.current ? { height: '100%' } : { width: '100%' };
 
   const handleSignClick = () => {
     setOpenModal(signStatus);
@@ -82,7 +80,6 @@ const DrawBox = ({
   const signButtonClass = `sign-button ${
     isSignMode ? 'yellow-background' : ''
   }`;
-  console.log('???=>sign:', signButtonClass, isSignMode);
 
   const imgRef = useRef();
 
@@ -144,7 +141,7 @@ const DrawBox = ({
               //     : { width }
               // }
               // style={qHeight < qWidth ? { height: '100%' } : { width: '100%' }}
-              style={sizeStyle}
+              style={sizeStyle.current}
               ref={imgRef}
             />
           ) : null}
