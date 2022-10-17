@@ -203,19 +203,12 @@ div.Patio_Information {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* width: 100%; */
   border: 1px solid #ccc;
   background: #fff;
   overflow: auto;
   border-radius: 4px;
   outline: none;
   padding: 20px;
-}
-.patio-door-order__table-modal > div {
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40vw; */
 }
 
 .patio-door-order__table-modal .width-30,
@@ -224,11 +217,9 @@ div.Patio_Information {
   width: 100%;
 }
 
-/* .patio-door-order .image {
-  width: 20px;
-  height: 20px;
-  margin-top: -3px;
-} */
+.component-i-j {
+  position: relative;
+}
 
 .component-i-j:not(.patio-door-order__table-modal .component-i-j) {
   cursor: pointer;
@@ -238,6 +229,20 @@ div.Patio_Information {
   background-color: rgb(229, 229, 252);
 }
 
-.ReactModal__Overlay {
-  /* width: 1366px; */
+.pdo_custom_size {
+  text-align: center;
+  height: 56px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 1px black;
+}
+
+.pdo_custom_size .input_container {
+  padding: 7px;
+}
+
+.pdo_custom_size input {
+  font-size: 20px;
+  text-align: center;
 }

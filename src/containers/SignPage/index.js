@@ -21,7 +21,7 @@ import BottomOfPage3 from '../../components/BottomOfPage3';
 import MiddleOfPage3 from '../../components/MiddleOfPage3';
 import WindowTable from '../../components/WindowTable';
 import Operation from '../../components/Operation';
-import MeasureSheet1 from '../../components/MeasureSheet';
+import MeasureSheet from '../../components/MeasureSheet';
 import WindowOrder from '../../components/WindowOrder';
 import SalesConsultant from '../../components/SalesConsultant';
 import PatioDoorOrder from '../../components/PatioDoorOrder';
@@ -165,7 +165,7 @@ const Page5 = () => {
 const MeasureSheetPage = () => {
   return (
     <PageWrapper>
-      <MeasureSheet1 />
+      <MeasureSheet />
     </PageWrapper>
   );
 };

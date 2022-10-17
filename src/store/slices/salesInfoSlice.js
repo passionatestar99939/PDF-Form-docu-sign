@@ -14,6 +14,8 @@ const initialState = {
     comm: 8,
     wwOrder: '#348',
     contractTotal: 0,
+    salesLocation: 'Kentukiana #348',
+    salesPhone: '(502) 671-7777',
   },
 };
 

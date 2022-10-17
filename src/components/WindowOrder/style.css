@@ -17,7 +17,7 @@
 }
 
 .wof-top-left-text {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   margin: 0;
 }
@@ -43,13 +43,14 @@
 
 .wof__body-table > tbody > tr > td {
   border: 1px solid black;
-  font-size: 9px;
+  font-size: 10px;
   color: blue;
+  font-size: 0.8rem;
   text-align: center;
 }
 
 .wof__body-table tr {
-  height: 4vh;
+  height: 6vh;
 }
 
 .wof__contact__table:hover,
@@ -99,13 +100,10 @@
 }
 
 .wof__table_modal {
-  display: flex;
-  flex-wrap: wrap;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90vw;
   height: calc(90vh * 0.9);
   border: 1px solid #ccc;
   background: #fff;
@@ -237,9 +235,16 @@ table.wof__body-table td {
 }
 
 .window-order__draw-box {
-  height: 150px;
+  text-align: left;
+  height: 300px;
   border: 3px solid black;
+  display: flex;
+  flex-direction: column;
   position: relative;
+}
+
+.mySign {
+  position: absolute;
 }
 
 .right-align {
@@ -259,8 +264,8 @@ table.wof__body-table td {
 .width-50 {
   width: 50%;
 }
-.margin-top-15px {
-  margin-top: 15px;
+.margin-top-30px {
+  margin-top: 30px;
 }
 
 .blue-font {
@@ -283,22 +288,35 @@ table.wof__body-table td {
   justify-content: end;
 }
 
-.window-order__draw-box {
-  text-align: left;
-}
-
 .black-font {
   color: black;
 }
 
-.wo_sales {
-  margin-top: 5px;
+.wof__table_modal .p-line {
+  display: flex;
+  width: 300px;
+  padding: 10px 0px;
 }
 
-.mySign {
-  position: absolute;
-  top: 0;
-  left: 0;
+.wof__table_modal .p-line label {
+  width: 40%;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.wof__table_modal .p-line > :last-child:not(.window-order__check-box) {
+  width: 60%;
+}
+
+.window-order__check-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+.wof__body-table td:first-child,
+.wof__body-table th {
+  background-color: grey;
 }
 
 td.window-order__X-td {

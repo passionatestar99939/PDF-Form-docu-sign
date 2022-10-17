@@ -305,7 +305,7 @@ export const data = {
     {
       id: 5,
       count: 0,
-      label: ' Mull to Form Multi Unit or Mull Removal',
+      label: 'Mull to Form Multi Unit or Mull Removal',
       unitPrice: 30,
       price: 0,
     },
@@ -326,7 +326,7 @@ export const data = {
     {
       id: 8,
       count: 0,
-      label: ' Complete Exterior Sill',
+      label: 'Complete Exterior Sill',
       unitPrice: 150,
       price: 0,
     },

@@ -40,7 +40,7 @@ const CreditCardForm = () => {
     <div>
       <div className="cc_container">
         <div>
-          <div className="cc_title">Credit Card Authorization Form</div>
+          <div className="cc_title_convert">CREDIT CARD AUTHORIZATION FORM</div>
           <div className="cc_flex_wrap">
             <div className="flex-50 cc_bar cc_left_align">
               <label htmlFor="cc_name">Name: </label>
@@ -62,7 +62,7 @@ const CreditCardForm = () => {
                 addClass="medium-input"
                 type={'text'}
                 inputId="cc_deposit"
-                style={{ textAlign: 'left' }}
+                style={{ textAlign: 'left', width: '26%' }}
                 updateData={handleChange}
                 inputVal={storeData['cc_deposit']}
                 readOnlyMode={viewMode !== 'homepage'}
@@ -81,18 +81,6 @@ const CreditCardForm = () => {
                   readOnlyMode={viewMode !== 'homepage'}
                 />
               </div>
-              <div className="cc_flex-30">
-                <label htmlFor="cc_zip">Zip: </label>
-                <Input
-                  addClass="medium-input"
-                  type={'text'}
-                  inputId="cc_zip"
-                  style={{ textAlign: 'left', width: '50%' }}
-                  updateData={handleChange}
-                  inputVal={storeData['cc_zip']}
-                  readOnlyMode={viewMode !== 'homepage'}
-                />
-              </div>
             </div>
             <div className="flex-50 cc_bar cc_right_align">
               <label htmlFor="cc_balance">
@@ -102,7 +90,7 @@ const CreditCardForm = () => {
                 addClass="medium-input"
                 type={'text'}
                 inputId="cc_balance"
-                style={{ textAlign: 'left' }}
+                style={{ textAlign: 'left', width: '26%' }}
                 updateData={handleChange}
                 inputVal={storeData['cc_balance']}
                 readOnlyMode={viewMode !== 'homepage'}

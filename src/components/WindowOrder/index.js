@@ -1,8 +1,6 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 import {
   roomStyle,
@@ -24,6 +22,8 @@ import './style.css';
 import Checkbox from '../Checkbox';
 import Signature from '../Signature';
 import { updateDrawingDataFunc } from '../../store/slices/windoworderSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const data = {
   mainTable: {},
@@ -199,29 +199,29 @@ const WindowOrder = () => {
         <div className="flex justify-end">
           <div className="flex width-40">
             <div className="width-50">
-              <div className="flex margin-top-15px">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">Customer:</div>
-                <div className="border-bottom width-70 blue-font text-center">
+                <div className="border-bottom width-70 blue-font">
                   {salesInfo.customer}
                 </div>
               </div>
-              <div className="flex margin-top-15px">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">PO #:</div>
-                <div className="border-bottom width-70 blue-font text-center">
+                <div className="border-bottom width-70 blue-font">
                   {salesInfo.po}
                 </div>
               </div>
             </div>
             <div className="width-50">
-              <div className="flex margin-top-15px">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">Sales Rep:</div>
-                <div className="border-bottom width-70 blue-font text-center">
+                <div className="border-bottom width-70 blue-font">
                   {salesInfo.salesConsultant}
                 </div>
               </div>
-              <div className="flex margin-top-15px">
+              <div className="flex margin-top-30px">
                 <div className="right-align width-30">Date:</div>
-                <div className="border-bottom width-70 blue-font text-center">
+                <div className="border-bottom width-70 blue-font">
                   {salesInfo.date}
                 </div>
               </div>
@@ -263,7 +263,7 @@ const WindowOrder = () => {
                 {value}
               </option>
             ))}
-          </select>
+          </select>{' '}
         </div>
         <div className="p-line">
           <label htmlFor="series">SERIES</label>

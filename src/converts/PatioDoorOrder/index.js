@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Modal from 'react-modal';
 
 import Checkbox from '../Checkbox';
 import { updateValue } from '../../store/slices/patioDoorOrderSlice';
@@ -8,36 +7,13 @@ import { typeOfCheckBox } from '../../constants/variables';
 
 import './style.css';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '40%',
-  },
-  table: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '80vw',
-  },
-};
-
 const PatioDoorOrder = () => {
   console.log('???=>Start');
   const [openTableModal, setOpenTableModal] = useState(false);
-  const viewMode = useSelector((state) => state.option.data.viewMode);
-  // const viewMode = "asdf";
   const storeData = useSelector((state) => state.patiodoororder.data);
+  const salesData = useSelector((state) => state.salesInfo.data);
   const dispatch = useDispatch();
 
-  // console.log("???=>data:", storeData);
   const checkIDs = [];
 
   for (let m = 0; m < 10; m++) {
@@ -67,14 +43,12 @@ const PatioDoorOrder = () => {
 
   let indexOfCheckIDs = 0;
 
-  const ComponentTagArray = [];
-
   const pos = useRef({
     i: -1,
     j: -1,
   });
 
-  const Component_1_1 = () => {
+  const Component11 = () => {
     indexOfCheckIDs = 0;
     return (
       <div
@@ -244,8 +218,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-
-  const Component_1_2 = () => {
+  const Component12 = () => {
     indexOfCheckIDs = 10;
 
     return (
@@ -453,8 +426,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-
-  const Component_1_3 = () => {
+  const Component13 = () => {
     indexOfCheckIDs = 22;
     return (
       <div
@@ -559,8 +531,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-
-  const Component_2_1 = () => {
+  const Component21 = () => {
     indexOfCheckIDs = 28;
 
     return (
@@ -696,7 +667,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-  const Component_2_2 = () => {
+  const Component22 = () => {
     indexOfCheckIDs = 37;
 
     return (
@@ -900,7 +871,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-  const Component_2_3 = () => {
+  const Component23 = () => {
     indexOfCheckIDs = 51;
 
     return (
@@ -1106,7 +1077,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-  const Component_2_4 = () => {
+  const Component24 = () => {
     indexOfCheckIDs = 66;
 
     return (
@@ -1325,13 +1296,9 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-
-  const Component_3_1 = () => {
+  const Component31 = () => {
     return (
-      <div
-        // onClick={() => handleClick(3, 1)}
-        className="width-70 connected-border"
-      >
+      <div className="width-70 connected-border">
         <div className="underline bold">
           ADDITIONAL INSTRUCTIONS: IF ORDERING A FIELD-MULLED TRANSOM OR
           SIDELIGHT, PLEASE LIST BELOW
@@ -1361,7 +1328,7 @@ const PatioDoorOrder = () => {
       </div>
     );
   };
-  const Component_3_2 = () => {
+  const Component32 = () => {
     indexOfCheckIDs = 81;
     return (
       <div
@@ -1428,32 +1395,14 @@ const PatioDoorOrder = () => {
     );
   };
 
-  let TagInsideModal;
-
   const handleChange = (value, { formId }) => {
     dispatch(updateValue({ id: formId, value: value }));
   };
-
-  const ComponentTag = {
-    Component_1_1: Component_1_1,
-    Component_1_2: Component_1_2,
-    Component_1_3: Component_1_3,
-    Component_2_1: Component_2_1,
-    Component_2_2: Component_2_2,
-    Component_2_3: Component_2_3,
-    Component_2_4: Component_2_4,
-    Component_3_1: Component_3_1,
-    Component_3_2: Component_3_2,
-  };
-
-  // const [Tag, setTag] = useState();
 
   const handleClick = (i, j) => {
     pos.current = { i, j };
     setOpenTableModal(true);
   };
-
-  // const TemperTag = ComponentTag[`Component${1}${1}`];
 
   return (
     <div class="patio-door-order_convert">
@@ -1463,7 +1412,7 @@ const PatioDoorOrder = () => {
             <td>WW Location</td>
             <td>
               <div className="border-bottom big-font-convert blue-font Width300">
-                Store #328
+                {salesData.salesLocation}
               </div>
             </td>
           </tr>
@@ -1471,7 +1420,9 @@ const PatioDoorOrder = () => {
             <td>WW Sales Rep</td>
             <td>
               <div className="border-bottom big-font-convert blue-font Width300">
-                Nick - 005
+                {salesData.salesConsultant.split(' ')[0] +
+                  ' - ' +
+                  salesData.repNumber}
               </div>
             </td>
           </tr>
@@ -1479,7 +1430,7 @@ const PatioDoorOrder = () => {
             <td>WW Location Phone #</td>
             <td>
               <div className="border-bottom big-font-convert blue-font Width300">
-                (502) 671-7777
+                {salesData.salesPhone}
               </div>
             </td>
           </tr>
@@ -1487,7 +1438,7 @@ const PatioDoorOrder = () => {
             <td>Today's Date</td>
             <td>
               <div className="border-bottom big-font-convert blue-font Width300">
-                9/18/22
+                {salesData.date}
               </div>
             </td>
           </tr>
@@ -1501,7 +1452,7 @@ const PatioDoorOrder = () => {
             <td>Homeowner Name</td>
             <td>
               <div className="border-bottom big-font-convert blue-font blue-font">
-                Smith, Jerry
+                {salesData.customer}
               </div>
             </td>
           </tr>
@@ -1516,81 +1467,65 @@ const PatioDoorOrder = () => {
         </div>
         <div className="flex">
           <div className="width-35 connected-border">
-            <Component_1_1 />
+            <Component11 />
           </div>
           <div className="width-35 connected-border">
-            <Component_1_2 />
+            <Component12 />
           </div>
           <div className="width-30 connected-border">
-            <Component_1_3 />
+            <Component13 />
           </div>
         </div>
         <div className="flex">
           <div className="width-35 connected-border">
             <div className="text-center underline bold">Custom Size:</div>
-            <div className="space"></div>
-            <div className="space"></div>
+            {storeData.customSize1 && <div>{storeData.customSize1}</div>}
+            {!storeData.customSize1 && (
+              <div>
+                <div className="space"></div>
+                <div className="space"></div>
+              </div>
+            )}
           </div>
           <div className="width-35 connected-border">
             <div className="text-center underline bold">Custom Size:</div>
+            {storeData.customSize2 && <div>{storeData.customSize2}</div>}
+            {!storeData.customSize2 && (
+              <div>
+                <div className="space"></div>
+                <div className="space"></div>
+              </div>
+            )}
           </div>
           <div className="width-30 connected-border">
             <div className="text-center underline bold">Custom Size:</div>
+            {storeData.customSize3 && <div>{storeData.customSize3}</div>}
+            {!storeData.customSize3 && (
+              <div>
+                <div className="space"></div>
+                <div className="space"></div>
+              </div>
+            )}
           </div>
         </div>
         <img src="/images/black.png" width="100%" height="12px" alt="black" />
         <div className="flex">
           <div className="width-70 connected-border flex">
-            <Component_2_1 />
-            <Component_2_2 />
-            <Component_2_3 />
+            <Component21 />
+            <Component22 />
+            <Component23 />
           </div>
           <div className="width-30 connected-border flex flex__right-direction">
-            <Component_2_4 />
+            <Component24 />
           </div>
         </div>
         <img src="/images/black.png" width="100%" height="12px" alt="black" />
         <div className="flex">
-          <Component_3_1 />
-          <Component_3_2 />
+          <Component31 />
+          <Component32 />
         </div>
         <img src="/images/black.png" width="100%" height="12px" alt="black" />
       </div>
-      <Modal
-        isOpen={viewMode === 'homepage' && openTableModal}
-        style={{
-          ...customStyles.table,
-        }}
-        className="patio-door-order_convert__table-modal"
-        overlayClassName="myoverlay"
-        closeTimeoutMS={200}
-      >
-        <div
-          style={{
-            // transform: `scale(${window.innerWidth / 1366})`,
-            transform: `scale(1)`,
-            // width: '1366px',
-          }}
-        >
-          <div style={{}}>
-            {
-              (TagInsideModal =
-                ComponentTag[`Component_${pos.current.i}_${pos.current.j}`])
-            }
-
-            <TagInsideModal />
-            {/* <Tag /> */}
-            {console.log('???=>End rendering')}
-            <button
-              className="btn sign-modal-btn"
-              onClick={() => setOpenTableModal(false)}
-              style={{ margin: '10px 0px 0px 0px', float: 'right' }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 };

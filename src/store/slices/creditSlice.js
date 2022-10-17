@@ -5,7 +5,6 @@ const initialState = {
     cc_name: '',
     cc_deposit: 0,
     cc_address: '',
-    cc_zip: '',
     cc_balance: 0,
     cc_phone: '',
     cc_cardholder_name: '',
