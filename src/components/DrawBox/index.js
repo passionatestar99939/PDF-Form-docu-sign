@@ -112,7 +112,7 @@ const DrawBox = ({
       ) : (
         <div
           id="sign-button"
-          className={'sign-button '}
+          className={'sign-button centering'}
           onClick={() => handleSignClick()}
           style={{ width: width, height: height }}
           ref={imgTargetRef}
