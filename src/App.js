@@ -1,11 +1,11 @@
-import React from "react";
-import AppContent from "./containers/AppContent";
-import HomePage from "./containers/HomePage";
-import Router from "./router";
-import Operation from "./components/Operation";
+import React from 'react';
+import AppContent from './containers/AppContent';
+import HomePage from './containers/HomePage';
+import Router from './router';
+import Operation from './components/Operation';
 
-import logo from "./logo.svg";
-import "./App.css";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
@@ -16,3 +16,32 @@ function App() {
 }
 
 export default App;
+
+// import React, { useEffect } from 'react';
+// // import './styles.css';
+
+// const App = () => {
+//   const ref = React.useRef(null);
+//   const [width, setWidth] = React.useState(0);
+
+//   useEffect(() => {
+//     setWidth(ref.current.offsetWidth);
+//     console.log('???=>render:');
+//   });
+
+//   return (
+//     <div className="App">
+//       <h1>Hello CodeSandbox</h1>
+//       <div
+//         style={{
+//           border: '1px solid red',
+//         }}
+//         ref={ref}
+//       >
+//         Width: {width}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default App;

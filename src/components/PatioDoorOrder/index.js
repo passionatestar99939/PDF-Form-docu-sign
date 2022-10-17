@@ -59,6 +59,7 @@ const PatioDoorOrder = () => {
     // dispatch(
     //   updateValue({ id: 'customSize1', value: customSize1.current.value })
     // );
+    setOpenTableModal(false);
     dispatch(
       updateDataPatioDoor({
         ...storeData,
@@ -67,7 +68,7 @@ const PatioDoorOrder = () => {
         customSize3: customSize3.current.value,
       })
     );
-    setOpenTableModal(false);
+    console.log('???=>close');
   };
 
   const handleCustomSize = (e) => {

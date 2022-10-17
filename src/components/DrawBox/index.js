@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import Modal from 'react-modal';
 
@@ -29,18 +29,48 @@ const DrawBox = ({
 }) => {
   const [imageURL, setImageURL] = useState(setVal);
   const [openModal, setOpenModal] = useState(false);
-
   const sigCanvas = useRef({});
+  const imgTargetRef = useRef();
+
+  let imgOriginalSize = {};
+  let imgTargetSize = {};
+
+  const qHeight = useRef();
+  const qWidth = useRef();
+  let sizeStyle = {};
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
     setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
-    setOpenModal(false);
     updateSign({
       index: index,
       value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
     });
+    setOpenModal(false);
+
+    imgOriginalSize = {
+      width: parseInt(
+        sigCanvas.current.getTrimmedCanvas().getAttribute('width')
+      ),
+      height: parseInt(
+        sigCanvas.current.getTrimmedCanvas().getAttribute('height')
+      ),
+    };
+    console.log('???=>Canvas', imgOriginalSize);
+    console.log(
+      '???=>target',
+      imgTargetRef.current.offsetWidth,
+      ',',
+      imgTargetRef.current.offsetHeight
+    );
+
+    qHeight.current =
+      (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
+    qWidth.current =
+      (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
   };
+  sizeStyle =
+    qHeight.current < qWidth.current ? { height: '100%' } : { width: '100%' };
 
   const handleSignClick = () => {
     setOpenModal(signStatus);
@@ -53,6 +83,22 @@ const DrawBox = ({
     isSignMode ? 'yellow-background' : ''
   }`;
   console.log('???=>sign:', signButtonClass, isSignMode);
+
+  const imgRef = useRef();
+
+  // useEffect(() => {
+  //   if (imgRef.current) {
+  //     console.log('???=>offsetWidth:', imgRef.current.offsetWidth);
+  //     // console.log('???=>clientWidth:', imgRef.current.clientWidth);
+  //   }
+  //   return () => {
+  //     // useEffect(() => {
+  //     if (imgRef.current) {
+  //       console.log('???=>offsetWidth:=== clear', imgRef.current.offsetWidth);
+  //       // console.log('???=>clientWidth:', imgRef.current.clientWidth);
+  //     }
+  //   };
+  // });
 
   return (
     <div
@@ -83,13 +129,23 @@ const DrawBox = ({
           className={signButtonClass}
           onClick={() => handleSignClick()}
           style={{ width: width, height: height }}
+          ref={imgTargetRef}
         >
           {imageURL ? (
             <img
               src={imageURL}
               alt="my signature"
               className="sign-img"
-              style={{ height: height }}
+              // style={
+              //   (1.0 * imgTargetRef.current.offsetHeight) /
+              //     imgOriginalSize.height <
+              //   (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width
+              //     ? { height }
+              //     : { width }
+              // }
+              // style={qHeight < qWidth ? { height: '100%' } : { width: '100%' }}
+              style={sizeStyle}
+              ref={imgRef}
             />
           ) : null}
         </div>
