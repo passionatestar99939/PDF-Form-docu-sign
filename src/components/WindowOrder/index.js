@@ -20,10 +20,10 @@ import {
 
 import './style.css';
 import Checkbox from '../Checkbox';
-import Signature from '../Signature';
 import { updateDrawingDataFunc } from '../../store/slices/windoworderSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import DrawBox from '../DrawBox';
 
 const data = {
   mainTable: {},
@@ -175,7 +175,7 @@ const WindowOrder = () => {
                   style={{ fontSize: 40, color: 'black', margin: '0px 20px' }}
                 />
               </div>
-              <Signature
+              <DrawBox
                 width={'100%'}
                 height={'100%'}
                 signId="drawingData"
@@ -184,7 +184,6 @@ const WindowOrder = () => {
                 setVal={windowOrderData['drawingData']}
                 signStatus={true}
                 viewMode={viewMode}
-                isSignMode={false}
               />
             </div>
           </td>

@@ -36,10 +36,14 @@ const DrawBox = ({
   const clear = () => sigCanvas.current.clear();
   const save = () => {
     setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
-    updateSign({
-      index: index,
-      value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-    });
+    if (index) {
+      updateSign({
+        index: index,
+        value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
+      });
+    } else {
+      updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+    }
     setOpenModal(false);
 
     const imgOriginalSize = {

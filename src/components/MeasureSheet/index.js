@@ -692,7 +692,6 @@ const MeasureSheet = ({ page }) => {
                   signStatus={true}
                   viewMode={viewMode}
                   index={0}
-                  isSignMode={false}
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
@@ -721,7 +720,6 @@ const MeasureSheet = ({ page }) => {
                   signStatus={true}
                   viewMode={viewMode}
                   index={1}
-                  isSignMode={false}
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
@@ -750,7 +748,6 @@ const MeasureSheet = ({ page }) => {
                   signStatus={true}
                   viewMode={viewMode}
                   index={2}
-                  isSignMode={false}
                 />
               </div>
             </div>
