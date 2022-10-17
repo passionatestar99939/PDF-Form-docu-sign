@@ -25,15 +25,11 @@ const DrawBox = ({
   signStatus,
   viewMode,
   index,
-  isSignMode = true,
 }) => {
   const [imageURL, setImageURL] = useState(setVal);
   const [openModal, setOpenModal] = useState(false);
   const sigCanvas = useRef({});
   const imgTargetRef = useRef();
-
-  let imgOriginalSize = {};
-  let imgTargetSize = {};
 
   const sizeStyle = useRef({});
 
@@ -46,7 +42,7 @@ const DrawBox = ({
     });
     setOpenModal(false);
 
-    imgOriginalSize = {
+    const imgOriginalSize = {
       width: parseInt(
         sigCanvas.current.getTrimmedCanvas().getAttribute('width')
       ),
@@ -73,13 +69,6 @@ const DrawBox = ({
   const handleSignClick = () => {
     setOpenModal(signStatus);
   };
-
-  // const signButtonClass = 'sign-button '.isSignMode
-  //   ? 'yellow-background'
-  //   : '';
-  const signButtonClass = `sign-button ${
-    isSignMode ? 'yellow-background' : ''
-  }`;
 
   const imgRef = useRef();
 
@@ -123,7 +112,7 @@ const DrawBox = ({
       ) : (
         <div
           id="sign-button"
-          className={signButtonClass}
+          className={'sign-button '}
           onClick={() => handleSignClick()}
           style={{ width: width, height: height }}
           ref={imgTargetRef}
@@ -161,7 +150,7 @@ const DrawBox = ({
         />
         <div style={{ textAlign: 'center' }}>
           <button onClick={save} className="modal-btn">
-            {isSignMode ? 'Sign' : 'Draw'}
+            Draw
           </button>
           <button onClick={clear} className="modal-btn">
             Clear
