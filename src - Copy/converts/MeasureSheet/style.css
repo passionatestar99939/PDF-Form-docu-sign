@@ -214,7 +214,7 @@
   flex-direction: column;
 }
 
-.justify-content-end {
+.justify-content__end {
   justify-content: flex-end;
 }
 

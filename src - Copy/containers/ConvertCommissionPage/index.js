@@ -6,9 +6,7 @@ import axios from 'axios';
 import { store } from '../../store/store';
 
 import PageWrapper from '../../converts/PageWrapper';
-import MeasureSheet from '../../converts/MeasureSheet';
-import WindowOrder from '../../converts/WindowOrder';
-import PatioDoorOrder from '../../converts/PatioDoorOrder';
+import SalesConsultant from '../../converts/SalesConsultant';
 
 import { updateData } from '../../store/slices/optionSlice';
 import { updateDataContact } from '../../store/slices/contactSlice';
@@ -42,34 +40,14 @@ import '../../styles/base.css';
 const AppWrapper = styled.div`
   padding: 5px;
   background-color: black;
-  width: 1175px;
 `;
 
-const MeasureSheetPage = () => {
+const SalesConsultantPage = () => {
   return (
-    <div>
-      <PageWrapper addClass="page pdf-page-portrait">
-        <MeasureSheet page={1} />
-      </PageWrapper>
-      <PageWrapper addClass="page pdf-page-portrait">
-        <MeasureSheet page={2} />
-      </PageWrapper>
-    </div>
-  );
-};
-
-const WindowOrderPage = () => {
-  return (
-    <PageWrapper addClass="page pdf-page-portrait">
-      <WindowOrder />
-    </PageWrapper>
-  );
-};
-
-const PatioDoorOrderPage = () => {
-  return (
-    <PageWrapper addClass="page pdf-page-portrait">
-      <PatioDoorOrder />
+    <PageWrapper addClass="pdf-page">
+      <SalesConsultant />
+      <div className="hr-line">COPY</div>
+      <SalesConsultant />
     </PageWrapper>
   );
 };
@@ -99,13 +77,13 @@ const updateStore = (data) => {
   store.dispatch(updateDataSalesInfo(data.salesInfo.data));
 };
 
-const ConvertConsultantPage = () => {
+const ConvertCommissionPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
 
   dispatch(updateData({ dataKey: 'linkId', data: id }));
-  dispatch(updateData({ dataKey: 'viewMode', data: 'convert-consultant' }));
+  dispatch(updateData({ dataKey: 'viewMode', data: 'convert-commission' }));
 
   useEffect(() => {
     async function getData() {
@@ -120,11 +98,9 @@ const ConvertConsultantPage = () => {
 
   return (
     <AppWrapper>
-      <MeasureSheetPage />
-      <WindowOrderPage />
-      <PatioDoorOrderPage />
+      <SalesConsultantPage />
     </AppWrapper>
   );
 };
 
-export default ConvertConsultantPage;
+export default ConvertCommissionPage;

@@ -5,14 +5,14 @@
 .wof__contact {
   flex-basis: 40%;
 }
-.wof__contact__table {
+.wof__contact__table_convert {
   width: 100%;
   border: 2px solid black;
   border-collapse: collapse;
   margin: 0;
 }
 
-.wof__contact__table td {
+.wof__contact__table_convert td {
   border: 2px solid black;
 }
 
@@ -29,35 +29,35 @@
   font-size: 1.2rem;
 }
 
-.wof__body-table {
+.wof__body-table_convert {
   width: 100%;
   border: 2px solid black;
   border-collapse: collapse;
   margin: 0;
 }
 
-.wof__body-table th {
+.wof__body-table_convert th {
   border: 1px solid black;
   font-size: 10px;
 }
 
-.wof__body-table > tbody > tr > td {
+.wof__body-table_convert > tbody > tr > td {
   border: 1px solid black;
   font-size: 9px;
   color: blue;
   text-align: center;
 }
 
-.wof__body-table tr {
+.wof__body-table_convert tr {
   height: 4vh;
 }
 
-.wof__contact__table:hover,
-.wof__body-table:hover {
+.wof__contact__table_convert:hover,
+.wof__body-table_convert:hover {
   cursor: pointer;
 }
 
-.wof__body-table tbody tr:hover {
+.wof__body-table_convert tbody tr:hover {
   background-color: rgb(211, 218, 250);
 }
 
@@ -98,7 +98,7 @@
   flex-grow: 1;
 }
 
-.wof__table_modal {
+.wof__table_modal_convert {
   display: flex;
   flex-wrap: wrap;
   position: fixed;
@@ -213,7 +213,7 @@
   text-align: center;
 }
 
-table.wof__body-table td {
+table.wof__body-table_convert td {
   height: 1.8em;
 }
 
@@ -236,7 +236,7 @@ table.wof__body-table td {
   text-align: left;
 }
 
-.window-order__draw-box {
+.window-order__draw-box_convert {
   height: 150px;
   border: 3px solid black;
   position: relative;
@@ -283,7 +283,7 @@ table.wof__body-table td {
   justify-content: end;
 }
 
-.window-order__draw-box {
+.window-order__draw-box_convert {
   text-align: left;
 }
 
@@ -295,12 +295,12 @@ table.wof__body-table td {
   margin-top: 5px;
 }
 
-.mySign {
+.mySign_convert {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-td.window-order__X-td {
+td.window-order__X-td_convert {
   width: 3%;
 }

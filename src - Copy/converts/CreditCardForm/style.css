@@ -1,0 +1,56 @@
+.cc_flex_wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-50 {
+  flex: 50%;
+}
+
+.cc_left_align {
+  text-align: left;
+}
+
+.cc_right_align {
+  text-align: right;
+}
+
+.cc_bar {
+  padding: 5px;
+}
+
+.cc_bordered_container {
+  border: 2px solid black;
+}
+
+.cc_credit_card {
+  width: 70%;
+  justify-content: space-around;
+}
+
+.cc_content {
+  text-align: justify;
+  margin-top: 2%;
+  font-style: italic;
+  font-size: 22px;
+}
+
+.cc_container {
+  padding: 5%;
+  font-family: MinionPro-bold_p;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.13px;
+}
+
+.cc_flex-50 {
+  flex: 50%;
+}
+
+.cc_flex-30 {
+  flex: 30%;
+}
+
+.cc_title {
+  margin-bottom: 2%;
+}

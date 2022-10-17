@@ -1,0 +1,10 @@
+.Table2OfPage3 {
+  font-size: 12px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.LeftDirection{
+  text-align: left;
+}

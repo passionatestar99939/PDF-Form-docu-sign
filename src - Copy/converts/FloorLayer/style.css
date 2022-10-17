@@ -1,0 +1,18 @@
+.FloorLayer {
+  display: flex;
+}
+
+.Floor {
+  width: 30%;
+  margin: 2%;
+}
+
+.Rectangle {
+  height: 150px;
+  border: 1px solid black;
+}
+
+.InputOfFloor {
+  display: flex;
+  flex-direction: row-reverse;
+}

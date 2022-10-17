@@ -42,16 +42,15 @@ import '../../styles/base.css';
 const AppWrapper = styled.div`
   padding: 5px;
   background-color: black;
-  width: 1175px;
 `;
 
 const MeasureSheetPage = () => {
   return (
     <div>
-      <PageWrapper addClass="page pdf-page-portrait">
+      <PageWrapper addClass="page">
         <MeasureSheet page={1} />
       </PageWrapper>
-      <PageWrapper addClass="page pdf-page-portrait">
+      <PageWrapper addClass="page">
         <MeasureSheet page={2} />
       </PageWrapper>
     </div>
