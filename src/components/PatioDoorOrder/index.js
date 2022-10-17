@@ -3,12 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 
 import Checkbox from '../Checkbox';
-import { updateValue } from '../../store/slices/patioDoorOrderSlice';
+import {
+  updateValue,
+  updateDataPatioDoor,
+} from '../../store/slices/patioDoorOrderSlice';
 import { typeOfCheckBox } from '../../constants/variables';
 
 import './style.css';
 
 const PatioDoorOrder = () => {
+  const customSize1 = useRef();
+  const customSize2 = useRef();
+  const customSize3 = useRef();
   const [openTableModal, setOpenTableModal] = useState(false);
   const viewMode = useSelector((state) => state.option.data.viewMode);
   const storeData = useSelector((state) => state.patiodoororder.data);
@@ -49,8 +55,23 @@ const PatioDoorOrder = () => {
     j: -1,
   });
 
+  const handleClose = () => {
+    // dispatch(
+    //   updateValue({ id: 'customSize1', value: customSize1.current.value })
+    // );
+    dispatch(
+      updateDataPatioDoor({
+        ...storeData,
+        customSize1: customSize1.current.value,
+        customSize2: customSize2.current.value,
+        customSize3: customSize3.current.value,
+      })
+    );
+    setOpenTableModal(false);
+  };
+
   const handleCustomSize = (e) => {
-    dispatch(updateValue({ id: e.target.id, value: e.target.value }));
+    // dispatch(updateValue({ id: e.target.id, value: e.target.value }));
   };
 
   const Component11 = () => {
@@ -227,15 +248,17 @@ const PatioDoorOrder = () => {
         <div className="pdo_custom_size">
           <div className="underline bold">Custom Size: </div>
           <div className="input_container">
-            <input
+            {/* <input
               type="text"
               id="customSize1"
-              value={storeData.customSize1}
+              defaultValue={storeData.customSize1}
               onChange={(e) => handleCustomSize(e)}
-            />
+            /> */}
             <input
               type="text"
               id="customSize1"
+              defaultValue={storeData.customSize1}
+              ref={customSize1}
             />
           </div>
         </div>
@@ -456,8 +479,8 @@ const PatioDoorOrder = () => {
             <input
               type="text"
               id="customSize2"
-              value={storeData.customSize2}
-              onChange={(e) => handleCustomSize(e)}
+              defaultValue={storeData.customSize2}
+              ref={customSize2}
             />
           </div>
         </div>
@@ -576,8 +599,8 @@ const PatioDoorOrder = () => {
             <input
               type="text"
               id="customSize3"
-              value={storeData.customSize3}
-              onChange={(e) => handleCustomSize(e)}
+              defaultValue={storeData.customSize3}
+              ref={customSize3}
             />
           </div>
         </div>
@@ -1584,7 +1607,7 @@ const PatioDoorOrder = () => {
             <div>
               <button
                 className="btn sign-modal-btn"
-                onClick={() => setOpenTableModal(false)}
+                onClick={handleClose}
                 style={{ margin: '10px 0px 0px 0px', float: 'right' }}
               >
                 Close
