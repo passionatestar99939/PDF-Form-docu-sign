@@ -46,9 +46,14 @@ const AppWrapper = styled.div`
 
 const MeasureSheetPage = () => {
   return (
-    <PageWrapper addClass="page pdf-page-portrait">
-      <MeasureSheet />
-    </PageWrapper>
+    <div>
+      <PageWrapper addClass="page pdf-page-portrait">
+        <MeasureSheet page={1} />
+      </PageWrapper>
+      <PageWrapper addClass="page pdf-page-portrait">
+        <MeasureSheet page={2} />
+      </PageWrapper>
+    </div>
   );
 };
 
