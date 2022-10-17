@@ -222,8 +222,9 @@ const MeasureSheet = ({ page }) => {
   };
 
   const isOnlyOneCategory = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     const length = Object.keys(data.mainTable).length;
+
     for (let i = 0; i < length; i++) {
       if (i === index) continue;
       else {
@@ -243,7 +244,7 @@ const MeasureSheet = ({ page }) => {
   };
 
   const isOnlyOneCategoryInPreState = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
       if (i === index) continue;
@@ -267,7 +268,7 @@ const MeasureSheet = ({ page }) => {
   };
 
   const findFirstIdenticalIndex = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum'];
+    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
       if (i === index) continue;
