@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Checkbox from '../Checkbox';
-import Signature from '../Signature';
+import DrawBox from '../../components/DrawBox';
 
 import {
   initDataOfWindowOrder,
@@ -24,7 +24,6 @@ const WindowOrder = () => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const windowOrderData = useSelector((state) => state.windoworder.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
-
 
   const TableHeader = () => {
     return (
@@ -88,7 +87,9 @@ const WindowOrder = () => {
                 ) : (
                   <td
                     key={index}
-                    className={ele[key] == 'X' ? 'window-order__X-td' : ''}
+                    className={
+                      ele[key] == 'X' ? 'window-order__X-td_convert' : ''
+                    }
                   >
                     {checkBoxArray.find((val) => val === key) ? (
                       <Checkbox
@@ -120,7 +121,7 @@ const WindowOrder = () => {
             </div>
             <div className="window-order__draw-box_convert black-font">
               Click to Draw
-              <Signature
+              <DrawBox
                 width={'100%'}
                 height={'100%'}
                 signId="drawingData"
