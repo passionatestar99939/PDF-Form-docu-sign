@@ -380,11 +380,11 @@ const MeasureSheet = ({ page }) => {
                   height={'100%'}
                   signId="drawingData"
                   addClass="mySign"
-                  setVal={measuresheetData.drawingData[0]}
+                  setVal={measuresheetData.drawingData[0].value}
                   signStatus={false}
                   viewMode={viewMode}
+                  style={JSON.parse(measuresheetData.drawingData[0].style)}
                   index={0}
-                  isSignMode={false}
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
@@ -408,11 +408,11 @@ const MeasureSheet = ({ page }) => {
                   height={'100%'}
                   signId="drawingData"
                   addClass="mySign"
-                  setVal={measuresheetData.drawingData[1]}
+                  setVal={measuresheetData.drawingData[1].value}
                   signStatus={false}
                   viewMode={viewMode}
+                  style={JSON.parse(measuresheetData.drawingData[1].style)}
                   index={1}
-                  isSignMode={false}
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
@@ -436,11 +436,11 @@ const MeasureSheet = ({ page }) => {
                   height={'100%'}
                   signId="drawingData"
                   addClass="mySign"
-                  setVal={measuresheetData.drawingData[2]}
+                  setVal={measuresheetData.drawingData[2].value}
                   signStatus={false}
                   viewMode={viewMode}
+                  style={JSON.parse(measuresheetData.drawingData[2].style)}
                   index={2}
-                  isSignMode={false}
                 />
               </div>
             </div>

@@ -125,11 +125,11 @@ const WindowOrder = () => {
                 width={'100%'}
                 height={'100%'}
                 signId="drawingData"
-                addClass="mySign_convert"
-                setVal={windowOrderData['drawingData']}
+                addClass="mySign"
+                setVal={windowOrderData.drawingData.value}
                 signStatus={false}
+                style={windowOrderData.drawingData.style}
                 viewMode={viewMode}
-                isSignMode={false}
               />
             </div>
           </td>
