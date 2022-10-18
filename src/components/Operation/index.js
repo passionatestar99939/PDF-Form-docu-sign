@@ -144,13 +144,13 @@ const Operation = (props) => {
       let pdf_image_path = BASE_URL + '/images/pdf-attach.png';
       if (pdf_paths[value].send) {
         pdf_body +=
-          '<div><img alt="attach" src="' +
+          '<div style="display: flex; align-items: center;"><img alt="attach" src="' +
           attach_path +
           '" /><a href="' +
           pdf_paths[value].path +
           '">' +
           pdf_paths[value].title +
-          '</a><img alt="pdf" src="' +
+          '</a><img alt="pdf" width="20px" src="' +
           pdf_image_path +
           '" /></div>';
       }
