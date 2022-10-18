@@ -528,7 +528,7 @@ const MeasureSheet = ({ page }) => {
             >
               MEASURE SHEET <div></div>
             </div>
-            <div className="flex width-40">
+            <div className="flex width-50">
               <div className="width-50">
                 <div className="flex margin-top-15px">
                   <div className="right-align width-30">Customer:</div>
@@ -666,7 +666,7 @@ const MeasureSheet = ({ page }) => {
 
             <div className="flex width-60 justify-content__space-around">
               <div className="measure-sheet__draw-box black-font width-30">
-                {measuresheetData.drawingData[0] ? (
+                {measuresheetData.drawingData[0].value ? (
                   ''
                 ) : (
                   <div style={{ fontSize: '10px' }}>
@@ -696,7 +696,7 @@ const MeasureSheet = ({ page }) => {
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
-                {measuresheetData.drawingData[1] ? (
+                {measuresheetData.drawingData[1].value ? (
                   ''
                 ) : (
                   <div style={{ fontSize: '10px' }}>
@@ -725,7 +725,7 @@ const MeasureSheet = ({ page }) => {
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
-                {measuresheetData.drawingData[2] ? (
+                {measuresheetData.drawingData[2].value ? (
                   ''
                 ) : (
                   <div style={{ fontSize: '10px' }}>

@@ -197,7 +197,7 @@ const WindowOrder = () => {
     <div className="wof-container">
       <div className="wof__body">
         <div className="flex justify-end">
-          <div className="flex width-40">
+          <div className="flex width-50">
             <div className="width-50">
               <div className="flex margin-top-30px">
                 <div className="right-align width-30">Customer:</div>
