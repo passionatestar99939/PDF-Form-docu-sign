@@ -383,7 +383,7 @@ const MeasureSheet = ({ page }) => {
                   setVal={measuresheetData.drawingData[0].value}
                   signStatus={false}
                   viewMode={viewMode}
-                  style={JSON.parse(measuresheetData.drawingData[0].style)}
+                  styleJSON={measuresheetData.drawingData[0].style}
                   index={0}
                 />
               </div>
@@ -411,7 +411,7 @@ const MeasureSheet = ({ page }) => {
                   setVal={measuresheetData.drawingData[1].value}
                   signStatus={false}
                   viewMode={viewMode}
-                  style={JSON.parse(measuresheetData.drawingData[1].style)}
+                  styleJSON={measuresheetData.drawingData[1].style}
                   index={1}
                 />
               </div>
@@ -439,7 +439,7 @@ const MeasureSheet = ({ page }) => {
                   setVal={measuresheetData.drawingData[2].value}
                   signStatus={false}
                   viewMode={viewMode}
-                  style={JSON.parse(measuresheetData.drawingData[2].style)}
+                  styleJSON={measuresheetData.drawingData[2].style}
                   index={2}
                 />
               </div>

@@ -128,7 +128,7 @@ const WindowOrder = () => {
                 addClass="mySign"
                 setVal={windowOrderData.drawingData.value}
                 signStatus={false}
-                style={windowOrderData.drawingData.style}
+                styleJSON={windowOrderData.drawingData.style}
                 viewMode={viewMode}
               />
             </div>
