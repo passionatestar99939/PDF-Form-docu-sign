@@ -16,7 +16,7 @@ const customStyles = {
 };
 
 const Signature = ({
-  setVal,
+  imgInfo,
   signId,
   addClass,
   updateSign,
@@ -26,7 +26,7 @@ const Signature = ({
   viewMode,
   isSignMode = true,
 }) => {
-  const [imageURL, setImageURL] = useState(setVal);
+  const [imageURL, setImageURL] = useState(imgInfo);
   const [openModal, setOpenModal] = useState(false);
 
   const sigCanvas = useRef({});
@@ -85,7 +85,7 @@ const Signature = ({
             style={{ width: width, height: height }}
           />
           <img
-            src={setVal ? setVal : '/images/emtpy-sign.png'}
+            src={imgInfo ? imgInfo : '/images/emtpy-sign.png'}
             alt="my signature"
             className="sign-img"
             style={{ height: height - 5, marginTop: -height }}

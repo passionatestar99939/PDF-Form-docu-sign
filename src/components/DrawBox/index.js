@@ -16,7 +16,7 @@ const customStyles = {
 };
 
 const DrawBox = ({
-  setVal,
+  imgInfo,
   signId,
   addClass,
   updateSign,
@@ -27,13 +27,12 @@ const DrawBox = ({
   styleJSON,
   index,
 }) => {
-  // const [imageURL, setImageURL] = useState(setVal);
-  const [imageURL, setImageURL] = useState(setVal);
+  // const [imageURL, setImageURL] = useState(imgInfo);
   const [openModal, setOpenModal] = useState(false);
   const sigCanvas = useRef({});
   const imgTargetRef = useRef();
 
-  const sizeStyle = useRef(styleJSON ? JSON.parse(styleJSON) : {});
+  let sizeStyle = styleJSON ? JSON.parse(styleJSON) : {};
 
   console.log('???=>index:', index);
   console.log('???=> first size style:', sizeStyle);
@@ -60,21 +59,20 @@ const DrawBox = ({
     qHeight =
       (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
     qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
-    sizeStyle.current =
-      qHeight < qWidth ? { height: '100%' } : { width: '100%' };
-    console.log('???=> size style while saving:', sizeStyle.current);
+    sizeStyle = qHeight < qWidth ? { height: '100%' } : { width: '100%' };
+    console.log('???=> size style while saving:', sizeStyle);
 
-    setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+    imgInfo = sigCanvas.current.getTrimmedCanvas().toDataURL('image/png');
     if (index != undefined) {
       updateSign({
         index: index,
         value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-        style: sizeStyle.current,
+        style: sizeStyle,
       });
     } else {
       updateSign({
         value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-        style: sizeStyle.current,
+        style: sizeStyle,
       });
     }
     setOpenModal(false);
@@ -117,7 +115,7 @@ const DrawBox = ({
             style={{ width: width, height: height }}
           />
           <img
-            src={setVal ? setVal : '/images/emtpy-sign.png'}
+            src={imgInfo ? imgInfo : '/images/emtpy-sign.png'}
             alt="my signature"
             className="sign-img"
             style={{ height: height - 5, marginTop: -height }}
@@ -131,9 +129,9 @@ const DrawBox = ({
           style={{ width: width, height: height }}
           ref={imgTargetRef}
         >
-          {setVal ? (
+          {imgInfo ? (
             <img
-              src={setVal}
+              src={imgInfo}
               alt="my signature"
               className="sign-img"
               // style={
@@ -144,7 +142,7 @@ const DrawBox = ({
               //     : { width }
               // }
               // style={qHeight < qWidth ? { height: '100%' } : { width: '100%' }}
-              style={sizeStyle.current}
+              style={sizeStyle}
               ref={imgRef}
             />
           ) : null}

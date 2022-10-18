@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Signature from '../Signature';
 import Input from '../Input';
 import { updateValue } from '../../store/slices/salesmanSlice';
-import { updateValue as updateCustomer} from '../../store/slices/contactSlice';
+import { updateValue as updateCustomer } from '../../store/slices/contactSlice';
 
 import './style.css';
 
@@ -68,7 +68,7 @@ const SalesmanOwner = () => {
               height={50}
               signId="signature"
               updateSign={handleSign}
-              setVal={storeData['signature']}
+              imgInfo={storeData['signature']}
               signStatus={signStatus}
               viewMode={viewMode}
             />
@@ -180,7 +180,7 @@ const SalesmanOwner = () => {
                 height: '100%',
                 fontSize: viewMode === 'convert-pdf' ? '16px' : '30px',
                 textAlign: 'left',
-                color: "blue"
+                color: 'blue',
               }}
               inputId="email"
               updateData={handleChange}

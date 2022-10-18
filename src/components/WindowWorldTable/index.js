@@ -1,12 +1,12 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import Signature from "../Signature";
-import { updateValue } from "../../store/slices/windowworldSlice";
-import { updateValue as updateDisposal } from "../../store/slices/calculateSlice";
-import { numberWithCommas, dollarNumberWithCommas } from "../../utils/globals";
+import Signature from '../Signature';
+import { updateValue } from '../../store/slices/windowworldSlice';
+import { updateValue as updateDisposal } from '../../store/slices/calculateSlice';
+import { numberWithCommas, dollarNumberWithCommas } from '../../utils/globals';
 
-import "./style.css";
+import './style.css';
 
 const WindowWorldTable = (props) => {
   const storeData = useSelector((state) => state.windowworld.data);
@@ -24,19 +24,19 @@ const WindowWorldTable = (props) => {
   useEffect(() => {
     if (flag.current === false) {
       input1.current.value = dollarNumberWithCommas(
-        storeData["windowWorldInput17"]
+        storeData['windowWorldInput17']
       );
       input2.current.value = dollarNumberWithCommas(
-        storeData["windowWorldInput18"]
+        storeData['windowWorldInput18']
       );
       input3.current.value = dollarNumberWithCommas(
-        storeData["windowWorldInput19"]
+        storeData['windowWorldInput19']
       );
       input4.current.value = dollarNumberWithCommas(
-        storeData["windowWorldInput20"]
+        storeData['windowWorldInput20']
       );
       input5.current.value = dollarNumberWithCommas(
-        storeData["windowWorldInput21"]
+        storeData['windowWorldInput21']
       );
     }
   }, [storeData]);
@@ -46,15 +46,15 @@ const WindowWorldTable = (props) => {
 
   const cntWindow = useMemo(() => {
     return (
-      Number(storeData["windowWorldInput22"]) +
-      Number(storeData["windowWorldInput23"]) +
-      Number(storeData["windowWorldInput24"]) +
-      Number(storeData["windowWorldInput25"])
+      Number(storeData['windowWorldInput22']) +
+      Number(storeData['windowWorldInput23']) +
+      Number(storeData['windowWorldInput24']) +
+      Number(storeData['windowWorldInput25'])
     );
   }, [storeData]);
 
   useEffect(() => {
-    dispatch(updateValue({ id: "windowTotal", value: cntWindow + tmpCount }));
+    dispatch(updateValue({ id: 'windowTotal', value: cntWindow + tmpCount }));
     setWindowTotal(cntWindow + tmpCount);
   }, [cntWindow, tmpCount]);
 
@@ -92,35 +92,35 @@ const WindowWorldTable = (props) => {
   };
 
   const handleSign = (value) => {
-    dispatch(updateValue({ id: "signature", value: value }));
+    dispatch(updateValue({ id: 'signature', value: value }));
   };
 
   const handleFocus = (e, id) => {
-    e.target.type = "number";
+    e.target.type = 'number';
     e.target.value = storeData[id];
     flag.current = true;
   };
 
   const handleBlur = (e, id) => {
-    e.target.type = "text";
+    e.target.type = 'text';
     e.target.value = dollarNumberWithCommas(Number(storeData[id]));
     flag.current = false;
   };
 
   return (
-    <div className='table-bottom table-font'>
-      <div className='table-title-big'>
+    <div className="table-bottom table-font">
+      <div className="table-title-big">
         <strong>WINDOW WORLD</strong>
       </div>
       {props.data.map((item, index) => {
         if (index < 16)
           return (
-            <div className='wrapper' key={index}>
+            <div className="wrapper" key={index}>
               <div>
                 <input
                   id={`windowWorldInput${index + 1}`}
-                  className='bottom-outline width-80px medium-input'
-                  type='number'
+                  className="bottom-outline width-80px medium-input"
+                  type="number"
                   onChange={(e) =>
                     handleChange(e, {
                       id: item.id,
@@ -128,7 +128,7 @@ const WindowWorldTable = (props) => {
                     })
                   }
                   value={storeData[`windowWorldInput${index + 1}`]}
-                  readOnly={viewMode !== "homepage"}
+                  readOnly={viewMode !== 'homepage'}
                 />
                 <label htmlFor={`windowWorldInput${index + 1}`}>
                   {item.label}
@@ -137,13 +137,13 @@ const WindowWorldTable = (props) => {
               <div>
                 <label>{`$${item.unitPrice}`}</label>
                 <input
-                  className='bottom-outline medium-input'
+                  className="bottom-outline medium-input"
                   style={
-                    viewMode === "convert-pdf"
-                      ? { width: "75px" }
-                      : { width: "90px" }
+                    viewMode === 'convert-pdf'
+                      ? { width: '75px' }
+                      : { width: '90px' }
                   }
-                  type='text'
+                  type="text"
                   value={`$ ${numberWithCommas(
                     Number(storeData[`windowWorldInput${index + 1}`]) *
                       item.unitPrice
@@ -155,273 +155,273 @@ const WindowWorldTable = (props) => {
           );
       })}
 
-      <div className='wrapper'>
+      <div className="wrapper">
         <div>
           <input
-            type='number'
-            className='bottom-outline width-80px medium-input'
-            id='windowWorldInput22'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput22" })}
-            value={storeData["windowWorldInput22"]}
-            readOnly={viewMode !== "homepage"}
+            type="number"
+            className="bottom-outline width-80px medium-input"
+            id="windowWorldInput22"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput22' })}
+            value={storeData['windowWorldInput22']}
+            readOnly={viewMode !== 'homepage'}
           />
           <label>Bay/Bow Window</label>
         </div>
-        <div style={{ textAlign: "right" }}>
+        <div style={{ textAlign: 'right' }}>
           <label>$</label>
           <input
-            className='bottom-outline width-80px medium-input'
-            type='text'
-            id='windowWorldInput17'
+            className="bottom-outline width-80px medium-input"
+            type="text"
+            id="windowWorldInput17"
             style={
-              viewMode === "convert-pdf" ? { width: "75px" } : { width: "90px" }
+              viewMode === 'convert-pdf' ? { width: '75px' } : { width: '90px' }
             }
             onChange={(e) =>
               handleChange(e, {
                 id: 17,
-                formId: "windowWorldInput17",
+                formId: 'windowWorldInput17',
               })
             }
             ref={input1}
-            onFocus={(e) => handleFocus(e, "windowWorldInput17")}
-            onBlur={(e) => handleBlur(e, "windowWorldInput17")}
-            readOnly={viewMode !== "homepage"}
+            onFocus={(e) => handleFocus(e, 'windowWorldInput17')}
+            onBlur={(e) => handleBlur(e, 'windowWorldInput17')}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='wrapper'>
-        <div className='flex-input' style={{ width: "82%" }}>
+      <div className="wrapper">
+        <div className="flex-input" style={{ width: '82%' }}>
           <input
-            type='number'
-            className='bottom-outline width-80px medium-input'
-            id='windowWorldInput23'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput23" })}
-            value={storeData["windowWorldInput23"]}
-            readOnly={viewMode !== "homepage"}
+            type="number"
+            className="bottom-outline width-80px medium-input"
+            id="windowWorldInput23"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput23' })}
+            value={storeData['windowWorldInput23']}
+            readOnly={viewMode !== 'homepage'}
           />
           <label>Specialty Window</label>
           <input
-            type='text'
-            className='bottom-outline medium-input'
-            style={{ width: "40%" }}
-            id='windowWorldInput27'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput27" })}
-            value={storeData["windowWorldInput27"]}
-            readOnly={viewMode !== "homepage"}
+            type="text"
+            className="bottom-outline medium-input"
+            style={{ width: '40%' }}
+            id="windowWorldInput27"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput27' })}
+            value={storeData['windowWorldInput27']}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
         <div
           style={
-            viewMode === "convert-pdf"
-              ? { width: "23%", textAlign: "right" }
+            viewMode === 'convert-pdf'
+              ? { width: '23%', textAlign: 'right' }
               : {}
           }
         >
           <label>$</label>
           <input
-            className='bottom-outline width-80px medium-input'
-            type='text'
-            id='windowWorldInput18'
+            className="bottom-outline width-80px medium-input"
+            type="text"
+            id="windowWorldInput18"
             style={
-              viewMode === "convert-pdf" ? { width: "75px" } : { width: "90px" }
+              viewMode === 'convert-pdf' ? { width: '75px' } : { width: '90px' }
             }
             onChange={(e) =>
               handleChange(e, {
                 id: 18,
-                formId: "windowWorldInput18",
+                formId: 'windowWorldInput18',
               })
             }
             ref={input2}
-            onFocus={(e) => handleFocus(e, "windowWorldInput18")}
-            onBlur={(e) => handleBlur(e, "windowWorldInput18")}
-            readOnly={viewMode !== "homepage"}
+            onFocus={(e) => handleFocus(e, 'windowWorldInput18')}
+            onBlur={(e) => handleBlur(e, 'windowWorldInput18')}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='wrapper'>
-        <div className='flex-input' style={{ width: "82%" }}>
+      <div className="wrapper">
+        <div className="flex-input" style={{ width: '82%' }}>
           <input
-            type='number'
-            className='bottom-outline width-80px medium-input'
-            id='windowWorldInput24'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput24" })}
-            value={storeData["windowWorldInput24"]}
-            readOnly={viewMode !== "homepage"}
+            type="number"
+            className="bottom-outline width-80px medium-input"
+            id="windowWorldInput24"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput24' })}
+            value={storeData['windowWorldInput24']}
+            readOnly={viewMode !== 'homepage'}
           />
           <label>Specialty Window</label>
           <input
-            type='text'
-            className='bottom-outline medium-input'
-            style={{ width: "40%" }}
-            id='windowWorldInput28'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput28" })}
-            value={storeData["windowWorldInput28"]}
-            readOnly={viewMode !== "homepage"}
+            type="text"
+            className="bottom-outline medium-input"
+            style={{ width: '40%' }}
+            id="windowWorldInput28"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput28' })}
+            value={storeData['windowWorldInput28']}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
         <div
           style={
-            viewMode === "convert-pdf"
-              ? { width: "23%", textAlign: "right" }
+            viewMode === 'convert-pdf'
+              ? { width: '23%', textAlign: 'right' }
               : {}
           }
         >
           <label>$</label>
           <input
-            className='bottom-outline width-80px medium-input'
-            type='text'
-            id='windowWorldInput19'
+            className="bottom-outline width-80px medium-input"
+            type="text"
+            id="windowWorldInput19"
             style={
-              viewMode === "convert-pdf" ? { width: "75px" } : { width: "90px" }
+              viewMode === 'convert-pdf' ? { width: '75px' } : { width: '90px' }
             }
             onChange={(e) =>
               handleChange(e, {
                 id: 19,
-                formId: "windowWorldInput19",
+                formId: 'windowWorldInput19',
               })
             }
             ref={input3}
-            onFocus={(e) => handleFocus(e, "windowWorldInput19")}
-            onBlur={(e) => handleBlur(e, "windowWorldInput19")}
-            readOnly={viewMode !== "homepage"}
+            onFocus={(e) => handleFocus(e, 'windowWorldInput19')}
+            onBlur={(e) => handleBlur(e, 'windowWorldInput19')}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='wrapper'>
-        <div className='flex-input' style={{ width: "82%" }}>
+      <div className="wrapper">
+        <div className="flex-input" style={{ width: '82%' }}>
           <input
-            type='number'
-            className='bottom-outline width-80px medium-input'
-            id='windowWorldInput25'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput25" })}
-            value={storeData["windowWorldInput25"]}
-            readOnly={viewMode !== "homepage"}
+            type="number"
+            className="bottom-outline width-80px medium-input"
+            id="windowWorldInput25"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput25' })}
+            value={storeData['windowWorldInput25']}
+            readOnly={viewMode !== 'homepage'}
           />
           <label>Specialty Window</label>
           <input
-            type='text'
-            className='bottom-outline medium-input'
-            style={{ width: "40%" }}
-            id='windowWorldInput29'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput29" })}
-            value={storeData["windowWorldInput29"]}
-            readOnly={viewMode !== "homepage"}
+            type="text"
+            className="bottom-outline medium-input"
+            style={{ width: '40%' }}
+            id="windowWorldInput29"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput29' })}
+            value={storeData['windowWorldInput29']}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
         <div
           style={
-            viewMode === "convert-pdf"
-              ? { width: "23%", textAlign: "right" }
+            viewMode === 'convert-pdf'
+              ? { width: '23%', textAlign: 'right' }
               : {}
           }
         >
           <label>$</label>
           <input
-            className='bottom-outline width-80px medium-input'
-            type='text'
-            id='windowWorldInput20'
+            className="bottom-outline width-80px medium-input"
+            type="text"
+            id="windowWorldInput20"
             style={
-              viewMode === "convert-pdf" ? { width: "75px" } : { width: "90px" }
+              viewMode === 'convert-pdf' ? { width: '75px' } : { width: '90px' }
             }
             onChange={(e) =>
               handleChange(e, {
                 id: 20,
-                formId: "windowWorldInput20",
+                formId: 'windowWorldInput20',
               })
             }
             ref={input4}
-            onFocus={(e) => handleFocus(e, "windowWorldInput20")}
-            onBlur={(e) => handleBlur(e, "windowWorldInput20")}
-            readOnly={viewMode !== "homepage"}
+            onFocus={(e) => handleFocus(e, 'windowWorldInput20')}
+            onBlur={(e) => handleBlur(e, 'windowWorldInput20')}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='wrapper'>
+      <div className="wrapper">
         <div>
           <input
-            type='number'
-            className='bottom-outline width-80px medium-input'
-            id='windowWorldInput30'
-            onChange={(e) => handleChange(e, { formId: "windowWorldInput30" })}
-            value={storeData["windowWorldInput30"]}
-            readOnly={viewMode !== "homepage"}
+            type="number"
+            className="bottom-outline width-80px medium-input"
+            id="windowWorldInput30"
+            onChange={(e) => handleChange(e, { formId: 'windowWorldInput30' })}
+            value={storeData['windowWorldInput30']}
+            readOnly={viewMode !== 'homepage'}
           />
           <label>Install Labor</label>
         </div>
         <div>
           <label>$</label>
           <input
-            className='bottom-outline width-80px medium-input'
-            type='text'
-            id='windowWorldInput21'
+            className="bottom-outline width-80px medium-input"
+            type="text"
+            id="windowWorldInput21"
             style={
-              viewMode === "convert-pdf" ? { width: "75px" } : { width: "90px" }
+              viewMode === 'convert-pdf' ? { width: '75px' } : { width: '90px' }
             }
             onChange={(e) =>
               handleChange(e, {
                 id: 21,
-                formId: "windowWorldInput21",
+                formId: 'windowWorldInput21',
               })
             }
             ref={input5}
-            onFocus={(e) => handleFocus(e, "windowWorldInput21")}
-            onBlur={(e) => handleBlur(e, "windowWorldInput21")}
-            readOnly={viewMode !== "homepage"}
+            onFocus={(e) => handleFocus(e, 'windowWorldInput21')}
+            onBlur={(e) => handleBlur(e, 'windowWorldInput21')}
+            readOnly={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='wrapper'>
-        <div className='wrapper' style={{ width: "80%" }}>
+      <div className="wrapper">
+        <div className="wrapper" style={{ width: '80%' }}>
           <label>Window Color</label>
-          <div className='input_label_compo pos_bottom'>
+          <div className="input_label_compo pos_bottom">
             <input
-              className='bottom-outline width-100 margin-2 medium-input inside'
+              className="bottom-outline width-100 margin-2 medium-input inside"
               // defaultValue="WHITE"
-              id='windowWorldInput31'
+              id="windowWorldInput31"
               onChange={(e) =>
-                handleChange(e, { formId: "windowWorldInput31" })
+                handleChange(e, { formId: 'windowWorldInput31' })
               }
-              value={storeData["windowWorldInput31"]}
-              readOnly={viewMode !== "homepage"}
+              value={storeData['windowWorldInput31']}
+              readOnly={viewMode !== 'homepage'}
             />
-            <label for='windowWorldInput31' className='lbl'>
+            <label for="windowWorldInput31" className="lbl">
               Inside
             </label>
           </div>
           <label>/</label>
-          <div className='input_label_compo pos_bottom'>
+          <div className="input_label_compo pos_bottom">
             <input
-              className='bottom-outline width-100 margin-2 medium-input outside'
+              className="bottom-outline width-100 margin-2 medium-input outside"
               // defaultValue="WHITE"
-              id='windowWorldInput32'
+              id="windowWorldInput32"
               onChange={(e) =>
-                handleChange(e, { formId: "windowWorldInput32" })
+                handleChange(e, { formId: 'windowWorldInput32' })
               }
-              value={storeData["windowWorldInput32"]}
-              readOnly={viewMode !== "homepage"}
+              value={storeData['windowWorldInput32']}
+              readOnly={viewMode !== 'homepage'}
             />
-            <label for='windowWorldInput32' className='lbl'>
+            <label for="windowWorldInput32" className="lbl">
               Outside
             </label>
           </div>
         </div>
-        <div style={{ width: "20%" }}></div>
+        <div style={{ width: '20%' }}></div>
       </div>
-      <div className='wrapper'>
+      <div className="wrapper">
         <div>
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: 'center' }}>
             Window
             <br />
             Total
           </p>
           <input
-            type='text'
-            className='bottom-outline width-80px medium-input'
-            value={storeData["windowTotal"]}
+            type="text"
+            className="bottom-outline width-80px medium-input"
+            value={storeData['windowTotal']}
             readOnly
           />
         </div>
-        <div className='width-50'>
+        <div className="width-50">
           * Denotes triple pane, solarzone and foam enhanced frame included.
         </div>
         <div>
@@ -429,9 +429,9 @@ const WindowWorldTable = (props) => {
           <Signature
             width={95}
             height={28}
-            signId='signature'
+            signId="signature"
             updateSign={handleSign}
-            setVal={storeData["signature"]}
+            imgInfo={storeData['signature']}
             signStatus={signStatus}
             viewMode={viewMode}
           />

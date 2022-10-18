@@ -1,12 +1,12 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { updateValue } from "../../store/slices/creditSlice";
-import Input from "../Input";
-import Signature from "../Signature";
-import DropDownWrapper from "../DropDownWrapper";
+import { updateValue } from '../../store/slices/creditSlice';
+import Input from '../Input';
+import Signature from '../Signature';
+import DropDownWrapper from '../DropDownWrapper';
 
-import "./style.css";
+import './style.css';
 
 let months = [];
 let years = [];
@@ -27,139 +27,139 @@ const PaymentLink = () => {
   const dispatch = useDispatch();
 
   const handleChange = (value, { formId }) => {
-    if (viewMode !== "homepage") return;
+    if (viewMode !== 'homepage') return;
     dispatch(updateValue({ id: formId, value: value }));
   };
 
   const handleSign = (value) => {
-    dispatch(updateValue({ id: "signature", value: value }));
+    dispatch(updateValue({ id: 'signature', value: value }));
   };
 
   return (
-    <div className='payment-box'>
-      <div className='margin-top-4'>
-        <div className='margin-top-4'>
+    <div className="payment-box">
+      <div className="margin-top-4">
+        <div className="margin-top-4">
           <label>Deposit (ran at the time of order) $</label>
           <Input
-            addClass='medium-input'
-            type={"number"}
-            style={{ textAlign: "right" }}
-            inputId='deposit'
+            addClass="medium-input"
+            type={'number'}
+            style={{ textAlign: 'right' }}
+            inputId="deposit"
             updateData={handleChange}
-            inputVal={storeData["deposit"]}
-            readOnlyMode={viewMode !== "homepage"}
+            inputVal={storeData['deposit']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
-        <div className='margin-top-4'>
+        <div className="margin-top-4">
           <label>Balance (ran at the time of installation) $</label>
           <Input
-            addClass='medium-input'
-            type={"number"}
-            style={{ textAlign: "right" }}
-            inputId='balance'
+            addClass="medium-input"
+            type={'number'}
+            style={{ textAlign: 'right' }}
+            inputId="balance"
             updateData={handleChange}
-            inputVal={storeData["balance"]}
-            readOnlyMode={viewMode !== "homepage"}
+            inputVal={storeData['balance']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='margin-top-4'>
-        <div className='margin-top-4'>
+      <div className="margin-top-4">
+        <div className="margin-top-4">
           <label>Cardholder Name:</label>
           <Input
-            addClass='medium-input'
-            type={"text"}
-            style={{ textAlign: "left" }}
-            inputId='cardholderName'
+            addClass="medium-input"
+            type={'text'}
+            style={{ textAlign: 'left' }}
+            inputId="cardholderName"
             updateData={handleChange}
-            inputVal={storeData["cardholderName"]}
-            readOnlyMode={viewMode !== "homepage"}
+            inputVal={storeData['cardholderName']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
-        <div className='margin-top-4'>
+        <div className="margin-top-4">
           <label>Credit Card: </label>
-          <div className='wrapper-space-around'>
+          <div className="wrapper-space-around">
             <div>
-              <label for='visa'>VISA</label>
+              <label for="visa">VISA</label>
               <input
-                type='checkbox'
-                id='visa'
+                type="checkbox"
+                id="visa"
                 onChange={(e) =>
-                  handleChange(e.target.checked, { formId: "visa" })
+                  handleChange(e.target.checked, { formId: 'visa' })
                 }
-                checked={storeData["visa"]}
+                checked={storeData['visa']}
               />
             </div>
             <div>
-              <label for='mc'>MC</label>
+              <label for="mc">MC</label>
               <input
-                type='checkbox'
-                id='mc'
+                type="checkbox"
+                id="mc"
                 onChange={(e) =>
-                  handleChange(e.target.checked, { formId: "mc" })
+                  handleChange(e.target.checked, { formId: 'mc' })
                 }
-                checked={storeData["mc"]}
+                checked={storeData['mc']}
               />
             </div>
             <div>
-              <label for='amex'>AMEX</label>
+              <label for="amex">AMEX</label>
               <input
-                type='checkbox'
-                id='amex'
+                type="checkbox"
+                id="amex"
                 onChange={(e) =>
-                  handleChange(e.target.checked, { formId: "amex" })
+                  handleChange(e.target.checked, { formId: 'amex' })
                 }
-                checked={storeData["amex"]}
+                checked={storeData['amex']}
               />
             </div>
             <div>
-              <label for='disc'>DISC</label>
+              <label for="disc">DISC</label>
               <input
-                type='checkbox'
-                id='disc'
+                type="checkbox"
+                id="disc"
                 onChange={(e) =>
-                  handleChange(e.target.checked, { formId: "disc" })
+                  handleChange(e.target.checked, { formId: 'disc' })
                 }
-                checked={storeData["disc"]}
+                checked={storeData['disc']}
               />
             </div>
           </div>
         </div>
-        <div className='margin-top-4'>
+        <div className="margin-top-4">
           <label>Card Number:</label>
           <Input
-            addClass='medium-input'
-            type={"text"}
-            style={{ textAlign: "left" }}
-            inputId='cardNumber'
+            addClass="medium-input"
+            type={'text'}
+            style={{ textAlign: 'left' }}
+            inputId="cardNumber"
             updateData={handleChange}
-            inputVal={storeData["cardNumber"]}
-            readOnlyMode={viewMode !== "homepage"}
+            inputVal={storeData['cardNumber']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
-        <div className='margin-top-4'>
+        <div className="margin-top-4">
           <label>EXP DATE:</label>
           <DropDownWrapper
             style={{
-              display: "inline-block",
-              width: "100px",
-              textAlign: "right",
+              display: 'inline-block',
+              width: '100px',
+              textAlign: 'right',
             }}
-            isInputEnable={viewMode === "homepage"}
-            value={storeData["expDate"]}
+            isInputEnable={viewMode === 'homepage'}
+            value={storeData['expDate']}
           >
             <select
-              className='date-select'
+              className="date-select"
               onChange={(e) => {
-                handleChange(e.target.value, { formId: "expDate" });
+                handleChange(e.target.value, { formId: 'expDate' });
               }}
             >
-              <option value=' '> </option>
+              <option value=" "> </option>
               {months.map((value, index) => (
                 <option
                   value={value}
                   key={index}
-                  selected={value === storeData["expDate"]}
+                  selected={value === storeData['expDate']}
                 >
                   {value}
                 </option>
@@ -169,25 +169,25 @@ const PaymentLink = () => {
           /
           <DropDownWrapper
             style={{
-              display: "inline-block",
-              width: "100px",
-              textAlign: "left",
+              display: 'inline-block',
+              width: '100px',
+              textAlign: 'left',
             }}
-            isInputEnable={viewMode === "homepage"}
-            value={storeData["expMonth"]}
+            isInputEnable={viewMode === 'homepage'}
+            value={storeData['expMonth']}
           >
             <select
-              className='date-select'
+              className="date-select"
               onChange={(e) => {
-                handleChange(e.target.value, { formId: "expMonth" });
+                handleChange(e.target.value, { formId: 'expMonth' });
               }}
             >
-              <option value=' '> </option>
+              <option value=" "> </option>
               {years.map((value, index) => (
                 <option
                   value={value}
                   key={index}
-                  selected={value === storeData["expMonth"]}
+                  selected={value === storeData['expMonth']}
                 >
                   {value}
                 </option>
@@ -195,21 +195,21 @@ const PaymentLink = () => {
             </select>
           </DropDownWrapper>
         </div>
-        <div className='margin-top-4'>
+        <div className="margin-top-4">
           <label>CVV Code:</label>
           <Input
-            addClass='medium-input'
-            type={"text"}
-            style={{ textAlign: "left" }}
-            inputId='cvvMode'
+            addClass="medium-input"
+            type={'text'}
+            style={{ textAlign: 'left' }}
+            inputId="cvvMode"
             updateData={handleChange}
-            inputVal={storeData["cvvMode"]}
-            readOnlyMode={viewMode !== "homepage"}
+            inputVal={storeData['cvvMode']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
       </div>
-      <div className='margin-top-4'>
-        <p className='justify-content'>
+      <div className="margin-top-4">
+        <p className="justify-content">
           I authorize the above card to be run for the amount as well as the
           balance. If for some unforseen reason the entire job doesn't get
           completed, I authorize the work that did get completed to be run that
@@ -218,31 +218,31 @@ const PaymentLink = () => {
           have gotten completed thus far.
         </p>
       </div>
-      <div className='wrapper-center margin-top-4'>
-        <div className='div-center margin-top-4'>
+      <div className="wrapper-center margin-top-4">
+        <div className="div-center margin-top-4">
           <div>
             <label>Customer Signature: </label>
           </div>
           <Signature
             width={200}
             height={50}
-            signId='signature'
+            signId="signature"
             updateSign={handleSign}
-            setVal={storeData["signature"]}
+            imgInfo={storeData['signature']}
             signStatus={signStatus}
             viewMode={viewMode}
           />
         </div>
-        <div className='div-center margin-top-4'>
+        <div className="div-center margin-top-4">
           <label>Date: </label>
           <Input
-            addClass='medium-input'
-            type={"text"}
-            inputId='signDate'
-            style={{ textAlign: "left" }}
+            addClass="medium-input"
+            type={'text'}
+            inputId="signDate"
+            style={{ textAlign: 'left' }}
             updateData={handleChange}
-            inputVal={storeData["signDate"]}
-            readOnlyMode={viewMode !== "homepage"}
+            inputVal={storeData['signDate']}
+            readOnlyMode={viewMode !== 'homepage'}
           />
         </div>
       </div>

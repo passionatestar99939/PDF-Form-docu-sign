@@ -56,7 +56,7 @@ const SalesPersonOwner = () => {
           height={52}
           signId="signature"
           updateSign={handleSign}
-          setVal={storeData['signature']}
+          imgInfo={storeData['signature']}
           signStatus={signStatus}
           viewMode={viewMode}
         />

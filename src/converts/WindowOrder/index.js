@@ -125,7 +125,7 @@ const WindowOrder = () => {
                 height={'100%'}
                 signId="drawingData"
                 addClass="mySign"
-                setVal={windowOrderData.drawingData.value}
+                imgInfo={windowOrderData.drawingData.value}
                 signStatus={false}
                 styleJSON={windowOrderData.drawingData.style}
                 viewMode={viewMode}

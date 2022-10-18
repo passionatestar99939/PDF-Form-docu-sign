@@ -424,7 +424,7 @@ const WindowWorldTable = (props) => {
             height={28}
             signId="signature"
             updateSign={handleSign}
-            setVal={storeData['signature']}
+            imgInfo={storeData['signature']}
             signStatus={signStatus}
             viewMode={viewMode}
           />

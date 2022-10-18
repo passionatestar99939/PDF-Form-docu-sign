@@ -100,7 +100,7 @@ const PreBuiltTable = (props) => {
               height={19}
               signId="signature"
               updateSign={handleSign}
-              setVal={storeData['signature']}
+              imgInfo={storeData['signature']}
               signStatus={signStatus}
               viewMode={viewMode}
             />
