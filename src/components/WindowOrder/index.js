@@ -181,8 +181,9 @@ const WindowOrder = () => {
                 signId="drawingData"
                 addClass="mySign"
                 updateSign={handleSign}
-                setVal={windowOrderData['drawingData']}
+                setVal={windowOrderData.drawingData.value}
                 signStatus={true}
+                style={windowOrderData.drawingData.style}
                 viewMode={viewMode}
               />
             </div>

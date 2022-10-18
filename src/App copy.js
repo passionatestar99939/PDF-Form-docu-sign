@@ -1,74 +1,44 @@
-import { useState, useEffect, useRef } from 'react';
-import './App.css';
+// import React from "react";
+// import AppContent from "./containers/AppContent";
+// import HomePage from "./containers/HomePage";
+// import Router from "./router";
+// import Operation from "./components/Operation";
+
+// import logo from "./logo.svg";
+// import "./App.css";
+
+// function App() {
+//   return (
+//     <div>
+//       <Router />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+// import './styles.css';
 
 const App = () => {
-  // This ref is connected to the list
-  const listRef = useRef();
+  const ref = React.useRef(null);
+  const [width, setWidth] = React.useState(0);
 
-  // The size of the list
-  // It will be updated later
-  const [width, setWidth] = useState();
-  const [height, setHeight] = useState();
-
-  // The data of the list at the beginning
-  const [listItems, setListItems] = useState([
-    {
-      id: 0,
-      title: 'Item 0',
-    },
-    {
-      id: 1,
-      title: 'Item 1',
-    },
-  ]);
-
-  // This function is trggered when the "Add new item" button gets clicked
-  const addItem = () => {
-    const items = [...listItems];
-    const newItem = {
-      id: items.length + 1,
-      title: `Item ${items.length + 1}`,
-    };
-
-    items.push(newItem);
-    setListItems(items);
-  };
-
-  // This function calculates width and height of the list
-  const getListSize = () => {
-    const newWidth = listRef.current.clientWidth;
-    setWidth(newWidth);
-
-    const newHeight = listRef.current.clientHeight;
-    setHeight(newHeight);
-  };
-
-  // Get 'width' and 'height' after the initial render and every time the list changes
-  useEffect(() => {
-    getListSize();
-  }, [listItems]);
-
-  // Update 'width' and 'height' when the window resizes
-  useEffect(() => {
-    window.addEventListener('resize', getListSize);
+  React.useEffect(() => {
+    setWidth(ref.current.offsetWidth);
   }, []);
 
   return (
-    <div className="container">
-      <button className="button" onClick={addItem}>
-        Add New Item
-      </button>
-
-      {width && <h3>Width: {width}px</h3>}
-      {height && <h3>Height: {height}px</h3>}
-
-      <ul className="list" ref={listRef}>
-        {listItems.map((item) => (
-          <li className="item" key={item.id}>
-            {item.title}
-          </li>
-        ))}
-      </ul>
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <div
+        style={{
+          border: '1px solid red',
+        }}
+        ref={ref}
+      >
+        Width: {width}
+      </div>
     </div>
   );
 };

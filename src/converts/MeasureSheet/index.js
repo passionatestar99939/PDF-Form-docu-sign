@@ -408,7 +408,7 @@ const MeasureSheet = ({ page }) => {
                   height={'100%'}
                   signId="drawingData"
                   addClass="mySign"
-                  setVal={measuresheetData['drawingData2']}
+                  setVal={measuresheetData.drawingData[1]}
                   signStatus={false}
                   viewMode={viewMode}
                   index={1}
@@ -436,7 +436,7 @@ const MeasureSheet = ({ page }) => {
                   height={'100%'}
                   signId="drawingData"
                   addClass="mySign"
-                  setVal={measuresheetData['drawingData3']}
+                  setVal={measuresheetData.drawingData[2]}
                   signStatus={false}
                   viewMode={viewMode}
                   index={2}
