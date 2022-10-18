@@ -23,7 +23,11 @@ export const windoworderSlice = createSlice({
       state.data = { ...action.payload };
     },
     updateDrawingDataFunc: (state, action) => {
-      state.data.drawingData = action.payload;
+      // state.data.drawingData = action.payload;
+      state.data.drawingData = {
+        value: action.payload.value,
+        style: JSON.stringify(action.payload.style),
+      };
     },
   },
 });

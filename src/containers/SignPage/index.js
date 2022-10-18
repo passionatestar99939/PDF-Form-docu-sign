@@ -164,9 +164,14 @@ const Page5 = () => {
 
 const MeasureSheetPage = () => {
   return (
-    <PageWrapper>
-      <MeasureSheet />
-    </PageWrapper>
+    <div>
+      <PageWrapper>
+        <MeasureSheet page={1} />
+      </PageWrapper>
+      <PageWrapper>
+        <MeasureSheet page={2} />
+      </PageWrapper>
+    </div>
   );
 };
 
