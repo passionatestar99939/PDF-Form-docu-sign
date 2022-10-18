@@ -152,7 +152,7 @@ const SalesConsultant = () => {
                 />
                 <p className="gray_content">Contract Total:</p>
               </td>
-              <td>{dollarNumberWithCommas(contractSubTotal)}</td>
+              <td className="td_content">{dollarNumberWithCommas(contractSubTotal)}</td>
               <td className="gray_title">
                 <img
                   src="/images/gray2.png"

@@ -61,7 +61,7 @@ const SalesConsultant = () => {
             </tr>
             <tr>
               <td className="gray_title">Contract Total:</td>
-              <td>{dollarNumberWithCommas(contractSubTotal)}</td>
+              <td className="td_content">{dollarNumberWithCommas(contractSubTotal)}</td>
               <td className="gray_title">Account Balance:</td>
               <td className="td_content">$ </td>
             </tr>
