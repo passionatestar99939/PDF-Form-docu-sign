@@ -27,6 +27,7 @@ const DrawBox = ({
   styleJSON,
   index,
 }) => {
+  // const [imageURL, setImageURL] = useState(setVal);
   const [imageURL, setImageURL] = useState(setVal);
   const [openModal, setOpenModal] = useState(false);
   const sigCanvas = useRef({});
@@ -130,9 +131,9 @@ const DrawBox = ({
           style={{ width: width, height: height }}
           ref={imgTargetRef}
         >
-          {imageURL ? (
+          {setVal ? (
             <img
-              src={imageURL}
+              src={setVal}
               alt="my signature"
               className="sign-img"
               // style={
