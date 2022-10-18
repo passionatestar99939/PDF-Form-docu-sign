@@ -33,13 +33,20 @@ const DrawBox = ({
 
   const sizeStyle = useRef({});
 
+  console.log('???=> first size style:', sizeStyle);
+
   const clear = () => sigCanvas.current.clear();
   const save = () => {
     setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
-    updateSign({
-      index: index,
-      value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-    });
+    console.log('???=>index:', index);
+    if (index != undefined) {
+      updateSign({
+        index: index,
+        value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
+      });
+    } else {
+      updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+    }
     setOpenModal(false);
 
     const imgOriginalSize = {
@@ -64,6 +71,7 @@ const DrawBox = ({
     qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
     sizeStyle.current =
       qHeight < qWidth ? { height: '100%' } : { width: '100%' };
+    console.log('???=> first size style:', sizeStyle.current);
   };
 
   const handleSignClick = () => {
