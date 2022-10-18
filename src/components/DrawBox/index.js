@@ -158,8 +158,8 @@ const DrawBox = ({
         <SignaturePad
           ref={sigCanvas}
           canvasProps={{ className: 'signatureCanvas' }}
-          dotSize={8}
-          maxWidth={8}
+          dotSize={4}
+          maxWidth={4}
         />
         <div style={{ textAlign: 'center' }}>
           <button onClick={save} className="modal-btn">
