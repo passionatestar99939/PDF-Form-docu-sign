@@ -120,7 +120,6 @@ const WindowOrder = () => {
               Draw Grid Pattern Layout
             </div>
             <div className="window-order__draw-box_convert black-font">
-              Click to Draw
               <DrawBox
                 width={'100%'}
                 height={'100%'}

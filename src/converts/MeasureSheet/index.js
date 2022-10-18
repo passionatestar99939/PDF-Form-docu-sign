@@ -359,22 +359,6 @@ const MeasureSheet = ({ page }) => {
 
             <div className="flex width-60 justify-content__space-around">
               <div className="measure-sheet__draw-box black-font width-30">
-                {measuresheetData.drawingData[0] ? (
-                  ''
-                ) : (
-                  <div>
-                    Click to Draw
-                    <FontAwesomeIcon
-                      icon={faPencil}
-                      style={{
-                        fontSize: 40,
-                        color: 'black',
-                        margin: '0px 20px',
-                      }}
-                    />
-                  </div>
-                )}
-
                 <DrawBox
                   width={'100%'}
                   height={'100%'}
@@ -388,21 +372,6 @@ const MeasureSheet = ({ page }) => {
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
-                {measuresheetData.drawingData[1] ? (
-                  ''
-                ) : (
-                  <div>
-                    Click to Draw
-                    <FontAwesomeIcon
-                      icon={faPencil}
-                      style={{
-                        fontSize: 40,
-                        color: 'black',
-                        margin: '0px 20px',
-                      }}
-                    />
-                  </div>
-                )}
                 <DrawBox
                   width={'100%'}
                   height={'100%'}
@@ -416,21 +385,6 @@ const MeasureSheet = ({ page }) => {
                 />
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
-                {measuresheetData.drawingData[2] ? (
-                  ''
-                ) : (
-                  <div>
-                    Click to Draw
-                    <FontAwesomeIcon
-                      icon={faPencil}
-                      style={{
-                        fontSize: 40,
-                        color: 'black',
-                        margin: '0px 20px',
-                      }}
-                    />
-                  </div>
-                )}
                 <DrawBox
                   width={'100%'}
                   height={'100%'}

@@ -669,12 +669,12 @@ const MeasureSheet = ({ page }) => {
                 {measuresheetData.drawingData[0] ? (
                   ''
                 ) : (
-                  <div>
+                  <div style={{ fontSize: '10px' }}>
                     Click to Draw
                     <FontAwesomeIcon
                       icon={faPencil}
                       style={{
-                        fontSize: 40,
+                        fontSize: 20,
                         color: 'black',
                         margin: '0px 20px',
                       }}
@@ -699,12 +699,12 @@ const MeasureSheet = ({ page }) => {
                 {measuresheetData.drawingData[1] ? (
                   ''
                 ) : (
-                  <div>
+                  <div style={{ fontSize: '10px' }}>
                     Click to Draw
                     <FontAwesomeIcon
                       icon={faPencil}
                       style={{
-                        fontSize: 40,
+                        fontSize: 20,
                         color: 'black',
                         margin: '0px 20px',
                       }}
@@ -728,12 +728,12 @@ const MeasureSheet = ({ page }) => {
                 {measuresheetData.drawingData[2] ? (
                   ''
                 ) : (
-                  <div>
+                  <div style={{ fontSize: '10px' }}>
                     Click to Draw
                     <FontAwesomeIcon
                       icon={faPencil}
                       style={{
-                        fontSize: 40,
+                        fontSize: 20,
                         color: 'black',
                         margin: '0px 20px',
                       }}
