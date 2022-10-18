@@ -249,6 +249,7 @@ const WindowOrder = () => {
             min="0"
             value={tempObj['qty']}
             onChange={(e) => handleChangeInput(e)}
+            disabled={true}
           />
         </div>
         <div className="p-line">
