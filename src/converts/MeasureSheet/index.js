@@ -217,11 +217,11 @@ const MeasureSheet = ({ page }) => {
           <div className="flex justify-content__space-between width-100">
             <div
               className="flex align-items__end bold"
-              style={{ fontSize: '30px' }}
+              style={{ fontSize: '27px' }}
             >
               MEASURE SHEET <div></div>
             </div>
-            <div className="flex width-40">
+            <div className="flex width-50">
               <div className="width-50">
                 <div className="flex margin-top-15px">
                   <div className="right-align width-30">Customer:</div>

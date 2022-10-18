@@ -1479,7 +1479,9 @@ const PatioDoorOrder = () => {
         <div className="flex">
           <div className="width-35 connected-border">
             <div className="text-center underline bold">Custom Size:</div>
-            {storeData.customSize1 && <div>{storeData.customSize1}</div>}
+            {storeData.customSize1 && (
+              <div className="text-center">{storeData.customSize1}</div>
+            )}
             {!storeData.customSize1 && (
               <div>
                 <div className="space"></div>
@@ -1489,7 +1491,9 @@ const PatioDoorOrder = () => {
           </div>
           <div className="width-35 connected-border">
             <div className="text-center underline bold">Custom Size:</div>
-            {storeData.customSize2 && <div>{storeData.customSize2}</div>}
+            {storeData.customSize2 && (
+              <div className="text-center">{storeData.customSize2}</div>
+            )}
             {!storeData.customSize2 && (
               <div>
                 <div className="space"></div>
@@ -1499,7 +1503,9 @@ const PatioDoorOrder = () => {
           </div>
           <div className="width-30 connected-border">
             <div className="text-center underline bold">Custom Size:</div>
-            {storeData.customSize3 && <div>{storeData.customSize3}</div>}
+            {storeData.customSize3 && (
+              <div className="text-center">{storeData.customSize3}</div>
+            )}
             {!storeData.customSize3 && (
               <div>
                 <div className="space"></div>
