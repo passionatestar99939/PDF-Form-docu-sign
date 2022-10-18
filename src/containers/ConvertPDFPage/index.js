@@ -146,10 +146,6 @@ const Page4 = () => {
 const Page5 = () => {
   return (
     <div className="pdf-page page5" id="page5">
-      <div style={{ marginTop: '90px', marginBottom: '40px' }}>
-        CREDIT CARD AUTHORIZATION FORM
-      </div>
-      <Contact addStyle={{ marginBottom: '10px' }} />
       <CreditCardForm />
     </div>
   );

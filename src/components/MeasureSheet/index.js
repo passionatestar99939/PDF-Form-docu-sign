@@ -689,7 +689,7 @@ const MeasureSheet = ({ page }) => {
                   addClass="mySign"
                   setVal={measuresheetData.drawingData[0].value}
                   updateSign={handleSign}
-                  signStatus={true}
+                  signStatus={viewMode === 'homepage'}
                   viewMode={viewMode}
                   styleJSON={measuresheetData.drawingData[0].style}
                   index={0}
@@ -718,7 +718,7 @@ const MeasureSheet = ({ page }) => {
                   addClass="mySign"
                   setVal={measuresheetData.drawingData[1].value}
                   updateSign={handleSign}
-                  signStatus={true}
+                  signStatus={viewMode === 'homepage'}
                   viewMode={viewMode}
                   styleJSON={measuresheetData.drawingData[1].style}
                   index={1}
@@ -747,7 +747,7 @@ const MeasureSheet = ({ page }) => {
                   addClass="mySign"
                   setVal={measuresheetData.drawingData[2].value}
                   updateSign={handleSign}
-                  signStatus={true}
+                  signStatus={viewMode === 'homepage'}
                   viewMode={viewMode}
                   styleJSON={measuresheetData.drawingData[2].style}
                   index={2}
