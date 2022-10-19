@@ -32,7 +32,8 @@ const DrawBox = ({
   const sigCanvas = useRef({});
   const imgTargetRef = useRef();
 
-  let sizeStyle = style ? JSON.parse(style) : {};
+  // let sizeStyle = style ? JSON.parse(style) : {};
+  let sizeStyle = style;
 
   console.log('???=>index:', index);
   console.log('???=> first size style:', sizeStyle);
