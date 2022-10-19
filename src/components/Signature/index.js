@@ -33,17 +33,13 @@ const Signature = ({
 
   const imgTargetRef = useRef();
   // const sizeStyle = useRef({});
-  let sizeStyle = style ? JSON.parse(style) : {};
+  // let sizeStyle = style ? JSON.parse(style) : {};
+  let sizeStyle = style;
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
     setOpenModal(false);
     // updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
-    updateSign({
-      value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-      style: sizeStyle,
-    });
-
     const imgOriginalSize = {
       width: parseInt(
         sigCanvas.current.getTrimmedCanvas().getAttribute('width')
@@ -65,6 +61,11 @@ const Signature = ({
       (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
     qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
     sizeStyle = qHeight < qWidth ? { height: '100%' } : { width: '100%' };
+
+    updateSign({
+      value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
+      style: sizeStyle,
+    });
   };
 
   const handleSignClick = () => {
