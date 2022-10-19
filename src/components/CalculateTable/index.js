@@ -425,7 +425,8 @@ const CalculateTable = (props) => {
                   height={28}
                   signId="signature1"
                   updateSign={handleSign1}
-                  imgInfo={storeData['signature1']}
+                  imgInfo={storeData.signature1.value}
+                  style={storeData.signature1.style}
                   signStatus={signStatus}
                   viewMode={viewMode}
                 />
@@ -472,7 +473,8 @@ const CalculateTable = (props) => {
                   height={28}
                   signId="signature2"
                   updateSign={handleSign2}
-                  imgInfo={storeData['signature2']}
+                  imgInfo={storeData.signature2.value}
+                  style={storeData.signature2.style}
                   signStatus={signStatus}
                   viewMode={viewMode}
                 />
