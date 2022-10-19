@@ -26,7 +26,6 @@ const Signature = ({
   viewMode,
   isSignMode = true,
 }) => {
-  const [imageURL, setImageURL] = useState(imgInfo);
   const [openModal, setOpenModal] = useState(false);
 
   const sigCanvas = useRef({});
@@ -36,7 +35,6 @@ const Signature = ({
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
-    setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
     setOpenModal(false);
     updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
 
@@ -99,9 +97,9 @@ const Signature = ({
           style={{ width: width, height: height }}
           ref={imgTargetRef}
         >
-          {imageURL ? (
+          {imgInfo ? (
             <img
-              src={imageURL}
+              src={imgInfo}
               alt="my signature"
               className="sign-img"
               style={sizeStyle.current}
