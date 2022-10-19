@@ -691,7 +691,7 @@ const MeasureSheet = ({ page }) => {
                   updateSign={handleSign}
                   signStatus={viewMode === 'homepage'}
                   viewMode={viewMode}
-                  styleJSON={measuresheetData.drawingData[0].style}
+                  style={measuresheetData.drawingData[0].style}
                   index={0}
                 />
               </div>
@@ -720,7 +720,7 @@ const MeasureSheet = ({ page }) => {
                   updateSign={handleSign}
                   signStatus={viewMode === 'homepage'}
                   viewMode={viewMode}
-                  styleJSON={measuresheetData.drawingData[1].style}
+                  style={measuresheetData.drawingData[1].style}
                   index={1}
                 />
               </div>
@@ -749,7 +749,7 @@ const MeasureSheet = ({ page }) => {
                   updateSign={handleSign}
                   signStatus={viewMode === 'homepage'}
                   viewMode={viewMode}
-                  styleJSON={measuresheetData.drawingData[2].style}
+                  style={measuresheetData.drawingData[2].style}
                   index={2}
                 />
               </div>

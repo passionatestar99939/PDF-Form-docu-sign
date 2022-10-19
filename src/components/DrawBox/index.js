@@ -24,7 +24,7 @@ const DrawBox = ({
   height,
   signStatus,
   viewMode,
-  styleJSON,
+  style,
   index,
 }) => {
   // const [imageURL, setImageURL] = useState(imgInfo);
@@ -32,7 +32,8 @@ const DrawBox = ({
   const sigCanvas = useRef({});
   const imgTargetRef = useRef();
 
-  let sizeStyle = styleJSON ? JSON.parse(styleJSON) : {};
+  // let sizeStyle = style ? JSON.parse(style) : {};
+  let sizeStyle = style;
 
   console.log('???=>index:', index);
   console.log('???=> first size style:', sizeStyle);

@@ -54,12 +54,13 @@ export const measuresheetSlice = createSlice({
       state.data = action.payload;
     },
     // updateDrawingDataFunc: (state, action) => {
-    //   state.data.drawingData[action.payload.index] = action.payload.value;
+    //   state.data.drawingData[action.payload.index] = { ...action.payload };
     // },
     updateDrawingDataFunc: (state, action) => {
       state.data.drawingData[action.payload.index] = {
         value: action.payload.value,
-        style: JSON.stringify(action.payload.style),
+        // style: JSON.stringify(action.payload.style),
+        style: action.payload.style,
       };
     },
   },

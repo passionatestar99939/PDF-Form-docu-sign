@@ -24,6 +24,7 @@ const Signature = ({
   height,
   signStatus,
   viewMode,
+  style,
   isSignMode = true,
 }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -31,12 +32,17 @@ const Signature = ({
   const sigCanvas = useRef({});
 
   const imgTargetRef = useRef();
-  const sizeStyle = useRef({});
+  // const sizeStyle = useRef({});
+  let sizeStyle = style ? JSON.parse(style) : {};
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
     setOpenModal(false);
-    updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+    // updateSign(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+    updateSign({
+      value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
+      style: sizeStyle,
+    });
 
     const imgOriginalSize = {
       width: parseInt(
@@ -58,8 +64,7 @@ const Signature = ({
     qHeight =
       (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
     qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
-    sizeStyle.current =
-      qHeight < qWidth ? { height: '100%' } : { width: '100%' };
+    sizeStyle = qHeight < qWidth ? { height: '100%' } : { width: '100%' };
   };
 
   const handleSignClick = () => {
@@ -102,7 +107,7 @@ const Signature = ({
               src={imgInfo}
               alt="my signature"
               className="sign-img"
-              style={sizeStyle.current}
+              style={sizeStyle}
             />
           ) : null}
         </div>
