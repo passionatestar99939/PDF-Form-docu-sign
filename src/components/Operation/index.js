@@ -55,7 +55,7 @@ const pdf_paths = {
     send: false,
   },
   pdf5: {
-    path: BASE_URL + '/pdf/WW-BAY-AND-BOW.pdf',
+    path: BASE_URL + '/pdfs/WW-BAY-AND-BOW.pdf',
     title: 'WW - Peace and Quiet Glass STC 33 (PDF)',
     send: false,
   },
