@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initDataOfMeasureSheet } from '../../constants/variables';
+import { cutbacks } from '../../constants/variables';
 
 const initialState = {
   data: {
     windowTable: {
       tearouts: 'WOOD',
       pockets: 'WOOD',
-      cutbacks: { w: '-3/8' },
+      // cutbacks: { w: '-3/8', h: '-3/8' },
+      cutbacks: cutbacks.WOOD,
     },
     typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
     mainTable: {},

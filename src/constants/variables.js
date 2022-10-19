@@ -161,14 +161,8 @@ export const temp = ['', 'TSO', 'BSO', 'Both'];
 
 export const sashSplit = ['', 'OR (Oriel)', 'COT (Cottage)'];
 
-// export const cutbacks = {
-//   WOOD: '(-3/8" W)',
-//   DRYWALL: '(-1/2" W) x (-1/2" H)',
-//   PLASTER: '(-1/2" W) x (-1/2" H)',
-// };
-
 export const cutbacks = {
-  WOOD: { w: '-3/8' },
-  DRYWALL: { w: '-1/2', h: '-1/2' },
-  PLASTER: { w: '-1/2', h: '-1/2' },
+  WOOD: { w: '-3/8', h: '-3/8' },
+  DRYWALL: { w: '-1/4', h: '-1/4' },
+  PLASTER: { w: '-1/4', h: '-1/4' },
 };
