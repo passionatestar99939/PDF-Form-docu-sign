@@ -141,7 +141,7 @@ const MeasureSheet = ({ page }) => {
         {data.mainTable &&
           Object.values(measuresheetData.mainTable).map((ele, row_id) => {
             if (page === 1) {
-              if (row_id < 17)
+              if (row_id < 18)
                 return (
                   <tr key={row_id} onClick={() => handleClickTr(row_id)}>
                     {Object.keys(ele).map((key, index) =>
@@ -173,7 +173,7 @@ const MeasureSheet = ({ page }) => {
                   </tr>
                 );
             } else if (page === 2) {
-              if (row_id >= 17)
+              if (row_id >= 18)
                 return (
                   <tr key={row_id} onClick={() => handleClickTr(row_id)}>
                     {Object.keys(ele).map((key, index) =>
