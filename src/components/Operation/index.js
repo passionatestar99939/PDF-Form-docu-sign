@@ -55,7 +55,7 @@ const pdf_paths = {
     send: false,
   },
   pdf5: {
-    path: BASE_URL + '/pdfs/WW-BAY-AND-BOW.pdf',
+    path: BASE_URL + '/pdf/WW-BAY-AND-BOW.pdf',
     title: 'WW - Peace and Quiet Glass STC 33 (PDF)',
     send: false,
   },
@@ -72,7 +72,7 @@ const Operation = (props) => {
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
   const [signature, setSignature] = useState(
-    '<b>Nick Tisdale<br />Window World</b><br />ww@nicktisdale.com<br />(502) 310-9454'
+    '<b>Nick Tisdale<br />Window World</b><br />ww@nicktisdale.com<br />(502) 310-9454<br /><br />'
   );
   const [pdfPath, setPdfPath] = useState({ ...pdf_paths });
 
@@ -143,20 +143,9 @@ const Operation = (props) => {
       let attach_path = BASE_URL + '/images/attach.png';
       let pdf_image_path = BASE_URL + '/images/pdf-attach.png';
       if (pdf_paths[value].send) {
-        pdf_body +=
-          '<div style="display: flex; align-items: center;"><img alt="attach" src="' +
-          attach_path +
-          '" /><a href="' +
-          pdf_paths[value].path +
-          '">' +
-          pdf_paths[value].title +
-          '</a><img alt="pdf" width="20px" src="' +
-          pdf_image_path +
-          '" /></div>';
+        pdf_body += '<div style="display: flex; align-items: center;"><img alt="pdf" width="20px" src="' + pdf_image_path + '" /><a href="' + pdf_paths[value].path + '">' + pdf_paths[value].title + '</a></div><br />';
       }
     });
-
-    // console.log(body + pdf_body);
 
     dispatch(
       postDataAsync({
