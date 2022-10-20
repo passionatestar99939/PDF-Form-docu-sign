@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initDataOfMeasureSheet } from '../../constants/variables';
+import { gridStyle, initDataOfMeasureSheet } from '../../constants/variables';
 import { cutbacks } from '../../constants/variables';
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
       // cutbacks: { w: '-3/8', h: '-3/8' },
       cutbacks: cutbacks.WOOD,
     },
-    typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
+    typeTable: { gridStyle: gridStyle.normalType[0], capping: 'BRICKMOLD' },
     mainTable: {},
     drawingData: [
       // {

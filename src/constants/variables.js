@@ -30,7 +30,7 @@ export const initDataOfWindowOrder = {
   sashSplit: '',
   intColor: '',
   extColor: '',
-  grids: false,
+  grids: '',
   pattern: '',
   blinds: false,
   energy: '',
@@ -60,6 +60,11 @@ export const initDataOfCommisionForm = {
 export const typeOfCheckBox = {
   WindowTable: 'WindowTable',
   PatioDoorOrder: 'PatioDoorOrder',
+};
+
+export const gridStyle = {
+  normalType: ['', 'Flat', 'Sculpted', 'SDL'],
+  shortType: ['', 'FLAT', 'SCU', 'SDL'],
 };
 
 export const interiorColor = [

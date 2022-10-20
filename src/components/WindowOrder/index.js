@@ -131,7 +131,6 @@ const WindowOrder = () => {
     const checkBoxArray = [
       'foam',
       'nailfin',
-      'grids',
       'blinds',
       'casementsL',
       'casementsR',

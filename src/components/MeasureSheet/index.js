@@ -28,6 +28,7 @@ import {
   temp,
   cutbacks,
   initDataOfWindowOrder,
+  gridStyle,
 } from '../../constants/variables';
 
 import { fractionCalculator } from '../../utils/globals';
@@ -51,15 +52,17 @@ const tableHeaderLine = [
   'MULL CUTS',
   'NOTES',
 ];
-let data = {
-  windowTable: {
-    tearouts: 'WOOD',
-    pockets: 'WOOD',
-    cutbacks: { w: '-3/8' },
-  },
-  typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
-  mainTable: {},
-};
+// let data = {
+//   windowTable: {
+//     tearouts: 'WOOD',
+//     pockets: 'WOOD',
+//     cutbacks: { w: '-3/8' },
+//   },
+//   typeTable: { grid: 'NO GRIDS', capping: 'BRICKMOLD' },
+//   mainTable: {},
+// };
+
+let data;
 
 const dataForWindowOrder = {
   mainTable: {},
@@ -68,6 +71,7 @@ const dataForWindowOrder = {
 const MeasureSheet = ({ page }) => {
   const salesInfo = useSelector((state) => state.salesInfo.data);
   const measuresheetData = useSelector((state) => state.measuresheet.data);
+  data = { ...measuresheetData };
   const windowOrderData = useSelector((state) => state.windoworder.data);
 
   const viewMode = useSelector((state) => state.option.data.viewMode);
@@ -105,7 +109,8 @@ const MeasureSheet = ({ page }) => {
   };
 
   const handleChangeWindowOption = (e) => {
-    data.windowTable[e.target.id] = e.target.value;
+    // data.windowTable[e.target.id] = e.target.value;
+    data.windowTable = { ...data.windowTable, [e.target.id]: e.target.value };
     data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
     dispatch(updateWindowTable(data.windowTable));
 
@@ -116,8 +121,11 @@ const MeasureSheet = ({ page }) => {
   };
 
   const handleChangeTypeTable = (e) => {
-    data.typeTable[e.target.id] = e.target.value;
+    // data.typeTable[e.target.id] = e.target.value;
+    data.typeTable = { ...data.typeTable, [e.target.id]: e.target.value };
     dispatch(updateTypeTable({ ...data.typeTable }));
+
+    processWindowOrderData();
   };
 
   const handleChangeInput = (e) => {
@@ -401,6 +409,13 @@ const MeasureSheet = ({ page }) => {
           obsc: ele.obsc,
           temp: ele.temp,
           pattern: ele.grids,
+          foam: ele.foam,
+          grids:
+            gridStyle.shortType[
+              gridStyle.normalType.findIndex(
+                (val) => val === data.typeTable.gridStyle
+              )
+            ],
         };
       }
     });
@@ -764,37 +779,22 @@ const MeasureSheet = ({ page }) => {
                     ) : (
                       <select
                         className="ms_select"
-                        id="grid"
+                        id="gridStyle"
                         onChange={(e) => handleChangeTypeTable(e)}
                       >
-                        <option
-                          value="NO GRIDS"
-                          selected={
-                            'NO GRIDS' === measuresheetData.typeTable.grid
-                          }
-                        >
-                          NO GRIDS
-                        </option>
-                        <option
-                          value="Flat"
-                          selected={'Flat' === measuresheetData.typeTable.grid}
-                        >
-                          Flat
-                        </option>
-                        <option
-                          value="Sculptured"
-                          selected={
-                            'Sculptured' === measuresheetData.typeTable.grid
-                          }
-                        >
-                          Sculptured
-                        </option>
-                        <option
-                          value="SDL"
-                          selected={'SDL' === measuresheetData.typeTable.grid}
-                        >
-                          SDL
-                        </option>
+                        {gridStyle.normalType.map((value, index) => (
+                          <option
+                            key={index}
+                            value={value}
+                            selected={
+                              value === measuresheetData.typeTable.gridStyle
+                                ? 'selected'
+                                : ''
+                            }
+                          >
+                            {value}
+                          </option>
+                        ))}
                       </select>
                     )}
                   </td>
