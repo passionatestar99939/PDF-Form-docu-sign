@@ -161,6 +161,11 @@ export const temp = ['', 'TSO', 'BSO', 'Both'];
 
 export const sashSplit = ['', 'OR (Oriel)', 'COT (Cottage)'];
 
+export const mulls = {
+  normalType: ['FACTORY', 'FIELD'],
+  shortType: ['FAC', 'FLD'],
+};
+
 export const cutbacks = {
   WOOD: { w: '-3/8', h: '-3/8' },
   DRYWALL: { w: '-1/4', h: '-1/4' },

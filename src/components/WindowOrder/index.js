@@ -12,6 +12,7 @@ import {
   energy,
   temp,
   obsc,
+  mulls,
 } from '../../constants/variables';
 import {
   updateMainTable,
@@ -59,12 +60,27 @@ const WindowOrder = () => {
 
   const handleClickTr = useCallback((row_id) => {
     selectedRowRef.current = row_id;
-    setTempObj({ ...data.mainTable[row_id] });
+    setTempObj({
+      ...data.mainTable[row_id],
+      mulls: data.mainTable[row_id].mulls
+        ? mulls.normalType[
+            mulls.shortType.findIndex(
+              (val) => val === data.mainTable[row_id].mulls
+            )
+          ]
+        : mulls.normalType[0],
+    });
     setOpenTableModal(viewMode === 'homepage');
   }, []);
 
   const handleSave = () => {
-    data.mainTable[selectedRow] = { ...tempObj };
+    data.mainTable[selectedRow] = {
+      ...tempObj,
+      mulls:
+        mulls.shortType[
+          mulls.normalType.findIndex((val) => val === tempObj.mulls)
+        ],
+    };
     dispatch(updateMainTable(data.mainTable));
     setOpenTableModal(false);
   };
@@ -472,11 +488,17 @@ const WindowOrder = () => {
         </div>
         <div className="p-line">
           <label htmlFor="mulls">MULLS</label>
-          <input
-            id="mulls"
-            value={tempObj['mulls']}
-            onChange={(e) => handleChangeInput(e)}
-          />
+          <select id="mulls" onChange={(e) => handleChangeInput(e)}>
+            {mulls.normalType.map((value, index) => (
+              <option
+                key={index}
+                value={value}
+                selected={value === tempObj.mulls ? 'selected' : ''}
+              >
+                {value}
+              </option>
+            ))}
+          </select>{' '}
         </div>
         <div className="p-line">
           <label htmlFor="comment">OTHER COMMENTS</label>
