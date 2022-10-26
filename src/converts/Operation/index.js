@@ -38,7 +38,8 @@ const Operation = (props) => {
   // const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [body, setBody] = useState('');
-  let initial_sig = "Thanks\n__\n" + "Nick Tisdale" + "\nWindow World\n" + "(502) 310-9454";
+  let initial_sig =
+    'Thanks\n__\n' + 'Nick Tisdale' + '\nWindow World\n' + '(502) 310-9454';
   const [signature, setSignature] = useState(initial_sig);
 
   const email = useSelector((state) => state.salesman.data.email);
@@ -72,7 +73,12 @@ const Operation = (props) => {
     dispatch(
       postDataAsync({
         data: {
-          email: { to: email, subject: subject, body: body, signature: signature },
+          email: {
+            to: email,
+            subject: subject,
+            body: body,
+            signature: signature,
+          },
           contract_info: data,
         },
         url: 'contract',
@@ -93,9 +99,8 @@ const Operation = (props) => {
 
   const handleToggle = (e) => {
     const isChecked = e.target.checked;
-    console.log({isChecked})
     dispatch(updateSignStatus(isChecked));
-  }
+  };
 
   const handleDownload = () => {
     let data = store.getState();
@@ -137,10 +142,18 @@ const Operation = (props) => {
               style={{ fontSize: 20, color: 'white', marginRight: 20 }}
             />
           </button>
-          <button className="btn icon-btn" onClick={(e) => handleSignEnable(e)} disabled={!signStatus}>
+          <button
+            className="btn icon-btn"
+            onClick={(e) => handleSignEnable(e)}
+            disabled={!signStatus}
+          >
             <FontAwesomeIcon
               icon={faPencil}
-              style={{ fontSize: 20, color: signStatus === true ? 'white' : 'grey', marginRight: 20 }}
+              style={{
+                fontSize: 20,
+                color: signStatus === true ? 'white' : 'grey',
+                marginRight: 20,
+              }}
             />
           </button>
           <button className="btn icon-btn" onClick={handleDownload}>
@@ -150,7 +163,11 @@ const Operation = (props) => {
             />
           </button>
           <div className="flex-right">
-            <input id="enableToggle" type="checkbox" onChange={(e) => handleToggle(e)} />
+            <input
+              id="enableToggle"
+              type="checkbox"
+              onChange={(e) => handleToggle(e)}
+            />
             <label htmlFor="enableToggle">Direct Sign</label>
           </div>
           <Modal
@@ -177,7 +194,11 @@ const Operation = (props) => {
                 <label for="subject">SUBJECT</label>
                 <input
                   className="bottom-outline width-100"
-                  style={{ textAlign: 'left', fontSize: "16px", fontFamily: "sans-serif" }}
+                  style={{
+                    textAlign: 'left',
+                    fontSize: '16px',
+                    fontFamily: 'sans-serif',
+                  }}
                   type="text"
                   id="subject"
                   onChange={(e) => setSubject(e.target.value)}
@@ -195,7 +216,12 @@ const Operation = (props) => {
                   className="email-body"
                 />
               </div>
-              <br /><p>Click here to electronically sign: <span className="link-content">Window World Contract</span></p><br />
+              <br />
+              <p>
+                Click here to electronically sign:{' '}
+                <span className="link-content">Window World Contract</span>
+              </p>
+              <br />
               <div>
                 <p>
                   <label for="signature" style={{ margin: '4px' }}>

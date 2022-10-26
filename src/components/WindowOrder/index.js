@@ -137,7 +137,6 @@ const WindowOrder = () => {
       'casementsPW',
     ];
     const hiddenElementArray = ['categoryNum'];
-    // const hiddenElementArray = [];
 
     const classNameForX = '';
 

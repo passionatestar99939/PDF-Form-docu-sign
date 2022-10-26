@@ -56,9 +56,6 @@ const PatioDoorOrder = () => {
   });
 
   const handleClose = () => {
-    // dispatch(
-    //   updateValue({ id: 'customSize1', value: customSize1.current.value })
-    // );
     setOpenTableModal(false);
     dispatch(
       updateDataPatioDoor({
@@ -68,11 +65,6 @@ const PatioDoorOrder = () => {
         customSize3: customSize3.current.value,
       })
     );
-    console.log('???=>close');
-  };
-
-  const handleCustomSize = (e) => {
-    // dispatch(updateValue({ id: e.target.id, value: e.target.value }));
   };
 
   const Component11 = () => {
@@ -756,7 +748,7 @@ const PatioDoorOrder = () => {
         <div className="flex">
           <ul>
             <div
-              checkId="patio-door-order__CheckBox-2-2-1"
+              id="patio-door-order__CheckBox-2-2-1"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -768,7 +760,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-2"
+              id="patio-door-order__CheckBox-2-2-2"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -780,7 +772,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-3"
+              id="patio-door-order__CheckBox-2-2-3"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -793,7 +785,7 @@ const PatioDoorOrder = () => {
             </div>
             <div className="space"></div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-4"
+              id="patio-door-order__CheckBox-2-2-4"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -805,7 +797,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-5"
+              id="patio-door-order__CheckBox-2-2-5"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -817,7 +809,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-6"
+              id="patio-door-order__CheckBox-2-2-6"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -829,7 +821,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-7"
+              id="patio-door-order__CheckBox-2-2-7"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -841,7 +833,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-8"
+              id="patio-door-order__CheckBox-2-2-8"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -853,7 +845,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-9"
+              id="patio-door-order__CheckBox-2-2-9"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -865,7 +857,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-10"
+              id="patio-door-order__CheckBox-2-2-10"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -877,7 +869,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-11"
+              id="patio-door-order__CheckBox-2-2-11"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -889,7 +881,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-12"
+              id="patio-door-order__CheckBox-2-2-12"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -901,7 +893,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-13"
+              id="patio-door-order__CheckBox-2-2-13"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -913,7 +905,7 @@ const PatioDoorOrder = () => {
               ></Checkbox>
             </div>
             <div
-              checkId="patio-door-order__CheckBox-2-2-14"
+              id="patio-door-order__CheckBox-2-2-14"
               className="patio-door-order__CheckBox patio-door-order__CheckBox-Width2"
             >
               <Checkbox
@@ -1496,57 +1488,59 @@ const PatioDoorOrder = () => {
   };
 
   return (
-    <div class="patio-door-order">
+    <div className="patio-door-order">
       <div className="Patio_Information">
         <table>
-          <tr>
-            <td>WW Location</td>
-            <td>
-              <div className="border-bottom big-font blue-font Width300">
-                {salesData.salesLocation}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>WW Sales Rep</td>
-            <td>
-              <div className="border-bottom big-font blue-font Width300">
-                {salesData.salesConsultant.split(' ')[0] +
-                  ' - ' +
-                  salesData.repNumber}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>WW Location Phone #</td>
-            <td>
-              <div className="border-bottom big-font blue-font Width300">
-                {salesData.salesPhone}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Today's Date</td>
-            <td>
-              <div className="border-bottom big-font blue-font Width300">
-                {salesData.date}
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Purchase Order #</td>
-            <td>
-              <div className="border-bottom Height100 big-font blue-font Width300"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>Homeowner Name</td>
-            <td>
-              <div className="border-bottom big-font blue-font blue-font">
-                {salesData.customer}
-              </div>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>WW Location</td>
+              <td>
+                <div className="border-bottom big-font blue-font Width300">
+                  {salesData.salesLocation}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>WW Sales Rep</td>
+              <td>
+                <div className="border-bottom big-font blue-font Width300">
+                  {salesData.salesConsultant.split(' ')[0] +
+                    ' - ' +
+                    salesData.repNumber}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>WW Location Phone #</td>
+              <td>
+                <div className="border-bottom big-font blue-font Width300">
+                  {salesData.salesPhone}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Today's Date</td>
+              <td>
+                <div className="border-bottom big-font blue-font Width300">
+                  {salesData.date}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Purchase Order #</td>
+              <td>
+                <div className="border-bottom Height100 big-font blue-font Width300"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>Homeowner Name</td>
+              <td>
+                <div className="border-bottom big-font blue-font blue-font">
+                  {salesData.customer}
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div className="main-table">
@@ -1604,7 +1598,6 @@ const PatioDoorOrder = () => {
             }
 
             <TagInsideModal />
-            {console.log('???=>End rendering')}
             <div>
               <button
                 className="btn sign-modal-btn"

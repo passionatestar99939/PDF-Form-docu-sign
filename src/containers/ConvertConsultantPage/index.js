@@ -110,7 +110,6 @@ const ConvertConsultantPage = () => {
     async function getData() {
       const response = await axios.get(`${API_URL}/contract/${id}`);
       let data = JSON.parse(response.data.contract_info);
-      console.log({ data });
       updateStore(data);
     }
 

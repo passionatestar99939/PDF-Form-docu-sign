@@ -216,14 +216,11 @@ const CreditCardForm = () => {
                   onChange={(e) => {
                     handleChange(e.target.value, { formId: 'expDate' });
                   }}
+                  value={storeData['expDate']}
                 >
                   <option value=" "> </option>
                   {months.map((value, index) => (
-                    <option
-                      value={value}
-                      key={index}
-                      selected={value === storeData['expDate']}
-                    >
+                    <option value={value} key={index}>
                       {value}
                     </option>
                   ))}
@@ -244,14 +241,11 @@ const CreditCardForm = () => {
                   onChange={(e) => {
                     handleChange(e.target.value, { formId: 'expMonth' });
                   }}
+                  value={storeData['expMonth']}
                 >
                   <option value=" "> </option>
                   {years.map((value, index) => (
-                    <option
-                      value={value}
-                      key={index}
-                      selected={value === storeData['expMonth']}
-                    >
+                    <option value={value} key={index}>
                       {value}
                     </option>
                   ))}

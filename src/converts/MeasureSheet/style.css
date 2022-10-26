@@ -124,8 +124,8 @@
 }
 
 .msh__header_main-table-modal {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
   position: fixed;
   top: 50%;
   left: 50%;

@@ -309,10 +309,10 @@ const SignPage = () => {
             <Loader show={loading === 'pending' ? true : false} message={<></>}>
               <Page1 />
               <Page2 />
-              <MeasureSheetPage />
+              {/*<MeasureSheetPage />
               <WindowOrderPage />
               <SalesConsultantPage />
-              <PatioDoorOrderPage />
+              <PatioDoorOrderPage />*/}
               <CreditCardPage />
             </Loader>
           </AppWrapper>

@@ -384,7 +384,7 @@ const WindowWorldTable = (props) => {
               value={storeData['windowWorldInput31']}
               readOnly={viewMode !== 'homepage'}
             />
-            <label for="windowWorldInput31" className="lbl">
+            <label htmlFor="windowWorldInput31" className="lbl">
               Inside
             </label>
           </div>
@@ -400,7 +400,7 @@ const WindowWorldTable = (props) => {
               value={storeData['windowWorldInput32']}
               readOnly={viewMode !== 'homepage'}
             />
-            <label for="windowWorldInput32" className="lbl">
+            <label htmlFor="windowWorldInput32" className="lbl">
               Outside
             </label>
           </div>

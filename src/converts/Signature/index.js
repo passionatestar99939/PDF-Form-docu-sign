@@ -4,17 +4,6 @@ import Modal from 'react-modal';
 
 import './style.css';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
 const Signature = ({
   imgInfo,
   signId,
@@ -46,13 +35,6 @@ const Signature = ({
         sigCanvas.current.getTrimmedCanvas().getAttribute('height')
       ),
     };
-    console.log('???=>Canvas', imgOriginalSize);
-    console.log(
-      '???=>target',
-      imgTargetRef.current.offsetWidth,
-      ',',
-      imgTargetRef.current.offsetHeight
-    );
 
     let qHeight, qWidth;
     qHeight =

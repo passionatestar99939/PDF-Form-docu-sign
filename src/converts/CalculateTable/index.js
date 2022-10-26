@@ -28,9 +28,6 @@ const CalculateTable = (props) => {
     roundUpTableData,
   } = data;
 
-  console.log('--------------------------------------------');
-  console.log(data.miscellaneousTableData);
-
   const storeData = useSelector((state) => state.calculate.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
   const signStatus = useSelector((state) => state.option.data.signStatus);

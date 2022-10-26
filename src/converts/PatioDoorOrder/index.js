@@ -8,7 +8,6 @@ import { typeOfCheckBox } from '../../constants/variables';
 import './style.css';
 
 const PatioDoorOrder = () => {
-  console.log('???=>Start');
   const [openTableModal, setOpenTableModal] = useState(false);
   const storeData = useSelector((state) => state.patiodoororder.data);
   const salesData = useSelector((state) => state.salesInfo.data);

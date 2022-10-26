@@ -30,7 +30,6 @@ export const formatDate = (date) => {
   ].join('/');
 };
 
-// "q1 r1/m1", '+', "q2 r2/m2"
 const gcd = (a, b) => {
   return b === 0 ? a : gcd(b, a % b);
 };
@@ -44,16 +43,16 @@ export const fractionCalculator = (first, sign, second) => {
       fraction2 = {};
     const array1 = first.split(' ');
     let array1_2;
-    if (array1.length == 2) {
+    if (array1.length === 2) {
       fraction1.q = parseInt(array1[0]);
 
       array1_2 = array1[1].split('/');
       fraction1.r = parseInt(array1_2[0]);
       fraction1.m = parseInt(array1_2[1]);
-      if (array1_2.length != 2) {
+      if (array1_2.length !== 2) {
         throw 'Typing error in first fraction';
       }
-    } else if (array1.length == 1) {
+    } else if (array1.length === 1) {
       switch (array1[0].split('/').length) {
         case 2:
           array1_2 = array1[0].split('/');
@@ -77,7 +76,6 @@ export const fractionCalculator = (first, sign, second) => {
     });
     fraction1.sign = fraction1.q < 0 ? -1 : 1;
     fraction1.q *= fraction1.q < 0 ? -1 : 1;
-    // console.log('first:', fraction1);
 
     const array2 = second.split(' ');
     let array2_2;
@@ -87,10 +85,10 @@ export const fractionCalculator = (first, sign, second) => {
       array2_2 = array2[1].split('/');
       fraction2.r = parseInt(array2_2[0]);
       fraction2.m = parseInt(array2_2[1]);
-      if (array2_2.length != 2) {
+      if (array2_2.length !== 2) {
         throw 'Typing error in second fraction';
       }
-    } else if (array2.length == 1) {
+    } else if (array2.length === 1) {
       switch (array2[0].split('/').length) {
         case 2:
           array2_2 = array2[0].split('/');
@@ -109,15 +107,12 @@ export const fractionCalculator = (first, sign, second) => {
     } else {
       throw 'Typing error in second fraction';
     }
-    // if (Object.values(fraction2).find((val) => isNaN(val)))
-    //   throw 'Typing error in second fraction';
     Object.values(fraction2).forEach((val) => {
       if (isNaN(val)) throw 'Typing error in second fraction';
     });
     fraction2.sign = fraction2.q < 0 ? -1 : 1;
     fraction2.q *= fraction2.q < 0 ? -1 : 1;
 
-    // console.log('second:', fraction2);
     let divisor;
     let top, bottom, resultSign;
     switch (sign) {
@@ -172,10 +167,5 @@ export const fractionCalculator = (first, sign, second) => {
         return `0`;
       }
     }
-  } catch (error) {
-    // alert(error);
-    // console.log('???=>error:', error);
-  }
+  } catch (error) {}
 };
-
-// console.log('???=>', fractionCalculator('36', '+', '-5/8'));

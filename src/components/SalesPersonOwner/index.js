@@ -42,7 +42,7 @@ const SalesPersonOwner = () => {
             readOnlyMode={viewMode !== 'homepage'}
           />
           <label
-            for="windowWorldInput31"
+            htmlFor="windowWorldInput31"
             className="lbl"
             style={{ textAlign: 'left' }}
           >
@@ -57,7 +57,6 @@ const SalesPersonOwner = () => {
           signId="signature"
           updateSign={handleSign}
           imgInfo={storeData.signature.value}
-          style={storeData.signature.style}
           style={storeData.signature.style}
           signStatus={signStatus}
           viewMode={viewMode}

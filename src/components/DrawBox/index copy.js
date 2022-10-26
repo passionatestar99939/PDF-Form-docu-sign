@@ -3,62 +3,82 @@ import SignaturePad from 'react-signature-canvas';
 import Modal from 'react-modal';
 
 import './style.css';
+import { useEffect } from 'react';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 const DrawBox = ({
-  imgInfo,
+  setVal,
+  signId,
   addClass,
   updateSign,
   width,
   height,
   signStatus,
   viewMode,
-  style,
   index,
+  isSignMode = true,
 }) => {
+  const [imageURL, setImageURL] = useState(setVal);
   const [openModal, setOpenModal] = useState(false);
-  const sigCanvas = useRef({});
-  const imgTargetRef = useRef();
 
-  let sizeStyle = style;
+  const sigCanvas = useRef({});
+  // const imgRef = useRef(null);
+
+  // console.log('???=>size:', imgRef.current.clientWidth);
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
-    const imgOriginalSize = {
-      width: parseInt(
-        sigCanvas.current.getTrimmedCanvas().getAttribute('width')
-      ),
-      height: parseInt(
-        sigCanvas.current.getTrimmedCanvas().getAttribute('height')
-      ),
-    };
-
-    let qHeight, qWidth;
-    qHeight =
-      (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
-    qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
-    sizeStyle = qHeight < qWidth ? { height: '100%' } : { width: '100%' };
-
-    imgInfo = sigCanvas.current.getTrimmedCanvas().toDataURL('image/png');
-    if (index !== undefined) {
-      updateSign({
-        index: index,
-        value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-        style: sizeStyle,
-      });
-    } else {
-      updateSign({
-        value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
-        style: sizeStyle,
-      });
-    }
+    setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
     setOpenModal(false);
+    updateSign({
+      index: index,
+      value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
+    });
   };
 
   const handleSignClick = () => {
     setOpenModal(signStatus);
   };
 
-  const imgRef = useRef();
+  // const signButtonClass = 'sign-button '.isSignMode
+  //   ? 'yellow-background'
+  //   : '';
+  const signButtonClass = `sign-button ${
+    isSignMode ? 'yellow-background' : ''
+  }`;
+
+  const Img = () => {
+    const imgRef = useRef();
+    useEffect(() => {
+      if (imgRef.current)
+        console.log('???=>img Width:', imgRef.current.offsetWidth);
+      return () => {
+        if (imgRef.current)
+          console.log('???=>img Width:___clear', imgRef.current.offsetWidth);
+      };
+    }, [imgRef]);
+    return (
+      <>
+        <img
+          src={imageURL}
+          alt="my signature"
+          className="sign-img"
+          style={{ height: height }}
+          ref={imgRef}
+        />
+      </>
+    );
+  };
 
   return (
     <div
@@ -77,7 +97,7 @@ const DrawBox = ({
             style={{ width: width, height: height }}
           />
           <img
-            src={imgInfo ? imgInfo : '/images/emtpy-sign.png'}
+            src={setVal ? setVal : '/images/emtpy-sign.png'}
             alt="my signature"
             className="sign-img"
             style={{ height: height - 5, marginTop: -height }}
@@ -86,20 +106,20 @@ const DrawBox = ({
       ) : (
         <div
           id="sign-button"
-          className={'sign-button centering'}
+          className={signButtonClass}
           onClick={() => handleSignClick()}
           style={{ width: width, height: height }}
-          ref={imgTargetRef}
         >
-          {imgInfo ? (
-            <img
-              src={imgInfo}
-              alt="my signature"
-              className="sign-img"
-              style={sizeStyle}
-              ref={imgRef}
-            />
-          ) : null}
+          {imageURL ? (
+            <Img />
+          ) : // <img
+          //   src={imageURL}
+          //   alt="my signature"
+          //   className="sign-img"
+          //   style={{ height: height }}
+          //   ref={imgRef}
+          // />
+          null}
         </div>
       )}
       <Modal
@@ -111,12 +131,12 @@ const DrawBox = ({
         <SignaturePad
           ref={sigCanvas}
           canvasProps={{ className: 'signatureCanvas' }}
-          dotSize={4}
-          maxWidth={4}
+          dotSize={8}
+          maxWidth={8}
         />
         <div style={{ textAlign: 'center' }}>
           <button onClick={save} className="modal-btn">
-            Draw
+            {isSignMode ? 'Sign' : 'Draw'}
           </button>
           <button onClick={clear} className="modal-btn">
             Clear

@@ -1,19 +1,8 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import Modal from 'react-modal';
 
 import './style.css';
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 
 const DrawBox = ({
   imgInfo,
@@ -35,9 +24,6 @@ const DrawBox = ({
   // let sizeStyle = style ? JSON.parse(style) : {};
   let sizeStyle = style;
 
-  // console.log('???=>index:', index);
-  // console.log('???=> first size style:', sizeStyle);
-
   const clear = () => sigCanvas.current.clear();
   const save = () => {
     const imgOriginalSize = {
@@ -48,23 +34,15 @@ const DrawBox = ({
         sigCanvas.current.getTrimmedCanvas().getAttribute('height')
       ),
     };
-    // console.log('???=>Canvas', imgOriginalSize);
-    // console.log(
-    //   '???=>target',
-    //   imgTargetRef.current.offsetWidth,
-    //   ',',
-    //   imgTargetRef.current.offsetHeight
-    // );
 
     let qHeight, qWidth;
     qHeight =
       (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
     qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
     sizeStyle = qHeight < qWidth ? { height: '100%' } : { width: '100%' };
-    // console.log('???=> size style while saving:', sizeStyle);
 
     imgInfo = sigCanvas.current.getTrimmedCanvas().toDataURL('image/png');
-    if (index != undefined) {
+    if (index !== undefined) {
       updateSign({
         index: index,
         value: sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'),
@@ -84,20 +62,6 @@ const DrawBox = ({
   };
 
   const imgRef = useRef();
-
-  // useEffect(() => {
-  //   if (imgRef.current) {
-  //     console.log('???=>offsetWidth:', imgRef.current.offsetWidth);
-  //     // console.log('???=>clientWidth:', imgRef.current.clientWidth);
-  //   }
-  //   return () => {
-  //     // useEffect(() => {
-  //     if (imgRef.current) {
-  //       console.log('???=>offsetWidth:=== clear', imgRef.current.offsetWidth);
-  //       // console.log('???=>clientWidth:', imgRef.current.clientWidth);
-  //     }
-  //   };
-  // });
 
   return (
     <div
@@ -135,14 +99,6 @@ const DrawBox = ({
               src={imgInfo}
               alt="my signature"
               className="sign-img"
-              // style={
-              //   (1.0 * imgTargetRef.current.offsetHeight) /
-              //     imgOriginalSize.height <
-              //   (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width
-              //     ? { height }
-              //     : { width }
-              // }
-              // style={qHeight < qWidth ? { height: '100%' } : { width: '100%' }}
               style={sizeStyle}
               ref={imgRef}
             />

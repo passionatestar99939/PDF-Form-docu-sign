@@ -403,7 +403,7 @@ const CalculateTable = (props) => {
                   <strong>(Outside Looking In)</strong>
                 </p>
                 <div>
-                  <label for="doorhandle">Door Handle</label>
+                  <label htmlFor="doorhandle">Door Handle</label>
                   <input
                     id="doorhandle"
                     className="bottom-outline width-80px medium-input"
@@ -766,7 +766,7 @@ const CalculateTable = (props) => {
                 }
                 checked={storeData['cash']}
               />
-              <label for="cash">CASH</label>
+              <label htmlFor="cash">CASH</label>
               <input
                 type="checkbox"
                 id="check"
@@ -775,7 +775,7 @@ const CalculateTable = (props) => {
                 }
                 checked={storeData['check']}
               />
-              <label for="check">CHECK</label>
+              <label htmlFor="check">CHECK</label>
               <input
                 type="checkbox"
                 id="cc"
@@ -784,7 +784,7 @@ const CalculateTable = (props) => {
                 }
                 checked={storeData['cc']}
               />
-              <label for="cc">CC</label>
+              <label htmlFor="cc">CC</label>
               <input
                 type="checkbox"
                 id="financing"
@@ -793,7 +793,7 @@ const CalculateTable = (props) => {
                 }
                 checked={storeData['financing']}
               />
-              <label for="financing">FINANCING</label>
+              <label htmlFor="financing">FINANCING</label>
             </div>
             <div>
               <label>Amount Financed $ </label>

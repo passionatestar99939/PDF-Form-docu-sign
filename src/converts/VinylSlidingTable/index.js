@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { updateValue } from "../../store/slices/vinylslidingSlice";
-import { numberWithCommas, dollarNumberWithCommas } from "../../utils/globals";
+import { updateValue } from '../../store/slices/vinylslidingSlice';
+import { numberWithCommas, dollarNumberWithCommas } from '../../utils/globals';
 
 const VinylSlidingTable = (props) => {
   const storeData = useSelector((state) => state.vinylsliding.data);
@@ -16,7 +16,7 @@ const VinylSlidingTable = (props) => {
   useEffect(() => {
     if (flag.current === false) {
       input1.current.value = dollarNumberWithCommas(
-        Number(storeData["vinylSlidingInput15"])
+        Number(storeData['vinylSlidingInput15'])
       );
     }
   }, [storeData]);
@@ -33,9 +33,7 @@ const VinylSlidingTable = (props) => {
       price += Number(temp) * item.unitPrice;
     });
 
-    if (formId === "vinylSlidingInput15") {
-      console.log("-------------------------------------------------");
-      console.log(e.target.value);
+    if (formId === 'vinylSlidingInput15') {
       dispatch(updateValue({ id: formId, count: Number(e.target.value) }));
     } else dispatch(updateValue({ id: formId, count: e.target.value }));
 
@@ -47,38 +45,38 @@ const VinylSlidingTable = (props) => {
   };
 
   const handleFocus = (e, id) => {
-    e.target.type = "number";
+    e.target.type = 'number';
     e.target.value = storeData[id];
     flag.current = true;
   };
 
   const handleBlur = (e, id) => {
-    e.target.type = "text";
+    e.target.type = 'text';
     e.target.value = dollarNumberWithCommas(Number(storeData[id]));
     flag.current = false;
   };
 
   return (
-    <div className='table-bottom small-letter'>
-      <div className='table-title'>
+    <div className="table-bottom small-letter">
+      <div className="table-title">
         <strong>Vinyl Sliding Patio Doors</strong>
       </div>
       <div>
         {props.data.map((item, index) => {
           if (index < 14) {
             return (
-              <div className='wrapper' key={index}>
+              <div className="wrapper" key={index}>
                 <div
-                  className='flex-input'
+                  className="flex-input"
                   style={{
-                    width: "70%",
-                    fontSize: index === 4 || index === 12 ? "11px" : "12px",
+                    width: '70%',
+                    fontSize: index === 4 || index === 12 ? '11px' : '12px',
                   }}
                 >
                   <input
                     id={`vinylSlidingInput${index + 1}`}
-                    className='bottom-outline width-50px small-input'
-                    type='number'
+                    className="bottom-outline width-50px small-input"
+                    type="number"
                     onChange={(e) =>
                       handleChange(e, {
                         id: item.id,
@@ -86,32 +84,32 @@ const VinylSlidingTable = (props) => {
                       })
                     }
                     value={storeData[`vinylSlidingInput${index + 1}`]}
-                    readOnly={viewMode !== "homepage"}
+                    readOnly={viewMode !== 'homepage'}
                   />
                   <label>{item.label}</label>
                   {index === 11 && (
                     <input
-                      type='text'
-                      style={{ width: "30%" }}
-                      className='bottom-outline small-input'
-                      id='vinylSlidingInput40'
+                      type="text"
+                      style={{ width: '30%' }}
+                      className="bottom-outline small-input"
+                      id="vinylSlidingInput40"
                       onChange={(e) =>
-                        handleChange(e, { formId: "vinylSlidingInput40" })
+                        handleChange(e, { formId: 'vinylSlidingInput40' })
                       }
-                      value={storeData["vinylSlidingInput40"]}
-                      readOnly={viewMode !== "homepage"}
+                      value={storeData['vinylSlidingInput40']}
+                      readOnly={viewMode !== 'homepage'}
                     />
                   )}
                 </div>
                 <div>
                   <label>{`$${item.unitPrice}`}</label>
                   <input
-                    className='bottom-outline width-50px small-input'
-                    type='text'
+                    className="bottom-outline width-50px small-input"
+                    type="text"
                     style={
-                      viewMode === "convert-pdf"
-                        ? { width: "75px" }
-                        : { width: "90px" }
+                      viewMode === 'convert-pdf'
+                        ? { width: '75px' }
+                        : { width: '90px' }
                     }
                     value={`$ ${numberWithCommas(
                       Number(storeData[`vinylSlidingInput${index + 1}`]) *
@@ -124,77 +122,77 @@ const VinylSlidingTable = (props) => {
             );
           } else {
             return (
-              <div className='wrapper' key={index}>
+              <div className="wrapper" key={index}>
                 <div>
                   <input
-                    className='bottom-outline width-50px small-input'
-                    type='number'
-                    id='vinylSlidingInput16'
+                    className="bottom-outline width-50px small-input"
+                    type="number"
+                    id="vinylSlidingInput16"
                     onChange={(e) =>
-                      handleChange(e, { formId: "vinylSlidingInput16" })
+                      handleChange(e, { formId: 'vinylSlidingInput16' })
                     }
-                    value={storeData["vinylSlidingInput16"]}
-                    readOnly={viewMode !== "homepage"}
+                    value={storeData['vinylSlidingInput16']}
+                    readOnly={viewMode !== 'homepage'}
                   />
                   <label>{item.label}</label>
                 </div>
                 <div>
                   <label>$</label>
                   <input
-                    id='vinylSlidingInput15'
-                    className='bottom-outline width-50px small-input'
-                    type='text'
+                    id="vinylSlidingInput15"
+                    className="bottom-outline width-50px small-input"
+                    type="text"
                     style={
-                      viewMode === "convert-pdf"
-                        ? { width: "75px" }
-                        : { width: "90px" }
+                      viewMode === 'convert-pdf'
+                        ? { width: '75px' }
+                        : { width: '90px' }
                     }
                     onChange={(e) =>
                       handleChange(e, {
                         id: 15,
-                        formId: "vinylSlidingInput15",
+                        formId: 'vinylSlidingInput15',
                       })
                     }
                     ref={input1}
-                    onFocus={(e) => handleFocus(e, "vinylSlidingInput15")}
-                    onBlur={(e) => handleBlur(e, "vinylSlidingInput15")}
+                    onFocus={(e) => handleFocus(e, 'vinylSlidingInput15')}
+                    onBlur={(e) => handleBlur(e, 'vinylSlidingInput15')}
                     // value={numberWithCommas(Number(storeData['vinylSlidingInput15']))}
-                    readOnly={viewMode !== "homepage"}
+                    readOnly={viewMode !== 'homepage'}
                   />
                 </div>
               </div>
             );
           }
         })}
-        <div className='wrapper'>
-          <div className='wrapper' style={{ width: "80%" }}>
+        <div className="wrapper">
+          <div className="wrapper" style={{ width: '80%' }}>
             <label>Door Color</label>
-            <div className='input_label pos_bottom'>
+            <div className="input_label pos_bottom">
               <input
-                className='bottom-outline width-100 margin-2 small-input inside'
-                id='vinylSlidingInput17'
+                className="bottom-outline width-100 margin-2 small-input inside"
+                id="vinylSlidingInput17"
                 onChange={(e) =>
-                  handleChange(e, { formId: "vinylSlidingInput17" })
+                  handleChange(e, { formId: 'vinylSlidingInput17' })
                 }
-                value={storeData["vinylSlidingInput17"]}
-                readOnly={viewMode !== "homepage"}
+                value={storeData['vinylSlidingInput17']}
+                readOnly={viewMode !== 'homepage'}
               />
-              <label for='windowWorldInput31' className='lbl'>
+              <label for="windowWorldInput31" className="lbl">
                 Inside
               </label>
             </div>
             <label>/</label>
-            <div className='input_label pos_bottom'>
+            <div className="input_label pos_bottom">
               <input
-                className='bottom-outline width-100 margin-2 small-input outside'
-                id='vinylSlidingInput18'
+                className="bottom-outline width-100 margin-2 small-input outside"
+                id="vinylSlidingInput18"
                 onChange={(e) =>
-                  handleChange(e, { formId: "vinylSlidingInput18" })
+                  handleChange(e, { formId: 'vinylSlidingInput18' })
                 }
-                value={storeData["vinylSlidingInput18"]}
-                readOnly={viewMode !== "homepage"}
+                value={storeData['vinylSlidingInput18']}
+                readOnly={viewMode !== 'homepage'}
               />
-              <label for='windowWorldInput32' className='lbl'>
+              <label for="windowWorldInput32" className="lbl">
                 Outside
               </label>
             </div>
@@ -202,8 +200,8 @@ const VinylSlidingTable = (props) => {
           <div></div>
         </div>
         <div
-          className='bottom-text'
-          style={{ textAlign: "center", fontStyle: "italic" }}
+          className="bottom-text"
+          style={{ textAlign: 'center', fontStyle: 'italic' }}
         >
           All patio doors include SolarZone glass and standard foot lock
         </div>
