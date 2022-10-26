@@ -35,8 +35,8 @@ const DrawBox = ({
   // let sizeStyle = style ? JSON.parse(style) : {};
   let sizeStyle = style;
 
-  console.log('???=>index:', index);
-  console.log('???=> first size style:', sizeStyle);
+  // console.log('???=>index:', index);
+  // console.log('???=> first size style:', sizeStyle);
 
   const clear = () => sigCanvas.current.clear();
   const save = () => {
@@ -48,20 +48,20 @@ const DrawBox = ({
         sigCanvas.current.getTrimmedCanvas().getAttribute('height')
       ),
     };
-    console.log('???=>Canvas', imgOriginalSize);
-    console.log(
-      '???=>target',
-      imgTargetRef.current.offsetWidth,
-      ',',
-      imgTargetRef.current.offsetHeight
-    );
+    // console.log('???=>Canvas', imgOriginalSize);
+    // console.log(
+    //   '???=>target',
+    //   imgTargetRef.current.offsetWidth,
+    //   ',',
+    //   imgTargetRef.current.offsetHeight
+    // );
 
     let qHeight, qWidth;
     qHeight =
       (1.0 * imgTargetRef.current.offsetHeight) / imgOriginalSize.height;
     qWidth = (1.0 * imgTargetRef.current.offsetWidth) / imgOriginalSize.width;
     sizeStyle = qHeight < qWidth ? { height: '100%' } : { width: '100%' };
-    console.log('???=> size style while saving:', sizeStyle);
+    // console.log('???=> size style while saving:', sizeStyle);
 
     imgInfo = sigCanvas.current.getTrimmedCanvas().toDataURL('image/png');
     if (index != undefined) {

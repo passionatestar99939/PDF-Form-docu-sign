@@ -306,7 +306,9 @@ const MeasureSheet = ({ page }) => {
 
     if (isOnlyOneCategoryInPreState(index)) {
       if (isOnlyOneCategory(index)) {
+        console.log('???=> pre: only, cur: only');
       } else {
+        console.log('???=> pre: only, cur: NOT only');
         const firstIdenticalIndex = findFirstIdenticalIndex(index);
         console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
         data.mainTable[index] = {
@@ -364,10 +366,7 @@ const MeasureSheet = ({ page }) => {
       }
     } else {
       if (isOnlyOneCategory(index)) {
-        data.mainTable[index] = {
-          ...data.mainTable[index],
-          categoryNum: lastCategoryNum + 1,
-        };
+        console.log('???=> pre: NOT only, cur: only');
         const length = Object.keys(data.mainTable).length;
         for (let i = 0; i < length; i++) {
           console.log('???=>i - category num:', data.mainTable[i].categoryNum);
@@ -378,7 +377,12 @@ const MeasureSheet = ({ page }) => {
             };
           }
         }
+        data.mainTable[index] = {
+          ...data.mainTable[index],
+          categoryNum: lastCategoryNum + 1,
+        };
       } else {
+        console.log('???=> pre: NOT only, cur: NOT only');
         const firstIdenticalIndex = findFirstIdenticalIndex(index);
         console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
         data.mainTable[index] = {
@@ -399,6 +403,7 @@ const MeasureSheet = ({ page }) => {
         console.log('???=>ele.categoryNum:', ele.categoryNum);
         dataForWindowOrder.mainTable[ele.categoryNum] = {
           ...dataForWindowOrder.mainTable[ele.categoryNum],
+          categoryNum: ele.categoryNum,
           qty: parseInt(dataForWindowOrder.mainTable[ele.categoryNum].qty + 1),
           intColor: ele.intColor,
           extColor: ele.extColor,
@@ -454,9 +459,11 @@ const MeasureSheet = ({ page }) => {
   };
 
   const TableBody = () => {
-    const boldElementArray = ['orderWidth', 'orderHeight'];
+    // const boldElementArray = ['orderWidth', 'orderHeight'];
+    const boldElementArray = ['orderWidth', 'orderHeight', 'categoryNum'];
     const checkBoxArray = ['foam'];
-    const hiddenElementArray = ['categoryNum'];
+    // const hiddenElementArray = ['categoryNum'];
+    const hiddenElementArray = [];
     data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>

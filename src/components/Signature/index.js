@@ -48,13 +48,13 @@ const Signature = ({
         sigCanvas.current.getTrimmedCanvas().getAttribute('height')
       ),
     };
-    console.log('???=>Canvas', imgOriginalSize);
-    console.log(
-      '???=>target',
-      imgTargetRef.current.offsetWidth,
-      ',',
-      imgTargetRef.current.offsetHeight
-    );
+    // console.log('???=>Canvas', imgOriginalSize);
+    // console.log(
+    //   '???=>target',
+    //   imgTargetRef.current.offsetWidth,
+    //   ',',
+    //   imgTargetRef.current.offsetHeight
+    // );
 
     let qHeight, qWidth;
     qHeight =

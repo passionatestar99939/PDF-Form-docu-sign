@@ -97,7 +97,7 @@ const MeasureSheet = ({ page }) => {
   const handleSave = () => {
     console.log(tempObj);
     data.mainTable[selectedRow] = { ...tempObj };
-    console.log('???=>', selectedRow, data.mainTable[selectedRow]);
+    // console.log('???=>', selectedRow, data.mainTable[selectedRow]);
     dispatch(updateMainTable(data.mainTable));
     setOpenTableModal(false);
   };

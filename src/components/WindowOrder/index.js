@@ -136,7 +136,8 @@ const WindowOrder = () => {
       'casementsR',
       'casementsPW',
     ];
-    const hiddenElementArray = ['categoryNum'];
+    // const hiddenElementArray = ['categoryNum'];
+    const hiddenElementArray = [];
 
     const classNameForX = '';
 

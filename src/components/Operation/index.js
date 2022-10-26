@@ -143,7 +143,14 @@ const Operation = (props) => {
       let attach_path = BASE_URL + '/images/attach.png';
       let pdf_image_path = BASE_URL + '/images/pdf-attach.png';
       if (pdf_paths[value].send) {
-        pdf_body += '<div style="display: flex; align-items: center;"><img alt="pdf" width="20px" src="' + pdf_image_path + '" /><a href="' + pdf_paths[value].path + '">' + pdf_paths[value].title + '</a></div><br />';
+        pdf_body +=
+          '<div style="display: flex; align-items: center;"><img alt="pdf" width="20px" src="' +
+          pdf_image_path +
+          '" /><a href="' +
+          pdf_paths[value].path +
+          '">' +
+          pdf_paths[value].title +
+          '</a></div><br />';
       }
     });
 
