@@ -296,6 +296,40 @@ const MeasureSheet = ({ page }) => {
     return -1;
   };
 
+  const findFirstIdenticalIndexBeforeChanging = (index) => {
+    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
+    const length = Object.keys(data.mainTable).length;
+    for (let i = 0; i < length; i++) {
+      if (i === index) continue;
+      else if (
+        !Object.keys(measuresheetData.mainTable[index]).every((key) => {
+          if (nonComparisonElementArray.find((val) => val === key)) {
+            return true;
+          } else {
+            return data.mainTable[i][key] === '';
+          }
+        })
+      ) {
+        if (
+          Object.keys(measuresheetData.mainTable[index]).every((key) => {
+            if (nonComparisonElementArray.find((val) => val === key)) {
+              return true;
+            } else {
+              return (
+                data.mainTable[i][key] ===
+                measuresheetData.mainTable[index][key]
+              );
+            }
+          })
+        ) {
+          console.log('???=>identical category index:', i);
+          return i;
+        }
+      }
+    }
+    return -1;
+  };
+
   const estimateCategoryNum = (index) => {
     if (data.mainTable[index].categoryNum === -1)
       data.mainTable[index].categoryNum = 0;
@@ -368,13 +402,53 @@ const MeasureSheet = ({ page }) => {
       if (isOnlyOneCategory(index)) {
         console.log('???=> pre: NOT only, cur: only');
         const length = Object.keys(data.mainTable).length;
-        for (let i = 0; i < length; i++) {
-          console.log('???=>i - category num:', data.mainTable[i].categoryNum);
-          if (measuresheetData.mainTable[i].categoryNum > lastCategoryNum) {
-            data.mainTable[i] = {
-              ...data.mainTable[i],
-              categoryNum: data.mainTable[i].categoryNum + 1,
-            };
+        const firstIdenticalIndexBeforeChanging =
+          findFirstIdenticalIndexBeforeChanging(index);
+        if (firstIdenticalIndexBeforeChanging < index) {
+          for (let i = 0; i < length; i++) {
+            console.log(
+              '???=>i - category num:',
+              data.mainTable[i].categoryNum
+            );
+            if (measuresheetData.mainTable[i].categoryNum > lastCategoryNum) {
+              data.mainTable[i] = {
+                ...data.mainTable[i],
+                categoryNum: data.mainTable[i].categoryNum + 1,
+              };
+            }
+          }
+        } else {
+          const standardIndex = findLastCategoryNumKindBeforeIndex(
+            firstIdenticalIndexBeforeChanging
+          );
+
+          console.log('???=> standardIndex:', standardIndex);
+
+          const nonComparisonElementArray = ['no', 'categoryNum'];
+          const length = Object.keys(data.mainTable).length;
+          for (let i = 0; i < length; i++) {
+            if (
+              Object.keys(data.mainTable[index]).every((key) => {
+                if (nonComparisonElementArray.find((val) => val === key)) {
+                  return true;
+                } else {
+                  return (
+                    data.mainTable[i][key] ===
+                    measuresheetData.mainTable[index][key]
+                  );
+                }
+              })
+            ) {
+              data.mainTable[i] = {
+                ...data.mainTable[i],
+                categoryNum: standardIndex + 1,
+              };
+            } else if (data.mainTable[i].categoryNum > standardIndex) {
+              data.mainTable[i] = {
+                ...data.mainTable[i],
+                categoryNum: data.mainTable[i].categoryNum + 1,
+              };
+            }
           }
         }
         data.mainTable[index] = {
