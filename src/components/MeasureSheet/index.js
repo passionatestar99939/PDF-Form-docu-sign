@@ -583,8 +583,8 @@ const MeasureSheet = ({ page }) => {
     // const boldElementArray = ['orderWidth', 'orderHeight'];
     const boldElementArray = ['orderWidth', 'orderHeight', 'categoryNum'];
     const checkBoxArray = ['foam'];
-    // const hiddenElementArray = ['categoryNum'];
-    const hiddenElementArray = [];
+    const hiddenElementArray = ['categoryNum'];
+    // const hiddenElementArray = [];
     data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>
