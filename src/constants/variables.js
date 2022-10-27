@@ -18,6 +18,8 @@ export const initDataOfMeasureSheet = {
   categoryNum: -1,
 };
 
+export const nonComparisonElementArray = ['no', 'room', 'notes', 'categoryNum'];
+
 export const initDataOfWindowOrder = {
   qty: '',
   type: '',

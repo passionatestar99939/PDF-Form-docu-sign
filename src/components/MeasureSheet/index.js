@@ -18,6 +18,7 @@ import { updateMainTable as updateMainTableForWindowOrder } from '../../store/sl
 
 import {
   initDataOfMeasureSheet,
+  nonComparisonElementArray,
   typeOfCheckBox,
   interiorColor,
   exteriorColor,
@@ -230,7 +231,6 @@ const MeasureSheet = ({ page }) => {
   };
 
   const isOnlyOneCategory = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     const length = Object.keys(data.mainTable).length;
 
     for (let i = 0; i < length; i++) {
@@ -252,7 +252,6 @@ const MeasureSheet = ({ page }) => {
   };
 
   const isOnlyOneCategoryInPreState = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
       if (i === index) continue;
@@ -276,7 +275,6 @@ const MeasureSheet = ({ page }) => {
   };
 
   const findFirstIdenticalIndex = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
       if (i === index) continue;
@@ -297,7 +295,6 @@ const MeasureSheet = ({ page }) => {
   };
 
   const findFirstIdenticalIndexBeforeChanging = (index) => {
-    const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
     if (
       Object.keys(measuresheetData.mainTable[index]).every((key) => {
         if (nonComparisonElementArray.find((val) => val === key)) {
@@ -367,7 +364,6 @@ const MeasureSheet = ({ page }) => {
             }
           }
         } else {
-          const nonComparisonElementArray = ['no', 'categoryNum'];
           const length = Object.keys(data.mainTable).length;
           for (let i = 0; i < length; i++) {
             if (
@@ -420,8 +416,6 @@ const MeasureSheet = ({ page }) => {
             }
           }
         } else {
-          const nonComparisonElementArray = ['no', 'categoryNum'];
-
           // in case of adding newly
           if (
             measuresheetData.mainTable[index].categoryNum === -1 &&
