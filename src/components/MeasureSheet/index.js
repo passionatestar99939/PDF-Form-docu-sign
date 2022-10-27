@@ -298,18 +298,20 @@ const MeasureSheet = ({ page }) => {
 
   const findFirstIdenticalIndexBeforeChanging = (index) => {
     const nonComparisonElementArray = ['no', 'categoryNum', 'room'];
+    if (
+      Object.keys(measuresheetData.mainTable[index]).every((key) => {
+        if (nonComparisonElementArray.find((val) => val === key)) {
+          return true;
+        } else {
+          return data.mainTable[index][key] === '';
+        }
+      })
+    )
+      return -1;
     const length = Object.keys(data.mainTable).length;
     for (let i = 0; i < length; i++) {
       if (i === index) continue;
-      else if (
-        !Object.keys(measuresheetData.mainTable[index]).every((key) => {
-          if (nonComparisonElementArray.find((val) => val === key)) {
-            return true;
-          } else {
-            return data.mainTable[i][key] === '';
-          }
-        })
-      ) {
+      else {
         if (
           Object.keys(measuresheetData.mainTable[index]).every((key) => {
             if (nonComparisonElementArray.find((val) => val === key)) {
@@ -418,36 +420,81 @@ const MeasureSheet = ({ page }) => {
             }
           }
         } else {
-          const standardIndex = findLastCategoryNumKindBeforeIndex(
-            firstIdenticalIndexBeforeChanging
-          );
-
-          console.log('???=> standardIndex:', standardIndex);
-
           const nonComparisonElementArray = ['no', 'categoryNum'];
-          const length = Object.keys(data.mainTable).length;
-          for (let i = 0; i < length; i++) {
-            if (
-              Object.keys(data.mainTable[index]).every((key) => {
-                if (nonComparisonElementArray.find((val) => val === key)) {
-                  return true;
-                } else {
-                  return (
-                    data.mainTable[i][key] ===
-                    measuresheetData.mainTable[index][key]
-                  );
+
+          // in case of adding newly
+          if (
+            measuresheetData.mainTable[index].categoryNum === -1 &&
+            !Object.keys(data.mainTable[index]).every((key) => {
+              if (nonComparisonElementArray.find((val) => val === key)) {
+                return true;
+              } else {
+                return (
+                  data.mainTable[index][key] === initDataOfMeasureSheet[key]
+                );
+              }
+            })
+          ) {
+            const length = Object.keys(data.mainTable).length;
+            for (let i = 0; i < length; i++) {
+              if (data.mainTable[i].categoryNum > lastCategoryNum) {
+                data.mainTable[i] = {
+                  ...data.mainTable[i],
+                  categoryNum: data.mainTable[i].categoryNum + 1,
+                };
+              }
+            }
+
+            data.mainTable[index] = {
+              ...data.mainTable[index],
+              categoryNum: lastCategoryNum + 1,
+            };
+          } else {
+            const standardIndex = findLastCategoryNumKindBeforeIndex(
+              firstIdenticalIndexBeforeChanging
+            );
+
+            console.log('???=> standardIndex:', standardIndex);
+
+            const length = Object.keys(data.mainTable).length;
+            for (let i = 0; i < length; i++) {
+              // in case of init
+              if (
+                !Object.keys(data.mainTable[index]).every((key) => {
+                  if (nonComparisonElementArray.find((val) => val === key)) {
+                    return true;
+                  } else {
+                    return (
+                      measuresheetData.mainTable[i][key] ===
+                      initDataOfMeasureSheet[key]
+                    );
+                  }
+                })
+              ) {
+                console.log(`???=>${i}:`, data.mainTable[i]);
+                if (
+                  Object.keys(data.mainTable[index]).every((key) => {
+                    if (nonComparisonElementArray.find((val) => val === key)) {
+                      return true;
+                    } else {
+                      return (
+                        data.mainTable[i][key] ===
+                        measuresheetData.mainTable[index][key]
+                      );
+                    }
+                  })
+                ) {
+                  data.mainTable[i] = {
+                    ...data.mainTable[i],
+                    categoryNum: standardIndex + 1,
+                  };
+                } else if (data.mainTable[i].categoryNum > standardIndex) {
+                  data.mainTable[i] = {
+                    ...data.mainTable[i],
+                    categoryNum: data.mainTable[i].categoryNum + 1,
+                  };
                 }
-              })
-            ) {
-              data.mainTable[i] = {
-                ...data.mainTable[i],
-                categoryNum: standardIndex + 1,
-              };
-            } else if (data.mainTable[i].categoryNum > standardIndex) {
-              data.mainTable[i] = {
-                ...data.mainTable[i],
-                categoryNum: data.mainTable[i].categoryNum + 1,
-              };
+              }
             }
           }
         }
@@ -536,8 +583,8 @@ const MeasureSheet = ({ page }) => {
     // const boldElementArray = ['orderWidth', 'orderHeight'];
     const boldElementArray = ['orderWidth', 'orderHeight', 'categoryNum'];
     const checkBoxArray = ['foam'];
-    const hiddenElementArray = ['categoryNum'];
-    // const hiddenElementArray = [];
+    // const hiddenElementArray = ['categoryNum'];
+    const hiddenElementArray = [];
     data.mainTable = { ...measuresheetData.mainTable };
     return (
       <tbody>
