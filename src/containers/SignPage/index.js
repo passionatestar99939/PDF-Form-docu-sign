@@ -313,7 +313,7 @@ const SignPage = () => {
               <WindowOrderPage />
               <SalesConsultantPage />
               <PatioDoorOrderPage />*/}
-              <CreditCardPage />
+              {/* <CreditCardPage /> */}
             </Loader>
           </AppWrapper>
         </div>

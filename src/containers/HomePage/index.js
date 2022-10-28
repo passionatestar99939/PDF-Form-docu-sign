@@ -237,7 +237,7 @@ const HomePage = () => {
               <Page2 />
               <MeasureSheetPage />
               <WindowOrderPage />
-              <SalesConsultantPage />
+              {/* <SalesConsultantPage /> */}
               <PatioDoorOrderPage />
               <CreditCardPage />
             </Loader>

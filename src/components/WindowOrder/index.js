@@ -131,6 +131,7 @@ const WindowOrder = () => {
     const checkBoxArray = [
       'foam',
       'nailfin',
+      'grids',
       'blinds',
       'casementsL',
       'casementsR',
@@ -212,7 +213,10 @@ const WindowOrder = () => {
   return (
     <div className="wof-container">
       <div className="wof__body">
-        <div className="flex justify-end">
+        <div className="flex justify-content__space-between">
+          <div class="flex align-items__end bold" style={{ fontSize: '27px' }}>
+            ORDER FORM
+          </div>
           <div className="flex width-50">
             <div className="width-50">
               <div className="flex margin-top-30px">
