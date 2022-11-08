@@ -162,7 +162,7 @@ const MiscellenousTable = (props) => {
               value={storeData['miscellenousInput20']}
               readOnly={viewMode !== 'homepage'}
             />
-            <label>Lift Rental $750 Daily</label>
+            <label>Lift Rental $650 Daily</label>
           </div>
           <div>
             <label>$</label>

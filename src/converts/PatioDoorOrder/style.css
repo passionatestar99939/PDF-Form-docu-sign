@@ -63,10 +63,6 @@ div.Patio_Information {
   height: calc(1em + 2px);
 }
 
-.text-center {
-  text-align: center;
-}
-
 .bold {
   font-weight: bold;
 }

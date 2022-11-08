@@ -94,7 +94,7 @@ const Page2 = () => {
           whatsoever, now is the time to ask.
         </div>
 
-        <div style={{ marginTop: '40px' }}>
+        <div style={{ marginTop: '40px', textAlign: 'left' }}>
           <small>Louisville Window 03-22 Valid-30 days</small>
         </div>
       </Paragraph>
@@ -313,7 +313,7 @@ const SignPage = () => {
               <WindowOrderPage />
               <SalesConsultantPage />
               <PatioDoorOrderPage />*/}
-              {/* <CreditCardPage /> */}
+              <CreditCardPage />
             </Loader>
           </AppWrapper>
         </div>

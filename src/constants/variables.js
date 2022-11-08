@@ -164,13 +164,13 @@ export const obsc = ['', 'TSO', 'BSO', 'Both'];
 
 export const rain = ['', 'Yes'];
 
-export const temp = ['', 'TSO', 'BSO', 'Both'];
+export const temp = ['', 'TSO', 'BSO', 'Both', 'YES'];
 
 export const sashSplit = ['', 'OR (Oriel)', 'COT (Cottage)'];
 
 export const mulls = {
-  normalType: ['FACTORY', 'FIELD'],
-  shortType: ['FAC', 'FLD'],
+  normalType: ['', 'FACTORY', 'FIELD'],
+  shortType: ['', 'FAC', 'FLD'],
 };
 
 export const cutbacks = {

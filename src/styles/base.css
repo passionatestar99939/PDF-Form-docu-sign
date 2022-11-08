@@ -30,3 +30,15 @@
   border-top: 3px dashed black;
   text-align: center;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-small {
+  font-size: small;
+}

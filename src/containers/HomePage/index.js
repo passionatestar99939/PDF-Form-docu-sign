@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateData } from '../../store/slices/optionSlice';
 import { Watch } from 'react-loader-spinner';
@@ -66,8 +66,10 @@ const Page2 = () => {
           whatsoever, now is the time to ask.
         </div>
 
-        <div style={{ marginTop: '40px' }}>
-          <small>Louisville Window 03-22 Valid-30 days</small>
+        <div style={{ marginTop: '40px', textAlign: 'left' }}>
+          <small className="text-red">
+            Louisville Window 03-22 Valid-30 days
+          </small>
         </div>
       </Paragraph>
     </div>
@@ -196,6 +198,7 @@ function useWindowDimensions() {
 
 const HomePage = () => {
   useWindowDimensions();
+  const windowInnerWidth = useRef(window.innerWidth);
   const loading = useSelector((state) => state.operation.loading);
   const dispatch = useDispatch();
   dispatch(updateData({ dataKey: 'viewMode', data: 'homepage' }));
@@ -220,6 +223,9 @@ const HomePage = () => {
     </div>
   );
 
+  console.log('???=>window.innerWidth using useRef:', windowInnerWidth.current);
+  console.log('window.innerWidth', window.innerWidth);
+
   return (
     <>
       <Loader
@@ -229,7 +235,7 @@ const HomePage = () => {
       >
         <div
           className="App"
-          style={{ transform: `scale(${window.innerWidth / 1366})` }}
+          style={{ transform: `scale(${windowInnerWidth.current / 1366})` }}
         >
           <AppWrapper id="appwrapper">
             <Loader show={loading === 'pending' ? true : false} message={<></>}>
@@ -237,7 +243,6 @@ const HomePage = () => {
               <Page2 />
               <MeasureSheetPage />
               <WindowOrderPage />
-              {/* <SalesConsultantPage /> */}
               <PatioDoorOrderPage />
               <CreditCardPage />
             </Loader>

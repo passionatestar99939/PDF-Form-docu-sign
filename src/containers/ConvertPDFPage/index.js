@@ -85,7 +85,7 @@ const Page2 = () => {
           services on the contract will be done. If you have any questions
           whatsoever, now is the time to ask.
         </div>
-        <div style={{ marginTop: '50px' }}>
+        <div style={{ marginTop: '50px', textAlign: 'left' }}>
           <small>Louisville Window 03-22 Valid-30 days</small>
         </div>
       </Paragraph>
