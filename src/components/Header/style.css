@@ -2,7 +2,7 @@
   display: flex;
   /*flex-wrap: wrap;*/
   justify-content: space-between;
-  height: 120px;
+  /* height: 150px; */
 }
 
 .content {
@@ -22,14 +22,21 @@ p {
 .header__left-content,
 .header__right-content {
   position: relative;
+  font-size: 21px;
 }
 
 .header__left-content > div {
   float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .header__right-content > div {
   float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .header__left-content__title,

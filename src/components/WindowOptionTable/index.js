@@ -47,8 +47,8 @@ const WindowOptionTable = (props) => {
                     index === 6
                       ? { width: '75%' }
                       : index === 1
-                        ? { width: '70%' }
-                        : {}
+                      ? { width: '70%' }
+                      : {}
                   }
                 >
                   <input
@@ -85,7 +85,7 @@ const WindowOptionTable = (props) => {
                         style={
                           viewMode === 'convert-pdf'
                             ? { width: '18%' }
-                            : { width: '25%' }
+                            : { width: '27%' }
                         }
                         id="windowOptionInput12"
                         onChange={(e) =>
@@ -112,14 +112,15 @@ const WindowOptionTable = (props) => {
                     className="bottom-outline width-80px medium-input"
                     value={`$ ${numberWithCommas(
                       Number(storeData[`windowOptionInput${index + 1}`]) *
-                      item.unitPrice
+                        item.unitPrice
                     )}`}
                     readOnly
                   />
                 </div>
               </div>
               {index === 1 && (
-                <p style={{ textAlign: 'right' }}>(List Pattern) Initial:
+                <p style={{ textAlign: 'right' }}>
+                  (List Pattern) Initial:
                   <input
                     type="text"
                     className="bottom-outline input-box"

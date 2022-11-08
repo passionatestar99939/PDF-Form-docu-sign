@@ -7,7 +7,10 @@ import './style.css';
 
 const LeftContent = () => {
   return (
-    <div style={{ width: '35%' }} className="header__left-content text-center">
+    <div
+      style={{ width: '35%' }}
+      className="header__left-content flex text-center"
+    >
       <div>
         <p className="header__left-content__title">
           Window World of Kentuckiana
@@ -29,7 +32,10 @@ const LeftContent = () => {
 
 const RightContent = () => {
   return (
-    <div style={{ width: '35%' }} className="header__right-content text-center">
+    <div
+      style={{ width: '35%' }}
+      className="header__right-content flex text-center"
+    >
       <div>
         <p className="header__right-content__title">
           Window World of Elizabethtown

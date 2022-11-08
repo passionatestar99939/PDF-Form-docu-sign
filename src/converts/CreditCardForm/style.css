@@ -37,8 +37,8 @@
 
 .cc_container {
   padding: 5%;
-  font-family: MinionPro-bold_p;
-  font-weight: bold;
+  /* font-family: MinionPro-bold_p;
+  font-weight: bold; */
   font-size: 18px;
   letter-spacing: 0.13px;
 }
@@ -52,5 +52,7 @@
 }
 
 .cc_title_convert {
+  font-weight: bold;
+  font-size: 24px;
   margin: 5% 0;
 }
