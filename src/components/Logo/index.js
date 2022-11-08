@@ -2,8 +2,12 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <div>
-      <img alt="window world logo" src="/images/window-world-logo.png" />
+    <div style={{ height: '100%', width: '30%' }}>
+      <img
+        style={{ height: '100%', width: '100%' }}
+        alt="window world logo"
+        src="/images/window-world-logo.png"
+      />
     </div>
   );
 };

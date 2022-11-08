@@ -2,9 +2,10 @@
   display: flex;
   /*flex-wrap: wrap;*/
   justify-content: space-between;
+  height: 120px;
 }
 
-.header-content {
+.content {
   margin: 12px auto;
   text-align: left;
 }
@@ -16,4 +17,27 @@
 p {
   margin: 0;
   padding: 0;
+}
+
+.header__left-content,
+.header__right-content {
+  position: relative;
+}
+
+.header__left-content > div {
+  float: left;
+}
+
+.header__right-content > div {
+  float: right;
+}
+
+.header__left-content__title,
+.header__right-content__title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.position-absolute {
+  position: absolute;
 }

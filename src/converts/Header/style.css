@@ -17,3 +17,26 @@ p {
   margin: 0;
   padding: 0;
 }
+
+.convert__header__left-content,
+.convert__header__right-content {
+  position: relative;
+}
+
+.convert__header__left-content > div {
+  float: left;
+}
+
+.convert__header__right-content > div {
+  float: right;
+}
+
+.convert__header__left-content__title,
+.convert__header__right-content__title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.position-absolute {
+  position: absolute;
+}
