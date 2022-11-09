@@ -72,7 +72,7 @@ const VinylSlidingTable = (props) => {
                 >
                   <input
                     id={`vinylSlidingInput${index + 1}`}
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     type="number"
                     onChange={(e) =>
                       handleChange(e, {
@@ -111,7 +111,7 @@ const VinylSlidingTable = (props) => {
                 <div>
                   <label>{`$${item.unitPrice}`}</label>
                   <input
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     type="text"
                     style={
                       viewMode === 'convert-pdf'
@@ -132,7 +132,7 @@ const VinylSlidingTable = (props) => {
               <div className="wrapper" key={index}>
                 <div>
                   <input
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     type="number"
                     id="vinylSlidingInput16"
                     onChange={(e) =>
@@ -147,7 +147,7 @@ const VinylSlidingTable = (props) => {
                   <label>$</label>
                   <input
                     id="vinylSlidingInput15"
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     type="text"
                     style={
                       viewMode === 'convert-pdf'

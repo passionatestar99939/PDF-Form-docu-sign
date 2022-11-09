@@ -88,6 +88,7 @@ const MiscellenousTable = (props) => {
             return (
               <div className="wrapper" key={index}>
                 <div
+                  className="text-align__left"
                   style={
                     index === 12
                       ? { width: '74%' }
@@ -99,7 +100,7 @@ const MiscellenousTable = (props) => {
                   <input
                     id={`miscellenousInput${index + 1}`}
                     type="number"
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     onChange={(e) =>
                       handleChange(e, {
                         id: item.id,
@@ -139,7 +140,7 @@ const MiscellenousTable = (props) => {
                         ? { width: '75px' }
                         : { width: '90px' }
                     }
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     value={`$ ${numberWithCommas(
                       Number(
                         storeData[`miscellenousInput${index + 1}`] *
@@ -155,7 +156,7 @@ const MiscellenousTable = (props) => {
         <div className="wrapper">
           <div>
             <input
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="number"
               id="miscellenousInput20"
               onChange={(e) =>
@@ -170,7 +171,7 @@ const MiscellenousTable = (props) => {
             <label>$</label>
             <input
               id="miscellenousInput16"
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="text"
               style={
                 viewMode === 'convert-pdf'
@@ -192,9 +193,9 @@ const MiscellenousTable = (props) => {
           </div>
         </div>
         <div className="wrapper">
-          <div className="flex-input" style={{ width: '70%' }}>
+          <div className="text-align__left" style={{ width: '70%' }}>
             <input
-              className="bottom-outline width-80px input-box medium-input"
+              className="bottom-outline width-70px input-box medium-input"
               type="number"
               id="miscellenousInput21"
               onChange={(e) =>
@@ -222,7 +223,7 @@ const MiscellenousTable = (props) => {
             <label>$</label>
             <input
               id="miscellenousInput17"
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="text"
               style={
                 viewMode === 'convert-pdf'
@@ -244,9 +245,9 @@ const MiscellenousTable = (props) => {
           </div>
         </div>
         <div className="wrapper">
-          <div className="flex-input" style={{ width: '70%' }}>
+          <div className="text-align__left" style={{ width: '70%' }}>
             <input
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="number"
               id="miscellenousInput23"
               onChange={(e) =>
@@ -256,8 +257,8 @@ const MiscellenousTable = (props) => {
               readOnly={viewMode !== 'homepage'}
             />
             <input
-              className="bottom-outline width-80px width-70 medium-input"
-              style={{ width: '89%' }}
+              className="bottom-outline width-70px width-70 medium-input"
+              style={{ width: '75%' }}
               type="text"
               id="miscellenousInput24"
               onChange={(e) =>
@@ -271,7 +272,7 @@ const MiscellenousTable = (props) => {
             <label>$</label>
             <input
               id="miscellenousInput18"
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="text"
               style={
                 viewMode === 'convert-pdf'
@@ -293,9 +294,9 @@ const MiscellenousTable = (props) => {
           </div>
         </div>
         <div className="wrapper">
-          <div className="flex-input" style={{ width: '70%' }}>
+          <div className="text-align__left" style={{ width: '70%' }}>
             <input
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="number"
               id="miscellenousInput25"
               onChange={(e) =>
@@ -306,7 +307,7 @@ const MiscellenousTable = (props) => {
             />
             <input
               className="bottom-outline width-70 medium-input"
-              style={{ width: '89%' }}
+              style={{ width: '75%' }}
               type="text"
               id="miscellenousInput26"
               onChange={(e) =>
@@ -320,7 +321,7 @@ const MiscellenousTable = (props) => {
             <label>$</label>
             <input
               id="miscellenousInput19"
-              className="bottom-outline width-80px medium-input"
+              className="bottom-outline width-70px medium-input"
               type="text"
               style={
                 viewMode === 'convert-pdf'

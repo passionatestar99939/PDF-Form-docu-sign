@@ -10,19 +10,19 @@ const RoundUpTable = (props) => {
   const storeData = useSelector((state) => state.roundup.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
   const dispatch = useDispatch();
-  
+
   let flag = useRef(false);
 
   const input3 = useRef();
   const input4 = useRef();
 
   useEffect(() => {
-    if (flag.current === false) {  
+    if (flag.current === false) {
       input3.current.value = dollarNumberWithCommas(storeData['roundupInput3']);
       input4.current.value = dollarNumberWithCommas(storeData['roundupInput4']);
     }
   }, [storeData]);
-  
+
   const handleChange = (e, { id, formId }) => {
     let price = 0;
 
@@ -73,7 +73,7 @@ const RoundUpTable = (props) => {
                 <input
                   id={`roundupInput${index + 1}`}
                   type="number"
-                  className="bottom-outline width-80px roundup-input medium-input"
+                  className="bottom-outline width-70px roundup-input medium-input"
                   onChange={(e) =>
                     handleEntity(e, {
                       formId: `roundupInput${index + 1}`,
@@ -87,7 +87,7 @@ const RoundUpTable = (props) => {
               <div>
                 <label>{`$`}</label>
                 <input
-                  className="bottom-outline width-80px roundup-input medium-input"
+                  className="bottom-outline width-70px roundup-input medium-input"
                   type="text"
                   style={
                     viewMode === 'convert-pdf'

@@ -42,7 +42,8 @@ const WindowOptionTable = (props) => {
             <div key={index}>
               <div className="wrapper">
                 <div
-                  className="flex-input"
+                  // className="flex-input"
+                  className="text-align__left"
                   style={
                     index === 6
                       ? { width: '75%' }
@@ -54,7 +55,7 @@ const WindowOptionTable = (props) => {
                   <input
                     id={`windowOptionInput${index + 1}`}
                     type="number"
-                    className="bottom-outline width-80px input-box medium-input"
+                    className="bottom-outline width-70px input-box medium-input"
                     onChange={(e) =>
                       handleChange(e, {
                         id: item.id,
@@ -68,7 +69,7 @@ const WindowOptionTable = (props) => {
                     <input
                       type="text"
                       className="bottom-outline input-box"
-                      style={{ width: '82%' }}
+                      style={{ width: '70%' }}
                       id="windowOptionInput14"
                       onChange={(e) =>
                         handleChange(e, { formId: 'windowOptionInput14' })
@@ -85,7 +86,7 @@ const WindowOptionTable = (props) => {
                         style={
                           viewMode === 'convert-pdf'
                             ? { width: '18%' }
-                            : { width: '27%' }
+                            : { width: '20%' }
                         }
                         id="windowOptionInput12"
                         onChange={(e) =>
@@ -109,7 +110,7 @@ const WindowOptionTable = (props) => {
                         ? { width: '75px' }
                         : { width: '90px' }
                     }
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     value={`$ ${numberWithCommas(
                       Number(storeData[`windowOptionInput${index + 1}`]) *
                         item.unitPrice
@@ -119,12 +120,12 @@ const WindowOptionTable = (props) => {
                 </div>
               </div>
               {index === 1 && (
-                <p style={{ textAlign: 'right' }}>
+                <p style={{ textAlign: 'right', marginRight: '20%' }}>
                   (List Pattern) Initial:
                   <input
                     type="text"
                     className="bottom-outline input-box"
-                    style={{ width: '40%' }}
+                    style={{ width: '30%' }}
                     id="windowOptionInput21"
                     onChange={(e) =>
                       handleChange(e, { formId: 'windowOptionInput21' })

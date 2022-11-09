@@ -81,18 +81,6 @@ const CreditCardForm = () => {
                   readOnlyMode={viewMode !== 'homepage'}
                 />
               </div>
-              <div className="cc_flex-30">
-                <label htmlFor="cc_zip">Zip: </label>
-                <Input
-                  addClass="medium-input"
-                  type={'text'}
-                  inputId="cc_zip"
-                  style={{ textAlign: 'left', width: '50%' }}
-                  updateData={handleChange}
-                  inputVal={storeData['cc_zip']}
-                  readOnlyMode={viewMode !== 'homepage'}
-                />
-              </div>
             </div>
             <div className="flex-50 cc_bar cc_right_align">
               <label htmlFor="cc_balance">

@@ -48,7 +48,7 @@ const PreBuiltTable = (props) => {
                 <input
                   id={`prebuiltInput${index + 1}`}
                   type="number"
-                  className="bottom-outline width-80px medium-input"
+                  className="bottom-outline width-70px medium-input"
                   onChange={(e) =>
                     handleChange(e, {
                       id: item.id,
@@ -69,7 +69,7 @@ const PreBuiltTable = (props) => {
                       ? { width: '75px' }
                       : { width: '90px' }
                   }
-                  className="bottom-outline width-80px medium-input"
+                  className="bottom-outline width-70px medium-input"
                   value={`$ ${numberWithCommas(
                     Number(storeData[`prebuiltInput${index + 1}`]) *
                       item.unitPrice

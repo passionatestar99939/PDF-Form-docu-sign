@@ -389,7 +389,7 @@ const CalculateTable = (props) => {
               <div>
                 <label>Color</label>
                 <input
-                  className="bottom-outline width-80px medium-input"
+                  className="bottom-outline width-70px medium-input"
                   onChange={(e) =>
                     dispatch(
                       updateValue({ id: 'color', value: e.target.value })
@@ -406,7 +406,7 @@ const CalculateTable = (props) => {
                   <label htmlFor="doorhandle">Door Handle</label>
                   <input
                     id="doorhandle"
-                    className="bottom-outline width-80px medium-input"
+                    className="bottom-outline width-70px medium-input"
                     onChange={(e) =>
                       dispatch(
                         updateValue({ id: 'handle', value: e.target.value })
@@ -522,7 +522,7 @@ const CalculateTable = (props) => {
               </p>
               <input
                 type="text"
-                className="total-input blue-text bottom-outline width-80px"
+                className="total-input blue-text bottom-outline width-70px"
                 style={viewMode === 'convert-pdf' ? { width: '95%' } : {}}
                 value={
                   props.isInputEnable
@@ -555,7 +555,7 @@ const CalculateTable = (props) => {
               <div>
                 <input
                   type="text"
-                  className="month-input bottom-outline width-80px"
+                  className="month-input bottom-outline width-70px"
                   value={
                     props.isInputEnable
                       ? `$ ${numberWithCommas(
@@ -590,7 +590,7 @@ const CalculateTable = (props) => {
               <div>
                 <input
                   type="text"
-                  className="month-input bottom-outline width-80px"
+                  className="month-input bottom-outline width-70px"
                   value={
                     props.isInputEnable
                       ? `$ ${numberWithCommas(
