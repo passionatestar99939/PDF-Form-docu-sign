@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { gridStyle, initDataOfMeasureSheet } from '../../constants/variables';
-import { cutbacks } from '../../constants/variables';
+import {
+  gridStyle,
+  initDataOfMeasureSheet,
+  cutbacks,
+} from '../../constants/variables';
 
 const initialState = {
   data: {
@@ -9,7 +12,12 @@ const initialState = {
       pockets: 'WOOD',
       cutbacks: cutbacks.WOOD,
     },
-    typeTable: { gridStyle: gridStyle.normalType[0], capping: 'BRICKMOLD' },
+    typeTable: {
+      gridStyle: gridStyle.normalType[0],
+      capping: 'BRICKMOLD',
+      trimColor: '',
+      texture: '',
+    },
     mainTable: {},
     drawingData: [{}, {}, {}],
   },

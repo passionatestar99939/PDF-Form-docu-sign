@@ -69,6 +69,8 @@ export const gridStyle = {
   shortType: ['', 'FLAT', 'SCU', 'SDL'],
 };
 
+export const texture = ['', 'SMOOTH', 'PVC'];
+
 export const interiorColor = [
   '',
   'White - Extruded',
@@ -160,7 +162,7 @@ export const energy = [
   'IMPACT 366',
 ];
 
-export const obsc = ['', 'TSO', 'BSO', 'Both'];
+export const obsc = ['', 'TSO', 'BSO', 'Both', 'YES'];
 
 export const rain = ['', 'Yes'];
 

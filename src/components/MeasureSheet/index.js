@@ -30,6 +30,7 @@ import {
   cutbacks,
   initDataOfWindowOrder,
   gridStyle,
+  texture,
 } from '../../constants/variables';
 
 import { fractionCalculator } from '../../utils/globals';
@@ -125,6 +126,8 @@ const MeasureSheet = ({ page }) => {
     // data.typeTable[e.target.id] = e.target.value;
     data.typeTable = { ...data.typeTable, [e.target.id]: e.target.value };
     dispatch(updateTypeTable({ ...data.typeTable }));
+
+    // console.log("???=>type table data:", measuresheetData.typeTable)
 
     processWindowOrderData();
   };
@@ -964,6 +967,44 @@ const MeasureSheet = ({ page }) => {
                         >
                           OTHER
                         </option>
+                      </select>
+                    )}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-right">TRIM COLOR</td>
+                  <td className="text-center">
+                    <input
+                      id="trimColor"
+                      value={measuresheetData.typeTable.trimColor}
+                      onChange={(e) => handleChangeTypeTable(e)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-right">TEXTURE</td>
+                  <td className="text-center">
+                    {viewMode !== 'homepage' ? (
+                      measuresheetData.typeTable.grid
+                    ) : (
+                      <select
+                        className="ms_select"
+                        id="texture"
+                        onChange={(e) => handleChangeTypeTable(e)}
+                      >
+                        {texture.map((value, index) => (
+                          <option
+                            key={index}
+                            value={value}
+                            selected={
+                              value === measuresheetData.typeTable.texture
+                                ? 'selected'
+                                : ''
+                            }
+                          >
+                            {value}
+                          </option>
+                        ))}
                       </select>
                     )}
                   </td>
