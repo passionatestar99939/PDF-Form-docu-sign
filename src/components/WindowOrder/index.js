@@ -87,7 +87,7 @@ const WindowOrder = () => {
 
   const handleClear = () => {
     const selectedRow = selectedRowRef.current;
-    setTempObj({ ...initDataOfWindowOrder});
+    setTempObj({ ...initDataOfWindowOrder });
   };
 
   const TableHeader = () => {
