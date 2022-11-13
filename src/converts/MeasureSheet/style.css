@@ -24,8 +24,14 @@
 }
 
 .msh__header__left-table_convert,
-.msh__header__right-table_convert,
 .msh__body-table_convert {
+  border-collapse: collapse;
+  border: 2px solid black;
+  color: black;
+  font-size: 10px;
+}
+
+.msh__header__right-table_convert {
   border-collapse: collapse;
   border: 2px solid black;
   color: black;
@@ -266,4 +272,8 @@
 .msh__body-table td:first-child,
 .msh__body-table th {
   background-color: grey;
+}
+
+.msh__header__right-table_convert .non-outline {
+  border: none;
 }

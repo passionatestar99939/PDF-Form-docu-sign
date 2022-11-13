@@ -19,6 +19,7 @@ import {
   roomItems,
   roomStyle,
   energy,
+  texture,
 } from '../../constants/variables';
 
 import './style.css';
@@ -393,7 +394,10 @@ const MeasureSheet = ({ page }) => {
               </div>
             </div>
             <div>
-              <table className="msh__header__right-table">
+              <table
+                className="msh__header__right-table_convert"
+                style={{ height: '78px' }}
+              >
                 <tr>
                   <td className="text-right">GRID STYLE</td>
                   <td className="text-center">
@@ -480,6 +484,45 @@ const MeasureSheet = ({ page }) => {
                         >
                           OTHER
                         </option>
+                      </select>
+                    )}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-right">TRIM COLOR</td>
+                  <td className="text-center">
+                    <input
+                      className="non-outline"
+                      id="trimColor"
+                      value={measuresheetData.typeTable.trimColor}
+                      onChange={(e) => handleChangeTypeTable(e)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="text-right">TEXTURE</td>
+                  <td className="text-center">
+                    {viewMode !== 'homepage' ? (
+                      measuresheetData.typeTable.grid
+                    ) : (
+                      <select
+                        className="ms_select"
+                        id="texture"
+                        onChange={(e) => handleChangeTypeTable(e)}
+                      >
+                        {texture.map((value, index) => (
+                          <option
+                            key={index}
+                            value={value}
+                            selected={
+                              value === measuresheetData.typeTable.texture
+                                ? 'selected'
+                                : ''
+                            }
+                          >
+                            {value}
+                          </option>
+                        ))}
                       </select>
                     )}
                   </td>

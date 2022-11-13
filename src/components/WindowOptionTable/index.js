@@ -4,11 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateValue } from '../../store/slices/windowoptionSlice';
 import { numberWithCommas } from '../../utils/globals';
 
+import Signature from '../Signature';
+
 import './style.css';
 
 const WindowOptionTable = (props) => {
   const storeData = useSelector((state) => state.windowoption.data);
   const viewMode = useSelector((state) => state.option.data.viewMode);
+  const signStatus = useSelector((state) => state.option.data.signStatus);
   const dispatch = useDispatch();
 
   const handleChange = (e, { id, formId }) => {
@@ -29,6 +32,10 @@ const WindowOptionTable = (props) => {
       count: e.target.value,
       price: price,
     });
+  };
+
+  const handleSign = (value) => {
+    dispatch(updateValue({ id: 'signature', count: value }));
   };
 
   return (
@@ -122,16 +129,15 @@ const WindowOptionTable = (props) => {
               {index === 1 && (
                 <p style={{ textAlign: 'right', marginRight: '20%' }}>
                   (List Pattern) Initial:
-                  <input
-                    type="text"
-                    className="bottom-outline input-box"
-                    style={{ width: '30%' }}
-                    id="windowOptionInput21"
-                    onChange={(e) =>
-                      handleChange(e, { formId: 'windowOptionInput21' })
-                    }
-                    value={storeData['windowOptionInput21']}
-                    readOnly={viewMode !== 'homepage'}
+                  <Signature
+                    width={130}
+                    height={19}
+                    signId="signature"
+                    updateSign={handleSign}
+                    imgInfo={storeData.signature.value}
+                    style={storeData.signature.style}
+                    signStatus={signStatus}
+                    viewMode={viewMode}
                   />
                 </p>
               )}

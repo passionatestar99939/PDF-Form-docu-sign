@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: {},
+  data: {
+    signature: '',
+  },
 };
 
 for (let i = 0; i < 21; i++) {

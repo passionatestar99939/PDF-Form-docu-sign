@@ -37,6 +37,10 @@
   font-weight: bold;
 }
 
+.msh__header__right-table .non-outline {
+  border: none;
+}
+
 /* .msh__hover-left-table {
   position: relative;
   opacity: 1;

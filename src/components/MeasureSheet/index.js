@@ -975,6 +975,7 @@ const MeasureSheet = ({ page }) => {
                   <td className="text-right">TRIM COLOR</td>
                   <td className="text-center">
                     <input
+                      className="non-outline"
                       id="trimColor"
                       value={measuresheetData.typeTable.trimColor}
                       onChange={(e) => handleChangeTypeTable(e)}
