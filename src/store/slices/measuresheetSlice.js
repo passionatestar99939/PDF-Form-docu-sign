@@ -3,6 +3,7 @@ import {
   gridStyle,
   initDataOfMeasureSheet,
   cutbacks,
+  texture,
 } from '../../constants/variables';
 
 const initialState = {
@@ -18,6 +19,12 @@ const initialState = {
       trimColor: '',
       texture: '',
     },
+    // typeTable: {
+    //   gridStyle: gridStyle.normalType[3],
+    //   capping: 'BRICKMOLD',
+    //   trimColor: 'TRIMCOLOR',
+    //   texture: texture[1],
+    // },
     mainTable: {},
     drawingData: [{}, {}, {}],
   },

@@ -18,7 +18,7 @@ export const initDataOfMeasureSheet = {
   categoryNum: -1,
 };
 
-export const nonComparisonElementArray = ['no', 'room', 'notes', 'categoryNum'];
+export const nonComparisonElementArray = ['no', 'room', 'notes', 'categoryNum', 'mullCuts'];
 
 export const initDataOfWindowOrder = {
   qty: '',
@@ -32,7 +32,8 @@ export const initDataOfWindowOrder = {
   sashSplit: '',
   intColor: '',
   extColor: '',
-  grids: '',
+  // grids: '',
+  grids: false,
   pattern: '',
   blinds: false,
   energy: '',

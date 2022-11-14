@@ -533,12 +533,13 @@ const MeasureSheet = ({ page }) => {
           temp: ele.temp,
           pattern: ele.grids,
           foam: ele.foam,
-          grids:
-            gridStyle.shortType[
-              gridStyle.normalType.findIndex(
-                (val) => val === data.typeTable.gridStyle
-              )
-            ],
+          grids: ele.grids != ''? true: false
+          // grids:
+          //   gridStyle.shortType[
+          //     gridStyle.normalType.findIndex(
+          //       (val) => val === data.typeTable.gridStyle
+          //     )
+          //   ],
         };
       }
     });
@@ -900,7 +901,7 @@ const MeasureSheet = ({ page }) => {
                   <td className="text-right">GRID STYLE</td>
                   <td className="text-center">
                     {viewMode !== 'homepage' ? (
-                      measuresheetData.typeTable.grid
+                      measuresheetData.typeTable.gridStyle
                     ) : (
                       <select
                         className="ms_select"
@@ -986,7 +987,7 @@ const MeasureSheet = ({ page }) => {
                   <td className="text-right">TEXTURE</td>
                   <td className="text-center">
                     {viewMode !== 'homepage' ? (
-                      measuresheetData.typeTable.grid
+                      measuresheetData.typeTable.texture
                     ) : (
                       <select
                         className="ms_select"

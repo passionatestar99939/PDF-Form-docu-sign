@@ -20,6 +20,7 @@ import {
   roomStyle,
   energy,
   texture,
+  gridStyle,
 } from '../../constants/variables';
 
 import './style.css';
@@ -402,41 +403,26 @@ const MeasureSheet = ({ page }) => {
                   <td className="text-right">GRID STYLE</td>
                   <td className="text-center">
                     {viewMode !== 'homepage' ? (
-                      measuresheetData.typeTable.grid
+                      measuresheetData.typeTable.gridStyle
                     ) : (
                       <select
                         className="ms_select"
-                        id="grid"
+                        id="gridStyle"
                         onChange={(e) => handleChangeTypeTable(e)}
                       >
-                        <option
-                          value="NO GRIDS"
-                          selected={
-                            'NO GRIDS' === measuresheetData.typeTable.grid
-                          }
-                        >
-                          NO GRIDS
-                        </option>
-                        <option
-                          value="Flat"
-                          selected={'Flat' === measuresheetData.typeTable.grid}
-                        >
-                          Flat
-                        </option>
-                        <option
-                          value="Sculptured"
-                          selected={
-                            'Sculptured' === measuresheetData.typeTable.grid
-                          }
-                        >
-                          Sculptured
-                        </option>
-                        <option
-                          value="SDL"
-                          selected={'SDL' === measuresheetData.typeTable.grid}
-                        >
-                          SDL
-                        </option>
+                        {gridStyle.normalType.map((value, index) => (
+                          <option
+                            key={index}
+                            value={value}
+                            selected={
+                              value === measuresheetData.typeTable.gridStyle
+                                ? 'selected'
+                                : ''
+                            }
+                          >
+                            {value}
+                          </option>
+                        ))}
                       </select>
                     )}
                   </td>
@@ -503,7 +489,7 @@ const MeasureSheet = ({ page }) => {
                   <td className="text-right">TEXTURE</td>
                   <td className="text-center">
                     {viewMode !== 'homepage' ? (
-                      measuresheetData.typeTable.grid
+                      measuresheetData.typeTable.texture
                     ) : (
                       <select
                         className="ms_select"

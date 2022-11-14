@@ -43,6 +43,10 @@
   font-weight: bold;
 }
 
+.msh__header__left-table tr td:first-child{
+  width: 60%;
+}
+
 .msh__header__right-table_convert tr td {
   border: 2px solid black;
   font-weight: bold;
@@ -81,6 +85,12 @@
 .msh__header__right-table_convert tr,
 .msh__header__left-table_convert tr {
   height: 3.9vh;
+}
+
+.msh__header__right-table_convert tr:nth-child(3) td:nth-child(2) input{
+  text-align:center;
+  font-size: 9px;
+  font-weight: bold;
 }
 
 .msh__body-table_convert thead tr th {
