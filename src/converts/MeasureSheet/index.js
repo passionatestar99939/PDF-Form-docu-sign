@@ -249,8 +249,8 @@ const MeasureSheet = ({ page }) => {
             </div>
           </div>
           <div className="flex justify-content__space-between width-100">
-            <div className="msh__hover-left-table">
-              <table className="msh__header__left-table">
+            <div className="msh__hover-left-table_convert">
+              <table className="msh__header__left-table_convert">
                 <tr>
                   <td className="text-right">TYPE OF WINDOW TEAROUTS</td>
                   <td>

@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Modal from "react-modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
-import DrawBox from '../DrawBox';
-import { updateDrawingDataFunc } from '../../store/slices/measuresheetSlice';
+import DrawBox from "../DrawBox";
+import { updateDrawingDataFunc } from "../../store/slices/measuresheetSlice";
 
-import Checkbox from '../Checkbox';
+import Checkbox from "../Checkbox";
 
 import {
   updateWindowTable,
   updateTypeTable,
   updateMainTable,
-} from '../../store/slices/measuresheetSlice';
-import { updateMainTable as updateMainTableForWindowOrder } from '../../store/slices/windoworderSlice';
+} from "../../store/slices/measuresheetSlice";
+import { updateMainTable as updateMainTableForWindowOrder } from "../../store/slices/windoworderSlice";
 
 import {
   initDataOfMeasureSheet,
@@ -31,28 +31,28 @@ import {
   initDataOfWindowOrder,
   gridStyle,
   texture,
-} from '../../constants/variables';
+} from "../../constants/variables";
 
-import { fractionCalculator } from '../../utils/globals';
-import './style.css';
+import { fractionCalculator } from "../../utils/globals";
+import "./style.css";
 
 const tableHeaderLine = [
-  'No.',
-  'ROOM',
-  'STYLE',
-  'R.O.WIDTH',
-  'R.O.HEIGHT',
-  'ORDER WIDTH',
-  'ORDER HEIGHT',
-  'GRIDS/BLINDS',
-  'INT COLOR',
-  'EXT COLOR',
-  'FOAM',
-  'TEMP',
-  'OBSC',
-  'ENERGY',
-  'MULL CUTS',
-  'NOTES',
+  "No.",
+  "ROOM",
+  "STYLE",
+  "R.O.WIDTH",
+  "R.O.HEIGHT",
+  "ORDER WIDTH",
+  "ORDER HEIGHT",
+  "GRIDS/BLINDS",
+  "INT COLOR",
+  "EXT COLOR",
+  "FOAM",
+  "TEMP",
+  "OBSC",
+  "ENERGY",
+  "MULL CUTS",
+  "NOTES",
 ];
 // let data = {
 //   windowTable: {
@@ -91,17 +91,17 @@ const MeasureSheet = ({ page }) => {
       data.mainTable[index] = {
         ...ele,
         orderWidth:
-          ele.style === 'SPD'
+          ele.style === "SPD"
             ? ele.orderWidth
             : ele.roWidth
-            ? fractionCalculator(ele.roWidth, '+', data.windowTable.cutbacks.w)
-            : '',
+            ? fractionCalculator(ele.roWidth, "+", data.windowTable.cutbacks.w)
+            : "",
         orderHeight:
-          ele.style === 'SPD'
+          ele.style === "SPD"
             ? ele.orderHeight
             : ele.roHeight
-            ? fractionCalculator(ele.roHeight, '+', data.windowTable.cutbacks.h)
-            : '',
+            ? fractionCalculator(ele.roHeight, "+", data.windowTable.cutbacks.h)
+            : "",
       };
     });
   };
@@ -113,7 +113,7 @@ const MeasureSheet = ({ page }) => {
   const handleChangeWindowOption = (e) => {
     // data.windowTable[e.target.id] = e.target.value;
     data.windowTable = { ...data.windowTable, [e.target.id]: e.target.value };
-    data.windowTable.cutbacks = cutbacks[data.windowTable.pockets];
+    data.windowTable.cutbacks = cutbacks[data.windowTable.cutbacksStr];
     dispatch(updateWindowTable(data.windowTable));
 
     calculateOrderWidthHeight();
@@ -134,30 +134,30 @@ const MeasureSheet = ({ page }) => {
 
   const handleChangeInput = (e) => {
     switch (e.target.id) {
-      case 'style':
+      case "style":
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
           orderWidth:
-            e.target.value === 'SPD'
+            e.target.value === "SPD"
               ? tempObj.roWidth
               : tempObj.roWidth
               ? fractionCalculator(
                   tempObj.roWidth,
-                  '+',
+                  "+",
                   measuresheetData.windowTable.cutbacks.w
                 )
-              : '',
+              : "",
           orderHeight:
-            e.target.value === 'SPD'
+            e.target.value === "SPD"
               ? tempObj.roHeight
               : tempObj.roHeight
               ? fractionCalculator(
                   tempObj.roHeight,
-                  '+',
+                  "+",
                   measuresheetData.windowTable.cutbacks.h
                 )
-              : '',
+              : "",
         });
 
         dataForWindowOrder.mainTable[0] = {
@@ -171,37 +171,37 @@ const MeasureSheet = ({ page }) => {
           })
         );
         break;
-      case 'roWidth':
+      case "roWidth":
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
           orderWidth:
-            tempObj.style === 'SPD'
+            tempObj.style === "SPD"
               ? tempObj.orderWidth
               : e.target.value
               ? fractionCalculator(
                   e.target.value,
-                  '+',
+                  "+",
                   measuresheetData.windowTable.cutbacks.w
                 )
-              : '',
+              : "",
         });
 
         break;
-      case 'roHeight':
+      case "roHeight":
         setTempObj({
           ...tempObj,
           [e.target.id]: e.target.value,
           orderHeight:
-            tempObj.style === 'SPD'
+            tempObj.style === "SPD"
               ? tempObj.orderHeight
               : e.target.value
               ? fractionCalculator(
                   e.target.value,
-                  '+',
+                  "+",
                   measuresheetData.windowTable.cutbacks.h
                 )
-              : '',
+              : "",
         });
         break;
       default:
@@ -217,19 +217,19 @@ const MeasureSheet = ({ page }) => {
     setSelectedRow(row_id);
     setTempObj({ ...measuresheetData.mainTable[row_id] });
     console.log(measuresheetData.mainTable);
-    setOpenTableModal(viewMode === 'homepage');
+    setOpenTableModal(viewMode === "homepage");
   };
 
   const findLastCategoryNumKindBeforeIndex = (index) => {
     let result = -1;
     for (let i = 0; i < index; i++) {
-      console.log('???=>i-categoryNum:', data.mainTable[i].categoryNum);
+      console.log("???=>i-categoryNum:", data.mainTable[i].categoryNum);
       if (data.mainTable[i].categoryNum > result) {
         result = data.mainTable[i].categoryNum;
       }
     }
 
-    console.log('???=>last category num:', result);
+    console.log("???=>last category num:", result);
     return result;
   };
 
@@ -290,7 +290,7 @@ const MeasureSheet = ({ page }) => {
           }
         })
       ) {
-        console.log('???=>identical category index:', i);
+        console.log("???=>identical category index:", i);
         return i;
       }
     }
@@ -303,7 +303,7 @@ const MeasureSheet = ({ page }) => {
         if (nonComparisonElementArray.find((val) => val === key)) {
           return true;
         } else {
-          return data.mainTable[index][key] === '';
+          return data.mainTable[index][key] === "";
         }
       })
     )
@@ -324,7 +324,7 @@ const MeasureSheet = ({ page }) => {
             }
           })
         ) {
-          console.log('???=>identical category index:', i);
+          console.log("???=>identical category index:", i);
           return i;
         }
       }
@@ -338,15 +338,15 @@ const MeasureSheet = ({ page }) => {
 
     let lastCategoryNum = findLastCategoryNumKindBeforeIndex(index);
 
-    console.log('???=>isOnly', isOnlyOneCategory(index));
+    console.log("???=>isOnly", isOnlyOneCategory(index));
 
     if (isOnlyOneCategoryInPreState(index)) {
       if (isOnlyOneCategory(index)) {
-        console.log('???=> pre: only, cur: only');
+        console.log("???=> pre: only, cur: only");
       } else {
-        console.log('???=> pre: only, cur: NOT only');
+        console.log("???=> pre: only, cur: NOT only");
         const firstIdenticalIndex = findFirstIdenticalIndex(index);
-        console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
+        console.log("???=>firstIdenticalIndex:", firstIdenticalIndex);
         data.mainTable[index] = {
           ...data.mainTable[index],
           categoryNum: data.mainTable[firstIdenticalIndex].categoryNum,
@@ -401,14 +401,14 @@ const MeasureSheet = ({ page }) => {
       }
     } else {
       if (isOnlyOneCategory(index)) {
-        console.log('???=> pre: NOT only, cur: only');
+        console.log("???=> pre: NOT only, cur: only");
         const length = Object.keys(data.mainTable).length;
         const firstIdenticalIndexBeforeChanging =
           findFirstIdenticalIndexBeforeChanging(index);
         if (firstIdenticalIndexBeforeChanging < index) {
           for (let i = 0; i < length; i++) {
             console.log(
-              '???=>i - category num:',
+              "???=>i - category num:",
               data.mainTable[i].categoryNum
             );
             if (measuresheetData.mainTable[i].categoryNum > lastCategoryNum) {
@@ -451,7 +451,7 @@ const MeasureSheet = ({ page }) => {
               firstIdenticalIndexBeforeChanging
             );
 
-            console.log('???=> standardIndex:', standardIndex);
+            console.log("???=> standardIndex:", standardIndex);
 
             const length = Object.keys(data.mainTable).length;
             for (let i = 0; i < length; i++) {
@@ -500,9 +500,9 @@ const MeasureSheet = ({ page }) => {
           categoryNum: lastCategoryNum + 1,
         };
       } else {
-        console.log('???=> pre: NOT only, cur: NOT only');
+        console.log("???=> pre: NOT only, cur: NOT only");
         const firstIdenticalIndex = findFirstIdenticalIndex(index);
-        console.log('???=>firstIdenticalIndex:', firstIdenticalIndex);
+        console.log("???=>firstIdenticalIndex:", firstIdenticalIndex);
         data.mainTable[index] = {
           ...data.mainTable[index],
           categoryNum: data.mainTable[firstIdenticalIndex].categoryNum,
@@ -518,7 +518,7 @@ const MeasureSheet = ({ page }) => {
 
     Object.values(data.mainTable).forEach((ele) => {
       if (ele.categoryNum >= 0) {
-        console.log('???=>ele.categoryNum:', ele.categoryNum);
+        console.log("???=>ele.categoryNum:", ele.categoryNum);
         dataForWindowOrder.mainTable[ele.categoryNum] = {
           ...dataForWindowOrder.mainTable[ele.categoryNum],
           categoryNum: ele.categoryNum,
@@ -533,7 +533,7 @@ const MeasureSheet = ({ page }) => {
           temp: ele.temp,
           pattern: ele.grids,
           foam: ele.foam,
-          grids: ele.grids != ''? true: false
+          grids: ele.grids != "" ? true : false,
           // grids:
           //   gridStyle.shortType[
           //     gridStyle.normalType.findIndex(
@@ -579,9 +579,9 @@ const MeasureSheet = ({ page }) => {
 
   const TableBody = () => {
     // const boldElementArray = ['orderWidth', 'orderHeight'];
-    const boldElementArray = ['orderWidth', 'orderHeight', 'categoryNum'];
-    const checkBoxArray = ['foam'];
-    const hiddenElementArray = ['categoryNum'];
+    const boldElementArray = ["orderWidth", "orderHeight", "categoryNum"];
+    const checkBoxArray = ["foam"];
+    const hiddenElementArray = ["categoryNum"];
     // const hiddenElementArray = [];
     data.mainTable = { ...measuresheetData.mainTable };
     return (
@@ -594,14 +594,14 @@ const MeasureSheet = ({ page }) => {
                   <tr key={row_id} onClick={() => handleClickTr(row_id)}>
                     {Object.keys(ele).map((key, index) =>
                       hiddenElementArray.find((val) => val === key) ? (
-                        ''
+                        ""
                       ) : (
                         <td
                           key={index}
                           className={
                             boldElementArray.find((val) => val === key)
-                              ? 'bold measure-sheet__big-font'
-                              : ''
+                              ? "bold measure-sheet__big-font"
+                              : ""
                           }
                         >
                           {checkBoxArray.find((val) => val === key) ? (
@@ -609,7 +609,7 @@ const MeasureSheet = ({ page }) => {
                               checkVal={ele[key]}
                               checkId={key}
                               updateCheck={handleChangeCheckbox}
-                              isInputEnable={viewMode === 'homepage'}
+                              isInputEnable={viewMode === "homepage"}
                               type={typeOfCheckBox.PatioDoorOrder}
                             />
                           ) : (
@@ -626,14 +626,14 @@ const MeasureSheet = ({ page }) => {
                   <tr key={row_id} onClick={() => handleClickTr(row_id)}>
                     {Object.keys(ele).map((key, index) =>
                       hiddenElementArray.find((val) => val === key) ? (
-                        ''
+                        ""
                       ) : (
                         <td
                           key={index}
                           className={
                             boldElementArray.find((val) => val === key)
-                              ? 'bold measure-sheet__big-font'
-                              : ''
+                              ? "bold measure-sheet__big-font"
+                              : ""
                           }
                         >
                           {checkBoxArray.find((val) => val === key) ? (
@@ -641,7 +641,7 @@ const MeasureSheet = ({ page }) => {
                               checkVal={ele[key]}
                               checkId={key}
                               updateCheck={handleChangeCheckbox}
-                              isInputEnable={viewMode === 'homepage'}
+                              isInputEnable={viewMode === "homepage"}
                               type={typeOfCheckBox.PatioDoorOrder}
                             />
                           ) : (
@@ -665,7 +665,7 @@ const MeasureSheet = ({ page }) => {
           <div className="flex justify-content__space-between width-100">
             <div
               className="flex align-items__end bold"
-              style={{ fontSize: '27px' }}
+              style={{ fontSize: "27px" }}
             >
               MEASURE SHEET <div></div>
             </div>
@@ -706,7 +706,7 @@ const MeasureSheet = ({ page }) => {
                 <tr>
                   <td className="text-right">TYPE OF WINDOW TEAROUTS</td>
                   <td>
-                    {viewMode !== 'homepage' ? (
+                    {viewMode !== "homepage" ? (
                       measuresheetData.windowTable.tearouts
                     ) : (
                       <select
@@ -717,7 +717,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="WOOD"
                           selected={
-                            'WOOD' === measuresheetData.windowTable.tearouts
+                            "WOOD" === measuresheetData.windowTable.tearouts
                           }
                         >
                           WOOD
@@ -725,7 +725,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="ALUM"
                           selected={
-                            'ALUM' === measuresheetData.windowTable.tearouts
+                            "ALUM" === measuresheetData.windowTable.tearouts
                           }
                         >
                           ALUM
@@ -733,7 +733,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="VINYL"
                           selected={
-                            'VINYL' === measuresheetData.windowTable.tearouts
+                            "VINYL" === measuresheetData.windowTable.tearouts
                           }
                         >
                           VINYL
@@ -741,7 +741,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="STEEL"
                           selected={
-                            'STEEL' === measuresheetData.windowTable.tearouts
+                            "STEEL" === measuresheetData.windowTable.tearouts
                           }
                         >
                           STEEL
@@ -753,7 +753,7 @@ const MeasureSheet = ({ page }) => {
                 <tr>
                   <td className="text-right">TYPE OF WINDOW POCKET</td>
                   <td>
-                    {viewMode !== 'homepage' ? (
+                    {viewMode !== "homepage" ? (
                       measuresheetData.windowTable.pockets
                     ) : (
                       <select
@@ -764,7 +764,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="WOOD"
                           selected={
-                            'WOOD' === measuresheetData.windowTable.pockets
+                            "WOOD" === measuresheetData.windowTable.pockets
                           }
                         >
                           WOOD
@@ -773,7 +773,7 @@ const MeasureSheet = ({ page }) => {
                           value="PLASTER"
                           se
                           lected={
-                            'PLASTER' === measuresheetData.windowTable.pockets
+                            "PLASTER" === measuresheetData.windowTable.pockets
                           }
                         >
                           PLASTER
@@ -781,7 +781,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="DRYWALL"
                           selected={
-                            'DRYWALL' === measuresheetData.windowTable.pockets
+                            "DRYWALL" === measuresheetData.windowTable.pockets
                           }
                         >
                           DRYWALL
@@ -793,13 +793,39 @@ const MeasureSheet = ({ page }) => {
                 <tr>
                   <td className="text-right">WINDOW CUTBACKS</td>
                   <td>
-                    ({measuresheetData.windowTable.cutbacks.w}")
-                    {measuresheetData.windowTable.cutbacks.h
+                    <select
+                      className="ms_select"
+                      id="cutbacksStr"
+                      onChange={(e) => handleChangeWindowOption(e)}
+                    >
+                      {Object.keys(cutbacks).map((value, index) => (
+                        <option
+                          key={index}
+                          value={value}
+                          selected={
+                            value === measuresheetData.windowTable.cutbacksStr? "selected"
+                              : ""
+                          }
+
+                          // selected={
+                          //   value ===
+                          //   `(${measuresheetData.windowTable.cutbacks.w}") X (${measuresheetData.windowTable.cutbacks.h}")`
+                          //     ? "selected"
+                          //     : ""
+                          // }
+                        >
+                          {value}
+                        </option>
+                      ))}
+                    </select>
+
+                    {/* {`(${measuresheetData.windowTable.cutbacks.w}") X (${measuresheetData.windowTable.cutbacks.h}")`} */}
+                    {/* {measuresheetData.windowTable.cutbacks.h
                       ? ' X ' +
-                        '(' +
-                        measuresheetData.windowTable.cutbacks.h +
-                        '")'
-                      : ''}
+                      '(' +
+                      measuresheetData.windowTable.cutbacks.h +
+                      '")'
+                      : ''} */}
                   </td>
                 </tr>
               </table>
@@ -808,29 +834,29 @@ const MeasureSheet = ({ page }) => {
             <div className="flex width-60 justify-content__space-around">
               <div className="measure-sheet__draw-box black-font width-30">
                 {measuresheetData.drawingData[0].value ? (
-                  ''
+                  ""
                 ) : (
-                  <div style={{ fontSize: '10px' }}>
+                  <div style={{ fontSize: "10px" }}>
                     Click to Draw
                     <FontAwesomeIcon
                       icon={faPencil}
                       style={{
                         fontSize: 20,
-                        color: 'black',
-                        margin: '0px 20px',
+                        color: "black",
+                        margin: "0px 20px",
                       }}
                     />
                   </div>
                 )}
 
                 <DrawBox
-                  width={'100%'}
-                  height={'100%'}
+                  width={"100%"}
+                  height={"100%"}
                   signId="drawingData"
                   addClass="mySign"
                   imgInfo={measuresheetData.drawingData[0].value}
                   updateSign={handleSign}
-                  signStatus={viewMode === 'homepage'}
+                  signStatus={viewMode === "homepage"}
                   viewMode={viewMode}
                   style={measuresheetData.drawingData[0].style}
                   index={0}
@@ -838,28 +864,28 @@ const MeasureSheet = ({ page }) => {
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
                 {measuresheetData.drawingData[1].value ? (
-                  ''
+                  ""
                 ) : (
-                  <div style={{ fontSize: '10px' }}>
+                  <div style={{ fontSize: "10px" }}>
                     Click to Draw
                     <FontAwesomeIcon
                       icon={faPencil}
                       style={{
                         fontSize: 20,
-                        color: 'black',
-                        margin: '0px 20px',
+                        color: "black",
+                        margin: "0px 20px",
                       }}
                     />
                   </div>
                 )}
                 <DrawBox
-                  width={'100%'}
-                  height={'100%'}
+                  width={"100%"}
+                  height={"100%"}
                   signId="drawingData"
                   addClass="mySign"
                   imgInfo={measuresheetData.drawingData[1].value}
                   updateSign={handleSign}
-                  signStatus={viewMode === 'homepage'}
+                  signStatus={viewMode === "homepage"}
                   viewMode={viewMode}
                   style={measuresheetData.drawingData[1].style}
                   index={1}
@@ -867,28 +893,28 @@ const MeasureSheet = ({ page }) => {
               </div>
               <div className="measure-sheet__draw-box black-font width-30">
                 {measuresheetData.drawingData[2].value ? (
-                  ''
+                  ""
                 ) : (
-                  <div style={{ fontSize: '10px' }}>
+                  <div style={{ fontSize: "10px" }}>
                     Click to Draw
                     <FontAwesomeIcon
                       icon={faPencil}
                       style={{
                         fontSize: 20,
-                        color: 'black',
-                        margin: '0px 20px',
+                        color: "black",
+                        margin: "0px 20px",
                       }}
                     />
                   </div>
                 )}
                 <DrawBox
-                  width={'100%'}
-                  height={'100%'}
+                  width={"100%"}
+                  height={"100%"}
                   signId="drawingData"
                   addClass="mySign"
                   imgInfo={measuresheetData.drawingData[2].value}
                   updateSign={handleSign}
-                  signStatus={viewMode === 'homepage'}
+                  signStatus={viewMode === "homepage"}
                   viewMode={viewMode}
                   style={measuresheetData.drawingData[2].style}
                   index={2}
@@ -900,7 +926,7 @@ const MeasureSheet = ({ page }) => {
                 <tr>
                   <td className="text-right">GRID STYLE</td>
                   <td className="text-center">
-                    {viewMode !== 'homepage' ? (
+                    {viewMode !== "homepage" ? (
                       measuresheetData.typeTable.gridStyle
                     ) : (
                       <select
@@ -914,8 +940,8 @@ const MeasureSheet = ({ page }) => {
                             value={value}
                             selected={
                               value === measuresheetData.typeTable.gridStyle
-                                ? 'selected'
-                                : ''
+                                ? "selected"
+                                : ""
                             }
                           >
                             {value}
@@ -928,7 +954,7 @@ const MeasureSheet = ({ page }) => {
                 <tr>
                   <td className="text-right">CAPPING STYLE</td>
                   <td className="text-center">
-                    {viewMode !== 'homepage' ? (
+                    {viewMode !== "homepage" ? (
                       measuresheetData.typeTable.capping
                     ) : (
                       <select
@@ -939,7 +965,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="BRICKMOLD"
                           selected={
-                            'BRICKMOLD' === measuresheetData.typeTable.capping
+                            "BRICKMOLD" === measuresheetData.typeTable.capping
                           }
                         >
                           BRICKMOLD
@@ -947,7 +973,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="1x4"
                           selected={
-                            '1x4' === measuresheetData.typeTable.capping
+                            "1x4" === measuresheetData.typeTable.capping
                           }
                         >
                           1x4
@@ -955,7 +981,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="1x6"
                           selected={
-                            '1x6' === measuresheetData.typeTable.capping
+                            "1x6" === measuresheetData.typeTable.capping
                           }
                         >
                           1x6
@@ -963,7 +989,7 @@ const MeasureSheet = ({ page }) => {
                         <option
                           value="OTHER"
                           selected={
-                            'OTHER' === measuresheetData.typeTable.capping
+                            "OTHER" === measuresheetData.typeTable.capping
                           }
                         >
                           OTHER
@@ -986,7 +1012,7 @@ const MeasureSheet = ({ page }) => {
                 <tr>
                   <td className="text-right">TEXTURE</td>
                   <td className="text-center">
-                    {viewMode !== 'homepage' ? (
+                    {viewMode !== "homepage" ? (
                       measuresheetData.typeTable.texture
                     ) : (
                       <select
@@ -1000,8 +1026,8 @@ const MeasureSheet = ({ page }) => {
                             value={value}
                             selected={
                               value === measuresheetData.typeTable.texture
-                                ? 'selected'
-                                : ''
+                                ? "selected"
+                                : ""
                             }
                           >
                             {value}
@@ -1016,7 +1042,7 @@ const MeasureSheet = ({ page }) => {
           </div>
         </div>
       ) : (
-        ''
+        ""
       )}
 
       <div className="msh__body">
@@ -1039,7 +1065,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.room ? 'selected' : ''}
+                  selected={value === tempObj.room ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1053,7 +1079,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.style ? 'selected' : ''}
+                  selected={value === tempObj.style ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1064,7 +1090,7 @@ const MeasureSheet = ({ page }) => {
             <label htmlFor="roWidth">R.O.Width</label>
             <input
               id="roWidth"
-              value={tempObj['roWidth']}
+              value={tempObj["roWidth"]}
               onChange={(e) => handleChangeInput(e)}
             />
           </div>
@@ -1072,7 +1098,7 @@ const MeasureSheet = ({ page }) => {
             <label htmlFor="roHeight">R.O.Height</label>
             <input
               id="roHeight"
-              value={tempObj['roHeight']}
+              value={tempObj["roHeight"]}
               onChange={(e) => handleChangeInput(e)}
             />
           </div>
@@ -1080,25 +1106,25 @@ const MeasureSheet = ({ page }) => {
             <label htmlFor="orderWidth">Order Width</label>
             <input
               id="orderWidth"
-              value={tempObj['orderWidth']}
+              value={tempObj["orderWidth"]}
               onChange={(e) => handleChangeInput(e)}
-              disabled={tempObj.style === 'SPD' ? false : true}
+              disabled={tempObj.style === "SPD" ? false : true}
             />
           </div>
           <div className="p-line">
             <label htmlFor="orderHeight">Order Height</label>
             <input
               id="orderHeight"
-              value={tempObj['orderHeight']}
+              value={tempObj["orderHeight"]}
               onChange={(e) => handleChangeInput(e)}
-              disabled={tempObj.style === 'SPD' ? false : true}
+              disabled={tempObj.style === "SPD" ? false : true}
             />
           </div>
           <div className="p-line">
             <label htmlFor="grids">Grids/Blinds</label>
             <input
               id="grids"
-              value={tempObj['grids']}
+              value={tempObj["grids"]}
               onChange={(e) => handleChangeInput(e)}
             />
           </div>
@@ -1109,7 +1135,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.intColor ? 'selected' : ''}
+                  selected={value === tempObj.intColor ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1123,7 +1149,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.extColor ? 'selected' : ''}
+                  selected={value === tempObj.extColor ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1137,7 +1163,7 @@ const MeasureSheet = ({ page }) => {
                 checkVal={tempObj.foam}
                 checkId="foam"
                 updateCheck={handleChangeCheckbox}
-                isInputEnable={viewMode === 'homepage'}
+                isInputEnable={viewMode === "homepage"}
                 type={typeOfCheckBox.PatioDoorOrder}
               />
             </div>
@@ -1149,7 +1175,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.temp ? 'selected' : ''}
+                  selected={value === tempObj.temp ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1163,7 +1189,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.obsc ? 'selected' : ''}
+                  selected={value === tempObj.obsc ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1177,7 +1203,7 @@ const MeasureSheet = ({ page }) => {
                 <option
                   key={index}
                   value={value}
-                  selected={value === tempObj.energy ? 'selected' : ''}
+                  selected={value === tempObj.energy ? "selected" : ""}
                 >
                   {value}
                 </option>
@@ -1188,7 +1214,7 @@ const MeasureSheet = ({ page }) => {
             <label htmlFor="mullCuts">Mull Cuts</label>
             <input
               id="mullCuts"
-              value={tempObj['mullCuts']}
+              value={tempObj["mullCuts"]}
               onChange={(e) => handleChangeInput(e)}
             />
           </div>
@@ -1196,7 +1222,7 @@ const MeasureSheet = ({ page }) => {
             <label htmlFor="notes">Notes</label>
             <input
               id="notes"
-              value={tempObj['notes']}
+              value={tempObj["notes"]}
               onChange={(e) => handleChangeInput(e)}
             />
           </div>

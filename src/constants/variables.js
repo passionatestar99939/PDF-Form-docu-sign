@@ -176,8 +176,13 @@ export const mulls = {
   shortType: ['', 'FAC', 'FLD'],
 };
 
+// export const cutbacks = {
+//   WOOD: { w: '-3/8', h: '-3/8' },
+//   DRYWALL: { w: '-1/4', h: '-1/4' },
+//   PLASTER: { w: '-1/4', h: '-1/4' },
+// };
+
 export const cutbacks = {
-  WOOD: { w: '-3/8', h: '-3/8' },
-  DRYWALL: { w: '-1/4', h: '-1/4' },
-  PLASTER: { w: '-1/4', h: '-1/4' },
+  '(-3/8") X (-3/8")': { w: '-3/8', h: '-3/8' },
+  '(-1/4") X (-1/4")': { w: '-1/4', h: '-1/4' },
 };

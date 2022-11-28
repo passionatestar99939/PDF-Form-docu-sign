@@ -42,10 +42,10 @@
   border: 2px solid black;
   font-weight: bold;
 }
-
+/* 
 .msh__header__left-table tr td:first-child{
   width: 60%;
-}
+} */
 
 .msh__header__right-table_convert tr td {
   border: 2px solid black;

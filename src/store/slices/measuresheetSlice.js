@@ -11,7 +11,11 @@ const initialState = {
     windowTable: {
       tearouts: 'WOOD',
       pockets: 'WOOD',
-      cutbacks: cutbacks.WOOD,
+      // cutbacks: cutbacks.WOOD,
+      cutbacksStr: '(-3/8") X (-3/8")',
+      cutbacks: cutbacks['(-3/8") X (-3/8")'],
+      // cutbacksStr: '(-1/4") X (-1/4")',
+      // cutbacks: cutbacks['(-1/4") X (-1/4")'],
     },
     typeTable: {
       gridStyle: gridStyle.normalType[0],
